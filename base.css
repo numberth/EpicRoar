@@ -9,8 +9,24 @@
 		margin: 0 auto;
 		display: block;
 		border-style:double;
-		height: 90vh;
+		
 		background-color: #BFB78A;
+		position:absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.container {
+		margin: 0 auto;
+	}
+
+	.container .outer {
+		margin: 0 auto;
+		height: 90vh;
+		width: 35%;
+		position: relative;
 	}
 
 	h1 {

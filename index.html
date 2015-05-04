@@ -6,46 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="base.css">
 
-<script>
-var Game = {
-	canvas : undefined,
-	ctx : undefined,
-	positionX : 0,
-	positionY : 0,
-	dimension : 0,
-	picture : undefined
-}; //to make object (class-ish)
-
-Game.start = function(size){  //function is within the Game object
-	Game.canvas = document.getElementById("pic");
-	Game.ctx = Game.canvas.getContext("2d"); //pen
-	Game.dimension = size;
-	Game.picture = new Image();
-	Game.picture.src = "img/kitty.png";
-	Game.ctx.drawImage(Game.picture, 0, 0, Game.picture.width, Game.picture.height);
-	//Game.ctx.fillRect(Game.positionX, Game.positionY, Game.dimension, Game.dimension);
-}
-
-Game.move = function(){
-	Game.ctx.clearRect(Game.positionX, Game.positionY, Game.dimension, Game.dimension);
-	Game.positionX += 20;
-	Game.positionY += 20;
-	Game.ctx.drawImage(Game.picture, Game.positionX, Game.positionY, Game.picture.width, Game.picture.height);
-	//Game.ctx.fillRect(Game.positionX, Game.positionY, Game.dimension, Game.dimension);
-}
-</script>
-
 </head>
 
-<body onload="Game.start(50);">
+<body>
 
 			<h1><img src="img/EPICROAR_logo.png" width="130px" height="85px" alt="EPIC ROAR"> DINO MYTE</h1>
 			<br>
-
-			<canvas id="pic" width="200" height="300">
+	<div class="container">
+		<div class="outer">
+			<div id="pic">
  			Your browser does not support HTML5.
-			</canvas>
-
+			</div>
+		</div>
+	</div>
 		<div id="footer">
 			<h2><img src="img/dragon.gif" width="81px" height="57px" alt="EPIC ROAR">Presented by EPIC ROAR.</h2>
 			<br>
