@@ -4,7 +4,7 @@
   <title>Dino Myte</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="stylesheet" href="base.css">
 
 <script>
 var Game = {
@@ -21,7 +21,7 @@ Game.start = function(size){  //function is within the Game object
 	Game.ctx = Game.canvas.getContext("2d"); //pen
 	Game.dimension = size;
 	Game.picture = new Image();
-	Game.picture.src = "kitty.png";
+	Game.picture.src = "img/kitty.png";
 	Game.ctx.drawImage(Game.picture, 0, 0, Game.picture.width, Game.picture.height);
 	//Game.ctx.fillRect(Game.positionX, Game.positionY, Game.dimension, Game.dimension);
 }
@@ -35,50 +35,11 @@ Game.move = function(){
 }
 </script>
 
-<style>
-	body {
-		background-color: #8A8567;
-		color: #241200;
-		height: 100%;
-		font-family: Arial;
-	}
-
-	#pic {
-		margin: 0 auto;
-		display: block;
-		border-style:double;
-		height: 90vh;
-		background-color: #BFB78A;
-	}
-
-	h1 {
-		margin: 0 auto;
-		width: 70vw;
-		height: 100%;
-		text-align: center;
-		text-shadow: 4px 4px 3px #BFB78A;
-		font-family: 'Impact';
-		font-size: 46px;
-	}
-
-	h2 {
-		text-align: center;
-		color: #241200;
-	}
-
-	#footer {
-		margin: 0 auto;
-		width: 450px;
-		text-align: center;
-		color: #473F2D;
-	}
-</style>
-
 </head>
 
 <body onload="Game.start(50);">
 
-			<h1><img src="EPICROAR_logo.png" width="130px" height="85px" alt="EPIC ROAR"> DINO MYTE</h1>
+			<h1><img src="img/EPICROAR_logo.png" width="130px" height="85px" alt="EPIC ROAR"> DINO MYTE</h1>
 			<br>
 
 			<canvas id="pic" width="200" height="300">
@@ -86,15 +47,15 @@ Game.move = function(){
 			</canvas>
 
 		<div id="footer">
-			<h2><img src="dragon.gif" width="81px" height="57px" alt="EPIC ROAR">Presented by EPIC ROAR.</h2>
+			<h2><img src="img/dragon.gif" width="81px" height="57px" alt="EPIC ROAR">Presented by EPIC ROAR.</h2>
 			<br>
 
 			<h3>Team Members: </h3>
-			<img src="fire.gif" width="24" height="24"> Eva &nbsp;
-			<img src="wind.gif" width="24" height="24"> Trista &nbsp;
-			<img src="light.gif" width="24" height="24"> Leia &nbsp;
-			<img src="ice.gif" width="24" height="24"> Daniel &nbsp;
-			<img src="water.gif" width="24" height="24"> Simran &nbsp;
+			<img src="img/fire.gif" width="24" height="24"> Eva &nbsp;
+			<img src="img/wind.gif" width="24" height="24"> Trista &nbsp;
+			<img src="img/light.gif" width="24" height="24"> Leia &nbsp;
+			<img src="img/ice.gif" width="24" height="24"> Daniel &nbsp;
+			<img src="img/water.gif" width="24" height="24"> Simran &nbsp;
 		</div>
 </body>
 </html>
