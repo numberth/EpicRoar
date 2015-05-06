@@ -60,7 +60,7 @@ var pageOptions = {
 	mainPage : "<img src='images/pic1.png' style='display:block;width:80%;height:200px;margin:auto;margin-top:9%'>" + 
 	"<button onclick='pageOptions.setPage3(this.reference)' id='playButton'>Play</button>" + 
 	"<button onclick='' id='timeModeButton'>Time Mode</button>" +
-	"<img src='images/button_audio.jpg' style='position:absolute;width:70px;height:70px;bottom:0;left:0' onclick='playBackground()' id='ayy'>",
+	"<img src='images/button_pause.jpg' style='position:absolute;width:70px;height:70px;bottom:0;left:0' onclick='playBackground()' id='ayy'>",
 
 	level3 : "<h3 style='font-size:29px;color:green;'>Level 3</h3>"+
         "<h3 style='font-size:29px;color:green;top:0;right:0;position:absolute'>2:00</h3>"+
