@@ -59,7 +59,8 @@
 }
 
 #threeByThree{
-	background-image: url(http://www.wpclipart.com/textures/terrain/grass_texture_seamless.png);
+	background-image: url(../images/grass.jpg);
+	background-size:100% 100%;
 	text-align:center;
 	width:79px;
 	height:70px;
@@ -67,10 +68,11 @@
 	border-color:#996633;
 	border-width:5px;
 	float:left;
+	margin-left:2%;
 }
 
 #threeByThree:hover{
-	transition: 1.1s;
+	transition: 1.2s;
 	transform-style: preserve-3d;
  	 transform: rotateY(180deg);
   	box-shadow: -5px 5px 5px #aaa;

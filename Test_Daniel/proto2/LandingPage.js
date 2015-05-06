@@ -1,21 +1,29 @@
-	var track ={
+var track = {
 	state : 0,
     track1 : undefined,
     track2 : undefined,
     currentPage : 0,
+    buttonSrc : undefined,
     init : function(){
     	this.track1 = new Audio();
     	this.track1.src = "sounds/bg3.mp3";
     	this.track1.loop = true;
     	this.track2 = new Audio();
     	this.track2.src = "sounds/bg2.mp3";
+    	playBackground();
     }
 };
+
+function getButtonSrc(){
+	track.buttonSrc = document.getElementById('ayy');
+}
 
 track.init();
 
 function playBackground(){
 	if(track.state===0){
+		getButtonSrc();
+		track.buttonSrc.src ='images/button_pause.jpg';
 		switch(track.currentPage){
 			case 0:
 				track.track1.play();
@@ -32,13 +40,18 @@ function playBackground(){
 		track.state=0;
 	}
 }
+
+
 function stopBackground(){
+	getButtonSrc();
+	track.buttonSrc.src = 'images/button_audio.jpg'; 
 	track.track1.pause();
 	track.track1.currentTime=0;
 	track.track2.pause();
 	track.track2.currentTime=0;
     track.state = 0;
 }
+
 
 var pageOptions = {
 
@@ -47,7 +60,7 @@ var pageOptions = {
 	mainPage : "<img src='images/pic1.png' style='display:block;width:80%;height:200px;margin:auto;margin-top:9%'>" + 
 	"<button onclick='pageOptions.setPage3(this.reference)' id='playButton'>Play</button>" + 
 	"<button onclick='' id='timeModeButton'>Time Mode</button>" +
-	"<img src='images/pause.png' style='position:absolute;width:70px;height:70px;border-style:solid;bottom:0;left:0' onclick='playBackground()'>",
+	"<img src='images/button_audio.jpg' style='position:absolute;width:70px;height:70px;bottom:0;left:0' onclick='playBackground()' id='ayy'>",
 
 	level3 : "<h3 style='font-size:29px;color:green;'>Level 3</h3>"+
         "<h3 style='font-size:29px;color:green;top:0;right:0;position:absolute'>2:00</h3>"+
@@ -58,8 +71,8 @@ var pageOptions = {
                     "<div style='clear:both'></div>"+
 				"<div id='threeByThree'></div><div id='threeByThree'></div><div id='threeByThree'></div><div style='clear:both'></div><div id='threeByThree'></div>"+
                 "<div id='threeByThree'></div><div id='threeByThree'></div></div></div>"+
-                "<button onclick='pageOptions.setPage()' id='playButton'>Back</button>" + 
-                "<img src='images/pause.png' style='position:absolute;width:70px;height:70px;border-style:solid;bottom:0;left:0' onclick='playBackground()'>",
+                "<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
+                "<img src='images/button_pause.jpg' style='position:absolute;width:70px;height:70px;bottom:0;left:0' onclick='playBackground()' id='ayy'>",
 
     init: function(id){
     	this.reference = document.getElementById(id);
