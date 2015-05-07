@@ -1,7 +1,8 @@
 
+
 #mainWindow{
 	background-image:url(http://www.jihyunyoo.com/menu_images/menu_whiteBG.gif);
-	background-size: cover; background-repeat: no-repeat;
+	background-size:100% 100%;
 	background-color:white;
 	display:block;
 	margin:auto	;
@@ -17,7 +18,7 @@
 #playButton{
 	margin:auto;
 	display:block;
-	height:100px;
+	height:10%;
 	width:50%;
 	text-align:center;
 	margin-top:2%;
@@ -28,7 +29,7 @@
 #timeModeButton{
 	margin:auto;
 	display:block;
-	height:100px;
+	height:10%;
 	width:50%;
 	text-align:center;
 	margin-top:2%;
