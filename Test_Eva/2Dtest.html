@@ -4,54 +4,39 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 <script type="text/javascript">
-	
-	var MAX = 3;
-	var MIN = 1;
-
-
-	/*
-	*createArray function retrieved from: 
-	*http://stackoverflow.com/questions/966225/how-can-i-create-a-two-dimensional-array-in-javascript
-	*/
-
-	function createArray(length) {
-	    var arr = new Array(length || 0),
-	        i = length;
-
-	    if (arguments.length > 1) {
-	        var args = Array.prototype.slice.call(arguments, 1);
-	        while(i--) arr[length-1 - i] = createArray.apply(this, args);
-	    }
-
-	    return arr;
+var matrix = createArray(10,2); 
+var counter = 0;
+for (var i = 0; i < 6; i++) {
+	for (var ii = 0; ii < 2; ii++){
+	matrix[i][ii] = 2;	
 	}
+	counter++;
+};
 
-	var adj_matrix = createArray(MAX*MAX,MAX*MAX);
-	var grid_matrix_3 = createArray (MAX, MAX);
+function createArray(length) {
+      var arr = new Array(length || 0),
+          i = length;
 
-	function initializeArray(matrix){
-		for (var i = 0; i < matrix.length ; i++){
-			for (var ii = 0; ii < matrix[i].length ; ii++){ 
-				matrix[i][ii] = 0;	
-	 		}
-		}	
-	 }
-	 function printArray(matrix){
-		for (var i = 0; i < matrix.length ; i++){
-			for (var ii = 0; ii < matrix[i].length ; ii++){ 
-				document.write (matrix[i][ii]);
-	 		}
-	 		document.write ("</br>");
-		}	
-	 }
-initializeArray(adj_matrix);
-initializeArray(grid_matrix_3);
+      if (arguments.length > 1) {
+          var args = Array.prototype.slice.call(arguments, 1);
+          while(i--) 
+            arr[length-1 - i] = createArray.apply(this, args);
+      }
 
-	
+      return arr;
+  }
 
-	
+function arrayAdjust(matrix){
+	matrix.splice(counter, matrix.length-counter)
+}
 
-					    
+function printMatrix(matrix){
+    var line; 
+    for (var i = 0; i < matrix.length; i++) {
+    	line += ("( " + matrix[i][0] + " , "+ matrix[i][1] + " )\n ");
+    }
+    return line;
+}
 
 </script>
 </head>
