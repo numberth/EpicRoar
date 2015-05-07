@@ -20,6 +20,7 @@
 	<script>
 		var enable = false;
 		var clicked = 0;
+		var idName = '';
 
 		// Facilitate fetching of "id".
 		function $(id){
@@ -29,15 +30,20 @@
 			return element;
 		}
 
+		function checkId(clicked_id){
+			idName = clicked_id;
+			return idName;
+		}
 		// Enable rotation
 		function enableFunction(id) {
-			if(clicked < 2) {
+			if(clicked < 2 && idName == id) {
 				clicked++;	
 				enable = true;
 				alert('enabled');
-			} else if(clicked => 2) {
+			} else if(idName != id) {
 				enable = false;
 				alert('disabled');
+				clicked = 0;
 			}
 
 			return enable;
@@ -60,6 +66,9 @@
 		position: absolute;
 		top: 0;
 	}
+	#img1 {
+		right: 0;
+	}
 	.img3 {
 		border: solid 5px black;
 		width: 20px;
@@ -74,8 +83,8 @@
 	<!-- Content goes in div "content" -->
 	<div class="container">
 		<div class="content">
-			<img id="img1" src="../img/map.png" width="100%" height="auto">
-			<img id="img2" src="../img/kitty.png" onclick="activatedFunction('img1')" width="50%" height="auto">
+			<img id="img1" src="../img/map.png" width="100%" height="auto" onclick="checkId(this.id), activatedFunction('img2')">
+			<img id="img2" src="../img/kitty.png" onclick="checkId(this.id), activatedFunction('img2')" width="50%" height="auto">
 			<div id="testResult">
 			</div>
 		</div>
