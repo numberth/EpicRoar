@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tile array test </title>
+	
+	<script type="text/javascript">
+	var tile_90 = ["../img/tile_90_0.jpg","../img/tile_90_1.jpg","../img/tile_90_2.jpg","../img/tile_90_3.jpg" ];
+	var tile_counter = 0;
+	
+	function counterLoop(){
+		tile_counter++;
+		if(tile_counter>3){
+			tile_counter = 0;
+		}
+	}
+
+	function rotate(img){
+		var tile_image = document.getElementById(img);
+		tile_image.src = tile_90[tile_counter];
+		tile_image.alt = "right angle tile";
+		counterLoop();
+	}
+
+	</script>
+</head>
+<body>
+	<div>
+		<img id="tile" src="" alt="">
+	</div>
+	<button onclick="rotate('tile')">Rotate!</button>
+</body>
+</html>
