@@ -19,6 +19,7 @@
 
 	<script>
 		var enable = false;
+		var clicked = 0;
 
 		// Facilitate fetching of "id".
 		function $(id){
@@ -30,32 +31,53 @@
 
 		// Enable rotation
 		function enableFunction(id) {
-			if($(id).click) {
+			if(clicked < 2) {
+				clicked++;	
 				enable = true;
 				alert('enabled');
+			} else if(clicked => 2) {
+				enable = false;
+				alert('disabled');
 			}
 
-			if(!($(id)).click) {
-					enable = false;
-					alert('disabled');
-				}
 			return enable;
 		}
 
 		function activatedFunction(id) {
 			if (enableFunction(id)) {
-				$('img2').src = "../img/kitty.png";
-				
+				if (clicked > 1) {
+				$('img1').className = 'img3';
+				}
+			} else if (!enableFunction(id)) {
+				$('img1').className = '';
 			}
+			$('testResult').innerHTML = clicked;
 		}
 	</script>
 
+	<style type="text/css">
+	#img1, #img2 {
+		position: absolute;
+		top: 0;
+	}
+	.img3 {
+		border: solid 5px black;
+		width: 20px;
+	}
+	#testResult {
+		height: 50px;
+		position: absolute;
+		bottom: 0;
+	}
+	</style>
 
 	<!-- Content goes in div "content" -->
 	<div class="container">
-		<div class="content" >
-			<img id="img1" src="../img/map.png" onclick="activatedFunction('img1')" width="100%" height="auto">
-			<img id="img2" src="../img/kitty.png" width="100%" height="auto">
+		<div class="content">
+			<img id="img1" src="../img/map.png" width="100%" height="auto">
+			<img id="img2" src="../img/kitty.png" onclick="activatedFunction('img1')" width="50%" height="auto">
+			<div id="testResult">
+			</div>
 		</div>
 	</div>
 
