@@ -29,15 +29,18 @@
 				alert( 'Programmer error: ' + id + ' not found.' );
 			return element;
 		}
-
+/**
+ * [checkId checks ]
+ * @param  {[type]} clicked_id [description]
+ * @return {[type]}            [description]
+ */
 		function checkId(clicked_id){
 			idName = clicked_id;
 			return idName;
 		}
 		// Enable rotation
 		function enableFunction(id) {
-			if(clicked < 2 && idName == id) {
-				clicked++;	
+			if(idName == id) {	
 				enable = true;
 				alert('enabled');
 			} else if(idName != id) {
@@ -45,7 +48,6 @@
 				alert('disabled');
 				clicked = 0;
 			}
-
 			return enable;
 		}
 
