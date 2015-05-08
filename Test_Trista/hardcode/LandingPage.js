@@ -38,7 +38,7 @@ track.init();
 function playBackground(){
 	if(track.state===0){
 		getButtonSrc();
-		track.buttonSrc.src ='../../img/button_audio_off.png';
+		track.buttonSrc.src ='img/button_audio_off.png';
 		switch(track.currentPage){
 			case 0:
 				track.track1.play();
@@ -59,7 +59,7 @@ function playBackground(){
 
 function stopBackground(){
 	getButtonSrc();
-	track.buttonSrc.src = '../../img/button_audio.png'; 
+	track.buttonSrc.src = 'img/button_audio.png'; 
 	track.track1.pause();
 	track.track1.currentTime=0;
 	track.track2.pause();
@@ -75,10 +75,10 @@ var pageOptions = {
 
 	reference : undefined,
 
-	mainPage : "<img src='../../img/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
+	mainPage : "<img src='img/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
 	"<button onclick='pageOptions.setPage3(this.reference)' id='playButton'>Play</button>" + 
 	"<button onclick='' id='timeModeButton'>Time Mode</button>" +
-	"<img src='../../img/button_audio_off.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>",
+	"<img src='img/button_audio_off.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>",
 
 	level3 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;'> Level 2</h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'>2:00</h3>"+
@@ -88,7 +88,7 @@ var pageOptions = {
                "<div style='clear:both'></div>"+
 				"<div id='threeByThree2' onclick='rotateLine(\"threeByThree2\")'></div><div id='threeByThree3' onclick='rotateNub(\"threeByThree3\")'></div></div>"+
                 "<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
-                "<img src='../../img/button_audio_off.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>",
+                "<img src='img/button_audio_off.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>",
 
     init: function(id){
     	this.reference = document.getElementById(id);
