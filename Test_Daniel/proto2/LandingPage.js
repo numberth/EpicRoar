@@ -1,10 +1,12 @@
 /**
-The track variable holds all of the sound files which
+ * The track variable holds all of the sound files which
 will be used in our game. 
 
 the init function initializes track1 and track2, then starts the song by using
 playBackground();
-*/
+*
+ * @type {Object}
+ */
 var track = {
 	state : 0,
     track1 : undefined,
