@@ -1,0 +1,59 @@
+
+!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tile array test </title>
+	
+	<script type="text/javascript">
+	var tile_90 = ["tile_90_0.jpg","tile_90_1.jpg","tile_90_2.jpg","tile_90_3.jpg" ];
+	var tile_counter = 0;
+	
+	function counterLoop(){
+		tile_counter++;
+		if(tile_counter>3){
+			tile_counter = 0;
+		}
+	}
+
+	function rotate(img){
+		var tile_image = document.getElementById(img);
+		tile_image.src = tile_90[tile_counter];
+		tile_image.alt = 'right angle tile';
+		counterLoop();
+	}
+
+	</script>
+</head>
+<body>
+	<div>
+		<img id="tile_0" onclick="rotate('tile_0')" src="" alt="" >
+	</div>
+	<div>
+		<img id="tile_1" onclick="rotate('tile_1')" src="" alt="" >
+	</div>
+	<div>
+		<img id="tile_2" onclick="rotate('tile_2')" src="" alt="" >
+	</div>
+	<div>
+		<img id="tile_3" onclick="rotate('tile_3')" src="" alt="" >
+	</div>
+	<div>
+		<img id="tile_4" onclick="rotate('tile_4')" src="" alt="" >
+	</div>
+	<div>
+		<img id="tile_5" onclick="rotate('tile_5')" src="" alt="" >
+	</div>
+	<div>
+		<img id="tile_6" onclick="rotate('tile_6')" src="" alt="" >
+	</div>
+	<div>
+		<img id="tile_7" onclick="rotate('tile_7')" src="" alt="" >
+	</div>
+	<div>
+		<img id="tile_8" onclick="rotate('tile_8')" src="" alt="" >
+	</div>
+	<!--<button onclick="rotate('tile')">Rotate!</button>
+	-->
+</body>
+</html>
