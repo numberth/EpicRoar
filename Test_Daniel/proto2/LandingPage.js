@@ -123,13 +123,30 @@ function stopBackground(){
  * 
  */
 function timeMode(){
-	clock.tenthSeconds++;
-	clock.totalTimeInTenths++;
-	clock.computeTime();
-	clock.timerReference = document.getElementById('timeSquare');
-	clock.timerReference.innerHTML = "Time: " + clock.seconds;
-	window.setTimeout(timeMode,100);
+	if(!clock.lost){
+		clock.totalTimeInTenths--;
+		clock.computeTime();
+		clock.timerReference = document.getElementById('timeSquare');
+		clock.timerReference.innerHTML = "Time remaining: " + clock.seconds;
+		clock.checkTime();    //checks if the user has time left.
+		window.setTimeout(timeMode,100);
+	}else{
+		displayLoss();
+	}
+}
 
+/**
+ * This function is called when the player runs out of time. Resets the time left and boolean clock.lost, so that
+ * the player can try again if they wish or go back to the main menu.
+ */
+function displayLoss(){
+	pageOptions.reference.innerHTML = "<img src='http://i.imgur.com/RMIs0gk.png' style='display:block;width:100%;height:100%'>"+
+	"<button onclick='pageOptions.testTimeMode()' style='position:absolute;top:0'>Restart Level</button>"+
+	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
+                "<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
+      stopBackground();
+      clock.totalTimeInTenths = 50;
+      clock.lost = false;
 }
 
 /**
@@ -137,13 +154,23 @@ function timeMode(){
  * 
  */
 var clock = {
-	totalTimeInTenths:0,  //self explanatory: this variable holds the total time in 1/10th of a second
+	lost : false,
+	totalTimeInTenths:20,  //self explanatory: this variable holds the total time in 1/10th of a second
 	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
 								//to animate the timer
 	seconds : 0,				//variable that represents seconds (60 seconds per minute)
 	computeTime : function(){
 		this.seconds = this.totalTimeInTenths/10;
-	}
+	},
+
+	/**
+	 * This function checks if the user has run out of time.
+	 */
+	 checkTime : function(){
+	 	if(this.totalTimeInTenths<=0){
+	 		this.lost = true;
+	 	}
+	 }
 
 }
 
