@@ -74,6 +74,12 @@ function stopBackground(){
 	track.track1.currentTime=0;
 	track.track2.pause();
 	track.track2.currentTime=0;
+    track.track3.pause();
+    track.track3.currentTime=0;
+
+    track.track4.pause();
+    track.track4.currentTime=0;
+
     track.state = 0;
 }
 
@@ -174,6 +180,7 @@ var pageOptions = {
 	}
 
 }
+
 
 
 function displayWin(){
@@ -286,8 +293,10 @@ function displayWin(){
         
     }
 
-    function playFlipSound(){
-
+    function flipAll(){
+    	for(var i=0;i<arrayData.tileIdArray.length;i++){
+            arrayData.tileIdArray[i].style.backgroundImage = "url('images/tile_90_3.jpg')"
+        }
     }
 
 

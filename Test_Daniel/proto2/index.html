@@ -16,7 +16,7 @@
                 .script('system/Keys.js').wait()
                 .script('LandingPage.js').wait(function () {
                     console.log("hello world!");
-                    pageOptions.init("a");
+                    pageOptions.init("panel");
                    // pageOptions.setPage("a");
                 });
     </script>
@@ -76,7 +76,7 @@
 			if(bg01 == "tile_90_2.jpg"){
 				if(bg02 == "tile_nub_0.jpg"){
 					//alert("Congratulations!")
-					displayWin();
+					window.setTimeout(displayWin,1565);
 				}
 			}
 		}
@@ -95,7 +95,9 @@
 	<!-- Content goes in div "content" 
 	 -->
 	<div class="container">
-		<div class="content" id="a">
+	<!-- EVERYTHING IS GENERATED WITHIN THE content with id panel-->
+		<div class="content" id="panel">
+
 			
 			<img src='images/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'> 
 			<button onclick='pageOptions.setPage2()' id='playButton'>Play</button>
