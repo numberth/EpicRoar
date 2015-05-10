@@ -1,18 +1,37 @@
-/**
-The track variable holds all of the sound files which
-will be used in our game. 
+/***************************************************************************************
+ * This program manages everything within our web app, from managing all of the sound effects
+ * the implementation of the timer, displaying appropriate screens for each level or menu, and 
+ * should harmonize with any addition to the page by simply adding to the content division.
+ * 
+ * -Most of the content are saved and loaded before the index page is actually loaded
+  * into javascript strings by the use of a script called Lab.min.js, which uses the wait()
+  * function to sequentially load each javascript file in their corresponding orders.  
+ * 
+ * @author Daniel Tian/Epic Roar
+ * @version 1.00
+ ***************************************************************************************
+ */
 
-the init function initializes track1 and track2, then starts the song by using
-playBackground();
+
+/**
+*The track variable holds all of the sound files which
+*will be used in our game. 
+*
+*the init function initializes track1 and track2, then starts the song by using
+*playBackground();
 */
 var track = {
-	state : 0,
-    track1 : undefined,
-    track2 : undefined,
-    track3 : undefined,
-    track4: undefined,
-    currentPage : 0,
-    buttonSrc : undefined,
+	state : 0,    //if state is 0, then music is playing. If the state is 1, then music should stop playing.
+    track1 : undefined, //first mp3 file
+    track2 : undefined,  //second mp3 file
+    track3 : undefined, //third mp3 file
+    track4: undefined, //4th mp3 file
+    currentPage : 0,  //current page (such as level selection or menu)
+    buttonSrc : undefined, //source of the button (so we can get the id with document.getElementByid('x'))
+    
+    /**
+	* This function initializes the sound files and loads them into the variables from track1-4
+    */
     init : function(){
     	this.track1 = new Audio();
     	this.track1.src = "sounds/umbala.mp3";
@@ -28,6 +47,11 @@ var track = {
     }
 };
 
+
+/**
+ * This functiona plays a card flipping sound when called.
+ * 
+ */
 function flipSound(){
 	track.track4.play();
 }
@@ -39,7 +63,7 @@ function getButtonSrc(){
 	track.buttonSrc = document.getElementById('ayy');
 }
 
-track.init();
+track.init();  //initializes the track variable when everything is ready
 
 /*
 * This function plays background music, by first detecting if track.state is equal to 0
@@ -49,7 +73,8 @@ function playBackground(){
 	if(track.state===0){
 		getButtonSrc();
 		track.buttonSrc.src ='images/button_audio.png';
-		switch(track.currentPage){
+		switch(track.currentPage){   //the switch statement detects which page the game is on
+									// and plays the correct background music.
 			case 0:
 				track.track1.play();
 				break;
@@ -59,14 +84,20 @@ function playBackground(){
 			default: console.log("error song");
 			break;
 		}
-		track.state++;
+		track.state++;    //track state represents whether something is playing or not.
 	}else{
 		stopBackground();
 		track.state=0;
 	}
 }
 
-
+/**
+ * This function changes the audio button to visually represent that sound has stopped playing,
+ * and then resets every single track on the page, and also stops them via the pause() method.
+ * state is also changed to 0 so that next time a user presses the play button, the 
+ * playBackground() method will correctly cycle through the first if condition.
+ * 
+ */
 function stopBackground(){
 	getButtonSrc();
 	track.buttonSrc.src = 'images/button_audio_off.png'; 
@@ -83,7 +114,14 @@ function stopBackground(){
     track.state = 0;
 }
 
-
+/**
+ * This functiona refreshes the paragraph with the id "timesquare"
+ * by using the window.setTimeout method every 0.1 seconds. In this manner,
+ * we have a variable that holds the data for how much time has passed, and can be
+ * used for any purpose : such as a countdown, or a count up. We can also easily check
+ * if a user has spent too much time on a level with an if statement within a check function.
+ * 
+ */
 function timeMode(){
 	clock.tenthSeconds++;
 	clock.totalTimeInTenths++;
@@ -94,11 +132,15 @@ function timeMode(){
 
 }
 
+/**
+ * This object holds variables for the time mode of our game.
+ * 
+ */
 var clock = {
-	totalTimeInTenths:0,
-	timerReference : undefined,
-	tenthSeconds : 0,
-	seconds : 0,
+	totalTimeInTenths:0,  //self explanatory: this variable holds the total time in 1/10th of a second
+	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
+								//to animate the timer
+	seconds : 0,				//variable that represents seconds (60 seconds per minute)
 	computeTime : function(){
 		this.seconds = this.totalTimeInTenths/10;
 	}
@@ -106,18 +148,24 @@ var clock = {
 }
 
 /*
-This variable contains the string data for each of our pages, and puts them
-in the divisions.
+*This variable contains the string data for each of our pages, and puts them
+*in the divisions.
 */
 var pageOptions = {
-	reference : undefined,
+	reference : undefined,  //reference variable that will point towards the content division, for easy updating of our app content
 
+	/**
+	 * Here is the mainPage string, which saves what our main menu looks like on an html page. 
+	 */
 	mainPage : "<img src='images/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
 	"<button onclick='pageOptions.setPage2(this.reference)' id='playButton'>Play</button>" + 
 	"<button onclick='pageOptions.setLevelPage()' id='levelModeButton'>Levels</button>" +
 	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
 	"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='' id='menu'>",
 
+	/**
+	 *This string represents the level selection page. Currently there are 9 levels, but we can alway add more later.
+	 */
 	levelPage : "<img src='http://androidapptraining.com/wp/wp-content/uploads/Level1Button.jpg' onclick='pageOptions.setPage2()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" + 
 				"<img src='http://androidapptraining.com/wp/wp-content/uploads/Level2Button.jpg' onclick='pageOptions.testTimeMode()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" +
 				"<img src='http://liberty.ops.org/portals/0/STAFF_FOLDERS/T_Rotherham_Jeffrey/grade%20level%20buttons/BUTTON%203.jpg' onclick='pageOptions.setPage3()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" +
@@ -130,7 +178,9 @@ var pageOptions = {
 	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
 	"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
 
-
+	/**
+	 * This string represents level 2 in our game
+	 */
 	level2 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;'> Level 2</h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'>2:00</h3>"+
         "<div id='threeBoard'>"+
@@ -143,19 +193,9 @@ var pageOptions = {
                 "<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
 
 
-	/* level3 : "<h3 style='font-size:29px;color:green;'>Level 3</h3>"+
-        "<h3 style='font-size:29px;color:green;top:0;right:0;position:absolute'>2:00</h3>"+
-        "<div id='threeBoard'>"+
-               "<div id='threeByThree'>"  + "</div>"+
-                "<div id='threeByThree'></div>"+
-               "<div id='threeByThree'></div>" + 
-                    "<div style='clear:both'></div>"+
-				"<div id='threeByThree'></div><div id='threeByThree'></div><div id='threeByThree'></div><div style='clear:both'></div><div id='threeByThree'></div>"+
-                "<div id='threeByThree'></div><div id='threeByThree'></div></div></div>"+
-                //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
-                "<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:0;left:0' onclick='playBackground()' id='ayy'>" +
-                "<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>", */
-
+     /**
+	 * This string stores level3 of our game
+	 */
     level3 : "<div id='threeByThreeBoard'>" + 
                 "<div id='threeByThree_Tile1' onclick='clickMaster(\"threeByThree_Tile1\",flipSound())'></div>"+
                 "<div id='threeByThree_Tile2' onclick='clickMaster(\"threeByThree_Tile2\",flipSound())'></div>"+
@@ -171,7 +211,10 @@ var pageOptions = {
                "</div>"+
                "<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
                 "<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
-
+    /**
+	 * This String will be deleted soon when we polish our time mode. For now it is just
+	 * a prototype of the timed mode, and works well.
+	 */
     timeModeLevel3 : "<p id='timeSquare' style='display:block;margin:auto;text-align:center;height:90px;padding-top:20px;color:white;font-size:18px'></p>" +
     			"<div id='threeByThreeBoard'>" + 
                 "<div id='threeByThree_Tile1' onclick='clickMaster(\"threeByThree_Tile1\",flipSound())'></div>"+
@@ -189,9 +232,15 @@ var pageOptions = {
                "<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
                 "<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
 
+	 /**
+	 * This function initializes the reference variable to whichever id we need to change the content of.
+	 * in our app, this id is called "a"
+	 */
     init: function(id){
     	this.reference = document.getElementById(id);
     },
+
+    //This function sets the page to the main menu.
 	setPage : function(){
 		stopBackground();
 		track.currentPage = 0;
@@ -199,10 +248,12 @@ var pageOptions = {
 		this.reference.innerHTML = this.mainPage;
 	},	
 
+	//sets page to level selection page
 	setLevelPage : function(){
 		this.reference.innerHTML = this.levelPage;
 	},
 
+	//sets the game to level 2
 	setPage2 : function(){
 		stopBackground();
 		track.currentPage = 0;
@@ -210,6 +261,7 @@ var pageOptions = {
 		this.reference.innerHTML = this.level2;
 	},
 
+	//sets the game to level 3
 	setPage3 : function(){
 		stopBackground();
 		track.currentPage = 1;
@@ -232,7 +284,9 @@ var pageOptions = {
 }
 
 
-
+/**
+ * This function is called when the player wins. A win image pops up, as well as victory music.
+ */
 function displayWin(){
 	pageOptions.reference.innerHTML = "<img src='http://ajournalofmusicalthings.com/wp-content/uploads/YouWin.png' style='display:block;width:100%;height:100%'>"+
 	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
@@ -241,11 +295,10 @@ function displayWin(){
       track.track3.play();
 }
 
-// function theclick(){
-// 	var lol = document.getElementById('threeByThree');
-// 	lol.setAttribute("class","underground");
-// }
 
+/**
+ * This Object holds data for the array of our tiles
+ */
  var arrayData = {
       clicked : false,
       state : 0,
@@ -263,8 +316,10 @@ function displayWin(){
     };
 
 
-    //window.onload = arrayData.setIds();
-
+/**
+ * This function returns the current id for the tile that the player is clicking on.
+ * a switch statement is used to assign an integer value for each id scenario.
+ */
     function computeCurrentId(id){
         switch(id){
           case "threeByThree_Tile1":
@@ -304,12 +359,19 @@ function displayWin(){
         }
     }
 
+    /**
+	 * This function is a placeholder for the actual reset board, but basically what it does is 
+	 * loop through every matrix and flips them over to the grass.
+	 */
     function resetBoard(){
         for(var i=0;i<arrayData.tileIdArray.length;i++){
             arrayData.tileIdArray[i].style.backgroundImage = "url('images/grass.jpg')"
         }
     }
 
+    /**
+	 * master function which gets called everytime a player clicks on a tile
+	 */
     function clickMaster(id){
         var k = document.getElementById(id);
         computeCurrentId(id);
@@ -343,13 +405,18 @@ function displayWin(){
         
     }
 
+    /**
+	 * This is a test function that flips all the tiles and reveals what is underneath. 
+	 * Later on, we will implement an integer value that makes sure the player can only call this function 3-5 times per 
+	 * game play so that it isn't abused.
+	 */
     function flipAll(){
     	for(var i=0;i<arrayData.tileIdArray.length;i++){
             arrayData.tileIdArray[i].style.backgroundImage = "url('images/tile_90_3.jpg')"
         }
     }
 
-
+    //test variable, probably not going to be used.
     var tileType1 = {
          a : undefined,
          b : undefined,
