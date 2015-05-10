@@ -1,12 +1,10 @@
 /**
- * The track variable holds all of the sound files which
+The track variable holds all of the sound files which
 will be used in our game. 
 
 the init function initializes track1 and track2, then starts the song by using
 playBackground();
-*
- * @type {Object}
- */
+*/
 var track = {
 	state : 0,
     track1 : undefined,
@@ -98,7 +96,6 @@ var pageOptions = {
 	"<button onclick='pageOptions.setLevelPage()' id='levelModeButton'>Levels</button>" +
 	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
 	"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='' id='menu'>",
-<<<<<<< HEAD
 
 	levelPage : "<img src='http://androidapptraining.com/wp/wp-content/uploads/Level1Button.jpg' onclick='pageOptions.setPage2()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" + 
 				"<img src='http://androidapptraining.com/wp/wp-content/uploads/Level2Button.jpg' onclick='pageOptions.setPage2()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" +
@@ -125,34 +122,6 @@ var pageOptions = {
                 "<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
 
 
-=======
-
-	levelPage : "<img src='http://androidapptraining.com/wp/wp-content/uploads/Level1Button.jpg' onclick='pageOptions.setPage2()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" + 
-				"<img src='http://androidapptraining.com/wp/wp-content/uploads/Level2Button.jpg' onclick='pageOptions.setPage2()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" +
-				"<img src='http://liberty.ops.org/portals/0/STAFF_FOLDERS/T_Rotherham_Jeffrey/grade%20level%20buttons/BUTTON%203.jpg' onclick='pageOptions.setPage3()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-	"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
-
-
-	level2 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;'> Level 2</h3>"+
-        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'>2:00</h3>"+
-        "<div id='threeBoard'>"+
-               "<div id='threeByThree0' onclick='rotateNub(\"threeByThree0\")'></div>"+
-               "<div id='threeByThree1' onclick='rotate90(\"threeByThree1\")'></div>"+
-               "<div style='clear:both'></div>"+
-				"<div id='threeByThree2' onclick='rotateLine(\"threeByThree2\")'></div><div id='threeByThree3' onclick='rotateNub(\"threeByThree3\")'></div></div>"+
-                //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
-                "<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
-
-
->>>>>>> 9b6be287297babc0d88411b3a209cd572bfcf46c
 	/* level3 : "<h3 style='font-size:29px;color:green;'>Level 3</h3>"+
         "<h3 style='font-size:29px;color:green;top:0;right:0;position:absolute'>2:00</h3>"+
         "<div id='threeBoard'>"+
@@ -348,8 +317,4 @@ function displayWin(){
           this.c.src='images/tile_90_2.jpg';
           this.d.src='images/tile_90_3.jpg';
         }
-<<<<<<< HEAD
     };
-=======
-    };
->>>>>>> 9b6be287297babc0d88411b3a209cd572bfcf46c
