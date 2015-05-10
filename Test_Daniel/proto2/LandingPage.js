@@ -83,12 +83,33 @@ function stopBackground(){
     track.state = 0;
 }
 
+
+function timeMode(){
+	clock.tenthSeconds++;
+	clock.totalTimeInTenths++;
+	clock.computeTime();
+	clock.timerReference = document.getElementById('timeSquare');
+	clock.timerReference.innerHTML = "Time: " + clock.seconds;
+	window.setTimeout(timeMode,100);
+
+}
+
+var clock = {
+	totalTimeInTenths:0,
+	timerReference : undefined,
+	tenthSeconds : 0,
+	seconds : 0,
+	computeTime : function(){
+		this.seconds = this.totalTimeInTenths/10;
+	}
+
+}
+
 /*
 This variable contains the string data for each of our pages, and puts them
 in the divisions.
 */
 var pageOptions = {
-
 	reference : undefined,
 
 	mainPage : "<img src='images/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
@@ -98,7 +119,7 @@ var pageOptions = {
 	"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='' id='menu'>",
 
 	levelPage : "<img src='http://androidapptraining.com/wp/wp-content/uploads/Level1Button.jpg' onclick='pageOptions.setPage2()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" + 
-				"<img src='http://androidapptraining.com/wp/wp-content/uploads/Level2Button.jpg' onclick='pageOptions.setPage2()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" +
+				"<img src='http://androidapptraining.com/wp/wp-content/uploads/Level2Button.jpg' onclick='pageOptions.testTimeMode()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" +
 				"<img src='http://liberty.ops.org/portals/0/STAFF_FOLDERS/T_Rotherham_Jeffrey/grade%20level%20buttons/BUTTON%203.jpg' onclick='pageOptions.setPage3()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" +
 				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
@@ -150,6 +171,24 @@ var pageOptions = {
                "</div>"+
                "<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
                 "<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
+
+    timeModeLevel3 : "<p id='timeSquare' style='display:block;margin:auto;text-align:center;height:90px;padding-top:20px;color:white;font-size:18px'></p>" +
+    			"<div id='threeByThreeBoard'>" + 
+                "<div id='threeByThree_Tile1' onclick='clickMaster(\"threeByThree_Tile1\",flipSound())'></div>"+
+                "<div id='threeByThree_Tile2' onclick='clickMaster(\"threeByThree_Tile2\",flipSound())'></div>"+
+                "<div id='threeByThree_Tile3' onclick='clickMaster(\"threeByThree_Tile3\",flipSound())'></div>"+
+                   "<div style='clear:both'></div>"+
+                "<div id='threeByThree_Tile4' onclick='clickMaster(\"threeByThree_Tile4\",flipSound())'></div>"+
+                "<div id='threeByThree_Tile5' onclick='clickMaster(\"threeByThree_Tile5\",flipSound())'></div>"+
+                "<div id='threeByThree_Tile6' onclick='clickMaster(\"threeByThree_Tile6\",flipSound())'></div>"+
+                    "<div style='clear:both'></div>"+
+                "<div id='threeByThree_Tile7' onclick='clickMaster(\"threeByThree_Tile7\",flipSound())'></div>"+
+                "<div id='threeByThree_Tile8' onclick='clickMaster(\"threeByThree_Tile8\",flipSound())'></div>"+
+                "<div id='threeByThree_Tile9' onclick='clickMaster(\"threeByThree_Tile9\",flipSound())'></div>"+
+               "</div>"+
+               "<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
+                "<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
+
     init: function(id){
     	this.reference = document.getElementById(id);
     },
@@ -177,7 +216,18 @@ var pageOptions = {
 		playBackground();
 		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
-	}
+	},
+
+  //This function is just a placeholder, later on we will be implementing timed mode only if the user
+  //clicks the timed mode
+  testTimeMode : function(){
+    stopBackground();
+    track.currentPage = 1;
+    playBackground();
+    this.reference.innerHTML = this.timeModeLevel3;
+    arrayData.setIds();
+    timeMode();
+  }
 
 }
 
