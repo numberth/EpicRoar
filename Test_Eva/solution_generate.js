@@ -52,7 +52,7 @@
     function getAdjMatrix(){
       var coordinates;
       for (var i =0; i < adj_matrix.length; i++ ){
-        for (var ii = 0; ii = adj_matrix.length; ii++) {
+        for (var ii = 0; ii < adj_matrix[i].length; ii++) {
           if(this.adj_matrix[i][ii]){
             coordinates +=  ("("+i+","+ii+")\n");
         }
@@ -240,6 +240,7 @@
             }
             this.solution_counter = this.grid_counter;
             this.solution_saved = true;
+            arrayAdjust();
         }
 
     }
@@ -347,6 +348,13 @@
         this.adj_matrix[(this.MAX * y) + x][(this.MAX * y) + (x + 1)] = true;
 
     }
+/**
+ * Adjusts the 2D array so it is the that it it the size of the counter for the solution array in his case 
+ * 
+ */
+function arrayAdjust(){
+  solution_matrix.splice(this.solution_counter+1, this.solution_matrix.length - this.solution_counter);
+}
 /**
  * Test Matrices
  * 
