@@ -114,11 +114,17 @@
 
 			<img src='images/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'> 
 
+		<!--
 			<button onclick='pageOptions.difficultySelect()' id='playButton'>Play
 			</button>
 
 			<button onclick='pageOptions.setLevelPage()' id='levelModeButton'>Levels
 			</button>
+		-->
+
+			<img src= 'images/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' style='position:absolute; width:600; height:200; bottom:200px; left:85px' id='playButton'>
+
+			<img src= 'images/button_levels.png' onclick='pageOptions.setLevelPage()'style='position:absolute; width:600; height:200; bottom:140px; left:85px' id='levelModeButton'>
 
 			<img src='images/button_audio_off.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>
 			
