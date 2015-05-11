@@ -59,6 +59,16 @@
 	margin-bottom: 15%;
 }
 
+#threeBoardCover {
+	background-image: url(../img/grass.jpg);
+	background-size:100% 100%;
+	z-index: 1;
+	float:left;
+	position: absolute;
+	width:130px;
+	height:115px;
+}
+
 #threeByThree0{
 	background-image: url(../img/tile_nub_0.jpg);
 	background-size:100% 100%;
@@ -70,6 +80,8 @@
 	border-width:2px;
 	float:left;
 	margin:1%;
+	z-index: 0;
+	position: relative;
 }
 
 #threeByThree1{
@@ -83,6 +95,8 @@
 	border-width:2px;
 	float:left;
 	margin:1%;
+	z-index: 0;
+	position: relative;
 }
 
 #threeByThree2{
@@ -96,6 +110,8 @@
 	border-width:2px;
 	float:left;
 	margin:1%;
+	z-index: 0;
+	position: relative;
 }
 
 #threeByThree3{
@@ -109,6 +125,8 @@
 	border-width:2px;
 	float:left;
 	margin:1%;
+	z-index: 0;
+	position: relative;
 }
 
 /*#threeByThree:hover{

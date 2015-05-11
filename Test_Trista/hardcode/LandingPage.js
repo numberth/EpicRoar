@@ -14,7 +14,7 @@ var track = {
     init : function(){
     	this.track1 = new Audio();
     	this.track1.src = "sounds/umbala.mp3";
-    	this.track1.volume = 0.3;
+    	this.track1.volume = 0.0;
     	this.track1.loop = true;
     	this.track2 = new Audio();
     	this.track2.src = "sounds/umbala.mp3";
@@ -83,9 +83,12 @@ var pageOptions = {
 	level3 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;'> Level 2</h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'>2:00</h3>"+
         "<div id='threeBoard'>"+
+        "<div id='threeBoardCover' onclick='flipAll(\"threeBoardCover\")'></div>"+
                "<div id='threeByThree0' onclick='rotateNub(\"threeByThree0\")'></div>"+
+        "<div id='threeBoardCover' onclick='flipAll(\"threeBoardCover\")'></div>"+
                "<div id='threeByThree1' onclick='rotate90(\"threeByThree1\")'></div>"+
                "<div style='clear:both'></div>"+
+		"<div id='threeBoardCover' onclick='flipAll(\"threeBoardCover\")'></div>"+
 				"<div id='threeByThree2' onclick='rotateLine(\"threeByThree2\")'></div><div id='threeByThree3' onclick='rotateNub(\"threeByThree3\")'></div></div>"+
                 "<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio_off.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>",

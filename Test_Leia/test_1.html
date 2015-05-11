@@ -1,0 +1,44 @@
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<style>
+		#area {
+			position:relative;
+			width:500px;
+			height:500px;
+		}
+
+		#tile_top {
+			position: absolute;
+			background: url(eye.jpg);
+			width:50px;
+			height:50px;
+			z-index: 3;
+		}
+
+		#tile_bottom {
+			position: absolute;
+			background: url(eat.jpg);
+			width:50px;
+			height:50px;
+			z-index: 2;
+		}
+	</style>
+	<script>
+		/**
+		 * [description]: There are two pictures. One is on top, the other one is in the bottom. These two picture are at the same position, so user can only see one picture. In this test, the top picture is set to be seen by default. The js function changes the z-index of the top picture, in order to show the bottom picture.
+		 */
+		$(document).ready(function(){
+			$('#tile_top').click(function(){
+				$('#tile_top').css('z-index', '1');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="area">
+		<div id="tile_top"></div>
+		<div id="tile_bottom"></div>
+	</div>
+</body>
+</html>
