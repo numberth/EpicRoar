@@ -1,0 +1,44 @@
+<html>
+<head>
+<script>
+
+moveTimer = null;
+imageNumber =0;
+
+
+	function move(){
+		document.getElementById("a").style.left = 
+			parseInt(document.getElementById("a").style.left) + 1 + "px";
+
+			imageNumber++;
+			imageNumber = imageNumber %% 5;
+		document.getElementById("a").src="tile_90" + imageNumber + ".jpg";
+
+	function jump(){
+			document.getElementById("a").style.up = 
+			parseInt(document.getElementById("a").style.up) - 100 + "px";
+		}
+
+	}
+
+	Window.onload=function(){
+				Document.getElementById("a").onclick=function(){
+					if moveTimer == null) {
+						moveTimer = setInterval("move()", 10);
+					} else {
+						cleaerInterval(moveTimer);
+						moveTimer = null;
+
+					}
+
+				}
+				window.onkeypress+function(){
+
+				}
+			}
+</script>
+</head>
+<body>
+		<img src= "tile_90_0.jpg" id= "a" style="position:absolute; left="10px,  />
+</body>
+</html>
