@@ -123,10 +123,14 @@ function stopBackground(){
  * 
  */
 function timeMode(){
+
 	if(!clock.lost){
 		clock.totalTimeInTenths--;
 		clock.computeTime();
 		clock.timerReference = document.getElementById('timeSquare');
+		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
+			return;
+		}
 		clock.timerReference.innerHTML = "Time remaining: " + clock.seconds;
 		clock.checkTime();    //checks if the user has time left.
 		window.setTimeout(timeMode,100);
@@ -155,7 +159,7 @@ function displayLoss(){
  */
 var clock = {
 	lost : false,
-	totalTimeInTenths:20,  //self explanatory: this variable holds the total time in 1/10th of a second
+	totalTimeInTenths:100,  //self explanatory: this variable holds the total time in 1/10th of a second
 	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
 								//to animate the timer
 	seconds : 0,				//variable that represents seconds (60 seconds per minute)
@@ -185,10 +189,16 @@ var pageOptions = {
 	 * Here is the mainPage string, which saves what our main menu looks like on an html page. 
 	 */
 	mainPage : "<img src='images/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
-	"<button onclick='pageOptions.setPage2(this.reference)' id='playButton'>Play</button>" + 
+	"<button onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>Play</button>" + 
 	"<button onclick='pageOptions.setLevelPage()' id='levelModeButton'>Levels</button>" +
 	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
 	"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='' id='menu'>",
+
+	//Half circle style selection gui for either zen or time mode.
+	modeSelectionPage : "<img src='images/halfCircle2a.png' onclick='pageOptions.setPage2()' style='display:block;width:80%;height:39%;margin:auto;margin-top:10%'/>"+
+						"<img src='images/halfCircle3a.png' onclick='pageOptions.testTimeMode()' style='display:block;width:80%;height:39%;margin:auto'/>"+
+						"<img src='images/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
+					"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
 
 	/**
 	 *This string represents the level selection page. Currently there are 9 levels, but we can alway add more later.
@@ -297,16 +307,20 @@ var pageOptions = {
 		arrayData.setIds();
 	},
 
-  //This function is just a placeholder, later on we will be implementing timed mode only if the user
-  //clicks the timed mode
-  testTimeMode : function(){
-    stopBackground();
-    track.currentPage = 1;
-    playBackground();
-    this.reference.innerHTML = this.timeModeLevel3;
-    arrayData.setIds();
-    timeMode();
-  }
+	  //This function is just a placeholder, later on we will be implementing timed mode only if the user
+	  //clicks the timed mode
+	  testTimeMode : function(){
+	    stopBackground();
+	    track.currentPage = 1;
+	    playBackground();
+	    this.reference.innerHTML = this.timeModeLevel3;
+	    arrayData.setIds();
+	    timeMode();
+	  },
+
+	  difficultySelect : function(){
+	  	this.reference.innerHTML = this.modeSelectionPage;
+	  }
 
 }
 
