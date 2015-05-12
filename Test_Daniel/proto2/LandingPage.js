@@ -145,10 +145,11 @@ function timeMode(){
  */
 function displayLoss(){
 	pageOptions.reference.innerHTML = "<img src='http://i.imgur.com/RMIs0gk.png' style='display:block;width:100%;height:100%'>"+
-	"<button onclick='pageOptions.testTimeMode()' style='position:absolute;top:0'>Restart Level</button>"+
+//	"<button onclick='pageOptions.testTimeMode()' style='position:absolute;top:0'>Restart Level</button>"+
+	"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>" +
 	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-      "<img src='images/button_check.png' style='position:absolute;width:70px;height:auto;bottom:100px;left:80px' onclick='playBackground()' id='ayy'>" +
-	"<img src='images/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:100px;right:80px' onclick='' id='menu'>";
+      "<img src='images/button_check.png' onclick='pageOptions.testTimeMode()' style='position:absolute;width:70px;height:auto;bottom:100px;left:80px' onclick='playBackground()' id='ayy'>" +
+	"<img src='images/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:100px;right:80px' onclick='pageOptions.setPage()' id='menu'>";
 
       stopBackground();
       clock.totalTimeInTenths = 50;
