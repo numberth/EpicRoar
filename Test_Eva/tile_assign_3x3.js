@@ -64,7 +64,7 @@ function tileAssign(){
 				temp_grid_image.src = twoSide(i);
 				break;
 			case 3:
-				temp_grid_image.src = threeSide(); 
+				temp_grid_image.src = threeSide(i); 
 				break;
 			case 4:
 				temp_grid_image.src = tile_cross;
@@ -225,13 +225,28 @@ function twoSide(til){
 			}
 }
 /**
- * Three Side Function is in the works. Please await for version update.
+ * Update: Three Side Function is inow in working order. 
+ * This function will analyze which tiles are connected to the one being analyzed 
+ * and then will assign the tile from tile_t array of images accorindgly.
  *
  * @version [1.0]
  * @return  {String}  [an array that will reassign the src of the tile image ]
  */
 function threeSide(){
-	return tile_t[0];
+	var tile = parseInt(til);
+	//if it is connected to up, down, right
+	if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile+1]){
+		return tile_t[1];
+	//if it is connected to up, down, left
+	}else if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile-1]){
+		return tile_t[3];
+	//if it is connected to up, left, right 
+	}else if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile-1] && adj_matrix[tile][tile+1]){
+		return tile_t[0];
+	// if it is connected to down, left, right
+	}else if(adj_matrix[tile][tile-1] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile+1]){
+		return tile_t[2];
+	}
 }
 
 
