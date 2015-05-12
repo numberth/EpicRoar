@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dino Myte</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style/base.css">
+
+</head>
+
+<body>
+	<h1>
+		<img src="../img/EPICROAR_logo.png" width="130px" height="85px" alt="EPIC ROAR">
+		<br>
+		DINO MYTE
+		<br>
+	</h1>
+		
+
+	<script>
+		var enable = false;
+		var clicked = 0;
+		var idName = '';
+
+		// Facilitate fetching of "id".
+		function $(id){
+			var element = document.getElementById(id);
+			if( element == null )
+				alert( 'Programmer error: ' + id + ' not found.' );
+			return element;
+		}
+
+		function checkId(clicked_id){
+			idName = clicked_id;
+			return idName;
+		}
+		// Enable rotation
+		function enableFunction(id) {
+			if(clicked < 2 && idName == id) {
+				clicked++;	
+				enable = true;
+				alert('enabled');
+			} else if(idName != id) {
+				enable = false;
+				alert('disabled');
+				clicked = 0;
+			}
+
+			return enable;
+		}
+
+		function activatedFunction(id) {
+			if (enableFunction(id)) {
+				if (clicked > 1) {
+				$('img1').className = 'img3';
+				}
+			} else if (!enableFunction(id)) {
+				$('img1').className = '';
+			}
+			$('testResult').innerHTML = clicked;
+		}
+	</script>
+
+	<style type="text/css">
+	#img1, #img2 {
+		position: absolute;
+		top: 0;
+	}
+	#img1 {
+		right: 0;
+	}
+	.img3 {
+		border: solid 5px black;
+		width: 20px;
+	}
+	#testResult {
+		height: 50px;
+		position: absolute;
+		bottom: 0;
+	}
+	</style>
+
+	<!-- Content goes in div "content" -->
+	<div class="container">
+		<div class="content">
+			<img id="img1" src="../img/map.png" width="100%" height="auto" onclick="checkId(this.id), activatedFunction('img2')">
+			<img id="img2" src="../img/kitty.png" onclick="checkId(this.id), activatedFunction('img2')" width="50%" height="auto">
+			<div id="testResult">
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+		<img src="../img/dragon.gif" width="81px" height="57px" alt="EPIC ROAR">
+		<br>
+		<h2>
+			Presented by EPIC ROAR.
+		</h2>
+		<br>
+
+		<h3>
+			Team Members: 
+		</h3>
+			<img src="../img/fire.gif" width="24" height="24"> Eva &nbsp;
+			<img src="../img/wind.gif" width="24" height="24"> Trista &nbsp;
+			<img src="../img/light.gif" width="24" height="24"> Leia &nbsp;
+			<img src="../img/ice.gif" width="24" height="24"> Daniel &nbsp;
+			<img src="../img/water.gif" width="24" height="24"> Simran &nbsp;
+	</div>
+</body>
+</html>

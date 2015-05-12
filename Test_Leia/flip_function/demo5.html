@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<style>
+		div#game_board{
+			background:#CCC;
+			border:#999 1px solid;
+			width:300px;
+			height:300px;
+			padding:24px;
+			margin:0px auto;
+		}
+		div#game_board > div{
+			background: url(eye.jpg) no-repeat;
+			border:#000 1px solid;
+			width:50px;
+			height:50px;
+			float:left;
+			margin-right: 40px;
+			margin-left: 8px;
+			margin-top: 35px;
+			padding:0px;
+			font-size:50px;
+			cursor:pointer;
+			text-align:center;
+		}
+	</style>
+	<script>
+		var tile_array = ['0','1','2','3','4','5','6','7','8'];
+		var tile_values = [];
+		var tile_ids = [];
+		var tiles_flipped = 0;
+		
+		Array.prototype.tile_shuffle = function(){
+		    var i = this.length, j, temp;
+		    while(--i > 0){
+		        j = Math.floor(Math.random() * (i+1));
+		        temp = this[j];
+		        this[j] = this[i];
+		        this[i] = temp;
+		    }
+		}
+		//Make a gaming board.
+/**
+ * [newBoard description]
+ * @return {[type]} [description]
+ */
+		function newBoard(){
+			tiles_flipped = 0;
+			var output = '';
+		    tile_array.tile_shuffle();
+			for(var i = 0; i < tile_array.length; i++){
+				output += '<div id="tile_'+i+'" onclick="flipTile(this,\''+tile_array[i]+'\')"></div>';
+			}
+			document.getElementById('game_board').innerHTML = output;
+		}
+		//flip function
+		function flipTile(tile,val){
+			if(tile.innerHTML == "" && tile_values.length < 2){
+				tile.style.background = 'url(eat.jpg) no-repeat';
+				tile.innerHTML = val;
+				if(tile_values.length == 0){
+					tile_values.push(val);
+					tile_ids.push(tile.id);
+				} else if(tile_values.length == 1){
+					tile_values.push(val);
+					tile_ids.push(tile.id);
+					
+					// reflip function
+					function flipBack(){
+						var tile_1 = document.getElementById(tile_ids[0]);
+						tile_1.style.background = 'url(eye.jpg) no-repeat';
+						tile_1.innerHTML = "";
+						tile_values = [];
+						tile_ids = [];
+					}
+					setTimeout(flipBack, 80);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+<div id="game_board"></div>
+<script>newBoard();</script>
+</body>
+</html>

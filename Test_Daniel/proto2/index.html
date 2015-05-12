@@ -76,7 +76,8 @@
 			if(bg01 == "tile_90_2.jpg"){
 				if(bg02 == "tile_nub_0.jpg"){
 					//alert("Congratulations!")
-					window.setTimeout(displayWin,1565);
+					window.setTimeout(displayWin,1500);
+
 				}
 			}
 		}
@@ -125,6 +126,10 @@
 			<img src= 'images/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' style='position:absolute; width:600; height:200; bottom:200px; left:85px' id='playButton'>
 
 			<img src= 'images/button_levels.png' onclick='pageOptions.setLevelPage()'style='position:absolute; width:600; height:200; bottom:140px; left:85px' id='levelModeButton'>
+
+			<!--<button onclick='pageOptions.setSignUpPage()' id='signUpButton'>Sign Up</button>-->
+
+			<button onclick='pageOptions.setScorePage()' id='scoreButton'>High Scores</button>
 
 			<img src='images/button_audio_off.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>
 			
