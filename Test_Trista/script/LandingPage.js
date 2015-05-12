@@ -236,7 +236,7 @@ var pageOptions = {
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_flipall.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:90px' onclick='flipAll()' id='allFlip'>" +
+                "<img src='img/button_flipall_3.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:90px' onclick='flipAll()' id='allFlip'>" +
                 "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
 
 

@@ -286,23 +286,25 @@ function randomlyReassign(){
  *
  */
 function rotate(til){
-var tile = parseInt(til);
-		switch(tile_exit_counter[tile]){
-			case 1: 
-				oneSideRotate(tile);
-				break;
-			case 2:
-				twoSideRotate(tile);
-				break;
-			case 3:
-				threeSideRotate(tile);
-				break; 
-			case 4:
-				grid_image_positionId[tile].src = tile_cross;
-			default:
-				break;
-		}
+	if(enable){
+		var tile = parseInt(til);
+			switch(tile_exit_counter[tile]){
+				case 1: 
+					oneSideRotate(tile);
+					break;
+				case 2:
+					twoSideRotate(tile);
+					break;
+				case 3:
+					threeSideRotate(tile);
+					break; 
+				case 4:
+					grid_image_positionId[tile].src = tile_cross;
+				default:
+					break;
+			}
 	}
+}
 
 
 

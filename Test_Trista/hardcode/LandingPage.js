@@ -83,7 +83,7 @@ var pageOptions = {
 	level3 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;'> Level 2</h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'>2:00</h3>"+
         "<div id='threeBoard'>"+
-        "<div id='threeBoardCover' onclick='flipAll()'></div>"+
+        "<div id='threeBoardCover' onclick='flip(\"threeBoardCover\")'></div>"+
                "<div id='threeByThree0' onclick='rotateNub(\"threeByThree0\")'></div>"+
         
                "<div id='threeByThree1' onclick='rotate90(\"threeByThree1\")'></div>"+

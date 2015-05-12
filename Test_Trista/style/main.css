@@ -75,7 +75,7 @@
 #cover0{
 	background-image: url(../img/grass.jpg);
 	background-size:100% 100%;
-	z-index: 1;
+	z-index: 0;
 	float:left;
 	position: absolute;
 	width:130px;
@@ -89,7 +89,7 @@
 #cover1{
 	background-image: url(../img/grass.jpg);
 	background-size:100% 100%;
-	z-index: 1;
+	z-index: 0;
 	float:left;
 	position: relative;
 	left: 140px;
@@ -104,7 +104,7 @@
 #cover2{
 	background-image: url(../img/grass.jpg);
 	background-size:100% 100%;
-	z-index: 1;
+	z-index: 0;
 	float:left;
 	position: absolute;
 	width:130px;
@@ -118,7 +118,7 @@
 #cover3{
 	background-image: url(../img/grass.jpg);
 	background-size:100% 100%;
-	z-index: 1;
+	z-index: 0;
 	float:left;
 	position: relative;
 	left: 140px;

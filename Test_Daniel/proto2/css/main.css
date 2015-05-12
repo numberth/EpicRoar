@@ -40,6 +40,31 @@
 	background-size:100% 100%; */
 }
 
+<<<<<<< HEAD
+=======
+/*#signUpButton{
+	margin:auto;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:2%;
+	font-size:25px;
+	font-family:cursive,arial;
+}*/
+
+#scoreButton{
+	margin:auto;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:2%;
+	font-size:25px;
+	font-family:cursive,arial;
+}
+
+>>>>>>> e9d49d8a245d85f351a0f8df129b86988b59880d
 #bottom{
 	text-align:center;
 	font-size:20px;
