@@ -5,5 +5,5 @@
  */
 function initAll(){
 	initPath();
-    rotate();
+    assignPath();
 }
