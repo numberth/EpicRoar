@@ -239,7 +239,7 @@ var pageOptions = {
 	 * This string represents the high score board in our game
 	 */
 	highScorePage : "<div width='70%' height='80%' style='position:relative;margin-top:60px;margin-left:50px;margin-right:50px'>" +
-						 "<p style='text-align:center;font-size:2em;color:white'>High Scores</p>" +
+						 "<img src='images/highscore.png' alt='high score' style='width:70%;height:50%;margin-left:48px'>" +
 						 "<table style='border:1px solid white;width:100%'>" +
   							"<tr>" +
 							    "<td style='border:1px solid white;width:50%;height:40px'>username</td>" +
