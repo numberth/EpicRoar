@@ -143,13 +143,16 @@ function timeMode(){
  * This function is called when the player runs out of time. Resets the time left and boolean clock.lost, so that
  * the player can try again if they wish or go back to the main menu.
  */
+
+
 function displayLoss(){
-	pageOptions.reference.innerHTML = "<img src='http://i.imgur.com/RMIs0gk.png' style='display:block;width:100%;height:100%'>"+
+	pageOptions.reference.innerHTML = 	"<img src='images/bg_2.png' style='display:block;width:100%;height:100%'>"+
 //	"<button onclick='pageOptions.testTimeMode()' style='position:absolute;top:0'>Restart Level</button>"+
+	"<img src='images/tryagain.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%;position:absolute;bottom:260px;right:28px'>" +
 	"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>" +
 	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-      "<img src='images/button_check.png' onclick='pageOptions.testTimeMode()' style='position:absolute;width:70px;height:auto;bottom:100px;left:80px' onclick='playBackground()' id='ayy'>" +
-	"<img src='images/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:100px;right:80px' onclick='pageOptions.setPage()' id='menu'>";
+    "<img src='images/button_check.png' onclick='pageOptions.testTimeMode()' style='position:absolute;width:70px;height:auto;bottom:160px;left:80px' onclick='playBackground()' id='ayy'>" +
+	"<img src='images/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='pageOptions.setPage()' id='menu'>";
 
       stopBackground();
       clock.totalTimeInTenths = 50;
@@ -196,6 +199,7 @@ var pageOptions = {
 //	"<button onclick='pageOptions.setLevelPage()' id='levelModeButton'>Levels</button>" +
 //	"<button onclick='pageOptions.setSignUpPage()' id='signUpButton'>Sign Up</button>" +
 //	"<button onclick='pageOptions.setScorePage()' id='scoreButton'>High Scores</button>"
+	
 	"<img src= 'images/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' style='position:absolute; width:600; height:250; bottom:240px; left:95px' id='playButton'>" +
 	"<img src= 'images/button_levels.png' onclick='pageOptions.setLevelPage()'style='position:absolute; width:600; height:250; bottom:180px; left:95px' id='levelModeButton'>" +
 	"<img src= 'images/button_scores.png' onclick='pageOptions.setScorePage()'style='position:absolute; width:600; height:250; bottom:120px; left:95px' id='scoreButton'>" +
