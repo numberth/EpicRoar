@@ -191,7 +191,7 @@ var pageOptions = {
 	mainPage : "<img src='images/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
 //	"<button onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>Play</button>" + 
 //	"<button onclick='pageOptions.setLevelPage()' id='levelModeButton'>Levels</button>" +
-	"<button onclick='pageOptions.setSignUpPage()' id='signUpButton'>Sign Up</button>" +
+//	"<button onclick='pageOptions.setSignUpPage()' id='signUpButton'>Sign Up</button>" +
 	"<button onclick='pageOptions.setScorePage()' id='scoreButton'>High Scores</button>" +
 	"<img src= 'images/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' style='position:absolute; width:600; height:250; bottom:200px; left:85px' id='playButton'>" +
 	"<img src= 'images/button_levels.png' onclick='pageOptions.setLevelPage()'style='position:absolute; width:600; height:250; bottom:140px; left:85px' id='levelModeButton'>" +
@@ -224,7 +224,7 @@ var pageOptions = {
 
 	/**
 	 * This string represents the sign up form in our game
-	 */
+	 
 	signUpPage :    "<div width='70%' height='70%' style='position:relative; margin-top:100px; margin-left:50px;margin-right:50px'>" +
 						"<form action='demo_form.asp' method='get'>" + 
 	  						"<p style='text-align:center;font-size:3em;color:white'>Sign up</p>" +
@@ -234,7 +234,7 @@ var pageOptions = {
 					"</div>" +
 					"<img src='images/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
 					"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
-
+	*/
 	/**
 	 * This string represents the high score board in our game
 	 */
@@ -345,10 +345,10 @@ var pageOptions = {
 		this.reference.innerHTML = this.levelPage;
 	},
 
-	//sign up page
+	/*sign up page
 	setSignUpPage : function(){
 		this.reference.innerHTML = this.signUpPage;
-	},
+	},*/
 
 	//high score page
 	setScorePage : function(){
@@ -394,8 +394,12 @@ var pageOptions = {
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 function displayWin(){
-	pageOptions.reference.innerHTML = "<img src='http://ajournalofmusicalthings.com/wp-content/uploads/YouWin.png' style='display:block;width:100%;height:100%'>"+
-	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
+	pageOptions.reference.innerHTML = "<img src='images/youwin.png' style='display:block;margin-left:45px;margin-top:80px;width:80%;height:30%'>"+
+									"<form style='margin-top:50px;margin-left:65px'>" +
+										"<p>Your name: <input type='text' name='name'></p>" +
+										"<input type='submit' value='Submit' style='margin-left:90px;margin-top:20px'>" +
+									"</form>" +
+				"<img src='images/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
                 "<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
       stopBackground();
       track.track3.play();
