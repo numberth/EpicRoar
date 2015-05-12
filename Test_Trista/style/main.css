@@ -55,7 +55,7 @@
 /* divs matrices*/
 
 #threeBoard{
-	width:300px;
+	width:280px;
 	height:250px;
 	display:block;
 	margin:auto;
@@ -63,7 +63,7 @@
 }
 
 #threeBoardCover{
-	width:300px;
+	width:280px;
 	height:250px;
 	display:block;
 	margin:auto;
