@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Result</title>
+	<meta charset="UTF-8">
+	<meta name="daniel" content="name">
+	<meta name="description" content="Practice">
+    <style>
+        #grass{
+            display:block;
+            margin:auto;
+            border-style:solid;
+            height:80%;
+            width:80%;
+            text-align:center;
+            background-color:black;
+            color:white;
+            font-size:30px;
+        }
+    </style>
+</head>
+<body style="background-color:white">
+    <div id="grass">
+<?php
+        $servername = "mysql14.000webhost.com";
+        $username = "a3874533_daniel5";
+        $password = "pass54";
+        // Create connection
+        
+        if(@mysql_connect($servername, $username, $password)){
+            if(@mysql_select_db("a3874533_daniel")){
+                echo "ok successful connection<br>";
+            }else{
+                echo "could not connect to database.";
+            }
+        }else{
+            echo "Could not connect to server";
+        }
+////////////////////////////////////////////////////
+        $query = "SELECT * FROM EpicRoar;";
+        if($query_run = mysql_query($query)){
+            echo "query success<br>";
+            while($query_row=mysql_fetch_assoc($query_run)){
+                $val1 = $query_row['score'];
+                $val2 = $query_row['fullName'];
+                $val3 = $query_row['emailAddress'];
+
+                echo "Id: ".$query_row['userId']." ".$val1." ".$val2." ".$val3."<br>";
+            }
+        }else{
+            echo "Query failed.";
+        }
+
+        echo "<a href='highScorez.html'>Back to submit page </a>";        
+
+?>
+
+</div>
+
+
+</body>
+</html>
