@@ -232,7 +232,7 @@ function twoSide(til){
  * @version [1.0]
  * @return  {String}  [an array that will reassign the src of the tile image ]
  */
-function threeSide(){
+function threeSide(til){
 	var tile = parseInt(til);
 	//if it is connected to up, down, right
 	if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile+1]){
