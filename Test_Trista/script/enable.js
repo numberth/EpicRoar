@@ -1,43 +1,40 @@
 var enable = false;
-var idName = '';
+var tile_zIndex;
+var cover_zIndex;
 
-/* Facilitate fetching of "id". */
-function $(id){
-	var element = document.getElementById(id);
-	if( element == null )
-		alert( 'Programmer error: ' + id + ' not found.' );
-	return element;
-}
-
-/**
- * [checkId checks ]
- * @param  {[type]} clicked_id [description]
- * @return {[type]}            [description]
- */
-function checkId(clicked_id){
-	idName = clicked_id;
+function checkId(id){
+	idName = id;
 	return idName;
 }
+
+function flip(id){
+	document.getElementById(id).style.zIndex = '-1';
+	cover_zIndex = document.getElementById(id).style.zIndex;
+}
+
 // Enable rotation
 function enableFunction(id) {
-	checkId(clicked_id);
-	if(idName == id) {	
+	tile_zIndex = document.getElementById(id).style.zIndex;
+	if(cover_zIndex == '-1') {	
 		enable = true;
-		alert('enabled');
-	} else if(idName != id) {
+		alert('enabled'); 
+	} else if(cover_zIndex != '-1') {
 		enable = false;
 		alert('disabled');
 	}
 	return enable;
 }
 
-function activatedFunction(id) {
-	if (enableFunction(id)) {
-		if (enable) {
-		$('img1').className = 'img3';
+function flipAll(){
+		for(var i=0; i < 16; i++){
+			document.getElementById('threeByThree' + i).style.zIndex = 2;
+
+		setTimeout(flipAllBack,2000);
+}
+}
+
+function flipAllBack(){
+		for(var i=0; i < 16; i++){
+			document.getElementById('threeByThree' + i).style.zIndex = '-1';
 		}
-	} else if (!enableFunction(id)) {
-		$('img1').className = '';
-	}
-	$('testResult').innerHTML = clicked;
 }

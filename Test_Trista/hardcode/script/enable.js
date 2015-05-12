@@ -42,7 +42,7 @@ function enableFunction(id) {
 function flipAll(){
 	if(flipped == 0){
 		for(var i=0; i < 16; i++){
-			document.getElementById('threeByThree' + i).style.zIndex = '-1';
+			document.getElementById('threeByThree' + i).style.zIndex = 2;
 			flipped = 1;
 		}
 	} else if(flipped == 1){
