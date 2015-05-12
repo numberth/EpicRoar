@@ -7,10 +7,9 @@
  *now we have a bug that i will fix, I SWEAR. 
  *
  * @author Eva Yu
- * @version 2.0
+ * @version 3.0
  *
  ******************************************************************************************
- 
 /**
  * [tile_90] is represetented with a value of 0 in the switch statements 
  * [tile_nub]is represetented with a value of 1 in the switch statements 
@@ -39,31 +38,49 @@ function assignPath(){
 	tile_exit_counterInit();
 	tileExitCount();
 	tileAssign();
+	
 }
 /**
- * This function assigns each div tile image according to the solution path created from the session
- * by reasigning the src of the image.
+ * [tile_exit_counter description] counter the number of exits any given position has
+ * [grid_image_positionId description] stores the id of the users image board images
+ * [grid_solution_positionId description] stores the id of the solution boards images
+ * [grid_image_counter description] stores position of the image and allows the rotation to look 
+ * like a 90 degree change every turn 
  * 
+ * @type {Array}
  */
 var tile_exit_counter = new Array(9);
 var grid_image_positionId = new Array(9);
+var grid_solution_positionId = new Array(9);
 var grid_image_counter = new Array(9);
 
+/**
+ * This function takes the position of the tile and assigns the player grid and user grid .
+ * It also assigns a solution grid to be compared against the user's grid.
+ * 
+ * @author Eva Yu
+ * @version 3.0
+ */
 function tileAssign(){
 	for(var i = 0; i < tile_exit_counter.length; i++){
 		grid_image_positionId[i] = document.getElementById('tile_img_'+i);
+		grid_solution_positionId[i] = document.getElementById('tile_img_sol_'+i);
 		switch(tile_exit_counter[i]){
 			case 1: 
+				grid_solution_positionId[i].src = oneSide(i);
 				grid_image_positionId[i].src = oneSide(i);
 				break;
 			case 2:
+				grid_solution_positionId[i].src = twoSide(i);
 				grid_image_positionId[i].src = twoSide(i);
 				break;
 			case 3:
+				grid_solution_positionId[i].src = threeSide(i);
 				grid_image_positionId[i].src = threeSide(i);
 				break; 
 			case 4:
-				grid_image_positionId[i].src = tile_cross;
+				grid_solution_positionId[i].src = tile_cross;
+				grid_image_positionId[i].src = tile_cross;				
 			default:
 				break;
 		}
@@ -72,9 +89,8 @@ function tileAssign(){
 
 
 /**
- * [tile_exit_counterInit description]
+ * Initializes all the exit counter indices to zero. 
  *
- * @return  {[type]}  [description]
  */
 function tile_exit_counterInit(){
 	for (var i = 0; i < tile_exit_counter.length; i++){
@@ -230,10 +246,10 @@ function twoSide(til){
 			}
 }
 /**
- * Three Side Function is in working order! 
- * this function assigns a tile-t img accoridng to its connections .
+ * 
+ * Three Side Function is in the works. Please await for version update.
  *
- * @version [1.0]
+ * @version 1.0
  * @return  {String}  [an array that will reassign the src of the tile image ]
  */
 function threeSide(til){
@@ -303,8 +319,6 @@ var tile = parseInt(til);
 				break;
 		}
 	}
-
-
 
 /**
  * If tile is connected to one of its surrounding tiles,
@@ -396,6 +410,7 @@ function twoSideRotate(til){
 
 				} 
 }
+
 /**
  * If tile is connected to three of its surrounding tiles,
  *  the image will appear to rotate on click according to this function. 
@@ -411,3 +426,4 @@ function threeSideRotate(til){
 	}
 	grid_image_positionId[tile].src = tile_t[grid_image_counter[tile]];	
 }
+
