@@ -65,6 +65,7 @@ function tileAssign(){
 				break;
 			case 3:
 				temp_grid_image.src = threeSide(); 
+				break;
 			case 4:
 				temp_grid_image.src = tile_cross;
 			default:
@@ -122,29 +123,32 @@ function tile_count(){
  * 
  * @param   {number}  til [number position of the tile]
  * @return  {String}  [an array that will reassign the src of the tile image ]
+ * @version 2.0 [bug fix: asisnged the right tile array (Yeah, that was stupid)]
  */
 function oneSide(til){
 	var tile = parseInt(til);
 	if (adj_matrix[tile][tile+1]){
-		return this.tile_90[1];
+		return this.tile_nub[1];
 	}else if (adj_matrix[tile][tile-1]){
-		return this.tile_90[3];
-	} else if( adj_matrix[tile][tile + MAX]){
-		return this.tile_90[2];
-	}else if ( adj_matrix[tile][tile - MAX]){
-		return this.tile_90[0];
+		return this.tile_nub[3];
+	} else if( adj_matrix[tile][tile + 3]){
+		return this.tile_nub[2];
+	}else if ( adj_matrix[tile][tile - 3]){
+		return this.tile_nub[0];
 	}
 }
+
 /**
  * If tile is connected to two of its surrounding tiles, the image will be assinged here. 
- *Note: there are a few bugs to be fixed here; stay tuned for an update;
+ *
  * 
  *@param   {number}  til [number of the tile]
  * @return  {String}  [an array that will reassign the src of the tile image ]
+ * @version 2.0 [fixed a few bugs in code.]
  */
 function twoSide(til){
 	var tile = parseInt(til)
-			if(tile === 0 ||tile === 2 ||tile === 6 ||tile === 8 ){
+			if(tile === 0 ||tile === 2 ||tile === 6 || tile === 8 ){
 				switch(tile){
 					case 0:
 						return this.tile_90[1];
@@ -180,7 +184,7 @@ function twoSide(til){
 					}
 				}
 			}else if(tile === 3 || tile === 5){
-				if(adj_matrix[tile][tile-MAX] && adj_matrix[tile][tile - MAX]){
+				if(adj_matrix[tile][tile-3] && adj_matrix[tile][tile + 3]){
 					return tile_line[0]; //tile_t[array]
 				}else{
 					switch(tile){
@@ -205,14 +209,14 @@ function twoSide(til){
 			}else if(tile === 4){
 				if(adj_matrix[tile][tile+1] && adj_matrix[tile][tile - 1]){
 					return this.tile_line[1]; //tile_t[array]
-				}else if(adj_matrix[tile][tile-MAX] && adj_matrix[tile][tile - MAX]){
+				}else if(adj_matrix[tile][tile-3] && adj_matrix[tile][tile + 3]){
 					return this.tile_line[0]; //tile_t[array]
 				}else{
 					if(adj_matrix[tile][1] && adj_matrix[tile][5]){
 						return this.tile_90[0];
 					}else if(adj_matrix[tile][5] && adj_matrix[tile][7]){
 						return this.tile_90[1];
-					}else if(adj_matrix[tile][3]&& adj_matrix[tile][7]){
+					}else if(adj_matrix[tile][3] && adj_matrix[tile][7]){
 						return this.tile_90[2];
 					}else{
 						return this.tile_90[3];
