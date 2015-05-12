@@ -7,7 +7,7 @@
  *now we have a bug that i will fix, I SWEAR. 
  *
  * @author Eva Yu
- * @version 3.0
+ * @version 3.1
  *
  ******************************************************************************************
 /**
@@ -27,7 +27,6 @@ var tile_t = ["../img/tile_t_0.jpg","../img/tile_t_1.jpg","../img/tile_t_2.jpg",
 var tile_line = ["../img/tile_line_0.jpg","../img/tile_line_1.jpg"];
 var tile_cross = "../img/tile_cross.jpg";
 
-
 /**
  * This function is called by the initAll function in init.js
  * this funtion will initialize and assign values i nthe tile_exit_counters
@@ -38,6 +37,7 @@ function assignPath(){
 	tile_exit_counterInit();
 	tileExitCount();
 	tileAssign();
+	generateGameBoard();
 	
 }
 /**
@@ -55,39 +55,61 @@ var grid_solution_positionId = new Array(9);
 var grid_image_counter = new Array(9);
 
 /**
- * This function takes the position of the tile and assigns the player grid and user grid .
  * It also assigns a solution grid to be compared against the user's grid.
+ *for the visuals so far , there will be a oard rendered to be able to play it accordingly and find bugs. 
  * 
  * @author Eva Yu
  * @version 3.0
  */
 function tileAssign(){
 	for(var i = 0; i < tile_exit_counter.length; i++){
-		grid_image_positionId[i] = document.getElementById('tile_img_'+i);
 		grid_solution_positionId[i] = document.getElementById('tile_img_sol_'+i);
 		switch(tile_exit_counter[i]){
 			case 1: 
 				grid_solution_positionId[i].src = oneSide(i);
-				grid_image_positionId[i].src = oneSide(i);
 				break;
 			case 2:
 				grid_solution_positionId[i].src = twoSide(i);
-				grid_image_positionId[i].src = twoSide(i);
 				break;
 			case 3:
 				grid_solution_positionId[i].src = threeSide(i);
-				grid_image_positionId[i].src = threeSide(i);
 				break; 
 			case 4:
-				grid_solution_positionId[i].src = tile_cross;
+				grid_solution_positionId[i].src = tile_cross;				
+			default:
+				break;
+		}
+	}
+}
+/**
+ * This function randomly generates the user board in the same way the tileAssignment assigns the board. 
+ * but, the tiles will be randmly gerneated in the assigned array of images;
+ * it calls the rotate function in order to reposition the tile. 
+ * 
+ *  */
+function generateGameBoard(){
+		for(var i = 0; i < tile_exit_counter.length; i++){
+		grid_image_positionId[i] = document.getElementById('tile_img_'+i);
+		switch(tile_exit_counter[i]){
+			case 1: 
+				grid_image_positionId[i].src = oneSide(i);
+				oneSideRotate(i);
+				break;
+			case 2:
+				grid_image_positionId[i].src = twoSide(i);
+				twoSideRotate(i);
+				break;
+			case 3:
+				grid_image_positionId[i].src = threeSide(i);
+				threeSideRotate(i);
+				break; 
+			case 4:
 				grid_image_positionId[i].src = tile_cross;				
 			default:
 				break;
 		}
 	}
 }
-
-
 /**
  * Initializes all the exit counter indices to zero. 
  *
@@ -122,16 +144,16 @@ function tileExitCount(){
 function oneSide(til){
 	var tile = parseInt(til);
 	if (adj_matrix[tile][tile+1]){
-		grid_image_counter[tile] = 1;
+		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[1];
 	}else if (adj_matrix[tile][tile-1]){
-		grid_image_counter[tile] = 3;
+		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[3];
 	} else if( adj_matrix[tile][tile + 3]){
-		grid_image_counter[tile] = 2;
+		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[2];
 	}else if ( adj_matrix[tile][tile - 3]){
-		grid_image_counter[tile] = 0;
+		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[0];
 	}
 }
@@ -148,44 +170,44 @@ function twoSide(til){
 			if(tile === 0 ||tile === 2 ||tile === 6 || tile === 8 ){
 				switch(tile){
 					case 0:
-						grid_image_counter[tile] = 1;
+						grid_image_counter[tile] = Math.floor(Math.random() * 4);
 						return this.tile_90[1];
 						break;
 					case 2:
-						grid_image_counter[tile] = 2;
+						grid_image_counter[tile] = Math.floor(Math.random() * 4);
 						return this.tile_90[2];
 						break;
 					case 6:
-						grid_image_counter[tile] = 0;
+						grid_image_counter[tile] = Math.floor(Math.random() * 4);
 						return this.tile_90[0];
 						break;
 					case 8:
-						grid_image_counter[tile] = 3;
+						grid_image_counter[tile] = Math.floor(Math.random() * 4);
 						return this.tile_90[3];
 						break;
 				} //tile_90[array]
 			}else if(tile === 1 ||tile === 7){
 				if(adj_matrix[tile][tile+1] && adj_matrix[tile][tile - 1]){
-						grid_image_counter[tile] = 1;
+						grid_image_counter[tile] = Math.floor(Math.random() * 2);
 						return this.tile_line[1];	
 						 //tile_lne [array]
 				}else{
 					switch(tile){
 						case 1:
 							if(adj_matrix[tile][0]){
-								grid_image_counter[tile] = 2;
+								grid_image_counter[tile] = Math.floor(Math.random() * 4);
 								return this.tile_90[2];
 							}else{
-								grid_image_counter[tile] = 1;
+								grid_image_counter[tile] = Math.floor(Math.random() * 4);
 								return this.tile_90[1];
 							}
 							break;
 						case 7:
 							if(adj_matrix[tile][6]){
-								grid_image_counter[tile] = 3;
+								grid_image_counter[tile] = Math.floor(Math.random() * 4);
 								return this.tile_90[3];
 							}else{
-								grid_image_counter[tile] = 0;
+								grid_image_counter[tile] = Math.floor(Math.random() * 4);
 								return this.tile_90[0];
 							} //tile_90[array]
 							break;
@@ -195,25 +217,25 @@ function twoSide(til){
 				}
 			}else if(tile === 3 || tile === 5){
 				if(adj_matrix[tile][tile-3] && adj_matrix[tile][tile + 3]){
-					grid_image_counter[tile] = 0;
+					grid_image_counter[tile] = Math.floor(Math.random() * 2);
 					return tile_line[0]; //tile_t[array]
 				}else{
 					switch(tile){
 						case 3:
 							if(adj_matrix[tile][0]){
-								grid_image_counter[tile] = 0;
+								grid_image_counter[tile] = Math.floor(Math.random() * 4);
 								return this.tile_90[0];
 							}else{
-								grid_image_counter[tile] = 1;
+								grid_image_counter[tile] = Math.floor(Math.random() * 4);
 								return this.tile_90[1];
 							}
 							break;
 						case 5:
 							if(adj_matrix[tile][2]){
-								grid_image_counter[tile] = 3;
+								grid_image_counter[tile] = Math.floor(Math.random() * 4);
 								return this.tile_90[3];
 							}else{
-								grid_image_counter[tile] = 2;
+								grid_image_counter[tile] = Math.floor(Math.random() * 4);
 								return this.tile_90[2];
 							} //tile_90[array]
 							break;
@@ -223,23 +245,23 @@ function twoSide(til){
 				}
 			}else if(tile === 4){
 				if(adj_matrix[tile][tile+1] && adj_matrix[tile][tile - 1]){
-					grid_image_counter[tile] = 1;
+					grid_image_counter[tile] = Math.floor(Math.random() * 2);
 					return this.tile_line[1]; //tile_t[array]
 				}else if(adj_matrix[tile][tile-3] && adj_matrix[tile][tile + 3]){
-					grid_image_counter[tile] = 0;
+					grid_image_counter[tile] = Math.floor(Math.random() * 2);
 					return this.tile_line[0]; //tile_t[array]
 				}else{
 					if(adj_matrix[tile][1] && adj_matrix[tile][5]){
-						grid_image_counter[tile] = 0;
+						grid_image_counter[tile] = Math.floor(Math.random() * 4);
 						return this.tile_90[0];
 					}else if(adj_matrix[tile][5] && adj_matrix[tile][7]){
-						grid_image_counter[tile] = 1;
+						grid_image_counter[tile] = Math.floor(Math.random() * 4);
 						return this.tile_90[1];
 					}else if(adj_matrix[tile][3] && adj_matrix[tile][7]){
-						grid_image_counter[tile] = 2;
+						grid_image_counter[tile] = Math.floor(Math.random() * 4);
 						return this.tile_90[2];
 					}else{
-						grid_image_counter[tile] = 3;
+						grid_image_counter[tile] = Math.floor(Math.random() * 4);
 						return this.tile_90[3];
 					}
 				} 
@@ -256,19 +278,19 @@ function threeSide(til){
 	var tile = parseInt(til);
 	//if it is connected to up, down, right
 	if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile+1]){
-		grid_image_counter[tile] = 1;
+		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[1];
 	//if it is connected to up, down, left
 	}else if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile-1]){
-		grid_image_counter[tile] = 3;
+		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[3];
 	//if it is connected to up, left, right 
 	}else if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile-1] && adj_matrix[tile][tile+1]){
-		grid_image_counter[tile] = 0;
+		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[0];
 	// if it is connected to down, left, right
 	}else if(adj_matrix[tile][tile-1] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile+1]){
-		grid_image_counter[tile] = 2;
+		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[2];
 	}
 }
@@ -282,17 +304,7 @@ function threeSide(til){
  * @version 1.0
  *
  ******************************************************************************************
-*/
 
-/**
- * THis function is in the works, please stay tuned. 
- * 
- * @return  {[type]}  [description]
- */
-function randomlyReassign(){
-	var ran = Math.floor(Math.random() * 4);
-	grid_image[0] 
-}
 
 /**
  * This function is called upon the click of the image, and it will turn the image according 
