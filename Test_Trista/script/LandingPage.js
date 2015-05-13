@@ -131,7 +131,7 @@ function timeMode(){
 		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
 			return;
 		}
-		clock.timerReference.innerHTML = "Time remaining: " + clock.seconds;
+		clock.timerReference.innerHTML = "Time left: " + clock.seconds;
 		clock.checkTime();    //checks if the user has time left.
 		window.setTimeout(timeMode,100);
 	}else{
@@ -143,11 +143,17 @@ function timeMode(){
  * This function is called when the player runs out of time. Resets the time left and boolean clock.lost, so that
  * the player can try again if they wish or go back to the main menu.
  */
+
+
 function displayLoss(){
-	pageOptions.reference.innerHTML = "<img src='http://i.imgur.com/RMIs0gk.png' style='display:block;width:100%;height:100%'>"+
-	"<button onclick='pageOptions.testTimeMode()' style='position:absolute;top:0'>Restart Level</button>"+
+	pageOptions.reference.innerHTML = 	"<img src='img/bg_2.png' style='display:block;width:100%;height:100%'>"+
+//	"<button onclick='pageOptions.testTimeMode()' style='position:absolute;top:0'>Restart Level</button>"+
+	"<img src='img/tryagain.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%;position:absolute;bottom:260px;right:28px'>" +
+	"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>" +
 	"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
+    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' style='position:absolute;width:70px;height:auto;bottom:160px;left:80px' onclick='playBackground()' id='ayy'>" +
+	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='pageOptions.setPage()' id='menu'>";
+
       stopBackground();
       clock.totalTimeInTenths = 50;
       clock.lost = false;
@@ -189,96 +195,241 @@ var pageOptions = {
 	 * Here is the mainPage string, which saves what our main menu looks like on an html page. 
 	 */
 	mainPage : "<img src='img/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
-	"<button onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>Play</button>" + 
-	"<button onclick='pageOptions.setLevelPage()' id='levelModeButton'>Levels</button>" +
-	"<img src='img/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='' id='menu'>",
+//	"<button onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>Play</button>" + 
+//	"<button onclick='pageOptions.setLevelPage()' id='levelModeButton'>Levels</button>" +
+//	"<button onclick='pageOptions.setSignUpPage()' id='signUpButton'>Sign Up</button>" +
+//	"<button onclick='pageOptions.setScorePage()' id='scoreButton'>High Scores</button>"
+	
+	"<img src= 'img/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>" +
+	"<img src= 'img/button_levels.png' onclick='pageOptions.setLevelPage()' id='levelModeButton'>" +
+	"<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>" +
+	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+	"<img src='img/button_menu.png' onclick='' id='menu'>",
 
 	//Half circle style selection gui for either zen or time mode.
 	modeSelectionPage : "<img src='img/halfCircle2a.png' onclick='pageOptions.setPage2()' style='display:block;width:80%;height:39%;margin:auto;margin-top:10%'/>"+
 						"<img src='img/halfCircle3a.png' onclick='pageOptions.testTimeMode()' style='display:block;width:80%;height:39%;margin:auto'/>"+
-						"<img src='img/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-					"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
+						"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	/**
 	 *This string represents the level selection page. Currently there are 9 levels, but we can alway add more later.
 	 */
-	levelPage : "<img src='http://androidapptraining.com/wp/wp-content/uploads/Level1Button.jpg' onclick='pageOptions.setPage2()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" + 
-				"<img src='http://androidapptraining.com/wp/wp-content/uploads/Level2Button.jpg' onclick='pageOptions.testTimeMode()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" +
-				"<img src='http://liberty.ops.org/portals/0/STAFF_FOLDERS/T_Rotherham_Jeffrey/grade%20level%20buttons/BUTTON%203.jpg' onclick='pageOptions.setPage3()' width='60px' height='60px' style='margin-left:12%;margin-top:10%'/>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/glossy-black-3d-buttons-icons-business/080332-glossy-black-3d-button-icon-business-lock6-sc48.png' onclick = 'alert(\" You must unlock this level first\")' width='60px' height='60px' style='margin-left:12%;margin-top:10%'>" +
-	"<img src='img/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
+	levelPage : "<img src='img/level_1.png' onclick='pageOptions.setPage2()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" + 
+				"<img src='img/level_2.png' onclick='pageOptions.testTimeMode()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
+				"<img src='img/level_3.png' onclick='pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
+				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+
+	/**
+	 * This string represents the sign up form in our game
+	 
+	signUpPage :    "<div width='70%' height='70%' style='position:relative; margin-top:100px; margin-left:50px;margin-right:50px'>" +
+						"<form action='demo_form.asp' method='get'>" + 
+	  						"<p style='text-align:center;font-size:3em;color:white'>Sign up</p>" +
+	  						"<p style='font-size:1em;color:white'>Username: <input type='name' name='username' size='30'></p><br>" + 
+	  						"<img src='img/joinbutton.png' alt='join' onclick='Submit' width='120px' height='100px' style='margin-left:85px'>" +
+						"</form>" +
+					"</div>" +
+					"<img src='img/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
+					"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
+	*/
+	/**
+	 * This string represents the high score board in our game
+	 */
+	highScorePage : "<div width='70%' height='80%' style='position:relative;margin-top:60px;margin-left:50px;margin-right:50px'>" +
+						 "<img src='img/highscore.png' alt='high score' style='width:90%;height:70%;margin-left:16px;margin-top:-20px'>" +
+						 "<table style='border:1px solid white;width:100%;margin-top:10px'>" +
+  							"<tr>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>username</td>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>scores</td>" +
+						  	"</tr>" +
+						  	"<tr>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>username</td>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>scores</td>" +
+						  	"</tr>" +
+						  	"<tr>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>username</td>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>scores</td>" +
+						  	"</tr>" +
+						  	"<tr>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>username</td>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>scores</td>" +
+						  	"</tr>" +
+						  	"<tr>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>username</td>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>scores</td>" +
+						  	"</tr>" +
+						  	"<tr>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>username</td>" +
+							    "<td style='border:1px solid white;width:50%;height:40px'>scores</td>" +
+						  	"</tr>" +
+						"</table>" +
+					"</div>" +
+					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	/**
 	 * This string represents level 2 in our game
 	 */
 	
-	level2 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;'> Level 2</h3>"+
-        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'>2:00</h3>"+
-        "<div id='threeBoard'>"+
-        "<div id='threeBoardCover'>"+
+	level2 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 2</h3>"+
+        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
+        "<div id='twoBoard'>"+
+        "<div id='twoBoardCover'>"+
         		"<div id='cover0'></div>"+
                "<div id='cover1'></div>"+
                "<div style='clear:both'></div>"+
                "<div id='cover2'></div>"+
                "<div id='cover3'></div>"+
                "</div>"+
-               "<div id='threeByThree0' onclick='rotateNub(\"threeByThree0\")'></div>"+
-               "<div id='threeByThree1' onclick='rotate90(\"threeByThree1\")'></div>"+
+               "<div id='twoByTwo_0' onclick='rotateNub(\"twoByTwo_0\")'></div>"+
+               "<div id='twoByTwo_1' onclick='rotate90(\"twoByTwo_1\")'></div>"+
                "<div style='clear:both'></div>"+
-				"<div id='threeByThree2' onclick='rotateLine(\"threeByThree2\")'></div><div id='threeByThree3' onclick='rotateNub(\"threeByThree3\")'></div></div>"+
+				"<div id='twoByTwo_2' onclick='rotateLine(\"twoByTwo_2\")'></div><div id='twoByTwo_3' onclick='rotateNub(\"twoByTwo_3\")'></div></div>"+
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
-                "<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_flipall_3.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:90px' onclick='flipAll()' id='allFlip'>" +
-                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
+                "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+                "<img src='img/button_flipall_3.png' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 
      /**
 	 * This string stores level3 of our game
 	 */
-    level3 : "<div id='threeByThreeBoard'>" + 
-                "<div id='threeByThree_Tile1' onclick='clickMaster(\"threeByThree_Tile1\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile2' onclick='clickMaster(\"threeByThree_Tile2\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile3' onclick='clickMaster(\"threeByThree_Tile3\",flipSound())'></div>"+
-                   "<div style='clear:both'></div>"+
-                "<div id='threeByThree_Tile4' onclick='clickMaster(\"threeByThree_Tile4\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile5' onclick='clickMaster(\"threeByThree_Tile5\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile6' onclick='clickMaster(\"threeByThree_Tile6\",flipSound())'></div>"+
-                    "<div style='clear:both'></div>"+
-                "<div id='threeByThree_Tile7' onclick='clickMaster(\"threeByThree_Tile7\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile8' onclick='clickMaster(\"threeByThree_Tile8\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile9' onclick='clickMaster(\"threeByThree_Tile9\",flipSound())'></div>"+
+    level3 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 3</h3>"+
+        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
+    	"<div id='threeBoard'>"+
+        "<div id='threeBoardCover'>"+
+        		"<div id='threeCover0'></div>"+
+               "<div id='threeCover1'></div>"+
+               "<div id='threeCover2'></div>"+
+               "<div style='clear:both'></div>"+
+               "<div id='threeCover3'></div>"+
+               "<div id='threeCover4'></div>"+
+               "<div id='threeCover5'></div>"+
+               "<div style='clear:both'></div>"+
+               "<div id='threeCover6'></div>"+
+               "<div id='threeCover7'></div>"+
+               "<div id='threeCover8'></div>"+
                "</div>"+
-               "<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
+               "<div id='threeByThree_0' onclick='rotateNub(\"threeByThree_0\")'></div>"+
+               "<div id='threeByThree_1' onclick='rotate90(\"threeByThree_1\")'></div>"+
+               "<div id='threeByThree_2' onclick='rotate90(\"threeByThree_2\")'></div>"+
+               "<div style='clear:both'></div>"+
+				"<div id='threeByThree_3' onclick='rotate90(\"threeByThree_3\")'></div>"+
+				"<div id='threeByThree_4' onclick='rotate90(\"threeByThree_4\")'></div>"+
+				"<div id='threeByThree_5' onclick='rotate90(\"threeByThree_5\")'></div>"+
+				"<div style='clear:both'></div>"+
+				"<div id='threeByThree_6' onclick='rotate90(\"threeByThree_6\")'></div>"+
+				"<div id='threeByThree_7' onclick='rotate90(\"threeByThree_7\")'></div>"+
+				"<div id='threeByThree_8' onclick='rotate90(\"threeByThree_8\")'></div>"+
+
+                //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
+                "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+                "<img src='img/button_flipall_3.png' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+
+
+     /**
+	 * This string stores level 4 of our game
+	 */
+    level4 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 4</h3>"+
+        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
+    	"<div id='fourBoard'>"+
+        "<div id='fourBoardCover'>"+
+        		"<div id='fourCover0'></div>"+
+               "<div id='fourCover1'></div>"+
+               "<div id='fourCover2'></div>"+
+               "<div id='fourCover3'></div>"+
+               "<div style='clear:both'></div>"+
+               "<div id='fourCover4'></div>"+
+               "<div id='fourCover5'></div>"+
+               "<div id='fourCover6'></div>"+
+               "<div id='fourCover7'></div>"+
+               "<div style='clear:both'></div>"+
+               "<div id='fourCover8'></div>"+
+               "<div id='fourCover9'></div>"+
+               "<div id='fourCover10'></div>"+
+               "<div id='fourCover11'></div>"+
+               "<div style='clear:both'></div>"+
+               "<div id='fourCover12'></div>"+
+               "<div id='fourCover13'></div>"+
+               "<div id='fourCover14'></div>"+
+               "<div id='fourCover15'></div>"+
+               "</div>"+
+               "<div id='fourByFour_0' onclick='rotateNub(\"fourByFour_0\")'></div>"+
+               "<div id='fourByFour_1' onclick='rotate90(\"fourByFour_1\")'></div>"+
+               "<div id='fourByFour_2' onclick='rotate90(\"fourByFour_2\")'></div>"+
+               "<div id='fourByFour_3' onclick='rotate90(\"fourByFour_3\")'></div>"+
+               "<div style='clear:both'></div>"+
+				"<div id='fourByFour_4' onclick='rotate90(\"fourByFour_4\")'></div>"+
+				"<div id='fourByFour_5' onclick='rotate90(\"fourByFour_5\")'></div>"+
+				"<div id='fourByFour_6' onclick='rotate90(\"fourByFour_6\")'></div>"+
+				"<div id='fourByFour_7' onclick='rotate90(\"fourByFour_7\")'></div>"+
+				"<div style='clear:both'></div>"+
+				"<div id='fourByFour_8' onclick='rotate90(\"fourByFour_8\")'></div>"+
+				"<div id='fourByFour_9' onclick='rotate90(\"fourByFour_9\")'></div>"+
+				"<div id='fourByFour_10' onclick='rotate90(\"fourByFour_10\")'></div>"+
+				"<div id='fourByFour_11' onclick='rotate90(\"fourByFour_11\")'></div>"+
+				"<div style='clear:both'></div>"+
+				"<div id='fourByFour_12' onclick='rotate90(\"fourByFour_12\")'></div>"+
+				"<div id='fourByFour_13' onclick='rotate90(\"fourByFour_13\")'></div>"+
+				"<div id='fourByFour_14' onclick='rotate90(\"fourByFour_14\")'></div>"+
+				"<div id='fourByFour_15' onclick='rotate90(\"fourByFour_15\")'></div>"+
+
+                //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
+                "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+                "<img src='img/button_flipall_3.png' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+
     /**
 	 * This String will be deleted soon when we polish our time mode. For now it is just
 	 * a prototype of the timed mode, and works well.
 	 */
-    timeModeLevel3 : "<p id='timeSquare' style='display:block;margin:auto;text-align:center;height:90px;padding-top:20px;color:white;font-size:18px'></p>" +
-    			"<div id='threeByThreeBoard'>" + 
-                "<div id='threeByThree_Tile1' onclick='clickMaster(\"threeByThree_Tile1\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile2' onclick='clickMaster(\"threeByThree_Tile2\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile3' onclick='clickMaster(\"threeByThree_Tile3\",flipSound())'></div>"+
-                   "<div style='clear:both'></div>"+
-                "<div id='threeByThree_Tile4' onclick='clickMaster(\"threeByThree_Tile4\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile5' onclick='clickMaster(\"threeByThree_Tile5\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile6' onclick='clickMaster(\"threeByThree_Tile6\",flipSound())'></div>"+
-                    "<div style='clear:both'></div>"+
-                "<div id='threeByThree_Tile7' onclick='clickMaster(\"threeByThree_Tile7\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile8' onclick='clickMaster(\"threeByThree_Tile8\",flipSound())'></div>"+
-                "<div id='threeByThree_Tile9' onclick='clickMaster(\"threeByThree_Tile9\",flipSound())'></div>"+
+    timeModeLevel3 : 
+    "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 3</h3>"+
+    "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;margin-top:15px;' id='timeSquare'></h3>"+
+    // "<p id='timeSquare' style='display:block;margin:auto;text-align:center;height:90px;padding-top:20px;color:white;font-size:18px'></p>" +
+    	"<div id='threeBoard'>"+
+        "<div id='threeBoardCover'>"+
+        		"<div id='threeCover0'></div>"+
+               "<div id='threeCover1'></div>"+
+               "<div id='threeCover2'></div>"+
+               "<div style='clear:both'></div>"+
+               "<div id='threeCover3'></div>"+
+               "<div id='threeCover4'></div>"+
+               "<div id='threeCover5'></div>"+
+               "<div style='clear:both'></div>"+
+               "<div id='threeCover6'></div>"+
+               "<div id='threeCover7'></div>"+
+               "<div id='threeCover8'></div>"+
                "</div>"+
-               "<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
+               "<div id='threeByThree_0' onclick='rotateNub(\"threeByThree_0\")'></div>"+
+               "<div id='threeByThree_1' onclick='rotate90(\"threeByThree_1\")'></div>"+
+               "<div id='threeByThree_2' onclick='rotate90(\"threeByThree_2\")'></div>"+
+               "<div style='clear:both'></div>"+
+				"<div id='threeByThree_3' onclick='rotate90(\"threeByThree_3\")'></div>"+
+				"<div id='threeByThree_4' onclick='rotate90(\"threeByThree_4\")'></div>"+
+				"<div id='threeByThree_5' onclick='rotate90(\"threeByThree_5\")'></div>"+
+				"<div style='clear:both'></div>"+
+				"<div id='threeByThree_6' onclick='rotate90(\"threeByThree_6\")'></div>"+
+				"<div id='threeByThree_7' onclick='rotate90(\"threeByThree_7\")'></div>"+
+				"<div id='threeByThree_8' onclick='rotate90(\"threeByThree_8\")'></div>"+
 
+                //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
+                "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+                "<img src='img/button_flipall_3.png' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 	 /**
 	 * This function initializes the reference variable to whichever id we need to change the content of.
 	 * in our app, this id is called "a"
@@ -298,6 +449,16 @@ var pageOptions = {
 	//sets page to level selection page
 	setLevelPage : function(){
 		this.reference.innerHTML = this.levelPage;
+	},
+
+	/*sign up page
+	setSignUpPage : function(){
+		this.reference.innerHTML = this.signUpPage;
+	},*/
+
+	//high score page
+	setScorePage : function(){
+		this.reference.innerHTML = this.highScorePage;
 	},
 
 	//sets the game to level 2
@@ -339,8 +500,12 @@ var pageOptions = {
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 function displayWin(){
-	pageOptions.reference.innerHTML = "<img src='http://ajournalofmusicalthings.com/wp-content/uploads/YouWin.png' style='display:block;width:100%;height:100%'>"+
-	"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
+	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;margin-left:45px;margin-top:80px;width:80%;height:30%'>"+
+									"<form style='margin-top:50px;margin-left:65px'>" +
+										"<p>Your name: <input type='text' name='name'></p>" +
+										"<input type='submit' value='Submit' style='margin-left:90px;margin-top:20px'>" +
+									"</form>" +
+				"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
                 "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
       stopBackground();
       track.track3.play();
@@ -456,16 +621,6 @@ function displayWin(){
         
     }
 
-  //   *
-	 // * This is a test function that flips all the tiles and reveals what is underneath. 
-	 // * Later on, we will implement an integer value that makes sure the player can only call this function 3-5 times per 
-	 // * game play so that it isn't abused.
-	 
-  //   function flipAll(){
-  //   	for(var i=0;i<arrayData.tileIdArray.length;i++){
-  //           arrayData.tileIdArray[i].style.backgroundImage = "url('img/tile_90_3.jpg')"
-  //       }
-  //   }
 
     //test variable, probably not going to be used.
     var tileType1 = {

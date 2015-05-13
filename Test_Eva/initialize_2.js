@@ -23,6 +23,8 @@ function initAll(){
  */
 function rotateAndCheck(til){
 	var tile = parseInt(til); 
+	if(enableFunction(til)){
 	rotate(tile); // from play_check_solution_3x3.js
 	checkUserBoard(); // from check_solution_3x3.js
+}
 }

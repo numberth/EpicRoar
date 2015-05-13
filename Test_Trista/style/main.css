@@ -16,7 +16,8 @@
 }
 
 #playButton{
-	margin:auto;
+	margin:0;
+	margin-left: 25%;
 	display:block;
 	height:10%;
 	width:50%;
@@ -29,7 +30,8 @@
 }
 
 #levelModeButton{
-	margin:auto;
+	margin:0;
+	margin-left: 25%;
 	display:block;
 	height:10%;
 	width:50%;
@@ -39,6 +41,18 @@
 	font-family:cursive,arial;
 	/* background-image:url(../img/buttonBg2.png);
 	background-size:100% 100%; */
+}
+
+#scoreButton{
+	margin:0;
+	margin-left: 25%;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:2%;
+	font-size:25px;
+	font-family:cursive,arial;
 }
 
 #bottom{
@@ -52,19 +66,95 @@
 	height:10vh;
 }
 
-/* divs matrices*/
+#ayy {
+	position:absolute;
+	width:20%;
+	height:auto;
+	bottom:10px;
+	left:10px;
+}
 
-#threeBoard{
-	width:280px;
+#menu {
+	position:absolute;
+	width:20%;
+	height:auto;
+	bottom:10px;
+	right:10px;
+}
+
+#allFlip{
+	position:absolute;
+	width:20%;
+	height:auto;
+	bottom:10px;
+	left:28%; 
+}
+
+/* divs matrices for 2x2*/
+
+#twoBoard{
+	width:80%;
 	height:250px;
 	display:block;
 	margin:auto;
+	margin-top:35%;
+	margin-left: 20%;
+}
+
+#twoBoardCover{
+	width:80%;
+	height:250px;
+	display:block;
+	margin:auto;
+	margin-top:35%;
+	position: absolute;
+	top: 0;
+}
+
+#cover0, #cover1, #cover2, #cover3{
+	background-image: url(../img/grass.jpg);
+	background-size:100% 100%;
+	z-index: 0;
+	float:left;
+	position: relative;
+	width:35%;
+	height:15vh;
+	margin:1%;
+	border-style:solid;
+	border-color:#224424;
+	border-width:2px;
+}
+
+#twoByTwo_0, #twoByTwo_1, #twoByTwo_2, #twoByTwo_3{
+	background-image: url(../img/tile_nub_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:35%;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+
+/* div matrix for 3x3 */
+
+#threeBoard{
+	width:55vh;
+	height:50vh;
+	display:block;
+	margin:auto;
 	margin-top:25%;
+	margin-left: 1%;
 }
 
 #threeBoardCover{
-	width:280px;
-	height:250px;
+	width:54vh;
+	height:50vh;
 	display:block;
 	margin:auto;
 	margin-top:25%;
@@ -72,70 +162,26 @@
 	top: 0;
 }
 
-#cover0{
-	background-image: url(../img/grass.jpg);
-	background-size:100% 100%;
-	z-index: 0;
-	float:left;
-	position: absolute;
-	width:130px;
-	height:115px;
-	margin:1%;
-	border-style:solid;
-	border-color:#224424;
-	border-width:2px;
-}
-
-#cover1{
+#threeCover0, #threeCover1, #threeCover2, #threeCover3, #threeCover4, #threeCover5, #threeCover6, #threeCover7, #threeCover8{
 	background-image: url(../img/grass.jpg);
 	background-size:100% 100%;
 	z-index: 0;
 	float:left;
 	position: relative;
-	left: 140px;
-	width:130px;
-	height:115px;
+	width:16vh;
+	height:15vh;
 	margin:1%;
 	border-style:solid;
 	border-color:#224424;
 	border-width:2px;
 }
 
-#cover2{
-	background-image: url(../img/grass.jpg);
-	background-size:100% 100%;
-	z-index: 0;
-	float:left;
-	position: absolute;
-	width:130px;
-	height:115px;
-	margin:1%;
-	border-style:solid;
-	border-color:#224424;
-	border-width:2px;
-}
-
-#cover3{
-	background-image: url(../img/grass.jpg);
-	background-size:100% 100%;
-	z-index: 0;
-	float:left;
-	position: relative;
-	left: 140px;
-	width:130px;
-	height:115px;
-	margin:1%;
-	border-style:solid;
-	border-color:#224424;
-	border-width:2px;
-}
-
-#threeByThree0{
+#threeByThree_0, #threeByThree_1, #threeByThree_2, #threeByThree_3, #threeByThree_4, #threeByThree_5, #threeByThree_6, #threeByThree_7, #threeByThree_8{
 	background-image: url(../img/tile_nub_0.jpg);
 	background-size:100% 100%;
 	text-align:center;
-	width:130px;
-	height:115px;
+	width:16vh;
+	height:15vh;
 	border-style:solid;
 	border-color:#996633;
 	border-width:2px;
@@ -145,52 +191,59 @@
 	position: relative;
 }
 
-#threeByThree1{
+
+/* div matrix for 4x4 */
+
+#fourBoard{
+	width:55vh;
+	height:50vh;
+	display:block;
+	margin:auto;
+	margin-top:17%;
+	margin-left: 3%;
+}
+
+#fourBoardCover{
+	width:55vh;
+	height:50vh;
+	display:block;
+	margin:auto;
+	margin-top:17%;
+	position: absolute;
+	top: 0;
+}
+
+#fourCover0, #fourCover1, #fourCover2, #fourCover3, #fourCover4, #fourCover5, #fourCover6, #fourCover7, #fourCover8, #fourCover9, #fourCover10, #fourCover11, #fourCover12, #fourCover13, #fourCover14, #fourCover15{
+	background-image: url(../img/grass.jpg);
+	background-size:100% 100%;
+	z-index: 0;
+	float:left;
+	position: relative;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#224424;
+	border-width:2px;
+}
+
+#fourByFour_0, #fourByFour_1, #fourByFour_2, #fourByFour_3, #fourByFour_4, #fourByFour_5, #fourByFour_6, #fourByFour_7, #fourByFour_8, #fourByFour_9, #fourByFour_10, #fourByFour_11, #fourByFour_12, #fourByFour_13, #fourByFour_14, #fourByFour_15{
 	background-image: url(../img/tile_90_0.jpg);
 	background-size:100% 100%;
 	text-align:center;
-	width:130px;
-	height:115px;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
 	border-style:solid;
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	margin:1%;
 	z-index: -1;
 	position: relative;
 }
+/*
 
-#threeByThree2{
-	background-image: url(../img/tile_line_0.jpg);
-	background-size:100% 100%;
-	text-align:center;
-	width:130px;
-	height:115px;
-	border-style:solid;
-	border-color:#996633;
-	border-width:2px;
-	float:left;
-	margin:1%;
-	z-index: -1;
-	position: relative;
-}
-
-#threeByThree3{
-	background-image: url(../img/tile_nub_0.jpg);
-	background-size:100% 100%;
-	text-align:center;
-	width:130px;
-	height:115px;
-	border-style:solid;
-	border-color:#996633;
-	border-width:2px;
-	float:left;
-	margin:1%;
-	z-index: -1;
-	position: relative;
-}
-
-/*#threeByThree:hover{
+#fourByFour_:hover{
 	transition: 1.2s;
 	transform-style: preserve-3d;
  	 transform: rotateY(180deg);
@@ -198,10 +251,11 @@
   	background-image: url(https://0.s3.envato.com/files/83107586/590.jpg);
 }
 */
-.underground{
+/*.underground{
 	transition: 1.1s;
 	transform-style: preserve-3d;
  	 transform: rotateY(360deg);
   	box-shadow: -5px 5px 5px #aaa;
   	background-image: url(https://0.s3.envato.com/files/83107586/590.jpg);
 }
+*/

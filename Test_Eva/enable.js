@@ -51,15 +51,15 @@ function enableFunction(id) {
 
 
 /**
- * Function to flip all cover cards for (1.5) seconds for players to see all road cards.
- * It will automatically flip back the cover cards after (1.5) seconds.
+ * Function to flip all cover cards for (2) seconds for players to see all road cards.
+ * It will automatically flip back the cover cards after (2) seconds.
  * 
  * Variable enable is set to false to make sure that rotate will not happen when all cover cards are flipped over.
  *
  * FlipAll can only happen when allowedFlip is more than 0.
  * FlipAll image will change according to the amount of flipAlls left.
  */
-function flipAll(id){
+function flipAll(){
 	if(allowedFlip > 0){
 	switch(allowedFlip){
 		case 3:
@@ -77,10 +77,10 @@ function flipAll(id){
 		enable = false;
 		allowedFlip--;
 
-		setTimeout(function(){ flipAllBack(id);},1500);
+		setTimeout(flipAllBack,2000);
 
 		for(var i=0; i < 16; i++){
-			document.getElementById(id + i).style.zIndex = 2;
+			document.getElementById('threeByThree' + i).style.zIndex = 2;
 		}
 	}
 }
@@ -89,10 +89,10 @@ function flipAll(id){
  * Function to flip all cover cards back over the rod tiles.
  * All road tiles will be assigned z-index of -1 to hide the road tiles.
  * 
- * It is called automatically by flipAll() after (1.5) seconds.
+ * It is called automatically by flipAll() after (2) seconds.
  */
-function flipAllBack(id){
+function flipAllBack(){
 		for(var i=0; i < 16; i++){
-			document.getElementById(id + i).style.zIndex = '-1';
+			document.getElementById('threeByThree' + i).style.zIndex = '-1';
 		}
 }
