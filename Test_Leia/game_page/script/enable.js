@@ -23,28 +23,9 @@ var enable = false;
 var allowedFlip = 3;
 
 //temporary flip function for testing purposes
-function flip2(id){
-	var two = "twoByTwo_";
-	for(var i=0; i < 16; i++){
-			document.getElementById(two + i).style.zIndex = '-1';
-			document.getElementById(id).style.zIndex = '3';
-		}
-}
-
-function flip3(id){
-	var three = "threeByThree_";
-	for(var i=0; i < 16; i++){
-			document.getElementById(three + i).style.zIndex = '-1';
-			document.getElementById(id).style.zIndex = '3';
-		}
-}
-
-function flip4(id){
-	var four = "fourByFour_";
-	for(var i=0; i < 16; i++){
-			document.getElementById(four + i).style.zIndex = '-1';
-			document.getElementById(id).style.zIndex = '3';
-		}
+function flip(id){
+	document.getElementById(id).style.zIndex = '-1';
+	var cover_zIndex = document.getElementById(id).style.zIndex;
 }
 
 /**

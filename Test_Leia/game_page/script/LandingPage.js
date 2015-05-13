@@ -286,11 +286,11 @@ var pageOptions = {
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
         "<div id='twoBoard'>"+
         "<div id='twoBoardCover'>"+
-        		"<div id='cover0' onclick='flip2(\"twoByTwo_0\")'></div>"+
-               "<div id='cover1' onclick='flip2(\"twoByTwo_1\")'></div>"+
+        		"<div id='cover0'></div>"+
+               "<div id='cover1'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='cover2' onclick='flip2(\"twoByTwo_2\")'></div>"+
-               "<div id='cover3' onclick='flip2(\"twoByTwo_3\")'></div>"+
+               "<div id='cover2'></div>"+
+               "<div id='cover3'></div>"+
                "</div>"+
                "<div id='twoByTwo_0' onclick='rotateNub(\"twoByTwo_0\")'></div>"+
                "<div id='twoByTwo_1' onclick='rotate90(\"twoByTwo_1\")'></div>"+
