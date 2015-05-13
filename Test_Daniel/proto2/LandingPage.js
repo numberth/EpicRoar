@@ -202,7 +202,7 @@ var pageOptions = {
 	
 	"<img src= 'images/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' style='position:absolute; width:600; height:250; bottom:240px; left:95px' id='playButton'>" +
 	"<img src= 'images/button_levels.png' onclick='pageOptions.setLevelPage()'style='position:absolute; width:600; height:250; bottom:180px; left:95px' id='levelModeButton'>" +
-	"<img src= 'images/button_scores.png' onclick='pageOptions.setScorePage()'style='position:absolute; width:600; height:250; bottom:120px; left:95px' id='scoreButton'>" +
+	"<img src= 'images/button_scores.png' onclick='showHighscore()'style='position:absolute; width:600; height:250; bottom:120px; left:95px' id='scoreButton'>" +
 	"<img src='images/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
 	"<img src='images/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='' id='menu'>",
 
@@ -246,6 +246,7 @@ var pageOptions = {
 	/**
 	 * This string represents the high score board in our game
 	 */
+
 	highScorePage : "<div width='70%' height='80%' style='position:relative;margin-top:60px;margin-left:50px;margin-right:50px'>" +
 						 "<img src='images/highscore.png' alt='high score' style='width:90%;height:70%;margin-left:16px;margin-top:-20px'>" +
 						 "<table style='border:1px solid white;width:100%;margin-top:10px'>" +

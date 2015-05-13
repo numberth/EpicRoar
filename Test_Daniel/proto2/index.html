@@ -11,9 +11,7 @@
     <script src="LAB.min.js" type="text/javascript"></script>
     <script>
         $LAB
-                .script('input/Keyboard.js').wait()
-                .script('input/Mouse.js').wait()
-                .script('system/Keys.js').wait()
+        		
                 .script('LandingPage.js').wait(function () {
                     console.log("hello world!");
                     pageOptions.init("panel");
@@ -85,6 +83,25 @@
 			}
 		}
 	}
+
+	function showHighscore() {
+
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("panel").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET","highScore.php?q=",true);
+                xmlhttp.send();
+            
+        }
 	</script>
 </head>
 
@@ -132,7 +149,7 @@
 
 			<!--<button onclick='pageOptions.setSignUpPage()' id='signUpButton'>Sign Up</button>-->
 
-			<img src= 'images/button_scores.png' onclick='pageOptions.setScorePage()'style='position:absolute; width:600; height:200; bottom:120px; left:95px' id='scoreButton'>
+			<img src= 'images/button_scores.png' onclick='showHighscore()'style='position:absolute; width:600; height:200; bottom:120px; left:95px' id='scoreButton'>
 
 			<img src='images/button_audio_off.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>
 			
