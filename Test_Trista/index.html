@@ -14,7 +14,7 @@
                 .script('script/input/Keyboard.js').wait()
                 .script('script/input/Mouse.js').wait()
                 .script('script/system/Keys.js').wait()
-                .script('script/LandingPage.js').wait(function () {
+                .script('script/landingPage.js').wait(function () {
                     console.log("hello world!");
                     pageOptions.init("panel");
                    // pageOptions.setPage("a");
@@ -65,9 +65,9 @@
 
 
 	function verify(){
-		var bg0 = $(threeByThree0).css('background-image');
-		var bg1 = $(threeByThree1).css('background-image');
-		var bg2 = $(threeByThree3).css('background-image');
+		var bg0 = $(twoByTwo_0).css('background-image');
+		var bg1 = $(twoByTwo_1).css('background-image');
+		var bg2 = $(twoByTwo_3).css('background-image');
 		var cleanup = /\"|\'|\)/g;
 		var bg00 = bg0.split('/').pop().replace(cleanup, '');
 		var bg01 = bg1.split('/').pop().replace(cleanup, ''); 
