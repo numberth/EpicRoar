@@ -50,11 +50,17 @@
     var solution_saved; // sees if the solution has been saved
     var flag_direction; // sees if the directing can go on
 
-    var adj_matrix = createArray(MAX*MAX,MAX*MAX); // the grid
-    var grid_matrix = createArray (MAX, MAX); // stores the connected cubes ;
-    var path_matrix = createArray (MAX*MAX, 2); // stores the coordinates every time
-    var solution_matrix = createArray (MAX*MAX, 2); // stores the solution
+    var adj_matrix; // the grid
+    var grid_matrix; // stores the connected cubes ;
+    var path_matrix; // stores the coordinates every time
+    var solution_matrix; // stores the solution
 
+function initPathArrays(){
+    adj_matrix = createArray(MAX*MAX,MAX*MAX); // the grid
+    grid_matrix = createArray (MAX, MAX); // stores the connected cubes ;
+    path_matrix = createArray (MAX*MAX, 2); // stores the coordinates every time
+    solution_matrix = createArray (MAX*MAX, 2); // stores the solution
+}
 /**
  * The solution initializer. Initializes and dynamically generates the solution path. 
  * 
