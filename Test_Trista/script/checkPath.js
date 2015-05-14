@@ -13,7 +13,6 @@
  * 
  * @type {Array} [ and Array of integers that each reperesnt the position of the tile or grid]
  */
-
 var grid_solution_tracer = new Array();
 var solution_match_counter;
 var nonSolutionValues = new Array(MAX*MAX);
@@ -44,7 +43,8 @@ function checkUserBoard(){
 		}
 
 		if(solution_match_counter === grid_solution_tracer.length){
-			displayWin(); //WIN 
+			flipWin3(); // place holder function for displaying solution path; current function reveals all cards
+			// window.setTimeout(displayWin, 3000); //WIN 
 		}
 	}
 }

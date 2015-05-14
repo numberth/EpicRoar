@@ -11,9 +11,9 @@
  *  on load of the page 
  * 
  */
-function initBoard(){
-  var MAX_3 = 3;
-  MAX = MAX_3;
+function initBoard3x3(){
+	var MAX_3 = 3;
+	var MAX = MAX_3;
   initPath(); // from solution_generate.js
   assignPath3x3(); // from play_check_solution_3x3.js
 }

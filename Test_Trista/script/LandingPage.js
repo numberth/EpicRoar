@@ -149,10 +149,10 @@ function displayLoss(){
 	pageOptions.reference.innerHTML = 	"<img src='img/bg_2.png' style='display:block;width:100%;height:100%'>"+
 //	"<button onclick='pageOptions.testTimeMode()' style='position:absolute;top:0'>Restart Level</button>"+
 	"<img src='img/tryagain.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%;position:absolute;bottom:260px;right:28px'>" +
-	"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>" +
+	"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='location.reload()' id='menu'>" +
 	"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
     "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' style='position:absolute;width:70px;height:auto;bottom:160px;left:80px' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='pageOptions.setPage()' id='menu'>";
+	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='location.reload()' id='menu'>";
 
       stopBackground();
       clock.totalTimeInTenths = 50;
@@ -204,13 +204,13 @@ var pageOptions = {
 	"<img src= 'img/button_levels.png' onclick='pageOptions.setLevelPage()' id='levelModeButton'>" +
 	"<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>" +
 	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' onclick='' id='menu'>",
+	"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
 
 	//Half circle style selection gui for either zen or time mode.
 	modeSelectionPage : "<img src='img/halfCircle2a.png' onclick='pageOptions.setPage2()' style='display:block;width:80%;height:39%;margin:auto;margin-top:10%'/>"+
 						"<img src='img/halfCircle3a.png' onclick='pageOptions.testTimeMode()' style='display:block;width:80%;height:39%;margin:auto'/>"+
 						"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+					"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
 
 	/**
 	 *This string represents the level selection page. Currently there are 9 levels, but we can alway add more later.
@@ -228,7 +228,7 @@ var pageOptions = {
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+	"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
 
 	/**
 	 * This string represents the sign up form in our game
@@ -276,7 +276,7 @@ var pageOptions = {
 						"</table>" +
 					"</div>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+					"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
 
 	/**
 	 * This string represents level 2 in our game
@@ -292,15 +292,15 @@ var pageOptions = {
                "<div id='cover2' onclick='flip2(\"twoByTwo_2\")'></div>"+
                "<div id='cover3' onclick='flip2(\"twoByTwo_3\")'></div>"+
                "</div>"+
-               "<div id='twoByTwo_0' onclick='rotateNub(\"twoByTwo_0\")'></div>"+
-               "<div id='twoByTwo_1' onclick='rotate90(\"twoByTwo_1\")'></div>"+
+               "<div id='twoByTwo_0' onclick='rotateNubx(\"twoByTwo_0\")'></div>"+
+               "<div id='twoByTwo_1' onclick='rotate90x(\"twoByTwo_1\")'></div>"+
                "<div style='clear:both'></div>"+
-				"<div id='twoByTwo_2' onclick='rotateLine(\"twoByTwo_2\")'></div><div id='twoByTwo_3' onclick='rotateNub(\"twoByTwo_3\")'></div></div>"+
+				"<div id='twoByTwo_2' onclick='rotateLinex(\"twoByTwo_2\")'></div><div id='twoByTwo_3' onclick='rotateNubx(\"twoByTwo_3\")'></div></div>"+
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
                 "<img src='img/button_flipall_3.png' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+                "<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
 
 
      /**
@@ -310,17 +310,17 @@ var pageOptions = {
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
     	"<div id='threeBoard'>"+
         "<div id='threeBoardCover'>"+
-        		"<div id='threeCover0'></div>"+
-               "<div id='threeCover1'></div>"+
-               "<div id='threeCover2'></div>"+
+        		"<div id='threeCover0' onclick='flip3(\"threeByThree_0\")'></div>"+
+               "<div id='threeCover1' onclick='flip3(\"threeByThree_1\")'></div>"+
+               "<div id='threeCover2' onclick='flip3(\"threeByThree_2\")'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='threeCover3'></div>"+
-               "<div id='threeCover4'></div>"+
-               "<div id='threeCover5'></div>"+
+               "<div id='threeCover3' onclick='flip3(\"threeByThree_3\")'></div>"+
+               "<div id='threeCover4' onclick='flip3(\"threeByThree_4\")'></div>"+
+               "<div id='threeCover5' onclick='flip3(\"threeByThree_5\")'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='threeCover6'></div>"+
-               "<div id='threeCover7'></div>"+
-               "<div id='threeCover8'></div>"+
+               "<div id='threeCover6' onclick='flip3(\"threeByThree_6\")'></div>"+
+               "<div id='threeCover7' onclick='flip3(\"threeByThree_7\")'></div>"+
+               "<div id='threeCover8' onclick='flip3(\"threeByThree_8\")'></div>"+
                "</div>"+
                
         "<div id='threeByThree_0' onclick='rotateAndCheck(0)'></div>"+
@@ -353,7 +353,7 @@ var pageOptions = {
         
         "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
         "<img src='img/button_flipall_3.png' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
-        "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+        "<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
 
 
      /**
@@ -418,34 +418,51 @@ var pageOptions = {
     // "<p id='timeSquare' style='display:block;margin:auto;text-align:center;height:90px;padding-top:20px;color:white;font-size:18px'></p>" +
     	"<div id='threeBoard'>"+
         "<div id='threeBoardCover'>"+
-        		"<div id='threeCover0'></div>"+
-               "<div id='threeCover1'></div>"+
-               "<div id='threeCover2'></div>"+
+        		"<div id='threeCover0' onclick='flip3(\"threeByThree_0\")'></div>"+
+               "<div id='threeCover1' onclick='flip3(\"threeByThree_1\")'></div>"+
+               "<div id='threeCover2' onclick='flip3(\"threeByThree_2\")'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='threeCover3'></div>"+
-               "<div id='threeCover4'></div>"+
-               "<div id='threeCover5'></div>"+
+               "<div id='threeCover3' onclick='flip3(\"threeByThree_3\")'></div>"+
+               "<div id='threeCover4' onclick='flip3(\"threeByThree_4\")'></div>"+
+               "<div id='threeCover5' onclick='flip3(\"threeByThree_5\")'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='threeCover6'></div>"+
-               "<div id='threeCover7'></div>"+
-               "<div id='threeCover8'></div>"+
+               "<div id='threeCover6' onclick='flip3(\"threeByThree_6\")'></div>"+
+               "<div id='threeCover7' onclick='flip3(\"threeByThree_7\")'></div>"+
+               "<div id='threeCover8' onclick='flip3(\"threeByThree_8\")'></div>"+
                "</div>"+
-               "<div id='threeByThree_0' onclick='rotateNub(\"threeByThree_0\")'></div>"+
-               "<div id='threeByThree_1' onclick='rotate90(\"threeByThree_1\")'></div>"+
-               "<div id='threeByThree_2' onclick='rotate90(\"threeByThree_2\")'></div>"+
-               "<div style='clear:both'></div>"+
-				"<div id='threeByThree_3' onclick='rotate90(\"threeByThree_3\")'></div>"+
-				"<div id='threeByThree_4' onclick='rotate90(\"threeByThree_4\")'></div>"+
-				"<div id='threeByThree_5' onclick='rotate90(\"threeByThree_5\")'></div>"+
+               
+        "<div id='threeByThree_0' onclick='rotateAndCheck(0)'></div>"+
+        "<div id='threeByThree_1' onclick='rotateAndCheck(1)'></div>"+
+        "<div id='threeByThree_2' onclick='rotateAndCheck(2)'></div>"+
+        "<div style='clear:both'></div>"+
+				"<div id='threeByThree_3' onclick='rotateAndCheck(3)'></div>"+
+				"<div id='threeByThree_4' onclick='rotateAndCheck(4)'></div>"+
+				"<div id='threeByThree_5' onclick='rotateAndCheck(5)'></div>"+
 				"<div style='clear:both'></div>"+
-				"<div id='threeByThree_6' onclick='rotate90(\"threeByThree_6\")'></div>"+
-				"<div id='threeByThree_7' onclick='rotate90(\"threeByThree_7\")'></div>"+
-				"<div id='threeByThree_8' onclick='rotate90(\"threeByThree_8\")'></div>"+
+				"<div id='threeByThree_6' onclick='rotateAndCheck(6)'></div>"+
+				"<div id='threeByThree_7' onclick='rotateAndCheck(7)'></div>"+
+				"<div id='threeByThree_8' onclick='rotateAndCheck(8)'></div>"+
+		"</div>"+
+        
+        //the invisible solution grid 
+        "<div id = 'threeByThree_sol'>"+
+          "<div id='threeByThree_sol_0'></div>"+
+          "<div id='threeByThree_sol_1'></div>"+
+          "<div id='threeByThree_sol_2'></div>"+
+          "<div style='clear:both'></div>"+
+          "<div id='threeByThree_sol_3'></div>"+
+          "<div id='threeByThree_sol_4'></div>"+
+          "<div id='threeByThree_sol_5'></div>"+
+          "<div style='clear:both'></div>"+
+          "<div id='threeByThree_sol_6'></div>"+
+          "<div id='threeByThree_sol_7'></div>"+
+          "<div id='threeByThree_sol_8'></div>"+
+        "</div>"+
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
                 "<img src='img/button_flipall_3.png' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+                "<img src='img/button_menu.png' onclick='location.reload()'' id='menu'>",
 	 /**
 	 * This function initializes the reference variable to whichever id we need to change the content of.
 	 * in our app, this id is called "a"
@@ -504,6 +521,7 @@ var pageOptions = {
 	    this.reference.innerHTML = this.timeModeLevel3;
 	    arrayData.setIds();
 	    timeMode();
+	    initBoard3x3();
 	  },
 
 	  difficultySelect : function(){
@@ -523,7 +541,7 @@ function displayWin(){
 										"<input type='submit' value='Submit' style='margin-left:90px;margin-top:20px'>" +
 									"</form>" +
 				"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
+                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='location.reload()' id='menu'>";
       stopBackground();
       track.track3.play();
 }

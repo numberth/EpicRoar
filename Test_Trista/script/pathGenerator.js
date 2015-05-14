@@ -104,6 +104,7 @@
  * 
  */
     function initPath(){
+        
         this.grid_counter = 0; 
         this.unfilled_counter = 0;
         this.solution_counter = 0;

@@ -14,6 +14,7 @@
  * @type {Array} [ and Array of integers that each reperesnt the position of the tile or grid]
  */
 
+
 var grid_solution_tracer = new Array();
 var solution_match_counter;
 var nonSolutionValues = new Array(MAX*MAX);

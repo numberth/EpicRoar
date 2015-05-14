@@ -25,6 +25,8 @@
  *  [tile_cross] is represetented with a value of 5 in the switch statements 
  *@type {String} [image]
  */
+var MAX = 3;
+
 var tile_90 = ["img/tile_90_0.jpg","img/tile_90_1.jpg","img/tile_90_2.jpg","img/tile_90_3.jpg" ];
 var tile_nub =["img/tile_nub_0.jpg","img/tile_nub_1.jpg","img/tile_nub_2.jpg","img/tile_nub_3.jpg" ];
 var tile_t = ["img/tile_t_0.jpg","img/tile_t_1.jpg","img/tile_t_2.jpg","img/tile_t_3.jpg" ];
@@ -348,6 +350,7 @@ function threeSide(til){
  *
  */
 function rotate(til){
+if(enable){
 var tile = parseInt(til);
 		switch(tile_exit_counter_user[tile]){
 			case 1: 
@@ -365,6 +368,7 @@ var tile = parseInt(til);
 				break;
 		}
 	}
+}
 
 /**
  * If tile is connected to one of its surrounding tiles,
