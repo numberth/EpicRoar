@@ -125,8 +125,6 @@ function stopBackground(){
 function timeMode(){
 
 	if(!clock.lost){
-		clock.totalTimeInTenths--;
-		clock.computeTime();
 		clock.timerReference = document.getElementById('timeSquare');
 		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
 			return;
@@ -134,7 +132,8 @@ function timeMode(){
 		clock.timerReference.innerHTML = "Time left: " + clock.seconds;
 		clock.checkTime();    //checks if the user has time left.
 		if(!clock.pause2){
-				window.setTimeout(timeMode,100);
+				clock.seconds--;
+				window.setTimeout(timeMode,1000);
 		}
 	}else{
 		displayLoss();
@@ -179,22 +178,17 @@ function displayLoss(){
  * 
  */
 var clock = {
-	pause2 : false,
-	pauseState : 0,
-	lost : false,
-	totalTimeInTenths:100,  //self explanatory: this variable holds the total time in 1/10th of a second
+	pause2 : false,    //pause boolean
+	pauseState : 0,   //state of pause
+	lost : false, // lose game boolean
 	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
 								//to animate the timer
-	seconds : 0,				//variable that represents seconds (60 seconds per minute)
-	computeTime : function(){
-		this.seconds = this.totalTimeInTenths/10;
-	},
-
+	seconds : 20,				//variable that represents seconds (60 seconds per minute)
 	/**
 	 * This function checks if the user has run out of time.
 	 */
 	 checkTime : function(){
-	 	if(this.totalTimeInTenths<=0){
+	 	if(this.seconds<=0){
 	 		this.lost = true;
 	 	}
 	 }
