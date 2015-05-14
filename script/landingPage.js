@@ -147,12 +147,12 @@ function timeMode(){
 
 function displayLoss(){
 	pageOptions.reference.innerHTML = 	"<img src='img/bg_2.png' style='display:block;width:100%;height:100%'>"+
-//	"<button onclick='pageOptions.testTimeMode()' style='position:absolute;top:0'>Restart Level</button>"+
-	"<img src='img/tryagain.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%;position:absolute;bottom:260px;right:28px'>" +
-	"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='location.reload()' id='menu'>" +
-	"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' style='position:absolute;width:70px;height:auto;bottom:160px;left:80px' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='location.reload()' id='menu'>";
+
+	"<img src='img/tryagain.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" +
+	"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+    "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' style='position:absolute;width:70px;height:auto;bottom:160px;left:80px' onclick='playBackground()' id='yes'>" +
+	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='pageOptions.setPage()' id='no'>";
 
       stopBackground();
       clock.totalTimeInTenths = 50;
@@ -193,24 +193,26 @@ var pageOptions = {
 
 	/**
 	 * Here is the mainPage string, which saves what our main menu looks like on an html page. 
+	 	Consists of buttons: play, level, scores, audio, menu. Pressing buttons redirects to according page.
 	 */
 	mainPage : "<img src='img/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
-//	"<button onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>Play</button>" + 
-//	"<button onclick='pageOptions.setLevelPage()' id='levelModeButton'>Levels</button>" +
-//	"<button onclick='pageOptions.setSignUpPage()' id='signUpButton'>Sign Up</button>" +
-//	"<button onclick='pageOptions.setScorePage()' id='scoreButton'>High Scores</button>"
 	
 	"<img src= 'img/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>" +
 	"<img src= 'img/button_levels.png' onclick='pageOptions.setLevelPage()' id='levelModeButton'>" +
 	"<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>" +
 	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
-	//Half circle style selection gui for either zen or time mode.
-	modeSelectionPage : "<img src='img/halfCircle2a.png' onclick='pageOptions.setPage2()' style='display:block;width:80%;height:39%;margin:auto;margin-top:10%'/>"+
-						"<img src='img/halfCircle3a.png' onclick='pageOptions.testTimeMode()' style='display:block;width:80%;height:39%;margin:auto'/>"+
-						"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-					"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+//	Selection page consisting of tutorial, zen, timer, audio, and menu button. Pressing buttons redirects to according page.
+
+		modeSelectionPage : 
+				
+			"<img src= 'img/button_tutorial.png' onclick='pageOptions.setPage2()' id='tutorialButton'>" +
+				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage2()' id='zenButton'>" +
+				"<img src= 'img/button_time.png' onclick='pageOptions.testTimeMode()' id='timeButton'>" +
+				"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+	
 
 	/**
 	 *This string represents the level selection page. Currently there are 9 levels, but we can alway add more later.
@@ -228,7 +230,7 @@ var pageOptions = {
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	/**
 	 * This string represents the sign up form in our game
@@ -276,7 +278,7 @@ var pageOptions = {
 						"</table>" +
 					"</div>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-					"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	/**
 	 * This string represents level 2 in our game
@@ -300,7 +302,7 @@ var pageOptions = {
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
                 "<img src='img/button_flipall_3.png' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 
      /**
@@ -353,7 +355,7 @@ var pageOptions = {
         
         "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
         "<img src='img/button_flipall_3.png' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
-        "<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+        "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 
      /**
@@ -462,7 +464,7 @@ var pageOptions = {
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
                 "<img src='img/button_flipall_3.png' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='location.reload()'' id='menu'>",
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 	 /**
 	 * This function initializes the reference variable to whichever id we need to change the content of.
 	 * in our app, this id is called "a"
@@ -535,13 +537,15 @@ var pageOptions = {
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 function displayWin(){
-	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;margin-left:45px;margin-top:80px;width:80%;height:30%'>"+
-									"<form style='margin-top:50px;margin-left:65px'>" +
-										"<p>Your name: <input type='text' name='name'></p>" +
-										"<input type='submit' value='Submit' style='margin-left:90px;margin-top:20px'>" +
+	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:20%'>"+
+									"<form>" +
+										"<input type='text' name='name' value='Enter name here!' id='submit'>" +
+										"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
 									"</form>" +
-				"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='location.reload()' id='menu'>";
+
+
+				"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>";
       stopBackground();
       track.track3.play();
 }
