@@ -18,6 +18,7 @@
  *
  */
 function rotate(til){
+if(enable && clock.pause2 == false){
 var tile = parseInt(til);
 		switch(tile_exit_counter_user[tile]){
 			case 1: 
@@ -35,6 +36,7 @@ var tile = parseInt(til);
 				break;
 		}
 	}
+}
 
 /**
  * If tile is connected to one of its surrounding tiles,
