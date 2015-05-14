@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+you<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Dino Myte</title>
@@ -25,8 +25,7 @@
                    // pageOptions.setPage("a");
                 });
     </script>
-        <script type="text/javascript">
-
+    <script type="text/javascript">
 	var tile_90x = ["img/tile_90_0.jpg","img/tile_90_1.jpg","img/tile_90_2.jpg","img/tile_90_3.jpg" ];
 	var tile_nubx =["img/tile_nub_0.jpg","img/tile_nub_1.jpg","img/tile_nub_2.jpg","img/tile_nub_3.jpg" ];
 	var tile_linex = ["img/tile_line_0.jpg","img/tile_line_1.jpg"];
@@ -47,24 +46,30 @@
 	}
 
 	function rotate90x(img){
+		if(enable){
 		var tile_imagex = document.getElementById(img);
-		tile_imagex.style.backgroundImage = "url('" + tile_90[tile_counterx] + "')";
+		tile_imagex.style.backgroundImage = "url('" + tile_90x[tile_counterx] + "')";
 		counterLoopx();
 		verifyx();
+	}
 	}
 
 	function rotateNubx(img){
+		if(enable){
 		var tile_imagex = document.getElementById(img);
-		tile_imagex.style.backgroundImage = "url('" + tile_nub[tile_counterx] + "')";
+		tile_imagex.style.backgroundImage = "url('" + tile_nubx[tile_counterx] + "')";
 		counterLoopx();
 		verifyx();
 	}
+	}
 
 	function rotateLinex(img){
+		if(enable){
 		var tile_imagex = document.getElementById(img);
-		tile_imagex.style.backgroundImage = "url('" + tile_line[tile_counterx] + "')";
+		tile_imagex.style.backgroundImage = "url('" + tile_linex[tile_counterx] + "')";
 		counterLoop2x();
 		verifyx();
+	}
 	}
 
 
@@ -86,8 +91,53 @@
 			}
 		}
 	}
-	</script>
 
+	function rotate90x1(img){
+		if(enable){
+		var tile_imagex1 = document.getElementById(img);
+		tile_imagex1.style.backgroundImage = "url('" + tile_90x[tile_counterx] + "')";
+		counterLoopx();
+		verifyx1();
+	}
+	}
+
+	function rotateNubx1(img){
+		if(enable){
+		var tile_imagex1 = document.getElementById(img);
+		tile_imagex1.style.backgroundImage = "url('" + tile_nubx[tile_counterx] + "')";
+		counterLoopx();
+		verifyx1();
+	}
+	}
+
+	function rotateLinex1(img){
+		if(enable){
+		var tile_imagex1 = document.getElementById(img);
+		tile_imagex1.style.backgroundImage = "url('" + tile_linex[tile_counterx] + "')";
+		counterLoop2x();
+		verifyx1();
+	}
+	}
+
+	function verifyx1(){
+		var pic1 = $(twoByTwo_00).css('background-image');
+		var pic2 = $(twoByTwo_02).css('background-image');
+		var pic3 = $(twoByTwo_03).css('background-image');
+		var cleanup = /\"|\'|\)/g;
+		var pic01 = pic1.split('/').pop().replace(cleanup, '');
+		var pic02 = pic2.split('/').pop().replace(cleanup, ''); 
+		var pic03 = pic3.split('/').pop().replace(cleanup, '');
+
+		if (pic01 == "tile_nub_2.jpg"){
+			if(pic02 == "tile_90_0.jpg"){
+				if(pic03 == "tile_nub_3.jpg"){
+					//alert("Congratulations!")
+					flipWin02();
+				}
+			}
+		}
+	}
+	</script>
 
 </head>
 

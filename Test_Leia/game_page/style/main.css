@@ -74,6 +74,22 @@
 	left:10px;
 }
 
+.rightArrow {
+	position:absolute;
+	width:15%;
+	height:10%;
+	top:44%;
+	right:1.5%;
+}
+
+.leftArrow {
+	position:absolute;
+	width:15%;
+	height:10%;
+	top:44%;
+	left:1.5%;
+}
+
 #menu {
 	position:absolute;
 	width:20%;
@@ -82,13 +98,14 @@
 	right:10px;
 }
 
-#allFlip{
+#allFlip {
 	position:absolute;
 	width:20%;
 	height:auto;
 	bottom:10px;
 	left:28%; 
 }
+
 
 /* divs matrices for 2x2*/
 
@@ -125,7 +142,52 @@
 	border-width:2px;
 }
 
-#twoByTwo_0, #twoByTwo_1, #twoByTwo_2, #twoByTwo_3{
+#twoByTwo_0{
+	background-image: url(../img/tile_nub_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:35%;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#twoByTwo_1{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:35%;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#twoByTwo_2{
+	background-image: url(../img/tile_line_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:35%;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#twoByTwo_3{
 	background-image: url(../img/tile_nub_0.jpg);
 	background-size:100% 100%;
 	text-align:center;
@@ -176,7 +238,127 @@
 	border-width:2px;
 }
 
-#threeByThree_0, #threeByThree_1, #threeByThree_2, #threeByThree_3, #threeByThree_4, #threeByThree_5, #threeByThree_6, #threeByThree_7, #threeByThree_8{
+#threeByThree_0{
+	background-image: url(../img/tile_nub_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:16vh;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#threeByThree_1{
+	background-image: url(../img/tile_nub_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:16vh;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#threeByThree_2{
+	background-image: url(../img/tile_nub_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:16vh;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#threeByThree_3{
+	background-image: url(../img/tile_nub_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:16vh;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#threeByThree_4{
+	background-image: url(../img/tile_nub_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:16vh;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#threeByThree_5{
+	background-image: url(../img/tile_nub_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:16vh;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#threeByThree_6{
+	background-image: url(../img/tile_nub_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:16vh;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#threeByThree_7{
+	background-image: url(../img/tile_nub_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:16vh;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#threeByThree_8{
 	background-image: url(../img/tile_nub_0.jpg);
 	background-size:100% 100%;
 	text-align:center;
@@ -227,7 +409,7 @@
 	border-width:2px;
 }
 
-#fourByFour_0, #fourByFour_1, #fourByFour_2, #fourByFour_3, #fourByFour_4, #fourByFour_5, #fourByFour_6, #fourByFour_7, #fourByFour_8, #fourByFour_9, #fourByFour_10, #fourByFour_11, #fourByFour_12, #fourByFour_13, #fourByFour_14, #fourByFour_15{
+#fourByFour_0{
 	background-image: url(../img/tile_90_0.jpg);
 	background-size:100% 100%;
 	text-align:center;
@@ -240,6 +422,236 @@
 	float:left;
 	z-index: -1;
 	position: relative;
+}
+
+#fourByFour_1{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_2{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_3{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_4{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_5{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_6{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_7{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_8{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_9{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_10{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_11{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_12{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_13{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_14{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#fourByFour_15{
+	background-image: url(../img/tile_90_0.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	z-index: -1;
+	position: relative;
+}
+
+#threeByThree_sol {
+	width:0;
+	height:0;
 }
 /*
 

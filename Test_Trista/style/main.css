@@ -90,6 +90,14 @@
 	left:28%; 
 }
 
+#pauseTimer{
+	position:absolute;
+	width:20%;
+	height:auto;
+	bottom:10px;
+	left:53%; 
+}
+
 /* divs matrices for 2x2*/
 
 #twoBoard{
@@ -185,6 +193,65 @@
 	position: relative;
 }
 
+#twoByTwo_00{
+	background-image: url(../img/tile_nub_1.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:35%;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#twoByTwo_01{
+	background-image: url(../img/tile_nub_3.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:35%;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#twoByTwo_02{
+	background-image: url(../img/tile_90_3.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:35%;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
+
+#twoByTwo_03{
+	background-image: url(../img/tile_nub_2.jpg);
+	background-size:100% 100%;
+	text-align:center;
+	width:35%;
+	height:15vh;
+	border-style:solid;
+	border-color:#996633;
+	border-width:2px;
+	float:left;
+	margin:1%;
+	z-index: -1;
+	position: relative;
+}
 
 /* div matrix for 3x3 */
 

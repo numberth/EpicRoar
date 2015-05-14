@@ -35,7 +35,7 @@ var track = {
     init : function(){
     	this.track1 = new Audio();
     	this.track1.src = "sounds/umbala.mp3";
-    	this.track1.volume = 0.0;
+    	this.track1.volume = 0.3;
     	this.track1.loop = true;
     	this.track2 = new Audio();
     	this.track2.src = "sounds/jpark.mp3";
@@ -125,18 +125,34 @@ function stopBackground(){
 function timeMode(){
 
 	if(!clock.lost){
-		clock.totalTimeInTenths--;
-		clock.computeTime();
 		clock.timerReference = document.getElementById('timeSquare');
 		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
 			return;
 		}
 		clock.timerReference.innerHTML = "Time left: " + clock.seconds;
 		clock.checkTime();    //checks if the user has time left.
-		window.setTimeout(timeMode,100);
+		if(!clock.pause2){
+				clock.seconds--;
+				window.setTimeout(timeMode,1000);
+		}
 	}else{
 		displayLoss();
 	}
+}
+
+
+
+function setPause(){
+	if(clock.pauseState==0){
+		clock.pause2 = true;
+		clock.pauseState++;
+		document.getElementById('pauseTimer').src = 'img/button_pause.png';
+	}else{
+		clock.pause2 = false;
+		clock.pauseState = 0;
+		document.getElementById('pauseTimer').src = 'img/button_check.png';
+	}
+	timeMode();
 }
 
 /**
@@ -149,10 +165,10 @@ function displayLoss(){
 	pageOptions.reference.innerHTML = 	"<img src='img/bg_2.png' style='display:block;width:100%;height:100%'>"+
 //	"<button onclick='pageOptions.testTimeMode()' style='position:absolute;top:0'>Restart Level</button>"+
 	"<img src='img/tryagain.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%;position:absolute;bottom:260px;right:28px'>" +
-	"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='location.reload()' id='menu'>" +
+	"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>" +
 	"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
     "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' style='position:absolute;width:70px;height:auto;bottom:160px;left:80px' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='location.reload()' id='menu'>";
+	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='pageOptions.setPage()' id='menu'>";
 
       stopBackground();
       clock.totalTimeInTenths = 50;
@@ -164,20 +180,17 @@ function displayLoss(){
  * 
  */
 var clock = {
-	lost : false,
-	totalTimeInTenths:100,  //self explanatory: this variable holds the total time in 1/10th of a second
+	pause2 : false,    //pause boolean
+	pauseState : 0,   //state of pause
+	lost : false, // lose game boolean
 	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
 								//to animate the timer
-	seconds : 0,				//variable that represents seconds (60 seconds per minute)
-	computeTime : function(){
-		this.seconds = this.totalTimeInTenths/10;
-	},
-
+	seconds : 20,				//variable that represents seconds (60 seconds per minute)
 	/**
 	 * This function checks if the user has run out of time.
 	 */
 	 checkTime : function(){
-	 	if(this.totalTimeInTenths<=0){
+	 	if(this.seconds<=0){
 	 		this.lost = true;
 	 	}
 	 }
@@ -189,6 +202,7 @@ var clock = {
 *in the divisions.
 */
 var pageOptions = {
+
 	reference : undefined,  //reference variable that will point towards the content division, for easy updating of our app content
 
 	/**
@@ -204,31 +218,31 @@ var pageOptions = {
 	"<img src= 'img/button_levels.png' onclick='pageOptions.setLevelPage()' id='levelModeButton'>" +
 	"<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>" +
 	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	//Half circle style selection gui for either zen or time mode.
-	modeSelectionPage : "<img src='img/halfCircle2a.png' onclick='pageOptions.setPage2()' style='display:block;width:80%;height:39%;margin:auto;margin-top:10%'/>"+
+	modeSelectionPage : "<img src='img/halfCircle2a.png' onclick='pageOptions.setPage1()' style='display:block;width:80%;height:39%;margin:auto;margin-top:10%'/>"+
 						"<img src='img/halfCircle3a.png' onclick='pageOptions.testTimeMode()' style='display:block;width:80%;height:39%;margin:auto'/>"+
 						"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-					"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	/**
 	 *This string represents the level selection page. Currently there are 9 levels, but we can alway add more later.
 	 */
-	levelPage : "<img src='img/level_1.png' onclick='pageOptions.setPage2()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" + 
-				"<img src='img/level_2.png' onclick='pageOptions.testTimeMode()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
+	levelPage : "<img src='img/level_1.png' onclick='pageOptions.setPage1()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" + 
+				"<img src='img/level_2.png' onclick='pageOptions.setPage2()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
 				"<img src='img/level_3.png' onclick='pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/level_4.png' onclick = 'pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/level_5.png' onclick = 'pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/level_6.png' onclick = 'pageOptions.setPage4()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/level_7.png' onclick = 'pageOptions.testTimeMode()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	/**
 	 * This string represents the sign up form in our game
@@ -276,9 +290,33 @@ var pageOptions = {
 						"</table>" +
 					"</div>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-					"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	/**
+	 * This string represents level 1 in our game
+	 */
+	
+	level1 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 1</h3>"+
+        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
+        "<div id='twoBoard'>"+
+        "<div id='twoBoardCover'>"+
+        		"<div id='cover0' onclick='flip02(\"twoByTwo_00\")'></div>"+
+               "<div id='cover1' onclick='flip02(\"twoByTwo_01\")'></div>"+
+               "<div style='clear:both'></div>"+
+               "<div id='cover2' onclick='flip02(\"twoByTwo_02\")'></div>"+
+               "<div id='cover3' onclick='flip02(\"twoByTwo_03\")'></div>"+
+               "</div>"+
+               "<div id='twoByTwo_00' onclick='rotateNubx1(\"twoByTwo_00\")'></div>"+
+               "<div id='twoByTwo_01' onclick='rotateLinex1(\"twoByTwo_01\")'></div>"+
+               "<div style='clear:both'></div>"+
+				"<div id='twoByTwo_02' onclick='rotate90x1(\"twoByTwo_02\")'></div><div id='twoByTwo_03' onclick='rotateNubx1(\"twoByTwo_03\")'></div></div>"+
+
+                //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
+                "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+                "<img src='' onclick='flipAll(\"twoByTwo_0\")' id='allFlip'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+
+    	/**
 	 * This string represents level 2 in our game
 	 */
 	
@@ -300,8 +338,7 @@ var pageOptions = {
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
                 "<img src='img/button_flipall_3.png' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
-
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
      /**
 	 * This string stores level3 of our game
@@ -353,7 +390,7 @@ var pageOptions = {
         
         "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
         "<img src='img/button_flipall_3.png' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
-        "<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+        "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 
      /**
@@ -361,58 +398,82 @@ var pageOptions = {
 	 */
     level4 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 4</h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
-    	"<div id='fourBoard'>"+
+      "<div id='fourBoard'>"+
         "<div id='fourBoardCover'>"+
-        		"<div id='fourCover0'></div>"+
-               "<div id='fourCover1'></div>"+
-               "<div id='fourCover2'></div>"+
-               "<div id='fourCover3'></div>"+
+            "<div id='fourCover0' onclick='flip4(\"fourByFour_0\")'></div>"+
+               "<div id='fourCover1' onclick='flip4(\"fourByFour_1\")'></div>"+
+               "<div id='fourCover2' onclick='flip4(\"fourByFour_2\")'></div>"+
+               "<div id='fourCover3' onclick='flip4(\"fourByFour_3\")'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='fourCover4'></div>"+
-               "<div id='fourCover5'></div>"+
-               "<div id='fourCover6'></div>"+
-               "<div id='fourCover7'></div>"+
+               "<div id='fourCover4' onclick='flip4(\"fourByFour_4\")'></div>"+
+               "<div id='fourCover5' onclick='flip4(\"fourByFour_5\")'></div>"+
+               "<div id='fourCover6' onclick='flip4(\"fourByFour_6\")'></div>"+
+               "<div id='fourCover7' onclick='flip4(\"fourByFour_7\")'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='fourCover8'></div>"+
-               "<div id='fourCover9'></div>"+
-               "<div id='fourCover10'></div>"+
-               "<div id='fourCover11'></div>"+
+               "<div id='fourCover8' onclick='flip4(\"fourByFour_8\")'></div>"+
+               "<div id='fourCover9' onclick='flip4(\"fourByFour_9\")'></div>"+
+               "<div id='fourCover10' onclick='flip4(\"fourByFour_10\")'></div>"+
+               "<div id='fourCover11' onclick='flip4(\"fourByFour_11\")'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='fourCover12'></div>"+
-               "<div id='fourCover13'></div>"+
-               "<div id='fourCover14'></div>"+
-               "<div id='fourCover15'></div>"+
+               "<div id='fourCover12' onclick='flip4(\"fourByFour_12\")'></div>"+
+               "<div id='fourCover13' onclick='flip4(\"fourByFour_13\")'></div>"+
+               "<div id='fourCover14' onclick='flip4(\"fourByFour_14\")'></div>"+
+               "<div id='fourCover15' onclick='flip4(\"fourByFour_15\")'></div>"+
                "</div>"+
-               "<div id='fourByFour_0' onclick='rotateNub(\"fourByFour_0\")'></div>"+
-               "<div id='fourByFour_1' onclick='rotate90(\"fourByFour_1\")'></div>"+
-               "<div id='fourByFour_2' onclick='rotate90(\"fourByFour_2\")'></div>"+
-               "<div id='fourByFour_3' onclick='rotate90(\"fourByFour_3\")'></div>"+
-               "<div style='clear:both'></div>"+
-				"<div id='fourByFour_4' onclick='rotate90(\"fourByFour_4\")'></div>"+
-				"<div id='fourByFour_5' onclick='rotate90(\"fourByFour_5\")'></div>"+
-				"<div id='fourByFour_6' onclick='rotate90(\"fourByFour_6\")'></div>"+
-				"<div id='fourByFour_7' onclick='rotate90(\"fourByFour_7\")'></div>"+
-				"<div style='clear:both'></div>"+
-				"<div id='fourByFour_8' onclick='rotate90(\"fourByFour_8\")'></div>"+
-				"<div id='fourByFour_9' onclick='rotate90(\"fourByFour_9\")'></div>"+
-				"<div id='fourByFour_10' onclick='rotate90(\"fourByFour_10\")'></div>"+
-				"<div id='fourByFour_11' onclick='rotate90(\"fourByFour_11\")'></div>"+
-				"<div style='clear:both'></div>"+
-				"<div id='fourByFour_12' onclick='rotate90(\"fourByFour_12\")'></div>"+
-				"<div id='fourByFour_13' onclick='rotate90(\"fourByFour_13\")'></div>"+
-				"<div id='fourByFour_14' onclick='rotate90(\"fourByFour_14\")'></div>"+
-				"<div id='fourByFour_15' onclick='rotate90(\"fourByFour_15\")'></div>"+
 
+        "<div id='fourByFour_0' onclick='rotateAndCheck(0)'></div>"+
+        "<div id='fourByFour_1' onclick='rotateAndCheck(1)'></div>"+
+        "<div id='fourByFour_2' onclick='rotateAndCheck(2)'></div>"+
+        "<div id='fourByFour_3' onclick='rotateAndCheck(3)'></div>"+
+        "<div style='clear:both'></div>"+
+        "<div id='fourByFour_4' onclick='rotateAndCheck(4)'></div>"+
+        "<div id='fourByFour_5' onclick='rotateAndCheck(5)'></div>"+
+        "<div id='fourByFour_6' onclick='rotateAndCheck(6)'></div>"+
+        "<div id='fourByFour_7' onclick='rotateAndCheck(7)'></div>"+
+        "<div style='clear:both'></div>"+
+        "<div id='fourByFour_8' onclick='rotateAndCheck(8)'></div>"+
+        "<div id='fourByFour_9' onclick='rotateAndCheck(9)'></div>"+
+        "<div id='fourByFour_10' onclick='rotateAndCheck(10)'></div>"+
+        "<div id='fourByFour_11' onclick='rotateAndCheck(11)'></div>"+
+        "<div style='clear:both'></div>"+
+        "<div id='fourByFour_12' onclick='rotateAndCheck(12)'></div>"+
+        "<div id='fourByFour_13' onclick='rotateAndCheck(13)'></div>"+
+        "<div id='fourByFour_14' onclick='rotateAndCheck(14)'></div>"+
+        "<div id='fourByFour_15' onclick='rotateAndCheck(15)'></div>"+
+        
+        "<div id='fourByFour_sol'>"+
+          "<div id='fourByFour_sol_0'></div>"+
+          "<div id='fourByFour_sol_1'></div>"+
+          "<div id='fourByFour_sol_2'></div>"+
+          "<div id='fourByFour_sol_3'></div>"+
+          "<div style='clear:both'></div>"+
+          "<div id='fourByFour_sol_4'></div>"+
+          "<div id='fourByFour_sol_5'></div>"+
+          "<div id='fourByFour_sol_6'></div>"+
+          "<div id='fourByFour_sol_7'></div>"+
+          "<div style='clear:both'></div>"+
+          "<div id='fourByFour_sol_8'></div>"+
+          "<div id='fourByFour_sol_9'></div>"+
+          "<div id='fourByFour_sol_10'></div>"+
+          "<div id='fourByFour_sol_11'></div>"+
+          "<div style='clear:both'></div>"+
+          "<div id='fourByFour_sol_12'></div>"+
+          "<div id='fourByFour_sol_13'></div>"+
+          "<div id='fourByFour_sol_14'></div>"+
+          "<div id='fourByFour_sol_15'></div>"+
+        "</div>"+
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
                 "<img src='img/button_flipall_3.png' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
+
+
     /**
 	 * This String will be deleted soon when we polish our time mode. For now it is just
 	 * a prototype of the timed mode, and works well.
 	 */
-    timeModeLevel3 : 
+    timeModeLevel1 : 
     "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 3</h3>"+
     "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;margin-top:15px;' id='timeSquare'></h3>"+
     // "<p id='timeSquare' style='display:block;margin:auto;text-align:center;height:90px;padding-top:20px;color:white;font-size:18px'></p>" +
@@ -461,8 +522,9 @@ var pageOptions = {
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_flipall_3.png' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='location.reload()'' id='menu'>",
+                "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
+                "<img src='img/button_pause.png' onclick='setPause()' id='pauseTimer'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()'' id='menu'>",
 	 /**
 	 * This function initializes the reference variable to whichever id we need to change the content of.
 	 * in our app, this id is called "a"
@@ -494,12 +556,23 @@ var pageOptions = {
 		this.reference.innerHTML = this.highScorePage;
 	},
 
-	//sets the game to level 2
-	setPage2 : function(){
+	//sets the game to level 1
+	setPage1 : function(){
 		stopBackground();
 		track.currentPage = 0;
 		playBackground();
+		this.reference.innerHTML = this.level1;
+		flipImg();
+	},
+
+	//sets the game to level 2
+	setPage2 : function(){
+		stopBackground();
+		track.currentPage = 1;
+		playBackground();
 		this.reference.innerHTML = this.level2;
+		arrayData.setIds();
+		flipImg();
 	},
 
 	//sets the game to level 3
@@ -510,6 +583,18 @@ var pageOptions = {
 		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
 		initBoard3x3();
+		flipImg();
+	},
+
+	//sets the game to level 3
+	setPage4 : function(){
+		stopBackground();
+		track.currentPage = 1;
+		playBackground();
+		this.reference.innerHTML = this.level4;
+		arrayData.setIds();
+		initBoard4x4();
+		flipImg();
 	},
 
 	  //This function is just a placeholder, later on we will be implementing timed mode only if the user
@@ -518,10 +603,11 @@ var pageOptions = {
 	    stopBackground();
 	    track.currentPage = 1;
 	    playBackground();
-	    this.reference.innerHTML = this.timeModeLevel3;
+	    this.reference.innerHTML = this.timeModeLevel1;
 	    arrayData.setIds();
 	    timeMode();
 	    initBoard3x3();
+	    flipImg();
 	  },
 
 	  difficultySelect : function(){
@@ -535,13 +621,14 @@ var pageOptions = {
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 function displayWin(){
+
 	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;margin-left:45px;margin-top:80px;width:80%;height:30%'>"+
 									"<form style='margin-top:50px;margin-left:65px'>" +
 										"<p>Your name: <input type='text' name='name'></p>" +
 										"<input type='submit' value='Submit' style='margin-left:90px;margin-top:20px'>" +
 									"</form>" +
 				"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='location.reload()' id='menu'>";
+                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
       stopBackground();
       track.track3.play();
 }

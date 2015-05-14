@@ -169,7 +169,7 @@ function displayLoss(){
 	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='location.reload()' id='menu'>";
 
       stopBackground();
-      clock.totalTimeInTenths = 50;
+      clock.seconds = 20;
       clock.lost = false;
 }
 
@@ -245,8 +245,14 @@ var pageOptions = {
 			this.levelPage += "<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>";
 		}
 
+		if(levelUnlock.lvl4===true){
+			this.levelPage += "<img src='img/level_4.png' onclick='pageOptions.setPage4()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" ;
+		}else{
+			this.levelPage += "<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>";
+		}
+
+
 		this.levelPage +="<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
@@ -528,20 +534,27 @@ var pageOptions = {
 
 	//sets the game to level 2
 	setPage2 : function(){
-		stopBackground();
+		levelUnlock.currentLevel = 2;
 		track.currentPage = 0;
-		playBackground();
 		this.setLevelUnlock();
 		this.reference.innerHTML = this.level2;
 	},
 
 	//sets the game to level 3
 	setPage3 : function(){
+		levelUnlock.currentLevel = 3;
 		this.setLevelUnlock();
-		stopBackground();
 		track.currentPage = 1;
-		playBackground();
 		this.reference.innerHTML = this.level3;
+		arrayData.setIds();
+		initBoard3x3();
+	},
+
+	setPage4 : function(){
+		levelUnlock.currentLevel = 4;
+		this.setLevelUnlock();
+		track.currentPage = 1;
+		this.reference.innerHTML = this.level4;
 		arrayData.setIds();
 		initBoard3x3();
 	},
@@ -571,13 +584,45 @@ var pageOptions = {
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 function displayWin(){
+	pageOptions.reference.innerHTML = "";
 	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;margin-left:45px;margin-top:80px;width:80%;height:30%'>"+
 									"<form style='margin-top:50px;margin-left:65px'>" +
 										"<p>Your name: <input type='text' name='name'></p>" +
 										"<input type='submit' value='Submit' style='margin-left:90px;margin-top:20px'>" +
 									"</form>" +
 				"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='location.reload()' id='menu'>";
+                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
+
+                switch(levelUnlock.currentLevel){
+                	case 1: levelUnlock.lvl2 = true;
+                			pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage2()'>Next Page</button>";
+                		break;
+                	case 2:
+                			levelUnlock.lvl2 = true;
+                			pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage3()'>Next Page</button>";
+                		break;
+                	case 3:
+                			levelUnlock.lvl3 = true;
+                			levelUnlock.lvl4 = true;
+                			pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage4()'>Next Page</button>";
+                		break;
+                	case 4:
+		                	levelUnlock.lvl4 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage5()'>Next Page</button>";
+                		break;
+                	case 5:
+                		break;
+                	case 6:
+                		break;
+                	case 7:
+                		break;
+                	default:
+                		break;
+                }
       stopBackground();
       track.track3.play();
 }
@@ -703,6 +748,9 @@ var levelUnlock = {
 	lvl6: false,
 	lvl7: false,
 	lvl8 : false,
-	lvl9 : false
+	lvl9 : false,
+
+	currentLevel : 1
 
 }
+

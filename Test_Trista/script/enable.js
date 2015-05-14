@@ -22,6 +22,28 @@ var enable = false;
  */
 var allowedFlip = 3;
 
+/**
+ * Outputs the image for flip all according to the number of flips still allowed.
+ */
+function flipImg(){
+	switch(allowedFlip){
+		case 2:
+			document.getElementById('allFlip').src = 'img/button_flipall_2.png';
+			break;
+
+		case 1:
+			document.getElementById('allFlip').src = 'img/button_flipall_1.png';
+			break;
+
+		case 0:
+			document.getElementById('allFlip').src = 'img/button_flipall_0.png';
+			break;
+		default:
+			document.getElementById('allFlip').src = 'img/button_flipall_3.png';
+			break;
+	}
+}
+
 //temporary flip function for testing purposes
 function flip2(id){
 	var two = "twoByTwo_";
@@ -32,13 +54,26 @@ function flip2(id){
 		}
 }
 
+function flip02(id){
+	var two = "twoByTwo_0";
+	for(var i=0; i < 16; i++){
+			document.getElementById(two + i).style.zIndex = '-1';
+			document.getElementById(id).style.zIndex = '1';
+			enable = true;
+		}
+}
+
 function flip3(id){
+if(clock.pause2 == false){
 	var three = "threeByThree_";
 	for(var i=0; i < 16; i++){
 			document.getElementById(three + i).style.zIndex = '-1';
 			document.getElementById(id).style.zIndex = '1';
 			enable = true;
 		}
+	}else if(clock.pause2 == true){
+		enable = false;
+	}
 }
 
 function flip4(id){
@@ -62,14 +97,14 @@ function flip4(id){
  * @return {[boolean]}    [indicates whether a function is allowed or not.]
  */
 function enableFunction(id) {
-	var road_zIndex = document.getElementById(id).style.zIndex;
-	if(road_zIndex == '1') {	
-		enable = true;
-		alert('enabled'); 
-	} else if(road_zIndex != '1') {
-		enable = false;
-		alert('disabled');
-	}
+	// var road_zIndex = document.getElementById(id).style.zIndex;
+	// if(road_zIndex == '1') {	
+	// 	enable = true;
+	// 	alert('enabled'); 
+	// } else if(road_zIndex != '1') {
+	// 	enable = false;
+	// 	alert('disabled');
+	// }
 	return enable;
 }
 
@@ -84,23 +119,10 @@ function enableFunction(id) {
  * FlipAll image will change according to the amount of flipAlls left.
  */
 function flipAll(id){
-	if(allowedFlip > 0){
-	switch(allowedFlip){
-		case 3:
-			document.getElementById('allFlip').src = 'img/button_flipall_2.png';
-			break;
-
-		case 2:
-			document.getElementById('allFlip').src = 'img/button_flipall_1.png';
-			break;
-
-		case 1:
-			document.getElementById('allFlip').src = 'img/button_flipall_0.png';
-			break;
-	}
+if(allowedFlip > 0){
 		enable = false;
 		allowedFlip--;
-
+		flipImg();
 		setTimeout(function(){ flipAllBack(id);},1500);
 
 		for(var i=0; i < 16; i++){
@@ -138,5 +160,13 @@ function flipWin2(){
 	setTimeout(displayWin, 1500);
 	for(var i=0; i < 16; i++){
 			document.getElementById("twoByTwo_" + i).style.zIndex = 1;
+		}
+}
+
+function flipWin02(){
+	enable = false;
+	setTimeout(displayWin, 1500);
+	for(var i=0; i < 16; i++){
+			document.getElementById("twoByTwo_0" + i).style.zIndex = 1;
 		}
 }
