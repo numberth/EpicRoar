@@ -98,20 +98,36 @@
 }
 
 #yes{
-	position:absolute;
-	width:20%;
+	margin:0;
+	margin-left: 18%;
+	display:block;
 	height:auto;
-	bottom:10px;
-	left:10px;
+	width:20%;
+	text-align:center;
+	margin-top:5%;
 }
 
 
 #no{
-	position:absolute;
-	width:20%;
+	margin:0;
+	margin-left: 60%;
+	display:block;
 	height:auto;
-	bottom:10px;
-	right:30px;
+	width:20%;
+	text-align:center;
+	margin-top:-20%;
+}
+
+#tryAgain{
+	margin:0;
+	margin-left: 13%;
+	display:block;
+	height:auto;
+	width:75%;
+	text-align:center;
+	margin-top:-120%;
+
+
 }
 
 #bottom{
@@ -125,7 +141,7 @@
 	height:10vh;
 }
 
-#ayy {
+#ayy{
 	position:absolute;
 	width:20%;
 	height:auto;
@@ -135,7 +151,7 @@
 
 }
 
-#menu {
+#menu{
 	position:absolute;
 	width:20%;
 	height:auto;
