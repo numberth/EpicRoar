@@ -630,6 +630,11 @@
 	z-index: -1;
 	position: relative;
 }
+
+#threeByThree_sol {
+	width:0;
+	height:0;
+}
 /*
 
 #fourByFour_:hover{

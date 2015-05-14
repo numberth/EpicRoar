@@ -27,7 +27,8 @@ function flip2(id){
 	var two = "twoByTwo_";
 	for(var i=0; i < 16; i++){
 			document.getElementById(two + i).style.zIndex = '-1';
-			document.getElementById(id).style.zIndex = '3';
+			document.getElementById(id).style.zIndex = '1';
+			enable = true;
 		}
 }
 
@@ -35,7 +36,8 @@ function flip3(id){
 	var three = "threeByThree_";
 	for(var i=0; i < 16; i++){
 			document.getElementById(three + i).style.zIndex = '-1';
-			document.getElementById(id).style.zIndex = '3';
+			document.getElementById(id).style.zIndex = '1';
+			enable = true;
 		}
 }
 
@@ -43,7 +45,8 @@ function flip4(id){
 	var four = "fourByFour_";
 	for(var i=0; i < 16; i++){
 			document.getElementById(four + i).style.zIndex = '-1';
-			document.getElementById(id).style.zIndex = '3';
+			document.getElementById(id).style.zIndex = '1';
+			enable = true;
 		}
 }
 
@@ -52,7 +55,9 @@ function flip4(id){
  * This function detects the z-index of the cover tiles. 
  * When it is -1 (therefore road tiles show through), function is true, therefore rotate can happen.
  * (It is assumed that cover tile will start with z-index of 1, road tile with 0.)
- * 
+ * /////////////////////////////
+ * Function may not be used; only variable is being used to disable rotate when necessary.
+ * /////////////////////////////
  * @param  {[ID input]} id [indicates the ID for which the function will be used.]
  * @return {[boolean]}    [indicates whether a function is allowed or not.]
  */
@@ -99,7 +104,7 @@ function flipAll(id){
 		setTimeout(function(){ flipAllBack(id);},1500);
 
 		for(var i=0; i < 16; i++){
-			document.getElementById(id + i).style.zIndex = 2;
+			document.getElementById(id + i).style.zIndex = 1;
 		}
 	}
 }
@@ -113,5 +118,25 @@ function flipAll(id){
 function flipAllBack(id){
 		for(var i=0; i < 16; i++){
 			document.getElementById(id + i).style.zIndex = '-1';
+		}
+}
+
+/**
+ * Flips all cards over after routes have been connected. 
+ * Temporary place holder until function is created for only flipping over the solution path.
+ */
+function flipWin3(){
+	enable = false;
+	setTimeout(displayWin, 2000);
+	for(var i=0; i < 16; i++){
+			document.getElementById("threeByThree_" + i).style.zIndex = 1;
+		}
+}
+
+function flipWin2(){
+	enable = false;
+	setTimeout(displayWin, 1500);
+	for(var i=0; i < 16; i++){
+			document.getElementById("twoByTwo_" + i).style.zIndex = 1;
 		}
 }
