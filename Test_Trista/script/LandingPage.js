@@ -234,7 +234,7 @@ var pageOptions = {
 				"<img src='img/level_3.png' onclick='pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
 				"<img src='img/level_4.png' onclick = 'pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/level_5.png' onclick = 'pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/level_6.png' onclick = 'pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/level_6.png' onclick = 'pageOptions.setPage4()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/level_7.png' onclick = 'pageOptions.testTimeMode()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
@@ -396,54 +396,78 @@ var pageOptions = {
      /**
 	 * This string stores level 4 of our game
 	 */
-    level7 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 4</h3>"+
+    level4 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 4</h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
-    	"<div id='fourBoard'>"+
+      "<div id='fourBoard'>"+
         "<div id='fourBoardCover'>"+
-        		"<div id='fourCover0'></div>"+
-               "<div id='fourCover1'></div>"+
-               "<div id='fourCover2'></div>"+
-               "<div id='fourCover3'></div>"+
+            "<div id='fourCover0' onclick='flip3(\"fourByFour_0\")'></div>"+
+               "<div id='fourCover1' onclick='flip3(\"fourByFour_1\")'></div>"+
+               "<div id='fourCover2' onclick='flip3(\"fourByFour_2\")'></div>"+
+               "<div id='fourCover3' onclick='flip3(\"fourByFour_3\")'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='fourCover4'></div>"+
-               "<div id='fourCover5'></div>"+
-               "<div id='fourCover6'></div>"+
-               "<div id='fourCover7'></div>"+
+               "<div id='fourCover4' onclick='flip3(\"fourByFour_4\")'></div>"+
+               "<div id='fourCover5' onclick='flip3(\"fourByFour_5\")'></div>"+
+               "<div id='fourCover6' onclick='flip3(\"fourByFour_6\")'></div>"+
+               "<div id='fourCover7' onclick='flip3(\"fourByFour_7\")'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='fourCover8'></div>"+
-               "<div id='fourCover9'></div>"+
-               "<div id='fourCover10'></div>"+
-               "<div id='fourCover11'></div>"+
+               "<div id='fourCover8' onclick='flip3(\"fourByFour_8\")'></div>"+
+               "<div id='fourCover9' onclick='flip3(\"fourByFour_9\")'></div>"+
+               "<div id='fourCover10' onclick='flip3(\"fourByFour_10\")'></div>"+
+               "<div id='fourCover11' onclick='flip3(\"fourByFour_11\")'></div>"+
                "<div style='clear:both'></div>"+
-               "<div id='fourCover12'></div>"+
-               "<div id='fourCover13'></div>"+
-               "<div id='fourCover14'></div>"+
-               "<div id='fourCover15'></div>"+
+               "<div id='fourCover12' onclick='flip3(\"fourByFour_12\")'></div>"+
+               "<div id='fourCover13' onclick='flip3(\"fourByFour_13\")'></div>"+
+               "<div id='fourCover14' onclick='flip3(\"fourByFour_14\")'></div>"+
+               "<div id='fourCover15' onclick='flip3(\"fourByFour_15\")'></div>"+
                "</div>"+
-               "<div id='fourByFour_0' onclick='rotateNub(\"fourByFour_0\")'></div>"+
-               "<div id='fourByFour_1' onclick='rotate90(\"fourByFour_1\")'></div>"+
-               "<div id='fourByFour_2' onclick='rotate90(\"fourByFour_2\")'></div>"+
-               "<div id='fourByFour_3' onclick='rotate90(\"fourByFour_3\")'></div>"+
-               "<div style='clear:both'></div>"+
-				"<div id='fourByFour_4' onclick='rotate90(\"fourByFour_4\")'></div>"+
-				"<div id='fourByFour_5' onclick='rotate90(\"fourByFour_5\")'></div>"+
-				"<div id='fourByFour_6' onclick='rotate90(\"fourByFour_6\")'></div>"+
-				"<div id='fourByFour_7' onclick='rotate90(\"fourByFour_7\")'></div>"+
-				"<div style='clear:both'></div>"+
-				"<div id='fourByFour_8' onclick='rotate90(\"fourByFour_8\")'></div>"+
-				"<div id='fourByFour_9' onclick='rotate90(\"fourByFour_9\")'></div>"+
-				"<div id='fourByFour_10' onclick='rotate90(\"fourByFour_10\")'></div>"+
-				"<div id='fourByFour_11' onclick='rotate90(\"fourByFour_11\")'></div>"+
-				"<div style='clear:both'></div>"+
-				"<div id='fourByFour_12' onclick='rotate90(\"fourByFour_12\")'></div>"+
-				"<div id='fourByFour_13' onclick='rotate90(\"fourByFour_13\")'></div>"+
-				"<div id='fourByFour_14' onclick='rotate90(\"fourByFour_14\")'></div>"+
-				"<div id='fourByFour_15' onclick='rotate90(\"fourByFour_15\")'></div>"+
 
+        "<div id='fourByFour_0' onclick='rotateAndCheck(0)'></div>"+
+        "<div id='fourByFour_1' onclick='rotateAndCheck(1)'></div>"+
+        "<div id='fourByFour_2' onclick='rotateAndCheck(2)'></div>"+
+        "<div id='fourByFour_3' onclick='rotateAndCheck(3)'></div>"+
+        "<div style='clear:both'></div>"+
+        "<div id='fourByFour_4' onclick='rotateAndCheck(4)'></div>"+
+        "<div id='fourByFour_5' onclick='rotateAndCheck(5)'></div>"+
+        "<div id='fourByFour_6' onclick='rotateAndCheck(6)'></div>"+
+        "<div id='fourByFour_7' onclick='rotateAndCheck(7)'></div>"+
+        "<div style='clear:both'></div>"+
+        "<div id='fourByFour_8' onclick='rotateAndCheck(8)'></div>"+
+        "<div id='fourByFour_9' onclick='rotateAndCheck(9)'></div>"+
+        "<div id='fourByFour_10' onclick='rotateAndCheck(10)'></div>"+
+        "<div id='fourByFour_11' onclick='rotateAndCheck(11)'></div>"+
+        "<div style='clear:both'></div>"+
+        "<div id='fourByFour_12' onclick='rotateAndCheck(12)'></div>"+
+        "<div id='fourByFour_13' onclick='rotateAndCheck(13)'></div>"+
+        "<div id='fourByFour_14' onclick='rotateAndCheck(14)'></div>"+
+        "<div id='fourByFour_15' onclick='rotateAndCheck(15)'></div>"+
+        
+        "<div id='fourByFour_sol'>"+
+          "<div id='fourByFour_sol_0'></div>"+
+          "<div id='fourByFour_sol_1'></div>"+
+          "<div id='fourByFour_sol_2'></div>"+
+          "<div id='fourByFour_sol_3'></div>"+
+          "<div style='clear:both'></div>"+
+          "<div id='fourByFour_sol_4'></div>"+
+          "<div id='fourByFour_sol_5'></div>"+
+          "<div id='fourByFour_sol_6'></div>"+
+          "<div id='fourByFour_sol_7'></div>"+
+          "<div style='clear:both'></div>"+
+          "<div id='fourByFour_sol_8'></div>"+
+          "<div id='fourByFour_sol_9'></div>"+
+          "<div id='fourByFour_sol_10'></div>"+
+          "<div id='fourByFour_sol_11'></div>"+
+          "<div style='clear:both'></div>"+
+          "<div id='fourByFour_sol_12'></div>"+
+          "<div id='fourByFour_sol_13'></div>"+
+          "<div id='fourByFour_sol_14'></div>"+
+          "<div id='fourByFour_sol_15'></div>"+
+        "</div>"+
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
                 "<img src='img/button_flipall_3.png' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+
+
 
     /**
 	 * This String will be deleted soon when we polish our time mode. For now it is just
@@ -551,7 +575,7 @@ var pageOptions = {
 		flipImg();
 	},
 
-	//sets the game to level 2
+	//sets the game to level 3
 	setPage3 : function(){
 		stopBackground();
 		track.currentPage = 1;
@@ -559,6 +583,17 @@ var pageOptions = {
 		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
 		initBoard3x3();
+		flipImg();
+	},
+
+	//sets the game to level 3
+	setPage4 : function(){
+		stopBackground();
+		track.currentPage = 1;
+		playBackground();
+		this.reference.innerHTML = this.level4;
+		arrayData.setIds();
+		initBoard4x4();
 		flipImg();
 	},
 
