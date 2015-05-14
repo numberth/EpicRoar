@@ -35,7 +35,7 @@ var track = {
     init : function(){
     	this.track1 = new Audio();
     	this.track1.src = "sounds/umbala.mp3";
-    	this.track1.volume = 0.0;
+    	this.track1.volume = 0.3;
     	this.track1.loop = true;
     	this.track2 = new Audio();
     	this.track2.src = "sounds/jpark.mp3";
@@ -125,18 +125,34 @@ function stopBackground(){
 function timeMode(){
 
 	if(!clock.lost){
-		clock.totalTimeInTenths--;
-		clock.computeTime();
 		clock.timerReference = document.getElementById('timeSquare');
 		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
 			return;
 		}
 		clock.timerReference.innerHTML = "Time left: " + clock.seconds;
 		clock.checkTime();    //checks if the user has time left.
-		window.setTimeout(timeMode,100);
+		if(!clock.pause2){
+				clock.seconds--;
+				window.setTimeout(timeMode,1000);
+		}
 	}else{
 		displayLoss();
 	}
+}
+
+
+
+function setPause(){
+	if(clock.pauseState==0){
+		clock.pause2 = true;
+		clock.pauseState++;
+		document.getElementById('pauseTimer').src = 'img/button_pause.png';
+	}else{
+		clock.pause2 = false;
+		clock.pauseState = 0;
+		document.getElementById('pauseTimer').src = 'img/button_check.png';
+	}
+	timeMode();
 }
 
 /**
@@ -164,20 +180,17 @@ function displayLoss(){
  * 
  */
 var clock = {
-	lost : false,
-	totalTimeInTenths:100,  //self explanatory: this variable holds the total time in 1/10th of a second
+	pause2 : false,    //pause boolean
+	pauseState : 0,   //state of pause
+	lost : false, // lose game boolean
 	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
 								//to animate the timer
-	seconds : 0,				//variable that represents seconds (60 seconds per minute)
-	computeTime : function(){
-		this.seconds = this.totalTimeInTenths/10;
-	},
-
+	seconds : 20,				//variable that represents seconds (60 seconds per minute)
 	/**
 	 * This function checks if the user has run out of time.
 	 */
 	 checkTime : function(){
-	 	if(this.totalTimeInTenths<=0){
+	 	if(this.seconds<=0){
 	 		this.lost = true;
 	 	}
 	 }
@@ -189,6 +202,7 @@ var clock = {
 *in the divisions.
 */
 var pageOptions = {
+
 	reference : undefined,  //reference variable that will point towards the content division, for easy updating of our app content
 
 	/**
@@ -207,7 +221,7 @@ var pageOptions = {
 	"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
 
 	//Half circle style selection gui for either zen or time mode.
-	modeSelectionPage : "<img src='img/halfCircle2a.png' onclick='pageOptions.setPage2()' style='display:block;width:80%;height:39%;margin:auto;margin-top:10%'/>"+
+	modeSelectionPage : "<img src='img/halfCircle2a.png' onclick='pageOptions.setPage1()' style='display:block;width:80%;height:39%;margin:auto;margin-top:10%'/>"+
 						"<img src='img/halfCircle3a.png' onclick='pageOptions.testTimeMode()' style='display:block;width:80%;height:39%;margin:auto'/>"+
 						"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
@@ -215,13 +229,13 @@ var pageOptions = {
 	/**
 	 *This string represents the level selection page. Currently there are 9 levels, but we can alway add more later.
 	 */
-	levelPage : "<img src='img/level_1.png' onclick='pageOptions.setPage2()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" + 
-				"<img src='img/level_2.png' onclick='pageOptions.testTimeMode()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
+	levelPage : "<img src='img/level_1.png' onclick='pageOptions.setPage1()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" + 
+				"<img src='img/level_2.png' onclick='pageOptions.setPage2()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
 				"<img src='img/level_3.png' onclick='pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/level_4.png' onclick = 'pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/level_5.png' onclick = 'pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/level_6.png' onclick = 'pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+				"<img src='img/level_7.png' onclick = 'pageOptions.testTimeMode()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
@@ -279,6 +293,30 @@ var pageOptions = {
 					"<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
 
 	/**
+	 * This string represents level 1 in our game
+	 */
+	
+	level1 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 1</h3>"+
+        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
+        "<div id='twoBoard'>"+
+        "<div id='twoBoardCover'>"+
+        		"<div id='cover0' onclick='flip02(\"twoByTwo_00\")'></div>"+
+               "<div id='cover1' onclick='flip02(\"twoByTwo_01\")'></div>"+
+               "<div style='clear:both'></div>"+
+               "<div id='cover2' onclick='flip02(\"twoByTwo_02\")'></div>"+
+               "<div id='cover3' onclick='flip02(\"twoByTwo_03\")'></div>"+
+               "</div>"+
+               "<div id='twoByTwo_00' onclick='rotateNubx1(\"twoByTwo_00\")'></div>"+
+               "<div id='twoByTwo_01' onclick='rotateLinex1(\"twoByTwo_01\")'></div>"+
+               "<div style='clear:both'></div>"+
+				"<div id='twoByTwo_02' onclick='rotate90x1(\"twoByTwo_02\")'></div><div id='twoByTwo_03' onclick='rotateNubx1(\"twoByTwo_03\")'></div></div>"+
+
+                //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
+                "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+                "<img src='' onclick='flipAll(\"twoByTwo_0\")' id='allFlip'>" +
+                "<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
+
+    	/**
 	 * This string represents level 2 in our game
 	 */
 	
@@ -301,7 +339,6 @@ var pageOptions = {
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
                 "<img src='img/button_flipall_3.png' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='location.reload()' id='menu'>",
-
 
      /**
 	 * This string stores level3 of our game
@@ -359,7 +396,7 @@ var pageOptions = {
      /**
 	 * This string stores level 4 of our game
 	 */
-    level4 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 4</h3>"+
+    level7 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 4</h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
     	"<div id='fourBoard'>"+
         "<div id='fourBoardCover'>"+
@@ -412,7 +449,7 @@ var pageOptions = {
 	 * This String will be deleted soon when we polish our time mode. For now it is just
 	 * a prototype of the timed mode, and works well.
 	 */
-    timeModeLevel3 : 
+    timeModeLevel1 : 
     "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 3</h3>"+
     "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;margin-top:15px;' id='timeSquare'></h3>"+
     // "<p id='timeSquare' style='display:block;margin:auto;text-align:center;height:90px;padding-top:20px;color:white;font-size:18px'></p>" +
@@ -461,7 +498,8 @@ var pageOptions = {
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_flipall_3.png' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
+                "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
+                "<img src='img/button_pause.png' onclick='setPause()' id='pauseTimer'>" +
                 "<img src='img/button_menu.png' onclick='location.reload()'' id='menu'>",
 	 /**
 	 * This function initializes the reference variable to whichever id we need to change the content of.
@@ -494,15 +532,26 @@ var pageOptions = {
 		this.reference.innerHTML = this.highScorePage;
 	},
 
-	//sets the game to level 2
-	setPage2 : function(){
+	//sets the game to level 1
+	setPage1 : function(){
 		stopBackground();
 		track.currentPage = 0;
 		playBackground();
-		this.reference.innerHTML = this.level2;
+		this.reference.innerHTML = this.level1;
+		flipImg();
 	},
 
-	//sets the game to level 3
+	//sets the game to level 2
+	setPage2 : function(){
+		stopBackground();
+		track.currentPage = 1;
+		playBackground();
+		this.reference.innerHTML = this.level2;
+		arrayData.setIds();
+		flipImg();
+	},
+
+	//sets the game to level 2
 	setPage3 : function(){
 		stopBackground();
 		track.currentPage = 1;
@@ -510,6 +559,7 @@ var pageOptions = {
 		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
 		initBoard3x3();
+		flipImg();
 	},
 
 	  //This function is just a placeholder, later on we will be implementing timed mode only if the user
@@ -518,10 +568,11 @@ var pageOptions = {
 	    stopBackground();
 	    track.currentPage = 1;
 	    playBackground();
-	    this.reference.innerHTML = this.timeModeLevel3;
+	    this.reference.innerHTML = this.timeModeLevel1;
 	    arrayData.setIds();
 	    timeMode();
 	    initBoard3x3();
+	    flipImg();
 	  },
 
 	  difficultySelect : function(){
@@ -535,6 +586,8 @@ var pageOptions = {
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 function displayWin(){
+	clock.pause2 = true;
+	setPause();
 	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;margin-left:45px;margin-top:80px;width:80%;height:30%'>"+
 									"<form style='margin-top:50px;margin-left:65px'>" +
 										"<p>Your name: <input type='text' name='name'></p>" +

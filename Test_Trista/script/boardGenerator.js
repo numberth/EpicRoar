@@ -350,7 +350,7 @@ function threeSide(til){
  *
  */
 function rotate(til){
-if(enable){
+if(enable && clock.pause2 == false){
 var tile = parseInt(til);
 		switch(tile_exit_counter_user[tile]){
 			case 1: 
