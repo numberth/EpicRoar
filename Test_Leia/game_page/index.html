@@ -9,65 +9,69 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
     <script src="script/LAB.min.js" type="text/javascript"></script>
     <script src="script/enable.js" type="text/javascript"></script>
+    <script src="script/boardGenerator.js" type="text/javascript"></script>
+    <script src="script/checkPath.js" type="text/javascript"></script>
+    <script src="script/initialize3x3.js" type="text/javascript"></script>
+    <script src="script/pathGenerator.js" type="text/javascript"></script>
+
     <script>
         $LAB
                 .script('script/input/Keyboard.js').wait()
                 .script('script/input/Mouse.js').wait()
                 .script('script/system/Keys.js').wait()
-                .script('script/LandingPage.js').wait(function () {
+                .script('script/landingPage.js').wait(function () {
                     console.log("hello world!");
                     pageOptions.init("panel");
                    // pageOptions.setPage("a");
                 });
     </script>
+        <script type="text/javascript">
 
-    <script type="text/javascript">
-
-	var tile_90 = ["img/tile_90_0.jpg","img/tile_90_1.jpg","img/tile_90_2.jpg","img/tile_90_3.jpg" ];
-	var tile_nub =["img/tile_nub_0.jpg","img/tile_nub_1.jpg","img/tile_nub_2.jpg","img/tile_nub_3.jpg" ];
-	var tile_line = ["img/tile_line_0.jpg","img/tile_line_1.jpg"];
-	var tile_counter = 0;
+	var tile_90x = ["img/tile_90_0.jpg","img/tile_90_1.jpg","img/tile_90_2.jpg","img/tile_90_3.jpg" ];
+	var tile_nubx =["img/tile_nub_0.jpg","img/tile_nub_1.jpg","img/tile_nub_2.jpg","img/tile_nub_3.jpg" ];
+	var tile_linex = ["img/tile_line_0.jpg","img/tile_line_1.jpg"];
+	var tile_counterx = 0;
 	
-	function counterLoop(){
-		tile_counter++;
-		if(tile_counter>3){
-			tile_counter = 0;
+	function counterLoopx(){
+		tile_counterx++;
+		if(tile_counterx>3){
+			tile_counterx = 0;
 		}
 	}
 
-	function counterLoop2(){
-		tile_counter++;
-		if(tile_counter>1){
-			tile_counter = 0;
+	function counterLoop2x(){
+		tile_counterx++;
+		if(tile_counterx>1){
+			tile_counterx = 0;
 		}
 	}
 
-	function rotate90(img){
-		var tile_image = document.getElementById(img);
-		tile_image.style.backgroundImage = "url('" + tile_90[tile_counter] + "')";
-		counterLoop();
-		verify();
+	function rotate90x(img){
+		var tile_imagex = document.getElementById(img);
+		tile_imagex.style.backgroundImage = "url('" + tile_90[tile_counterx] + "')";
+		counterLoopx();
+		verifyx();
 	}
 
-	function rotateNub(img){
-		var tile_image = document.getElementById(img);
-		tile_image.style.backgroundImage = "url('" + tile_nub[tile_counter] + "')";
-		counterLoop();
-		verify();
+	function rotateNubx(img){
+		var tile_imagex = document.getElementById(img);
+		tile_imagex.style.backgroundImage = "url('" + tile_nub[tile_counterx] + "')";
+		counterLoopx();
+		verifyx();
 	}
 
-	function rotateLine(img){
-		var tile_image = document.getElementById(img);
-		tile_image.style.backgroundImage = "url('" + tile_line[tile_counter] + "')";
-		counterLoop2();
-		verify();
+	function rotateLinex(img){
+		var tile_imagex = document.getElementById(img);
+		tile_imagex.style.backgroundImage = "url('" + tile_line[tile_counterx] + "')";
+		counterLoop2x();
+		verifyx();
 	}
 
 
-	function verify(){
-		var bg0 = $(threeByThree0).css('background-image');
-		var bg1 = $(threeByThree1).css('background-image');
-		var bg2 = $(threeByThree3).css('background-image');
+	function verifyx(){
+		var bg0 = $(twoByTwo_0).css('background-image');
+		var bg1 = $(twoByTwo_1).css('background-image');
+		var bg2 = $(twoByTwo_3).css('background-image');
 		var cleanup = /\"|\'|\)/g;
 		var bg00 = bg0.split('/').pop().replace(cleanup, '');
 		var bg01 = bg1.split('/').pop().replace(cleanup, ''); 
@@ -77,12 +81,14 @@
 			if(bg01 == "tile_90_2.jpg"){
 				if(bg02 == "tile_nub_0.jpg"){
 					//alert("Congratulations!")
-					window.setTimeout(displayWin,1565);
+					flipWin2();
 				}
 			}
 		}
 	}
 	</script>
+
+
 </head>
 
 <body>
