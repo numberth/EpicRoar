@@ -269,10 +269,10 @@ function oneSide(til){
 	}else if (adj_matrix[tile][tile-1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[3];
-	} else if( adj_matrix[tile][tile + 3]){
+	} else if( adj_matrix[tile][tile + MAX]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[2];
-	}else if ( adj_matrix[tile][tile - 3]){
+	}else if ( adj_matrix[tile][tile - MAX]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[0];
 	}
@@ -323,19 +323,19 @@ function twoSide(til){
 function threeSide(til){
 	var tile = parseInt(til);
 	//if it is connected to up, down, right
-	if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile+1]){
+	if(adj_matrix[tile][tile - MAX] && adj_matrix[tile][tile + MAX] && adj_matrix[tile][tile+1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[1];
 	//if it is connected to up, down, left
-	}else if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile-1]){
+	}else if(adj_matrix[tile][tile - MAX] && adj_matrix[tile][tile + MAX] && adj_matrix[tile][tile-1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[3];
 	//if it is connected to up, left, right 
-	}else if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile-1] && adj_matrix[tile][tile+1]){
+	}else if(adj_matrix[tile][tile - MAX] && adj_matrix[tile][tile-1] && adj_matrix[tile][tile+1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[0];
 	// if it is connected to down, left, right
-	}else if(adj_matrix[tile][tile-1] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile+1]){
+	}else if(adj_matrix[tile][tile-1] && adj_matrix[tile][tile + MAX] && adj_matrix[tile][tile+1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[2];
 	}
