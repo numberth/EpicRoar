@@ -1,0 +1,297 @@
+
+//CSS PAGE
+
+#mainWindow{
+	background-image:url(http://www.jihyunyoo.com/menu_img/menu_whiteBG.gif);
+	background-size:100% 100%;
+	background-color:white;
+	display:block;
+	margin:auto	;
+	 width:99vw;  
+	/* width: 400px	; */	
+	height: 90vh;
+	border-style:solid;
+	border-color: brown;
+	border-width:3px;
+	position:relative;
+}
+
+#playButton{
+	margin:0;
+	margin-left: 25%;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:2%;
+	font-size:25px;
+	font-family:cursive,arial;
+	/*background-image:url(../img/buttonBg.png);
+	background-size:100% 100%; */
+}
+
+#levelModeButton{
+	margin:0;
+	margin-left: 25%;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:2%;
+	font-size:25px;
+	font-family:cursive,arial;
+	/* background-image:url(../img/buttonBg2.png);
+	background-size:100% 100%; */
+}
+
+#scoreButton{
+	margin:0;
+	margin-left: 25%;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:2%;
+	font-size:25px;
+	font-family:cursive,arial;
+}
+
+#tutorialButton{
+	margin:0;
+	margin-left: 25%;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:40%;
+	font-size:25px;
+	font-family:cursive,arial;
+	/*background-image:url(../img/buttonBg.png);
+	background-size:100% 100%; */
+}
+
+#zenButton{
+	margin:0;
+	margin-left: 25%;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:10%;
+	font-size:25px;
+	font-family:cursive,arial;
+	/*background-image:url(../img/buttonBg.png);
+	background-size:100% 100%; */
+}
+
+#timeButton{
+	margin:0;
+	margin-left: 25%;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:10%;
+	font-size:25px;
+	font-family:cursive,arial;
+	/*background-image:url(../img/buttonBg.png);
+	background-size:100% 100%; */
+}
+
+#yes{
+	margin:0;
+	margin-left: 18%;
+	display:block;
+	height:auto;
+	width:20%;
+	text-align:center;
+	margin-top:5%;
+}
+
+
+#no{
+	margin:0;
+	margin-left: 60%;
+	display:block;
+	height:auto;
+	width:20%;
+	text-align:center;
+	margin-top:-20%;
+}
+
+#tryAgain{
+	margin:0;
+	margin-left: 13%;
+	display:block;
+	height:auto;
+	width:75%;
+	text-align:center;
+	margin-top:-120%;
+
+
+}
+
+#bottom{
+	text-align:center;
+	font-size:20px;
+	border-width:2px;
+	border-style:solid;
+	display:block;
+	margin:auto;
+	width:99vw;
+	height:10vh;
+}
+
+#ayy{
+	position:absolute;
+	width:20%;
+	height:auto;
+	bottom:10px;
+	left:10px;
+
+
+}
+
+#menu{
+	position:absolute;
+	width:20%;
+	height:auto;
+	bottom:10px;
+	right:10px;
+}
+
+#allFlip{
+	position:absolute;
+	width:20%;
+	height:auto;
+	bottom:10px;
+	left:28%; 
+}
+
+#submit{
+
+	margin:0;
+	margin-left: 19%;
+	display:block;
+	height:auto;
+	width:60%;
+	text-align:center;
+	margin-top:10%;
+	font-size:15px;
+	font-family:cursive,arial;
+}
+
+#submitButton{
+	margin:0;
+	margin-left: 31%;
+	display:block;
+	height:auto;
+	width:40%;
+	text-align:center;
+	margin-top:5%;
+	font-size:25px;
+	font-family:cursive,arial;
+}
+
+#twoBoard{
+	width:80%;
+	height:250px;
+	display:block;
+	margin:auto;
+	margin-top:35%;
+	margin-left: 20%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//LANDING PAGE
+
+
+
+
+
+function displayLoss(){
+	pageOptions.reference.innerHTML = 	"<img src='img/layer.png' style='display:block;width:100%;height:100%'>"+
+
+	"<img src='img/tryagain.png' id='tryAgain'>" +
+	"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+    "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' id='yes'>" +
+	"<img src='img/button_xmark.png' onclick='pageOptions.setPage()' id='no'>";
+
+      stopBackground();
+      clock.totalTimeInTenths = 50;
+      clock.lost = false;
+}
+
+
+
+
+
+
+
+
+	mainPage : "<img src='img/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
+	
+	"<img src= 'img/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>" +
+	"<img src= 'img/button_levels.png' onclick='pageOptions.setLevelPage()' id='levelModeButton'>" +
+	"<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>" +
+	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+
+
+
+
+
+
+
+
+
+
+		modeSelectionPage : 
+				
+			"<img src= 'img/button_tutorial.png' onclick='pageOptions.setPage2()' id='tutorialButton'>" +
+				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage2()' id='zenButton'>" +
+				"<img src= 'img/button_time.png' onclick='pageOptions.testTimeMode()' id='timeButton'>" +
+				"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+	
+
+
+
+
+
+
+
+
+function displayWin(){
+	pageOptions.reference.innerHTML =
+				 "<img src='img/youwin.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:20%'>"+
+						"<form>" +
+							"<input type='text' name='name' value='Enter name here!' id='submit'>" +
+							"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
+						"</form>" +
+
+
+				"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>";
+      stopBackground();
+      track.track3.play();
+}

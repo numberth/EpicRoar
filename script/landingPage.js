@@ -536,11 +536,12 @@ var pageOptions = {
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 function displayWin(){
-	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:20%'>"+
-									"<form>" +
-										"<input type='text' name='name' value='Enter name here!' id='submit'>" +
-										"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
-									"</form>" +
+	pageOptions.reference.innerHTML =
+				 "<img src='img/youwin.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:20%'>"+
+						"<form>" +
+							"<input type='text' name='name' value='Enter name here!' id='submit'>" +
+							"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
+						"</form>" +
 
 
 				"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
