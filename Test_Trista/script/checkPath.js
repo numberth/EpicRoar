@@ -13,9 +13,10 @@
  * 
  * @type {Array} [ and Array of integers that each reperesnt the position of the tile or grid]
  */
+
 var grid_solution_tracer = new Array();
 var solution_match_counter;
-var nonSolutionValues = new Array(MAX*MAX);
+var nonSolutionValues;
 /**
  * 
  * This function records the values of the  solution in correspondance to the tile ID position 
@@ -43,8 +44,7 @@ function checkUserBoard(){
 		}
 
 		if(solution_match_counter === grid_solution_tracer.length){
-			flipWin3(); // place holder function for displaying solution path; current function reveals all cards
-			// window.setTimeout(displayWin, 3000); //WIN 
+			flipWin(); //WIN 
 		}
 	}
 }
@@ -66,6 +66,7 @@ function checkUserPlay(til){
 	
 
 function initNonSolVals(){
+	nonSolutionValues = new Array(MAX*MAX);
 	for (var i = 0; i < nonSolutionValues.length; i++){
 		nonSolutionValues[i] = i;
 	}

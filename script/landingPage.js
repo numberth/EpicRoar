@@ -144,15 +144,14 @@ function timeMode(){
  * the player can try again if they wish or go back to the main menu.
  */
 
-
 function displayLoss(){
-	pageOptions.reference.innerHTML = 	"<img src='img/bg_2.png' style='display:block;width:100%;height:100%'>"+
+	pageOptions.reference.innerHTML = 	"<img src='img/layer.png' style='display:block;width:100%;height:100%'>"+
 
-	"<img src='img/tryagain.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" +
+	"<img src='img/tryagain.png' id='tryAgain'>" +
 	"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
     "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
-    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' style='position:absolute;width:70px;height:auto;bottom:160px;left:80px' onclick='playBackground()' id='yes'>" +
-	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='pageOptions.setPage()' id='no'>";
+    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' id='yes'>" +
+	"<img src='img/button_xmark.png' onclick='pageOptions.setPage()' id='no'>";
 
       stopBackground();
       clock.totalTimeInTenths = 50;
@@ -537,11 +536,12 @@ var pageOptions = {
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 function displayWin(){
-	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:20%'>"+
-									"<form>" +
-										"<input type='text' name='name' value='Enter name here!' id='submit'>" +
-										"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
-									"</form>" +
+	pageOptions.reference.innerHTML =
+				 "<img src='img/youwin.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:20%'>"+
+						"<form>" +
+							"<input type='text' name='name' value='Enter name here!' id='submit'>" +
+							"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
+						"</form>" +
 
 
 				"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
