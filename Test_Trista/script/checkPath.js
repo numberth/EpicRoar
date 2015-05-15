@@ -14,7 +14,7 @@
  * @type {Array} [ and Array of integers that each reperesnt the position of the tile or grid]
  */
 
-var grid_solution_tracer = new Array();
+var grid_solution_tracer;
 var solution_match_counter;
 var nonSolutionValues;
 /**
@@ -26,6 +26,7 @@ var nonSolutionValues;
  * 
  */
 function solutionPathId(){
+	grid_solution_tracer = new Array();
 	for (var i = 0 ; i < solution_matrix.length; i++) {
 			grid_solution_tracer.push((MAX*solution_matrix[i][1]) + solution_matrix[i][0]);
 	}
