@@ -144,7 +144,7 @@ function timeMode(){
 
 function setPause(){
 	if(clock.pauseState==0){
-		document.getElementById('pauseTimer').src = 'img/button_check.png';
+		document.getElementById('pauseTimer').src = 'img/button_resume.png';
 		clock.pause2 = true;
 		clock.pauseState++;
 	}else{
