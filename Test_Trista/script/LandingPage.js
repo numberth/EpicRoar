@@ -155,6 +155,10 @@ function setPause(){
 	timeMode();
 }
 
+function resetTimer(){
+	clock.seconds = 20;
+}
+
 /**
  * This function is called when the player runs out of time. Resets the time left and boolean clock.lost, so that
  * the player can try again if they wish or go back to the main menu.
@@ -171,7 +175,6 @@ function displayLoss(){
 	"<img src='img/button_xmark.png' onclick='pageOptions.setPage()' id='no'>";
 
       stopBackground();
-      clock.totalTimeInTenths = 50;
       clock.lost = false;
 }
 
@@ -746,47 +749,47 @@ function displayWin(){
                 "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
 
                 switch(levelUnlock.currentLevel){
-                	case 1: levelUnlock.lvl1 = true;
+                	case 1: levelUnlock.lvl2 = true;
                 			pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage2()'>Next Page</button>";
                 		break;
                 	case 2:
-                			levelUnlock.lvl2 = true;
+                			levelUnlock.lvl3 = true;
                 			pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage3()'>Next Page</button>";
                 		break;
                 	case 3:
-                			levelUnlock.lvl3 = true;
+                			levelUnlock.lvl4 = true;
                 			pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage4()'>Next Page</button>";
                 		break;
                 	case 4:
-		                	levelUnlock.lvl4 = true;
+		                	levelUnlock.lvl5 = true;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage5()'>Next Page</button>";
                 		break;
                 	case 5:
-                			levelUnlock.lvl5 = true;
+                			levelUnlock.lvl6 = true;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage6()'>Next Page</button>";
                 		break;
                 	case 6:
-                			levelUnlock.lvl6 = true;
+                			levelUnlock.lvl7 = true;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage7()'>Next Page</button>";
                 		break;
                 	case 7:
-                			levelUnlock.lvl7 = true;
+                			levelUnlock.lvl8 = true;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage8()'>Next Page</button>";
                 		break;
                 	case 8:
-                			levelUnlock.lvl8 = true;
+                			levelUnlock.lvl9 = true;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage9()'>Next Page</button>";
                 		break;
                 	case 9:
-                			levelUnlock.lvl9 = true;
+                			levelUnlock.lvl10 = true;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage10()'>Next Page</button>";
                 		break;
