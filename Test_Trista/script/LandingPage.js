@@ -643,23 +643,12 @@ var pageOptions = {
 		levelUnlock.currentLevel = 4;
 		this.setLevelUnlock();
 		track.currentPage = 1;
-		this.reference.innerHTML = this.level4;
+		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
-		initBoard4x4();
+		initBoard3x3();
 		flipImg();
-		document.getElementById("grid4").innerHTML = " Level 4";
+		document.getElementById("grid3").innerHTML = " Level 4";
 	},
-
-	// 	setPage4 : function(){
-	// 	levelUnlock.currentLevel = 4;
-	// 	this.setLevelUnlock();
-	// 	track.currentPage = 1;
-	// 	this.reference.innerHTML = this.level3;
-	// 	arrayData.setIds();
-	// 	initBoard3x3();
-	// 	flipImg();
-	// 	document.getElementById("grid3").innerHTML = " Level 4";
-	// },
 
 		setPage5 : function(){
 		levelUnlock.currentLevel = 5;
