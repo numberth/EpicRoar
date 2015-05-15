@@ -44,7 +44,7 @@ function checkUserBoard(){
 		}
 
 		if(solution_match_counter === grid_solution_tracer.length){
-			displayWin(); //WIN 
+			flipWin(); //WIN 
 		}
 	}
 }

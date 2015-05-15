@@ -15,6 +15,7 @@
  * @type {Boolean}
  */
 var enable = false;
+var detectLvl;
 
 /**
  * Number of times that flipAll is allowed. It's set to 3 to start.
@@ -147,12 +148,27 @@ function flipAllBack(id){
  * Flips all cards over after routes have been connected. 
  * Temporary place holder until function is created for only flipping over the solution path.
  */
-function flipWin3(){
+
+function detect(object) {
+    detectLvl = object.id;
+    return detectLvl;
+}
+
+
+function flipWin(){
 	enable = false;
+	clock.pause2 = true;
 	setTimeout(displayWin, 2000);
+
+if(detectLvl == "threeBoard"){
 	for(var i=0; i < 16; i++){
 			document.getElementById("threeByThree_" + i).style.zIndex = 1;
 		}
+	}else if(detectLvl == "fourBoard"){
+		for(var i=0; i < 16; i++){
+			document.getElementById("fourByFour_" + i).style.zIndex = 1;
+		}
+	}
 }
 
 function flipWin2(){
@@ -160,7 +176,7 @@ function flipWin2(){
 	setTimeout(displayWin, 1500);
 	for(var i=0; i < 16; i++){
 			document.getElementById("twoByTwo_" + i).style.zIndex = 1;
-		}
+			}
 }
 
 function flipWin02(){

@@ -144,13 +144,13 @@ function timeMode(){
 
 function setPause(){
 	if(clock.pauseState==0){
+		document.getElementById('pauseTimer').src = 'img/button_check.png';
 		clock.pause2 = true;
 		clock.pauseState++;
-		document.getElementById('pauseTimer').src = 'img/button_pause.png';
 	}else{
+		document.getElementById('pauseTimer').src = 'img/button_pause.png';
 		clock.pause2 = false;
 		clock.pauseState = 0;
-		document.getElementById('pauseTimer').src = 'img/button_check.png';
 	}
 	timeMode();
 }
@@ -162,18 +162,19 @@ function setPause(){
 
 
 function displayLoss(){
-	pageOptions.reference.innerHTML = 	"<img src='img/bg_2.png' style='display:block;width:100%;height:100%'>"+
-//	"<button onclick='pageOptions.testTimeMode()' style='position:absolute;top:0'>Restart Level</button>"+
-	"<img src='img/tryagain.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%;position:absolute;bottom:260px;right:28px'>" +
-	"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>" +
-	"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' style='position:absolute;width:70px;height:auto;bottom:160px;left:80px' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='pageOptions.setPage()' id='menu'>";
+	pageOptions.reference.innerHTML = 	"<img src='img/layer.png' style='display:block;width:100%;height:100%'>"+
+
+	"<img src='img/tryagain.png' id='tryAgain'>" +
+	"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+    "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' id='yes'>" +
+	"<img src='img/button_xmark.png' onclick='pageOptions.setPage()' id='no'>";
 
       stopBackground();
       clock.totalTimeInTenths = 50;
       clock.lost = false;
 }
+
 
 /**
  * This object holds variables for the time mode of our game.
@@ -209,10 +210,6 @@ var pageOptions = {
 	 * Here is the mainPage string, which saves what our main menu looks like on an html page. 
 	 */
 	mainPage : "<img src='img/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
-//	"<button onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>Play</button>" + 
-//	"<button onclick='pageOptions.setLevelPage()' id='levelModeButton'>Levels</button>" +
-//	"<button onclick='pageOptions.setSignUpPage()' id='signUpButton'>Sign Up</button>" +
-//	"<button onclick='pageOptions.setScorePage()' id='scoreButton'>High Scores</button>"
 	
 	"<img src= 'img/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>" +
 	"<img src= 'img/button_levels.png' onclick='pageOptions.setLevelPage()' id='levelModeButton'>" +
@@ -221,10 +218,14 @@ var pageOptions = {
 	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	//Half circle style selection gui for either zen or time mode.
-	modeSelectionPage : "<img src='img/halfCircle2a.png' onclick='pageOptions.setPage1()' style='display:block;width:80%;height:39%;margin:auto;margin-top:10%'/>"+
-						"<img src='img/halfCircle3a.png' onclick='pageOptions.testTimeMode()' style='display:block;width:80%;height:39%;margin:auto'/>"+
-						"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+	modeSelectionPage : 
+				
+			"<img src= 'img/button_tutorial.png' onclick='pageOptions.setPage2()' id='tutorialButton'>" +
+				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage2()' id='zenButton'>" +
+				"<img src= 'img/button_time.png' onclick='pageOptions.testTimeMode()' id='timeButton'>" +
+				"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+	
 
 	/**
 	 *This string represents the level selection page. Currently there are 9 levels, but we can alway add more later.
@@ -337,15 +338,16 @@ var pageOptions = {
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_flipall_3.png' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
+                "<img src='' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
      /**
 	 * This string stores level3 of our game
 	 */
-    level3 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 3</h3>"+
+    level3 : 
+    "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 3</h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
-    	"<div id='threeBoard'>"+
+    	"<div id='threeBoard' onclick='detect(this)'>"+
         "<div id='threeBoardCover'>"+
         		"<div id='threeCover0' onclick='flip3(\"threeByThree_0\")'></div>"+
                "<div id='threeCover1' onclick='flip3(\"threeByThree_1\")'></div>"+
@@ -389,7 +391,7 @@ var pageOptions = {
         "</div>"+
         
         "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-        "<img src='img/button_flipall_3.png' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
+        "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
         "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 
@@ -398,7 +400,7 @@ var pageOptions = {
 	 */
     level4 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 4</h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
-      "<div id='fourBoard'>"+
+      "<div id='fourBoard' onclick='detect(this)'>"+
         "<div id='fourBoardCover'>"+
             "<div id='fourCover0' onclick='flip4(\"fourByFour_0\")'></div>"+
                "<div id='fourCover1' onclick='flip4(\"fourByFour_1\")'></div>"+
@@ -464,7 +466,7 @@ var pageOptions = {
         "</div>"+
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_flipall_3.png' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
+                "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 
@@ -477,7 +479,7 @@ var pageOptions = {
     "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 3</h3>"+
     "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;margin-top:15px;' id='timeSquare'></h3>"+
     // "<p id='timeSquare' style='display:block;margin:auto;text-align:center;height:90px;padding-top:20px;color:white;font-size:18px'></p>" +
-    	"<div id='threeBoard'>"+
+    	"<div id='threeBoard' onclick='detect(this)'>"+
         "<div id='threeBoardCover'>"+
         		"<div id='threeCover0' onclick='flip3(\"threeByThree_0\")'></div>"+
                "<div id='threeCover1' onclick='flip3(\"threeByThree_1\")'></div>"+
@@ -620,15 +622,18 @@ var pageOptions = {
 /**
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
-function displayWin(){
 
-	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;margin-left:45px;margin-top:80px;width:80%;height:30%'>"+
-									"<form style='margin-top:50px;margin-left:65px'>" +
-										"<p>Your name: <input type='text' name='name'></p>" +
-										"<input type='submit' value='Submit' style='margin-left:90px;margin-top:20px'>" +
-									"</form>" +
-				"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
+function displayWin(){
+	pageOptions.reference.innerHTML =
+				 "<img src='img/youwin.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:20%'>"+
+						"<form>" +
+							"<input type='text' name='name' value='Enter name here!' id='submit'>" +
+							"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
+						"</form>" +
+
+
+				"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>";
       stopBackground();
       track.track3.play();
 }
