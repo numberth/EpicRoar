@@ -220,8 +220,8 @@ var pageOptions = {
 	//Half circle style selection gui for either zen or time mode.
 	modeSelectionPage : 
 				
-			"<img src= 'img/button_tutorial.png' onclick='pageOptions.setPage2()' id='tutorialButton'>" +
-				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage2()' id='zenButton'>" +
+			"<img src= 'img/button_tutorial.png' onclick='pageOptions.setPage1()' id='tutorialButton'>" +
+				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage1()' id='zenButton'>" +
 				"<img src= 'img/button_time.png' onclick='pageOptions.testTimeMode()' id='timeButton'>" +
 				"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
@@ -230,20 +230,68 @@ var pageOptions = {
 	/**
 	 *This string represents the level selection page. Currently there are 9 levels, but we can alway add more later.
 	 */
-	levelPage : "<img src='img/level_1.png' onclick='pageOptions.setPage1()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" + 
-				"<img src='img/level_2.png' onclick='pageOptions.setPage2()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
-				"<img src='img/level_3.png' onclick='pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
-				"<img src='img/level_4.png' onclick = 'pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/level_5.png' onclick = 'pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/level_6.png' onclick = 'pageOptions.setPage4()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/level_7.png' onclick = 'pageOptions.testTimeMode()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
+	levelPage : "<img src='img/level_1.png' onclick='pageOptions.setPage1()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>",
+				//"<img src='img/level_2.png' onclick='pageOptions.testTimeMode()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
+				//"<img src='img/level_3.png' onclick='pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" +
+			
+	setLevelUnlock : function(){
+		this.levelPage = "";
+		this.levelPage += "<img src='img/level_1.png' onclick='pageOptions.setPage1()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>";
+		if(levelUnlock.lvl2===true){
+			this.levelPage += "<img src='img/level_2.png' onclick='pageOptions.setPage2()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>";
+		}else{
+			this.levelPage += "<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>";
+		}	
+
+		if(levelUnlock.lvl3===true){
+			this.levelPage += "<img src='img/level_3.png' onclick='pageOptions.setPage3()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" ;
+		}else{
+			this.levelPage += "<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>";
+		}
+
+		if(levelUnlock.lvl4===true){
+			this.levelPage += "<img src='img/level_4.png' onclick='pageOptions.setPage4()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" ;
+		}else{
+			this.levelPage += "<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>";
+		}
+
+		if(levelUnlock.lvl5===true){
+			this.levelPage += "<img src='img/level_5.png' onclick='pageOptions.setPage5()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" ;
+		}else{
+			this.levelPage += "<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>";
+		}
+
+		if(levelUnlock.lvl6===true){
+			this.levelPage += "<img src='img/level_6.png' onclick='pageOptions.setPage6()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" ;
+		}else{
+			this.levelPage += "<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>";
+		}
+
+		if(levelUnlock.lvl7===true){
+			this.levelPage += "<img src='img/level_7.png' onclick='pageOptions.setPage7()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" ;
+		}else{
+			this.levelPage += "<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>";
+		}
+
+		if(levelUnlock.lvl8===true){
+			this.levelPage += "<img src='img/level_8.png' onclick='pageOptions.setPage8()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" ;
+		}else{
+			this.levelPage += "<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>";
+		}
+
+		if(levelUnlock.lvl9===true){
+			this.levelPage += "<img src='img/level_9.png' onclick='pageOptions.setPage9()' width='18%' height='auto' style='margin-left:12%;margin-top:10%'/>" ;
+		}else{
+			this.levelPage += "<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>";
+		}
+
+
+		this.levelPage +="<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>"; //location.reload()
+	},
 
 	/**
 	 * This string represents the sign up form in our game
@@ -345,7 +393,7 @@ var pageOptions = {
 	 * This string stores level3 of our game
 	 */
     level3 : 
-    "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 3</h3>"+
+    "<h3 id='grid3' style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'></h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
     	"<div id='threeBoard' onclick='detect(this)'>"+
         "<div id='threeBoardCover'>"+
@@ -398,7 +446,7 @@ var pageOptions = {
      /**
 	 * This string stores level 4 of our game
 	 */
-    level4 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 4</h3>"+
+    level4 : "<h3 id='grid4' style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'></h3>"+
         "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
       "<div id='fourBoard' onclick='detect(this)'>"+
         "<div id='fourBoardCover'>"+
@@ -540,11 +588,13 @@ var pageOptions = {
 		stopBackground();
 		track.currentPage = 0;
 		playBackground();
+		this.setLevelUnlock();
 		this.reference.innerHTML = this.mainPage;
 	},	
 
 	//sets page to level selection page
 	setLevelPage : function(){
+		this.setLevelUnlock();
 		this.reference.innerHTML = this.levelPage;
 	},
 
@@ -555,53 +605,124 @@ var pageOptions = {
 
 	//high score page
 	setScorePage : function(){
+		this.setLevelUnlock();
 		this.reference.innerHTML = this.highScorePage;
 	},
 
 	//sets the game to level 1
 	setPage1 : function(){
-		stopBackground();
+		levelUnlock.currentLevel = 1;
 		track.currentPage = 0;
-		playBackground();
+		this.setLevelUnlock();
 		this.reference.innerHTML = this.level1;
 		flipImg();
 	},
 
 	//sets the game to level 2
 	setPage2 : function(){
-		stopBackground();
-		track.currentPage = 1;
-		playBackground();
+		levelUnlock.currentLevel = 2;
+		track.currentPage = 0;
+		this.setLevelUnlock();
 		this.reference.innerHTML = this.level2;
-		arrayData.setIds();
 		flipImg();
 	},
 
-	//sets the game to level 3
+	//sets the game to 3x3 grid
 	setPage3 : function(){
-		stopBackground();
+		levelUnlock.currentLevel = 3;
+		this.setLevelUnlock();
 		track.currentPage = 1;
-		playBackground();
 		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
+		document.getElementById("grid3").innerHTML = " Level 3";
 	},
 
-	//sets the game to level 3
-	setPage4 : function(){
-		stopBackground();
+		setPage4 : function(){
+		levelUnlock.currentLevel = 4;
+		this.setLevelUnlock();
 		track.currentPage = 1;
-		playBackground();
 		this.reference.innerHTML = this.level4;
 		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
+		document.getElementById("grid4").innerHTML = " Level 4";
 	},
+
+	// 	setPage4 : function(){
+	// 	levelUnlock.currentLevel = 4;
+	// 	this.setLevelUnlock();
+	// 	track.currentPage = 1;
+	// 	this.reference.innerHTML = this.level3;
+	// 	arrayData.setIds();
+	// 	initBoard3x3();
+	// 	flipImg();
+	// 	document.getElementById("grid3").innerHTML = " Level 4";
+	// },
+
+		setPage5 : function(){
+		levelUnlock.currentLevel = 5;
+		this.setLevelUnlock();
+		track.currentPage = 1;
+		this.reference.innerHTML = this.level3;
+		arrayData.setIds();
+		initBoard3x3();
+		flipImg();
+		document.getElementById("grid3").innerHTML = " Level 5";
+	},
+
+		setPage6 : function(){
+		levelUnlock.currentLevel = 6;
+		this.setLevelUnlock();
+		track.currentPage = 1;
+		this.reference.innerHTML = this.level3;
+		arrayData.setIds();
+		initBoard3x3();
+		flipImg();
+		document.getElementById("grid3").innerHTML = " Level 6";
+	},
+
+	//sets the game to 4x4 grid
+	setPage7 : function(){
+		levelUnlock.currentLevel = 7;
+		this.setLevelUnlock();
+		track.currentPage = 1;
+		this.reference.innerHTML = this.level4;
+		arrayData.setIds();
+		initBoard4x4();
+		flipImg();
+		document.getElementById("grid4").innerHTML = " Level 7";
+	},
+
+		setPage8 : function(){
+		levelUnlock.currentLevel = 8;
+		this.setLevelUnlock();
+		track.currentPage = 1;
+		this.reference.innerHTML = this.level4;
+		arrayData.setIds();
+		initBoard4x4();
+		flipImg();
+		document.getElementById("grid4").innerHTML = " Level 8";
+	},
+
+		setPage9 : function(){
+		levelUnlock.currentLevel = 9;
+		this.setLevelUnlock();
+		track.currentPage = 1;
+		this.reference.innerHTML = this.level4;
+		arrayData.setIds();
+		initBoard4x4();
+		flipImg();
+		document.getElementById("grid4").innerHTML = " Level 9";
+	},
+
+
 
 	  //This function is just a placeholder, later on we will be implementing timed mode only if the user
 	  //clicks the timed mode
 	  testTimeMode : function(){
+	    this.setLevelUnlock();
 	    stopBackground();
 	    track.currentPage = 1;
 	    playBackground();
@@ -613,8 +734,10 @@ var pageOptions = {
 	  },
 
 	  difficultySelect : function(){
+	  	this.setLevelUnlock();
 	  	this.reference.innerHTML = this.modeSelectionPage;
 	  }
+
 
 }
 
@@ -624,19 +747,69 @@ var pageOptions = {
  */
 
 function displayWin(){
-	pageOptions.reference.innerHTML =
-				 "<img src='img/youwin.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:20%'>"+
-						"<form>" +
-							"<input type='text' name='name' value='Enter name here!' id='submit'>" +
-							"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
-						"</form>" +
+	pageOptions.reference.innerHTML = "";
+	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;margin-left:45px;margin-top:80px;width:80%;height:30%'>"+
+									"<form style='margin-top:50px;margin-left:65px'>" +
+										"<p>Your name: <input type='text' name='name'></p>" +
+										"<input type='submit' value='Submit' style='margin-left:90px;margin-top:20px'>" +
+									"</form>" +
+				"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
+                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
 
+                switch(levelUnlock.currentLevel){
+                	case 1: levelUnlock.lvl1 = true;
+                			pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage2()'>Next Page</button>";
+                		break;
+                	case 2:
+                			levelUnlock.lvl2 = true;
+                			pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage3()'>Next Page</button>";
+                		break;
+                	case 3:
+                			levelUnlock.lvl3 = true;
+                			pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage4()'>Next Page</button>";
+                		break;
+                	case 4:
+		                	levelUnlock.lvl4 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage5()'>Next Page</button>";
+                		break;
+                	case 5:
+                			levelUnlock.lvl5 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage6()'>Next Page</button>";
+                		break;
+                	case 6:
+                			levelUnlock.lvl6 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage7()'>Next Page</button>";
+                		break;
+                	case 7:
+                			levelUnlock.lvl7 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage8()'>Next Page</button>";
+                		break;
+                	case 8:
+                			levelUnlock.lvl8 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage9()'>Next Page</button>";
+                		break;
+                	case 9:
+                			levelUnlock.lvl9 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage10()'>Next Page</button>";
+                		break;
 
-				"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>";
+                	default:
+                		break;
+                }
       stopBackground();
       track.track3.play();
+      clock.pause2 = false;
 }
+
 
 
 /**
@@ -768,3 +941,19 @@ function displayWin(){
           this.d.src='img/tile_90_3.jpg';
         }
     };
+
+var levelUnlock = {
+
+	lvl1: true,
+	lvl2: false,
+	lvl3: false,
+	lvl4: false,
+	lvl5: false,
+	lvl6: false,
+	lvl7: false,
+	lvl8 : false,
+	lvl9 : false,
+
+	currentLevel : 1
+
+}
