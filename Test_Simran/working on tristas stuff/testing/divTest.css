@@ -1,0 +1,27 @@
+/*
+ * This is a simple layout for the grid for css for testing reasons 
+ * @author Eva Y
+ * @version 1.0
+ */
+#gridBy3 {
+		margin: 0 auto;
+		width: 240px;
+		height: 240px;
+		position: relative;
+		border: solid 5px black;
+		background-color:white;
+}
+
+.tile_grid_box{
+	float:left;
+	width:70px;
+	height:70px;
+	bottom:0;
+	left:0;
+	border: solid 5px black;
+}
+
+img{
+	width: 70px;
+	height: 70px;
+}

@@ -12,192 +12,6 @@
  ***************************************************************************************
  */
 
-
-/**
-*The track variable holds all of the sound files which
-*will be used in our game. 
-*
-*the init function initializes track1 and track2, then starts the song by using
-*playBackground();
-*/
-var track = {
-	state : 0,    //if state is 0, then music is playing. If the state is 1, then music should stop playing.
-    track1 : undefined, //first mp3 file
-    track2 : undefined,  //second mp3 file
-    track3 : undefined, //third mp3 file
-    track4: undefined, //4th mp3 file
-    currentPage : 0,  //current page (such as level selection or menu)
-    buttonSrc : undefined, //source of the button (so we can get the id with document.getElementByid('x'))
-    
-    /**
-	* This function initializes the sound files and loads them into the variables from track1-4
-    */
-    init : function(){
-    	this.track1 = new Audio();
-    	this.track1.src = "sounds/umbala.mp3";
-    	this.track1.volume = 0.3;
-    	this.track1.loop = true;
-    	this.track2 = new Audio();
-    	this.track2.src = "sounds/jpark.mp3";
-    	this.track3 = new Audio();
-    	this.track3.src = 'sounds/congrats.mp3';
-    	this.track4 = new Audio();
-    	this.track4.src = 'sounds/cardflip.mp3';
-    	playBackground();
-    }
-};
-
-
-/**
- * This functiona plays a card flipping sound when called.
- * 
- */
-function flipSound(){
-	track.track4.play();
-}
-
-/**
-*This function sets the source of the button to the page that is currently displayed
-*/
-function getButtonSrc(){
-	track.buttonSrc = document.getElementById('ayy');
-}
-
-track.init();  //initializes the track variable when everything is ready
-
-/*
-* This function plays background music, by first detecting if track.state is equal to 0
-* since if it's equal to 1, then we stop playing the music. 
-*/
-function playBackground(){
-	if(track.state===0){
-		getButtonSrc();
-		track.buttonSrc.src ='img/button_audio.png';
-		switch(track.currentPage){   //the switch statement detects which page the game is on
-									// and plays the correct background music.
-			case 0:
-				track.track1.play();
-				break;
-			case 1:
-				track.track2.play();
-				break;
-			default: console.log("error song");
-			break;
-		}
-		track.state++;    //track state represents whether something is playing or not.
-	}else{
-		stopBackground();
-		track.state=0;
-	}
-}
-
-/**
- * This function changes the audio button to visually represent that sound has stopped playing,
- * and then resets every single track on the page, and also stops them via the pause() method.
- * state is also changed to 0 so that next time a user presses the play button, the 
- * playBackground() method will correctly cycle through the first if condition.
- * 
- */
-function stopBackground(){
-	getButtonSrc();
-	track.buttonSrc.src = 'img/button_audio_off.png'; 
-	track.track1.pause();
-	track.track1.currentTime=0;
-	track.track2.pause();
-	track.track2.currentTime=0;
-    track.track3.pause();
-    track.track3.currentTime=0;
-
-    track.track4.pause();
-    track.track4.currentTime=0;
-
-    track.state = 0;
-}
-
-/**
- * This functiona refreshes the paragraph with the id "timesquare"
- * by using the window.setTimeout method every 0.1 seconds. In this manner,
- * we have a variable that holds the data for how much time has passed, and can be
- * used for any purpose : such as a countdown, or a count up. We can also easily check
- * if a user has spent too much time on a level with an if statement within a check function.
- * 
- */
-function timeMode(){
-
-	if(!clock.lost){
-		clock.timerReference = document.getElementById('timeSquare');
-		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
-			return;
-		}
-		clock.timerReference.innerHTML = "Time left: " + clock.seconds;
-		clock.checkTime();    //checks if the user has time left.
-		if(!clock.pause2){
-				clock.seconds--;
-				window.setTimeout(timeMode,1000);
-		}
-	}else{
-		displayLoss();
-	}
-}
-
-
-
-function setPause(){
-	if(clock.pauseState==0){
-		document.getElementById('pauseTimer').src = 'img/button_resume.png';
-		clock.pause2 = true;
-		clock.pauseState++;
-	}else{
-		document.getElementById('pauseTimer').src = 'img/button_pause.png';
-		clock.pause2 = false;
-		clock.pauseState = 0;
-	}
-	timeMode();
-}
-
-/**
- * This function is called when the player runs out of time. Resets the time left and boolean clock.lost, so that
- * the player can try again if they wish or go back to the main menu.
- */
-
-
-function displayLoss(){
-	pageOptions.reference.innerHTML = 	"<img src='img/layer.png' style='display:block;width:100%;height:100%'>"+
-
-	"<img src='img/tryagain.png' id='tryAgain'>" +
-	"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
-    "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
-    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' id='yes'>" +
-	"<img src='img/button_xmark.png' onclick='pageOptions.setPage()' id='no'>";
-
-      stopBackground();
-      clock.totalTimeInTenths = 50;
-      clock.lost = false;
-}
-
-
-/**
- * This object holds variables for the time mode of our game.
- * 
- */
-var clock = {
-	pause2 : false,    //pause boolean
-	pauseState : 0,   //state of pause
-	lost : false, // lose game boolean
-	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
-								//to animate the timer
-	seconds : 20,				//variable that represents seconds (60 seconds per minute)
-	/**
-	 * This function checks if the user has run out of time.
-	 */
-	 checkTime : function(){
-	 	if(this.seconds<=0){
-	 		this.lost = true;
-	 	}
-	 }
-
-}
-
 /*
 *This variable contains the string data for each of our pages, and puts them
 *in the divisions.
@@ -356,7 +170,7 @@ var pageOptions = {
                "<div id='cover3' onclick='flip02(\"twoByTwo_03\")'></div>"+
                "</div>"+
                "<div id='twoByTwo_00' onclick='rotateNubx1(\"twoByTwo_00\")'></div>"+
-               "<div id='twoByTwo_01' onclick='rotateLinex1(\"twoByTwo_01\")'></div>"+
+               "<div id='twoByTwo_01' onclick='rotateNubx1(\"twoByTwo_01\")'></div>"+
                "<div style='clear:both'></div>"+
 				"<div id='twoByTwo_02' onclick='rotate90x1(\"twoByTwo_02\")'></div><div id='twoByTwo_03' onclick='rotateNubx1(\"twoByTwo_03\")'></div></div>"+
 
@@ -643,23 +457,12 @@ var pageOptions = {
 		levelUnlock.currentLevel = 4;
 		this.setLevelUnlock();
 		track.currentPage = 1;
-		this.reference.innerHTML = this.level4;
+		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
-		initBoard4x4();
+		initBoard3x3();
 		flipImg();
-		document.getElementById("grid4").innerHTML = " Level 4";
+		document.getElementById("grid3").innerHTML = " Level 4";
 	},
-
-	// 	setPage4 : function(){
-	// 	levelUnlock.currentLevel = 4;
-	// 	this.setLevelUnlock();
-	// 	track.currentPage = 1;
-	// 	this.reference.innerHTML = this.level3;
-	// 	arrayData.setIds();
-	// 	initBoard3x3();
-	// 	flipImg();
-	// 	document.getElementById("grid3").innerHTML = " Level 4";
-	// },
 
 		setPage5 : function(){
 		levelUnlock.currentLevel = 5;
@@ -722,6 +525,7 @@ var pageOptions = {
 	  //This function is just a placeholder, later on we will be implementing timed mode only if the user
 	  //clicks the timed mode
 	  testTimeMode : function(){
+	  	resetTimer();
 	    this.setLevelUnlock();
 	    stopBackground();
 	    track.currentPage = 1;
@@ -743,63 +547,259 @@ var pageOptions = {
 
 
 /**
+*The track variable holds all of the sound files which
+*will be used in our game. 
+*
+*the init function initializes track1 and track2, then starts the song by using
+*playBackground();
+*/
+var track = {
+	state : 0,    //if state is 0, then music is playing. If the state is 1, then music should stop playing.
+    track1 : undefined, //first mp3 file
+    track2 : undefined,  //second mp3 file
+    track3 : undefined, //third mp3 file
+    track4: undefined, //4th mp3 file
+    currentPage : 0,  //current page (such as level selection or menu)
+    buttonSrc : undefined, //source of the button (so we can get the id with document.getElementByid('x'))
+    
+    /**
+	* This function initializes the sound files and loads them into the variables from track1-4
+    */
+    init : function(){
+    	this.track1 = new Audio();
+    	this.track1.src = "sounds/umbala.mp3";
+    	this.track1.volume = 0.3;
+    	this.track1.loop = true;
+    	this.track2 = new Audio();
+    	this.track2.src = "sounds/jpark.mp3";
+    	this.track3 = new Audio();
+    	this.track3.src = 'sounds/congrats.mp3';
+    	this.track4 = new Audio();
+    	this.track4.src = 'sounds/cardflip.mp3';
+    	playBackground();
+    }
+};
+
+
+/**
+ * This functiona plays a card flipping sound when called.
+ * 
+ */
+function flipSound(){
+	track.track4.play();
+}
+
+/**
+*This function sets the source of the button to the page that is currently displayed
+*/
+function getButtonSrc(){
+	track.buttonSrc = document.getElementById('ayy');
+}
+
+track.init();  //initializes the track variable when everything is ready
+
+/*
+* This function plays background music, by first detecting if track.state is equal to 0
+* since if it's equal to 1, then we stop playing the music. 
+*/
+function playBackground(){
+	if(track.state===0){
+		getButtonSrc();
+		track.buttonSrc.src ='img/button_audio.png';
+		switch(track.currentPage){   //the switch statement detects which page the game is on
+									// and plays the correct background music.
+			case 0:
+				track.track1.play();
+				break;
+			case 1:
+				track.track2.play();
+				break;
+			default: console.log("error song");
+			break;
+		}
+		track.state++;    //track state represents whether something is playing or not.
+	}else{
+		stopBackground();
+		track.state=0;
+	}
+}
+
+/**
+ * This function changes the audio button to visually represent that sound has stopped playing,
+ * and then resets every single track on the page, and also stops them via the pause() method.
+ * state is also changed to 0 so that next time a user presses the play button, the 
+ * playBackground() method will correctly cycle through the first if condition.
+ * 
+ */
+function stopBackground(){
+	getButtonSrc();
+	track.buttonSrc.src = 'img/button_audio_off.png'; 
+	track.track1.pause();
+	track.track1.currentTime=0;
+	track.track2.pause();
+	track.track2.currentTime=0;
+    track.track3.pause();
+    track.track3.currentTime=0;
+    track.track4.pause();
+    track.track4.currentTime=0;
+
+    track.state = 0;
+}
+
+/**
+ * This object holds variables for the time mode of our game.
+ * 
+ */
+var clock = {
+	pause2 : false,    //pause boolean
+	pauseState : 0,   //state of pause
+	lost : false, // lose game boolean
+	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
+								//to animate the timer
+	seconds : 20,				//variable that represents seconds (60 seconds per minute)
+	/**
+	 * This function checks if the user has run out of time.
+	 */
+	 checkTime : function(){
+	 	if(this.seconds<=0){
+	 		this.lost = true;
+	 	}
+	 }
+
+}
+
+/**
+ * This functiona refreshes the paragraph with the id "timesquare"
+ * by using the window.setTimeout method every 0.1 seconds. In this manner,
+ * we have a variable that holds the data for how much time has passed, and can be
+ * used for any purpose : such as a countdown, or a count up. We can also easily check
+ * if a user has spent too much time on a level with an if statement within a check function.
+ * 
+ */
+function timeMode(){
+
+	if(!clock.lost){
+		clock.timerReference = document.getElementById('timeSquare');
+		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
+			return;
+		}
+		clock.timerReference.innerHTML = "Time left: " + clock.seconds;
+		clock.checkTime();    //checks if the user has time left.
+		if(!clock.pause2){
+				clock.seconds--;
+				window.setTimeout(timeMode,1000);
+		}
+	}else{
+		displayLoss();
+	}
+}
+
+
+
+function setPause(){
+	if(clock.pauseState==0){
+		document.getElementById('pauseTimer').src = 'img/button_resume.png';
+		clock.pause2 = true;
+		clock.pauseState++;
+	}else{
+		document.getElementById('pauseTimer').src = 'img/button_pause.png';
+		clock.pause2 = false;
+		clock.pauseState = 0;
+	}
+	timeMode();
+}
+
+function resetTimer(){
+	clock.seconds = 20;
+}
+
+/**
+ * This function is called when the player runs out of time. Resets the time left and boolean clock.lost, so that
+ * the player can try again if they wish or go back to the main menu.
+ */
+
+function displayLoss(){
+	pageOptions.reference.innerHTML = 	"<img src='img/layer.png' style='display:block;width:100%;height:100%'>"+
+	"<img src='img/tryagain.png' id='tryAgain'>" +
+	"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+    "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' id='yes'>" +
+	"<img src='img/button_xmark.png' onclick='enterName()' id='no'>";
+
+      stopBackground();
+      clock.lost = false;
+      resetTimer();
+}
+
+function enterName(){
+	pageOptions.reference.innerHTML = "<img src='img/score.png' id='score'>" +
+
+	"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+    "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+
+	"<form>" +
+		"<input type='text' name='name' value='Enter name here!' id='submit'>" +
+		"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
+	"</form>";
+}
+
+
+
+/**
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 
 function displayWin(){
+	resetTimer();
 	pageOptions.reference.innerHTML = "";
-	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;margin-left:45px;margin-top:80px;width:80%;height:30%'>"+
-									"<form style='margin-top:50px;margin-left:65px'>" +
-										"<p>Your name: <input type='text' name='name'></p>" +
-										"<input type='submit' value='Submit' style='margin-left:90px;margin-top:20px'>" +
-									"</form>" +
-				"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>";
+	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;width:90%;height:auto;margin:auto;margin-top:15%'>"+
+				"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>";
 
                 switch(levelUnlock.currentLevel){
-                	case 1: levelUnlock.lvl1 = true;
+                	case 1: levelUnlock.lvl2 = true;
                 			pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage2()'>Next Page</button>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage2()' id='continueButton'>";
                 		break;
                 	case 2:
-                			levelUnlock.lvl2 = true;
-                			pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage3()'>Next Page</button>";
-                		break;
-                	case 3:
                 			levelUnlock.lvl3 = true;
                 			pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage4()'>Next Page</button>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage3()' id='continueButton'>";
+                		break;
+                	case 3:
+                			levelUnlock.lvl4 = true;
+                			pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage4()' id='continueButton'>";
                 		break;
                 	case 4:
-		                	levelUnlock.lvl4 = true;
+		                	levelUnlock.lvl5 = true;
 		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage5()'>Next Page</button>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage5()' id='continueButton'>";
                 		break;
                 	case 5:
-                			levelUnlock.lvl5 = true;
-		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage6()'>Next Page</button>";
-                		break;
-                	case 6:
                 			levelUnlock.lvl6 = true;
 		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage7()'>Next Page</button>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage6()' id='continueButton'>";
                 		break;
-                	case 7:
+                	case 6:
                 			levelUnlock.lvl7 = true;
 		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage8()'>Next Page</button>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage7()' id='continueButton'>";
                 		break;
-                	case 8:
+                	case 7:
                 			levelUnlock.lvl8 = true;
 		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage9()'>Next Page</button>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage8()' id='continueButton'>";
                 		break;
-                	case 9:
+                	case 8:
                 			levelUnlock.lvl9 = true;
 		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<button style='position:absolute;width:70px;height:70px;bottom:10px;left:100px' onclick='pageOptions.setPage10()'>Next Page</button>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage9()' id='continueButton'>";
+                		break;
+                	case 9:
+                			levelUnlock.lvl10 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage10()' id='continueButton'>";
                 		break;
 
                 	default:

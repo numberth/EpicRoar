@@ -1,0 +1,316 @@
+<!DOCTYPE=html>
+<html lang="en">
+<head>
+	<meta charset="utf-8"><title>yo</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <style>
+      #threeByThreeBoard{
+        width:300px;
+        height:250px;
+        display:block;
+        margin:auto;
+        margin-top:15%;
+        
+      }
+
+        #threeByThree{
+        background-image: url(images/grass.jpg);
+        background-size: 100% 100%;
+        text-align:center;
+        width:79px;
+        height:70px;
+        border-style:solid;
+        border-color:#996633;
+        border-width:2px;
+        float:left;
+      }
+
+      /*
+      #threeByThree:active{
+        transition: 1.1s;
+        transform-style: preserve-3d;
+         transform: rotateY(181deg);
+        box-shadow: -5px 5px 5px #aaa;
+        background-size: 100% 100%;
+        background-image: url(https://0.s3.envato.com/files/83107586/590.jpg);
+      }     */
+ 
+      #threeByThree_Tile1{
+ 
+        background-size: 100% 100%;
+        background-image: url(images/grass.jpg);
+        text-align:center;
+        width:79px;
+        height:70px;
+        border-style:solid;
+        border-color:#996633;
+        border-width:2px;
+        float:left;
+      }
+
+      #threeByThree_Tile2{
+ 
+        background-size: 100% 100%;
+        background-image: url(images/grass.jpg);
+        text-align:center;
+        width:79px;
+        height:70px;
+        border-style:solid;
+        border-color:#996633;
+        border-width:2px;
+        float:left;
+      }
+
+      #threeByThree_Tile3{
+
+        background-size: 100% 100%;
+        background-image: url(images/grass.jpg);
+        text-align:center;
+        width:79px;
+        height:70px;
+        border-style:solid;
+        border-color:#996633;
+        border-width:2px;
+        float:left;
+      }
+
+      #threeByThree_Tile4{
+      
+        background-size: 100% 100%;
+        background-image: url(images/grass.jpg);
+        text-align:center;
+        width:79px;
+        height:70px;
+        border-style:solid;
+        border-color:#996633;
+        border-width:2px;
+        float:left;
+      }
+
+      #threeByThree_Tile5{
+      
+       
+        background-size: 100% 100%;
+        background-image: url(images/grass.jpg);
+        text-align:center;
+        width:79px;
+        height:70px;
+        border-style:solid;
+        border-color:#996633;
+        border-width:2px;
+        float:left;
+      }
+
+      #threeByThree_Tile6{
+  
+       
+        background-size: 100% 100%;
+        background-image: url(images/grass.jpg);
+        text-align:center;
+        width:79px;
+        height:70px;
+        border-style:solid;
+        border-color:#996633;
+        border-width:2px;
+        float:left;
+      }
+
+      #threeByThree_Tile7{
+
+        background-size: 100% 100%;
+        background-image: url(images/grass.jpg);
+        text-align:center;
+        width:79px;
+        height:70px;
+        border-style:solid;
+        border-color:#996633;
+        border-width:2px;
+        float:left;
+      }
+
+      #threeByThree_Tile8{
+
+        
+        background-image: url(images/grass.jpg);
+        background-size: 100% 100%;
+        text-align:center;
+        width:79px;
+        height:70px;
+        border-style:solid;
+        border-color:#996633;
+        border-width:2px;
+        float:left;
+      }
+
+      #threeByThree_Tile9{   
+        background-image: url(images/grass.jpg);
+        background-size: 100% 100%;
+        text-align:center;
+        width:79px;
+        height:70px;
+        border-style:solid;
+        border-color:#996633;
+        border-width:2px;
+        float:left;
+      }
+
+
+  </style>
+</head>
+<body>
+
+<div id='threeByThreeBoard'>
+                <div id='threeByThree_Tile1' onclick="clickMaster('threeByThree_Tile1')">
+                </div>
+                <div id='threeByThree_Tile2' onclick="clickMaster('threeByThree_Tile2')">
+                </div>
+                <div id='threeByThree_Tile3' onclick="clickMaster('threeByThree_Tile3')">
+                </div>
+
+                    <div style='clear:both'></div>
+
+                <div id='threeByThree_Tile4' onclick="clickMaster('threeByThree_Tile4')">
+                </div>
+                <div id='threeByThree_Tile5' onclick="clickMaster('threeByThree_Tile5')">
+                </div>
+                <div id='threeByThree_Tile6' onclick="clickMaster('threeByThree_Tile6')">
+                </div>
+
+                    <div style='clear:both'></div>
+
+                <div id='threeByThree_Tile7' onclick="clickMaster('threeByThree_Tile7')">
+                </div>
+                <div id='threeByThree_Tile8' onclick="clickMaster('threeByThree_Tile8')">
+                </div>
+                <div id='threeByThree_Tile9' onclick="clickMaster('threeByThree_Tile9')">
+                </div>
+            </div>
+</div>
+
+
+ <script>
+
+    var arrayData = {
+      clicked : false,
+      state : 0,
+      tempTile : 0,
+      curentTile:0,
+      currentImageTile :0,
+      tileIdArray : [],
+
+      setIds : function(){
+        for(var i=0;i<9;i++){
+            this.tileIdArray[i] = document.getElementById("threeByThree_Tile" + (i+1));
+         }
+        console.log("initialized tileIdArray");
+      }
+    };
+
+
+    window.onload = arrayData.setIds();
+
+    function computeCurrentId(id){
+        switch(id){
+          case "threeByThree_Tile1":
+            arrayData.currentTile = 0;
+            break;
+          case "threeByThree_Tile2":
+            arrayData.currentTile = 1;
+            break;
+          case "threeByThree_Tile3":
+            arrayData.currentTile = 2;
+            break;
+
+          case "threeByThree_Tile4":
+            arrayData.currentTile = 3;
+            break;
+          
+          case "threeByThree_Tile5":
+            arrayData.currentTile = 4;
+            break;
+          
+          case "threeByThree_Tile6":
+            arrayData.currentTile = 5;
+            break;
+          
+          case "threeByThree_Tile7":
+            arrayData.currentTile = 6;
+            break;
+          
+          case "threeByThree_Tile8":
+            arrayData.currentTile = 7;
+            break;
+          
+          case "threeByThree_Tile9":
+            arrayData.currentTile = 8;
+            break;
+
+        }
+    }
+
+    function resetBoard(){
+        for(var i=0;i<arrayData.tileIdArray.length;i++){
+            arrayData.tileIdArray[i].style.backgroundImage = "url('images/grass.jpg')"
+        }
+    }
+
+    function clickMaster(id){
+        var k = document.getElementById(id);
+        computeCurrentId(id);
+
+        if(arrayData.state===0){
+            for(var i=0;i<arrayData.tileIdArray.length;i++){
+              if(i!=arrayData.currentTile){
+                arrayData.tileIdArray[i].style.backgroundImage = "url('images/grass.jpg')"
+              }
+             
+            }
+
+            if(arrayData.currentImageTile===0){
+                k.style.backgroundImage = "url('images/tile_90_0.jpg')";
+                arrayData.currentImageTile++;
+            }else if(arrayData.currentImageTile===1){
+                k.style.backgroundImage = "url('images/tile_90_1.jpg')";
+                arrayData.currentImageTile++;
+            }else if(arrayData.currentImageTile===2){
+                k.style.backgroundImage = "url('images/tile_90_2.jpg')";
+                arrayData.currentImageTile++;
+            }else if(arrayData.currentImageTile===3){
+                k.style.backgroundImage = "url('images/tile_90_3.jpg')";
+                arrayData.currentImageTile=0;
+            }
+
+
+
+
+        }
+        
+    }
+
+    function playFlipSound(){
+
+    }
+
+
+    var tileType1 = {
+         a : undefined,
+         b : undefined,
+         c : undefined,
+         b : undefined,
+
+         setTiles1 : function(){
+          this.a = new Image();
+          this.b = new Image();
+          this.c = new Image();
+          this.d = new Image();
+
+          this.a.src='images/tile_90_0.jpg';
+          this.b.src='images/tile_90_1.jpg';
+          this.c.src='images/tile_90_2.jpg';
+          this.d.src='images/tile_90_3.jpg';
+        }
+    };
+
+  </script>
+</body>
+</html>
