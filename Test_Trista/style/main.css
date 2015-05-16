@@ -81,6 +81,30 @@
 	background-size:100% 100%; */
 }
 
+#continueButton{
+	margin:0;
+	margin-left: 19%;
+	display:block;
+	height:auto;
+	width:60%;
+	text-align:center;
+	margin-top:10%;
+	font-size:25px;
+	font-family:cursive,arial;
+
+}
+
+#score{
+	margin:0;
+	margin-left: 13%;
+	display:block;
+	height:auto;
+	width:75%;
+	text-align:center;
+	margin-top:20%;
+
+}
+
 #timeButton{
 	margin:0;
 	margin-left: 25%;
@@ -97,7 +121,7 @@
 
 #yes{
 	margin:0;
-	margin-left: 18%;
+	margin-left: 20%;
 	display:block;
 	height:auto;
 	width:20%;
@@ -124,7 +148,6 @@
 	width:75%;
 	text-align:center;
 	margin-top:-120%;
-
 
 }
 
@@ -173,17 +196,17 @@
 	height:auto;
 	width:60%;
 	text-align:center;
-	margin-top:10%;
+	margin-top:37%;
 	font-size:15px;
 	font-family:cursive,arial;
 }
 
 #submitButton{
 	margin:0;
-	margin-left: 31%;
+	margin-left: 28%;
 	display:block;
 	height:auto;
-	width:40%;
+	width:45%;
 	text-align:center;
 	margin-top:5%;
 	font-size:25px;
