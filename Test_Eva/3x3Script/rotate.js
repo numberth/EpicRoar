@@ -69,7 +69,7 @@ function oneSideRotate(til){
 	}else if( tile === (MAX*MAX-1)){
 		if (grid_solution_tracer[1] === (MAX*MAX - 2)){
 			grid_image_counter[tile] = 3;
-		}else if(grid_solution_tracer[1] === (MAX*MAX - MAX)){
+		}else if(grid_solution_tracer[1] === (MAX*MAX - MAX-1)){
 			grid_image_counter[tile] = 0;
 		} 
 	}else{
