@@ -2,8 +2,11 @@
  * This program is the program that checks to see if the players play matches the solution in order to return 
  * a winning pop up.
  *
+ * v1.5: added nchnacements to the game by fixing the first and last image tile as it 
+ * is in position and turning it into a nub with only one possible exit path.
+ * 
  * @author Eva Yu
- * @version 1.0
+ * @version 1.5
  *
  ******************************************************************************************
 /**
@@ -14,9 +17,9 @@
  * @type {Array} [ and Array of integers that each reperesnt the position of the tile or grid]
  */
 
-var grid_solution_tracer = new Array();
+var grid_solution_tracer;
 var solution_match_counter;
-var nonSolutionValues = new Array(MAX*MAX);
+var nonSolutionValues;
 /**
  * 
  * This function records the values of the  solution in correspondance to the tile ID position 
@@ -26,6 +29,7 @@ var nonSolutionValues = new Array(MAX*MAX);
  * 
  */
 function solutionPathId(){
+	grid_solution_tracer = new Array();
 	for (var i = 0 ; i < solution_matrix.length; i++) {
 			grid_solution_tracer.push((MAX*solution_matrix[i][1]) + solution_matrix[i][0]);
 	}
@@ -44,7 +48,7 @@ function checkUserBoard(){
 		}
 
 		if(solution_match_counter === grid_solution_tracer.length){
-			displayWin(); //WIN 
+			flipWin(); //WIN 
 		}
 	}
 }
@@ -64,12 +68,22 @@ function checkUserPlay(til){
 		}
 }
 	
-
+/**
+ * THis is the function that intializes all the solution pieces to the index of the grid.  
+ * 
+ */
 function initNonSolVals(){
+	nonSolutionValues = new Array(MAX*MAX);
 	for (var i = 0; i < nonSolutionValues.length; i++){
 		nonSolutionValues[i] = i;
 	}
 }
+
+/**
+ *  This is the function that records all the values in the grid that are not part of the solution 
+ *  these values can be mainpulated and there will still be at least on path from  A to B 
+ * 
+ */
 
 function nonSolutionGridsId(){
 	initNonSolVals();

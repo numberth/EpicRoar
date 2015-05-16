@@ -60,6 +60,7 @@ function initAssignmentArrays(){
  * and then assign the image accordingly by calling the tileAssign3x3 function. 
  *  
  */
+
 function assignPath3x3(){
 	initAssignmentArrays();
 
@@ -233,11 +234,29 @@ function tile_exit_counter_userInit(){
   	}
 
 }
-
+/**
+ * in v 1.0 this function changes anythign thing that is in the nonSolution Values array 
+ * into a tile_nub image with one exit. 
+ * so that the user play does not match the computer play 
+ * 
+ *  In v2.0 This fucntion ONLY changes the tiles 0 ,and MAX^2- 1 
+ *  in order for them to be tile_nub images 
+ *  
+ * the function  in the assignment of oneSide() will be changed accordingly 
+ * to accomodate the fixing of the posistion of the nub in tile 0 and the last tile 
+ * 
+ * @version 2.0
+ * @return  {[type]}  [description]
+ */
 function tile_exit_counter_userChange(){
-	for(var i = 0 ; i < nonSolutionValues.length; i++){
-		tile_exit_counter_user.splice(nonSolutionValues[i],1,1);
-		}
+// version 1.0 : 
+	// for(var i = 0 ; i < nonSolutionValues.length; i++){
+	// 	tile_exit_counter_user.splice(nonSolutionValues[i],1,1);
+	// 	}
+	// 	
+//version 2.0:
+	tile_exit_counter_user[0] = 1;
+	tile_exit_counter_user[MAX*MAX -1] = 1;
 }
 /**
  * This functions takes the adjacent matrix and counts all the values in the atrix to see 
@@ -252,27 +271,50 @@ function tileExitCount(){
 			}
 		}
 	}
+	tile_exit_counter[0] = 1;
+	tile_exit_counter[MAX*MAX -1] = 1;
 }
 /**
  * If there is only one tile connected to the current tile the loop is reading, 
  * then the corresponding numb image will be asisgned.
- * 
+ *
+ * v2.0: [bug fix: asisnged the right tile array (Yeah, that was stupid)]
+ * v3.0: [the tile of position 0 and MAX^2 -1 are assigned a nub and facing the
+ * 		 way towards the solution. they arehard coded into place in the onSideRotate function]
+ * 		 
  * @param   {number}  til [number position of the tile]
  * @return  {String}  [an array that will reassign the src of the tile image ]
- * @version 2.0 [bug fix: asisnged the right tile array (Yeah, that was stupid)]
+ * @version 3.0 
+ * 
  */
 function oneSide(til){
 	var tile = parseInt(til);
-	if (adj_matrix[tile][tile+1]){
+	if(tile === 0){
+		if( grid_solution_tracer[grid_solution_tracer.length - 2] === 1){
+			grid_image_counter[tile] = 1;
+			return tile_nub[1];
+		}else if(grid_solution_tracer[grid_solution_tracer.length - 2] === MAX){
+			grid_image_counter[tile] = 2;
+			return tile_nub[2];
+		}
+	}else if( tile === (MAX*MAX-1)){
+		if (grid_solution_tracer[1] === (MAX*MAX - 2)){
+			grid_image_counter[tile] = 3;
+			return tile_nub[3];
+		}else if(grid_solution_tracer[1] === (MAX*MAX - MAX)){
+			grid_image_counter[tile] = 0;
+			return tile_nub[0];	
+		} 
+	}else if (adj_matrix[tile][tile+1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[1];
 	}else if (adj_matrix[tile][tile-1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[3];
-	} else if( adj_matrix[tile][tile + 3]){
+	} else if( adj_matrix[tile][tile + MAX]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[2];
-	}else if ( adj_matrix[tile][tile - 3]){
+	}else if ( adj_matrix[tile][tile - MAX]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return this.tile_nub[0];
 	}
@@ -323,19 +365,19 @@ function twoSide(til){
 function threeSide(til){
 	var tile = parseInt(til);
 	//if it is connected to up, down, right
-	if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile+1]){
+	if(adj_matrix[tile][tile - MAX] && adj_matrix[tile][tile + MAX] && adj_matrix[tile][tile+1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[1];
 	//if it is connected to up, down, left
-	}else if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile-1]){
+	}else if(adj_matrix[tile][tile - MAX] && adj_matrix[tile][tile + MAX] && adj_matrix[tile][tile-1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[3];
 	//if it is connected to up, left, right 
-	}else if(adj_matrix[tile][tile - 3] && adj_matrix[tile][tile-1] && adj_matrix[tile][tile+1]){
+	}else if(adj_matrix[tile][tile - MAX] && adj_matrix[tile][tile-1] && adj_matrix[tile][tile+1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[0];
 	// if it is connected to down, left, right
-	}else if(adj_matrix[tile][tile-1] && adj_matrix[tile][tile + 3] && adj_matrix[tile][tile+1]){
+	}else if(adj_matrix[tile][tile-1] && adj_matrix[tile][tile + MAX] && adj_matrix[tile][tile+1]){
 		grid_image_counter[tile] = Math.floor(Math.random() * 4);
 		return tile_t[2];
 	}
