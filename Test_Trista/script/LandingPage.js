@@ -25,7 +25,7 @@ var pageOptions = {
 	 */
 	mainPage : "<img src='img/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'>" + 
 	
-	"<img src= 'img/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>" +
+	"<img src= 'img/button_play.png' onclick='pageOptions.difficultySelect()' id='playButton'>" +
 	"<img src= 'img/button_levels.png' onclick='pageOptions.setLevelPage()' id='levelModeButton'>" +
 	"<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>" +
 	"<img src='' onclick='playBackground()' id='ayy'>" +
@@ -37,7 +37,7 @@ var pageOptions = {
 			"<img src= 'img/button_tutorial.png' onclick='pageOptions.setPage1()' id='tutorialButton'>" +
 				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage1()' id='zenButton'>" +
 				"<img src= 'img/button_time.png' onclick='pageOptions.testTimeMode()' id='timeButton'>" +
-				"<img src='img/button_audio_off.png' onclick='playBackground()' id='ayy'>" +
+				"<img src='' onload='setAudioImg()' onclick='playBackground()' id='ayy'>" +
 				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 	
 
@@ -547,9 +547,11 @@ var pageOptions = {
 	  },
 
 	  difficultySelect : function(){
-	  	setAudioImg();
 	  	this.setLevelUnlock();
+	  	track.currentPage = 1;
+	  	setAudioImg();
 	  	this.reference.innerHTML = this.modeSelectionPage;
+	  	setAudioImg();
 	  }
 
 
@@ -587,6 +589,7 @@ var track = {
     	this.track4 = new Audio();
     	this.track4.src = 'sounds/cardflip.mp3';
     	playBackground();
+    	setAudioImg();
     }
 };
 
@@ -616,9 +619,8 @@ track.init();  //initializes the track variable when everything is ready
 * since if it's equal to 1, then we stop playing the music. 
 */
 function playBackground(){
-	setAudioImg();
 	if(track.state===0){
-		getButtonSrc();
+		// getButtonSrc();
 		// switch(track.currentPage){   //the switch statement detects which page the game is on
 		// 							// and plays the correct background music.
 		// 	case 0:
@@ -633,8 +635,8 @@ function playBackground(){
 		track.state=1;    //track state represents whether something is playing or not.
 	}else{
 		stopBackground();
-		track.state=0;
 	}
+	setAudioImg();
 }
 
 /**
@@ -645,7 +647,7 @@ function playBackground(){
  * 
  */
 function stopBackground(){
-	getButtonSrc();
+	// getButtonSrc();
 	// track.buttonSrc.src = 'img/button_audio_off.png'; 
 	track.track1.pause();
 	track.track1.currentTime=0;
@@ -657,14 +659,21 @@ function stopBackground(){
     track.track4.currentTime=0;
 
     track.state = 0;
+    setAudioImg();
 }
 
 
 function setAudioImg(){
-	if(track.state===0){
-		document.getElementById('ayy').src = 'img/button_audio_off.png';
-	}else if(track.state===1){
-		document.getElementById('ayy').src = 'img/button_audio.png';
+	switch(track.state){
+		case 1:
+			document.getElementById('ayy').src = 'img/button_audio_off.png';
+			break;
+		case 0:
+			document.getElementById('ayy').src = 'img/button_audio.png';
+			break;
+		default:
+			document.getElementById('ayy').src = 'img/button_audio.png';
+			break;
 	}
 }
 
@@ -747,6 +756,7 @@ function displayLoss(){
     "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
     "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' id='yes'>" +
 	"<img src='img/button_xmark.png' onclick='enterName()' id='no'>";
+	setAudioImg();
       clock.lost = false;
       resetTimer();
 }
@@ -761,6 +771,7 @@ function enterName(){
 		"<input type='text' name='name' value='Enter name here!' id='submit'>" +
 		"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
 	"</form>";
+	setAudioImg();
 }
 
 
@@ -825,6 +836,7 @@ function displayWin(){
                 	default:
                 		break;
                 }
+      setAudioImg();
       stopBackground();
       track.track3.play();
       clock.pause2 = false;
