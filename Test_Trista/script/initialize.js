@@ -38,6 +38,7 @@ function initBoard3x3(){
  * @param   {Number}  til [the position of the tile]
  */
 function rotateAndCheck(til){
+  flipSound();
   var tile = parseInt(til); 
   rotate(tile); // from play_check_solution_3x3.js
   checkUserBoard(); // from check_solution_3x3.js

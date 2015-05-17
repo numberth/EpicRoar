@@ -28,7 +28,7 @@ var pageOptions = {
 	"<img src= 'img/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>" +
 	"<img src= 'img/button_levels.png' onclick='pageOptions.setLevelPage()' id='levelModeButton'>" +
 	"<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>" +
-	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+	"<img src='' onclick='playBackground()' id='ayy'>" +
 	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	//Half circle style selection gui for either zen or time mode.
@@ -37,7 +37,7 @@ var pageOptions = {
 			"<img src= 'img/button_tutorial.png' onclick='pageOptions.setPage1()' id='tutorialButton'>" +
 				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage1()' id='zenButton'>" +
 				"<img src= 'img/button_time.png' onclick='pageOptions.testTimeMode()' id='timeButton'>" +
-				"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+				"<img src='img/button_audio_off.png' onclick='playBackground()' id='ayy'>" +
 				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 	
 
@@ -103,7 +103,7 @@ var pageOptions = {
 		this.levelPage +="<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
 				"<img src='img/button_lock.png' onclick = 'alert(\" You must unlock this level first\")' width='18%' height='auto' style='margin-left:12%;margin-top:10%'>" +
-	"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+	"<img src='' onclick='playBackground()' id='ayy'>" +
 	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>"; //location.reload()
 	},
 
@@ -117,7 +117,7 @@ var pageOptions = {
 	  						"<img src='img/joinbutton.png' alt='join' onclick='Submit' width='120px' height='100px' style='margin-left:85px'>" +
 						"</form>" +
 					"</div>" +
-					"<img src='img/button_audio.png' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
+					"<img src='' style='position:absolute;width:70px;height:auto;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' style='position:absolute;width:70px;height:70px;bottom:10px;right:10px' onclick='pageOptions.setPage()' id='menu'>",
 	*/
 	/**
@@ -152,7 +152,7 @@ var pageOptions = {
 						  	"</tr>" +
 						"</table>" +
 					"</div>" +
-					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+					"<img src='' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	/**
@@ -175,7 +175,7 @@ var pageOptions = {
 				"<div id='twoByTwo_02' onclick='rotate90x1(\"twoByTwo_02\")'></div><div id='twoByTwo_03' onclick='rotateNubx1(\"twoByTwo_03\")'></div></div>"+
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
-                "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+                "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"twoByTwo_0\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
@@ -199,7 +199,7 @@ var pageOptions = {
 				"<div id='twoByTwo_2' onclick='rotateLinex(\"twoByTwo_2\")'></div><div id='twoByTwo_3' onclick='rotateNubx(\"twoByTwo_3\")'></div></div>"+
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
-                "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+                "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
@@ -252,7 +252,7 @@ var pageOptions = {
           "<div id='threeByThree_sol_8'></div>"+
         "</div>"+
         
-        "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+        "<img src='' onclick='playBackground()' id='ayy'>" +
         "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
         "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
@@ -327,7 +327,7 @@ var pageOptions = {
           "<div id='fourByFour_sol_15'></div>"+
         "</div>"+
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
-                "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+                "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
@@ -385,7 +385,7 @@ var pageOptions = {
         "</div>"+
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
-                "<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
+                "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
                 "<img src='img/button_pause.png' onclick='setPause()' id='pauseTimer'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()'' id='menu'>",
@@ -399,17 +399,17 @@ var pageOptions = {
 
     //This function sets the page to the main menu.
 	setPage : function(){
-		stopBackground();
 		track.currentPage = 0;
-		playBackground();
 		this.setLevelUnlock();
 		this.reference.innerHTML = this.mainPage;
+		setAudioImg();
 	},	
 
 	//sets page to level selection page
 	setLevelPage : function(){
 		this.setLevelUnlock();
 		this.reference.innerHTML = this.levelPage;
+		setAudioImg();
 	},
 
 	/*sign up page
@@ -421,6 +421,7 @@ var pageOptions = {
 	setScorePage : function(){
 		this.setLevelUnlock();
 		this.reference.innerHTML = this.highScorePage;
+		setAudioImg();
 	},
 
 	//sets the game to level 1
@@ -430,6 +431,7 @@ var pageOptions = {
 		this.setLevelUnlock();
 		this.reference.innerHTML = this.level1;
 		flipImg();
+		setAudioImg();
 	},
 
 	//sets the game to level 2
@@ -439,6 +441,7 @@ var pageOptions = {
 		this.setLevelUnlock();
 		this.reference.innerHTML = this.level2;
 		flipImg();
+		setAudioImg();
 	},
 
 	//sets the game to 3x3 grid
@@ -450,6 +453,7 @@ var pageOptions = {
 		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
+		setAudioImg();
 		document.getElementById("grid3").innerHTML = " Level 3";
 	},
 
@@ -461,6 +465,7 @@ var pageOptions = {
 		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
+		setAudioImg();
 		document.getElementById("grid3").innerHTML = " Level 4";
 	},
 
@@ -472,6 +477,7 @@ var pageOptions = {
 		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
+		setAudioImg();
 		document.getElementById("grid3").innerHTML = " Level 5";
 	},
 
@@ -483,6 +489,7 @@ var pageOptions = {
 		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
+		setAudioImg();
 		document.getElementById("grid3").innerHTML = " Level 6";
 	},
 
@@ -495,6 +502,7 @@ var pageOptions = {
 		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
+		setAudioImg();
 		document.getElementById("grid4").innerHTML = " Level 7";
 	},
 
@@ -506,6 +514,7 @@ var pageOptions = {
 		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
+		setAudioImg();
 		document.getElementById("grid4").innerHTML = " Level 8";
 	},
 
@@ -517,6 +526,7 @@ var pageOptions = {
 		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
+		setAudioImg();
 		document.getElementById("grid4").innerHTML = " Level 9";
 	},
 
@@ -527,17 +537,17 @@ var pageOptions = {
 	  testTimeMode : function(){
 	  	resetTimer();
 	    this.setLevelUnlock();
-	    stopBackground();
 	    track.currentPage = 1;
-	    playBackground();
 	    this.reference.innerHTML = this.timeModeLevel1;
 	    arrayData.setIds();
 	    timeMode();
 	    initBoard3x3();
 	    flipImg();
+	    setAudioImg();
 	  },
 
 	  difficultySelect : function(){
+	  	setAudioImg();
 	  	this.setLevelUnlock();
 	  	this.reference.innerHTML = this.modeSelectionPage;
 	  }
@@ -570,8 +580,8 @@ var track = {
     	this.track1.src = "sounds/umbala.mp3";
     	this.track1.volume = 0.3;
     	this.track1.loop = true;
-    	this.track2 = new Audio();
-    	this.track2.src = "sounds/jpark.mp3";
+    	// this.track2 = new Audio();
+    	// this.track2.src = "sounds/jpark.mp3";
     	this.track3 = new Audio();
     	this.track3.src = 'sounds/congrats.mp3';
     	this.track4 = new Audio();
@@ -587,6 +597,9 @@ var track = {
  */
 function flipSound(){
 	track.track4.play();
+	if(track.state === 0){
+		track.track4.pause();
+	}
 }
 
 /**
@@ -603,21 +616,21 @@ track.init();  //initializes the track variable when everything is ready
 * since if it's equal to 1, then we stop playing the music. 
 */
 function playBackground(){
+	setAudioImg();
 	if(track.state===0){
 		getButtonSrc();
-		track.buttonSrc.src ='img/button_audio.png';
-		switch(track.currentPage){   //the switch statement detects which page the game is on
-									// and plays the correct background music.
-			case 0:
+		// switch(track.currentPage){   //the switch statement detects which page the game is on
+		// 							// and plays the correct background music.
+		// 	case 0:
 				track.track1.play();
-				break;
-			case 1:
-				track.track2.play();
-				break;
-			default: console.log("error song");
-			break;
-		}
-		track.state++;    //track state represents whether something is playing or not.
+		// 		break;
+		// 	case 1:
+		// 		track.track2.play();
+		// 		break;
+		// 	default: console.log("error song");
+		// 	break;
+		// }
+		track.state=1;    //track state represents whether something is playing or not.
 	}else{
 		stopBackground();
 		track.state=0;
@@ -633,17 +646,26 @@ function playBackground(){
  */
 function stopBackground(){
 	getButtonSrc();
-	track.buttonSrc.src = 'img/button_audio_off.png'; 
+	// track.buttonSrc.src = 'img/button_audio_off.png'; 
 	track.track1.pause();
 	track.track1.currentTime=0;
-	track.track2.pause();
-	track.track2.currentTime=0;
+	// track.track2.pause();
+	// track.track2.currentTime=0;
     track.track3.pause();
     track.track3.currentTime=0;
     track.track4.pause();
     track.track4.currentTime=0;
 
     track.state = 0;
+}
+
+
+function setAudioImg(){
+	if(track.state===0){
+		document.getElementById('ayy').src = 'img/button_audio_off.png';
+	}else if(track.state===1){
+		document.getElementById('ayy').src = 'img/button_audio.png';
+	}
 }
 
 /**
@@ -721,12 +743,10 @@ function resetTimer(){
 function displayLoss(){
 	pageOptions.reference.innerHTML = 	"<img src='img/layer.png' style='display:block;width:100%;height:100%'>"+
 	"<img src='img/tryagain.png' id='tryAgain'>" +
-	"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+	"<img src=''  onclick='playBackground()' id='ayy'>" +
     "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
     "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' id='yes'>" +
 	"<img src='img/button_xmark.png' onclick='enterName()' id='no'>";
-
-      stopBackground();
       clock.lost = false;
       resetTimer();
 }
@@ -734,7 +754,7 @@ function displayLoss(){
 function enterName(){
 	pageOptions.reference.innerHTML = "<img src='img/score.png' id='score'>" +
 
-	"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+	"<img src=''  onclick='playBackground()' id='ayy'>" +
     "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
 
 	"<form>" +
@@ -753,7 +773,7 @@ function displayWin(){
 	resetTimer();
 	pageOptions.reference.innerHTML = "";
 	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;width:90%;height:auto;margin:auto;margin-top:15%'>"+
-				"<img src='img/button_audio.png'  onclick='playBackground()' id='ayy'>" +
+				"<img src=''  onclick='playBackground()' id='ayy'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>";
 
                 switch(levelUnlock.currentLevel){

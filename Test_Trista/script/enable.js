@@ -48,6 +48,7 @@ function flipImg(){
 //temporary flip function for testing purposes
 function flip2(id){
 	var two = "twoByTwo_";
+	flipSound();
 	for(var i=0; i < 16; i++){
 			document.getElementById(two + i).style.zIndex = '-1';
 			document.getElementById(id).style.zIndex = '1';
@@ -57,6 +58,7 @@ function flip2(id){
 
 function flip02(id){
 	var two = "twoByTwo_0";
+	flipSound();
 	for(var i=0; i < 16; i++){
 			document.getElementById(two + i).style.zIndex = '-1';
 			document.getElementById(id).style.zIndex = '1';
@@ -66,6 +68,7 @@ function flip02(id){
 
 function flip3(id){
 if(clock.pause2 == false){
+	flipSound();
 	var three = "threeByThree_";
 	for(var i=0; i < 16; i++){
 			document.getElementById(three + i).style.zIndex = '-1';
@@ -79,6 +82,7 @@ if(clock.pause2 == false){
 
 function flip4(id){
 	var four = "fourByFour_";
+	flipSound();
 	for(var i=0; i < 16; i++){
 			document.getElementById(four + i).style.zIndex = '-1';
 			document.getElementById(id).style.zIndex = '1';
