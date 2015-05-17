@@ -123,15 +123,15 @@ function stopBackground(){
  * 
  */
 function timeMode(){
-
 	if(!clock.lost){
 		clock.timerReference = document.getElementById('timeSquare');
 		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
 			return;
 		}
-		clock.timerReference.innerHTML = "Time left: " + clock.seconds;
+		clock.timerReference.innerHTML = "Time left: " + clock.seconds + " Score: " + clock.currentScore;
 		clock.checkTime();    //checks if the user has time left.
 		if(!clock.pause2){
+				clock.calculateScore();
 				clock.seconds--;
 				window.setTimeout(timeMode,1000);
 		}
@@ -169,6 +169,7 @@ function displayLoss(){
 	"<img src='img/button_xmark.png' style='position:absolute;width:70px;height:70px;bottom:160px;right:80px' onclick='location.reload()' id='menu'>";
 
       stopBackground();
+      clock.currentScore=100;
       clock.seconds = 20;
       clock.lost = false;
 }
@@ -178,6 +179,9 @@ function displayLoss(){
  * 
  */
 var clock = {
+	totalScore : 0,   		//total score throughout the gameplay
+	currentScore : 100,		//score per level
+	scoreMultiplier: 1.5,	//difficulty mutlplier for harder levels, can be changed.
 	pause2 : false,    //pause boolean
 	pauseState : 0,   //state of pause
 	lost : false, // lose game boolean
@@ -191,9 +195,23 @@ var clock = {
 	 	if(this.seconds<=0){
 	 		this.lost = true;
 	 	}
+	 },
+
+	 calculateScore : function(){
+	 	this.currentScore-=5;
 	 }
 
 }
+
+function initScore(){
+	clock.currentScore *= clock.scoreMultiplier;
+}
+
+//Returns the total score 
+function returnTotalScore(){
+	return clock.totalScore;
+}
+
 
 /*
 *This variable contains the string data for each of our pages, and puts them
@@ -580,14 +598,18 @@ var pageOptions = {
 }
 
 
+
 /**
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 function displayWin(){
+	clock.totalScore += clock.currentScore;
+	clock.currentScore=100;
 	pageOptions.reference.innerHTML = "";
 	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;margin-left:45px;margin-top:80px;width:80%;height:30%'>"+
-									"<form style='margin-top:50px;margin-left:65px'>" +
+									"<form method='post' style='margin-top:50px;margin-left:65px' action='submit.php'>" +
 										"<p>Your name: <input type='text' name='name'></p>" +
+										"<input type='hidden' id='theScore' name='points'  value='output of function' /> "+
 										"<input type='submit' value='Submit' style='margin-left:90px;margin-top:20px'>" +
 									"</form>" +
 				"<img src='img/button_audio.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>" +
@@ -623,6 +645,7 @@ function displayWin(){
                 	default:
                 		break;
                 }
+      document.getElementById('theScore').value = returnTotalScore();
       stopBackground();
       track.track3.play();
 }
@@ -754,3 +777,4 @@ var levelUnlock = {
 
 }
 
+initScore(); //initializes the score with respect to the difficulty setting. 1.5 being default.
