@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head onload="playBackground()">
   <title>Dino Myte</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,6 @@
                 });
     </script>
     <script type="text/javascript">
-    playBackground();
 		function showHighscore() {
 
                 if (window.XMLHttpRequest) {
@@ -96,7 +95,7 @@
 
 			<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>
 
-			<img src='img/button_audio_off.png' onclick='playBackground()' id='ayy'>
+			<img src='' onclick='playBackground()' id='ayy'>
 			
 			<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>     
 
