@@ -433,7 +433,7 @@
 
 /* div matrix for 3x3 */
 
-#threeBoard{
+#threeBoard, #threeBoardTime{
 	width:55vh;
 	height:50vh;
 	display:block;
@@ -616,7 +616,7 @@
 
 /* div matrix for 4x4 */
 
-#fourBoard{
+#fourBoard, #fourBoardTime{
 	width:55vh;
 	height:50vh;
 	display:block;
