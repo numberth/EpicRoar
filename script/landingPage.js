@@ -12,6 +12,306 @@
  ***************************************************************************************
  */
 
+/**
+*The track variable holds all of the sound files which
+*will be used in our game. 
+*
+*the init function initializes track1 and track2, then starts the song by using
+*
+*/
+var trackState = 0;
+
+var track = {
+   //if state is 0, then music is playing. If the state is 1, then music should stop playing.
+    track1 : undefined, //first mp3 file
+    track2 : undefined,  //second mp3 file
+    track3 : undefined, //third mp3 file
+    track4: undefined, //4th mp3 file
+    currentPage : 0,  //current page (such as level selection or menu)
+    buttonSrc : undefined, //source of the button (so we can get the id with document.getElementByid('x'))
+    
+    /**
+	* This function initializes the sound files and loads them into the variables from track1-4
+    */
+    init : function(){
+    	this.track1 = new Audio();
+    	this.track1.src = "sounds/umbala.mp3";
+    	this.track1.volume = 0.2;
+    	this.track1.loop = true;
+    	// this.track2 = new Audio();
+    	// this.track2.src = "sounds/jpark.mp3";
+    	this.track3 = new Audio();
+    	this.track3.src = 'sounds/congrats.mp3';
+    	this.track4 = new Audio();
+    	this.track4.src = 'sounds/cardflip.mp3';
+
+    	setAudioImg();
+    }
+};
+
+
+/**
+ * This functiona plays a card flipping sound when called.
+ * 
+ */
+function flipSound(){
+	track.track4.play();
+	if(trackState === 0){
+		track.track4.pause();
+	}
+}
+
+/**
+*This function sets the source of the button to the page that is currently displayed
+*/
+function getButtonSrc(){
+	track.buttonSrc = document.getElementById('ayy');
+}
+
+  //initializes the track variable when everything is ready
+track.init();
+/*
+* This function plays background music, by first detecting if trackState is equal to 0
+* since if it's equal to 1, then we stop playing the music. 
+*/
+
+function playBackgroundWin(){
+	if(trackState === 1){
+		track.track1.pause();
+		track.track3.currentTime=0;
+		track.track3.play();
+		track.track1.play();
+	}
+}
+
+function playBackground(){
+	if(trackState === 0){	
+		// switch(track.currentPage){   //the switch statement detects which page the game is on
+		// 							//and plays the correct background music.
+		// 	case 0:
+				track.track1.play();
+			// 	break;
+			// case 1:
+			// 	track.track1.pause();
+			// 	track.track3.currentTime=0;
+			// 	track.track3.play();
+			// 	break;
+		// 	default: console.log("error song");
+		// 	break;
+		// }
+		trackState++;    //track state represents whether something is playing or not.
+		setAudioImg();
+	}else if(trackState === 1){
+		stopBackground();
+		setAudioImg();
+	}
+	
+}
+
+/**
+ * This function changes the audio button to visually represent that sound has stopped playing,
+ * and then resets every single track on the page, and also stops them via the pause() method.
+ * state is also changed to 0 so that next time a user presses the play button, the 
+ * playBackground() method will correctly cycle through the first if condition.
+ * 
+ */
+function stopBackground(){
+	// getButtonSrc();
+	// track.buttonSrc.src = 'img/button_audio_off.png'; 
+	
+	track.track1.pause();
+	track.track1.currentTime=0;
+	// track.track2.pause();
+	// track.track2.currentTime=0;
+    track.track3.pause();
+    track.track3.currentTime=0;
+    track.track4.pause();
+    track.track4.currentTime=0;
+	setAudioImg();
+    trackState = 0;
+    
+}
+
+
+function setAudioImg(){
+	switch(trackState){
+		case 0:
+			document.getElementById('ayy').src = 'img/button_audio.png';
+			break;
+		case 1:
+			document.getElementById('ayy').src = 'img/button_audio_off.png';
+			break;
+		default:
+			document.getElementById('ayy').src = 'img/button_audio_off.png';
+			break;
+	}
+}
+
+/**
+ * This object holds variables for the time mode of our game.
+ * 
+ */
+var clock = {
+	pause2 : false,    //pause boolean
+	pauseState : 0,   //state of pause
+	lost : false, // lose game boolean
+	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
+								//to animate the timer
+	seconds : 20,				//variable that represents seconds (60 seconds per minute)
+	/**
+	 * This function checks if the user has run out of time.
+	 */
+	 checkTime : function(){
+	 	if(this.seconds<=0){
+	 		this.lost = true;
+	 	}
+	 }
+
+}
+
+/**
+ * This functiona refreshes the paragraph with the id "timesquare"
+ * by using the window.setTimeout method every 0.1 seconds. In this manner,
+ * we have a variable that holds the data for how much time has passed, and can be
+ * used for any purpose : such as a countdown, or a count up. We can also easily check
+ * if a user has spent too much time on a level with an if statement within a check function.
+ * 
+ */
+function timeMode(){
+
+	if(!clock.lost){
+		clock.timerReference = document.getElementById('timeSquare');
+		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
+			return;
+		}
+		clock.timerReference.innerHTML = "Time left: " + clock.seconds;
+		clock.checkTime();    //checks if the user has time left.
+		if(!clock.pause2){
+				clock.seconds--;
+				window.setTimeout(timeMode,1000);
+		}
+	}else{
+		displayLoss();
+	}
+}
+
+
+
+function setPause(){
+	if(clock.pauseState==0){
+		document.getElementById('pauseTimer').src = 'img/button_resume.png';
+		clock.pause2 = true;
+		clock.pauseState++;
+	}else{
+		document.getElementById('pauseTimer').src = 'img/button_pause.png';
+		clock.pause2 = false;
+		clock.pauseState = 0;
+	}
+	timeMode();
+}
+
+function resetTimer(){
+	clock.seconds = 20;
+}
+
+/**
+ * This function is called when the player runs out of time. Resets the time left and boolean clock.lost, so that
+ * the player can try again if they wish or go back to the main menu.
+ */
+
+function displayLoss(){
+	pageOptions.reference.innerHTML = 	"<img src='img/layer.png' style='display:block;width:100%;height:100%'>"+
+	"<img src='img/tryagain.png' id='tryAgain'>" +
+	"<img src=''  onclick='playBackground()' id='ayy'>" +
+    "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' id='yes'>" +
+	"<img src='img/button_xmark.png' onclick='enterName()' id='no'>";
+	setAudioImg();
+      clock.lost = false;
+      resetTimer();
+}
+
+function enterName(){
+	pageOptions.reference.innerHTML = "<img src='img/score.png' id='score'>" +
+
+	"<img src=''  onclick='playBackground()' id='ayy'>" +
+    "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+
+	"<form>" +
+		"<input type='text' name='name' value='Enter name here!' id='submit'>" +
+		"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
+	"</form>";
+	setAudioImg();
+}
+
+
+
+/**
+ * This function is called when the player wins. A win image pops up, as well as victory music.
+ */
+
+function displayWin(){
+	track.currentPage = 1; 
+	playBackgroundWin();
+	resetTimer();
+	pageOptions.reference.innerHTML = "";
+	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;width:90%;height:auto;margin:auto;margin-top:15%'>"+
+				"<img src=''  onclick='playBackground()' id='ayy'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>";
+
+                switch(levelUnlock.currentLevel){
+                	case 1: levelUnlock.lvl2 = true;
+                			pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage2()' id='continueButton'>";
+                		break;
+                	case 2:
+                			levelUnlock.lvl3 = true;
+                			pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage3()' id='continueButton'>";
+                		break;
+                	case 3:
+                			levelUnlock.lvl4 = true;
+                			pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage4()' id='continueButton'>";
+                		break;
+                	case 4:
+		                	levelUnlock.lvl5 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage5()' id='continueButton'>";
+                		break;
+                	case 5:
+                			levelUnlock.lvl6 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage6()' id='continueButton'>";
+                		break;
+                	case 6:
+                			levelUnlock.lvl7 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage7()' id='continueButton'>";
+                		break;
+                	case 7:
+                			levelUnlock.lvl8 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage8()' id='continueButton'>";
+                		break;
+                	case 8:
+                			levelUnlock.lvl9 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage9()' id='continueButton'>";
+                		break;
+                	case 9:
+                			levelUnlock.lvl10 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage10()' id='continueButton'>";
+                		break;
+
+                	default:
+                		break;
+                }
+      setAudioImg();
+      clock.pause2 = false;    
+}
+
 /*
 *This variable contains the string data for each of our pages, and puts them
 *in the divisions.
@@ -29,15 +329,14 @@ var pageOptions = {
 	"<img src= 'img/button_levels.png' onclick='pageOptions.setLevelPage()' id='levelModeButton'>" +
 	"<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>" +
 	"<img src='' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+	"<img src='img/button_menu.png' id='menu'>",
 
 	//Half circle style selection gui for either zen or time mode.
 	modeSelectionPage : 
-				
-			"<img src= 'img/button_tutorial.png' onclick='pageOptions.setPage1()' id='tutorialButton'>" +
+			"<img src= 'img/button_tutorial.png' onload='setAudioImg()' onclick='pageOptions.setPage1()' id='tutorialButton'>" +
 				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage1()' id='zenButton'>" +
 				"<img src= 'img/button_time.png' onclick='pageOptions.testTimeMode()' id='timeButton'>" +
-				"<img src='' onload='setAudioImg()' onclick='playBackground()' id='ayy'>" +
+				"<img src='img/button_audio_off' onclick='playBackground()' id='ayy'>" +
 				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 	
 
@@ -159,8 +458,8 @@ var pageOptions = {
 	 * This string represents level 1 in our game
 	 */
 	
-	level1 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 1</h3>"+
-        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
+	level1 : "<h3 style='font-size:22px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 1</h3>"+
+        "<h3 style='font-size:22px;color:white;top:0;right:10px;position:absolute;'></h3>"+
         "<div id='twoBoard'>"+
         "<div id='twoBoardCover'>"+
         		"<div id='cover0' onclick='flip02(\"twoByTwo_00\")'></div>"+
@@ -177,14 +476,21 @@ var pageOptions = {
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"twoByTwo_0\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+                "<img src='img/dino_green.png' id='dino_lv1'>" +
+                "<img src='img/egg_green.png' id='egg_lv1'>" +
+                //water border for 2x2 grid
+				"<img src='img/water_border_left.png'  id='waterLeft2'>" +
+                "<img src='img/water_border_left.png'  id='waterRight2'>" +
+				"<img src='img/water_border_top.png'  id='waterTop2'>" +
+				"<img src='img/water_border_bottom.png'  id='waterBottom2'>",
 
     	/**
 	 * This string represents level 2 in our game
 	 */
 	
-	level2 : "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 2</h3>"+
-        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
+	level2 : "<h3 style='font-size:22px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 2</h3>"+
+        "<h3 style='font-size:22px;color:white;top:0;right:10px;position:absolute;'></h3>"+
         "<div id='twoBoard'>"+
         "<div id='twoBoardCover'>"+
         		"<div id='cover0' onclick='flip2(\"twoByTwo_0\")'></div>"+
@@ -201,14 +507,21 @@ var pageOptions = {
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+                "<img src='img/dino_green.png' id='dino_lv1'>" +
+                "<img src='img/egg_green.png' id='egg_lv1'>" +
+                //water border for 2x2 grid
+				"<img src='img/water_border_left.png'  id='waterLeft2'>" +
+                "<img src='img/water_border_left.png'  id='waterRight2'>" +
+				"<img src='img/water_border_top.png'  id='waterTop2'>" +
+				"<img src='img/water_border_bottom.png'  id='waterBottom2'>",
 
      /**
 	 * This string stores level3 of our game
 	 */
     level3 : 
-    "<h3 id='grid3' style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'></h3>"+
-        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
+    "<h3 id='grid3' style='font-size:22px;color:white;position:absolute;left:10px;margin-top:15px;'></h3>"+
+        "<h3 style='font-size:22px;color:white;top:0;right:10px;position:absolute;'></h3>"+
     	"<div id='threeBoard' onclick='detect(this)'>"+
         "<div id='threeBoardCover'>"+
         		"<div id='threeCover0' onclick='flip3(\"threeByThree_0\")'></div>"+
@@ -254,14 +567,21 @@ var pageOptions = {
         
         "<img src='' onclick='playBackground()' id='ayy'>" +
         "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
-        "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+        "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+        "<img src='img/dino_blue.png' id='dino_lv3'>" +
+        "<img src='img/egg_blue.png' id='egg_lv3'>" +
+        //water border for 3x3 grid
+				"<img src='img/water_border_left.png'  id='waterLeft3'>" +
+      			"<img src='img/water_border_left.png'  id='waterRight3'>" +
+				"<img src='img/water_border_top3.png'  id='waterTop3'>" +
+				"<img src='img/water_border_bottom3.png'  id='waterBottom3'>",
 
 
      /**
 	 * This string stores level 4 of our game
 	 */
-    level4 : "<h3 id='grid4' style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'></h3>"+
-        "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;'></h3>"+
+    level4 : "<h3 id='grid4' style='font-size:22px;color:white;position:absolute;left:10px;margin-top:15px;'></h3>"+
+        "<h3 style='font-size:22px;color:white;top:0;right:10px;position:absolute;'></h3>"+
       "<div id='fourBoard' onclick='detect(this)'>"+
         "<div id='fourBoardCover'>"+
             "<div id='fourCover0' onclick='flip4(\"fourByFour_0\")'></div>"+
@@ -329,7 +649,14 @@ var pageOptions = {
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+                "<img src='img/dino_red.png' id='dino_lv4'>" +
+        		"<img src='img/egg_red.png' id='egg_lv4'>" +
+        		//water border for 4x4 grid
+				"<img src='img/water_border_left.png'  id='waterLeft4'>" +
+   		    	"<img src='img/water_border_left.png'  id='waterRight4'>" +
+				"<img src='img/water_border_top3.png'  id='waterTop4'>" +
+				"<img src='img/water_border_bottom3.png'  id='waterBottom4'>",
 
 
 
@@ -338,8 +665,8 @@ var pageOptions = {
 	 * a prototype of the timed mode, and works well.
 	 */
     timeModeLevel1 : 
-    "<h3 style='font-size:29px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 3</h3>"+
-    "<h3 style='font-size:29px;color:white;top:0;right:10px;position:absolute;margin-top:15px;' id='timeSquare'></h3>"+
+    "<h3 style='font-size:22px;color:white;position:absolute;left:10px;margin-top:15px;'> Level 3</h3>"+
+    "<h3 style='font-size:22px;color:white;top:0;right:10px;position:absolute;margin-top:15px;' id='timeSquare'></h3>"+
     // "<p id='timeSquare' style='display:block;margin:auto;text-align:center;height:90px;padding-top:20px;color:white;font-size:18px'></p>" +
     	"<div id='threeBoard' onclick='detect(this)'>"+
         "<div id='threeBoardCover'>"+
@@ -388,7 +715,9 @@ var pageOptions = {
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
                 "<img src='img/button_pause.png' onclick='setPause()' id='pauseTimer'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()'' id='menu'>",
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage()'' id='menu'>" +
+                "<img src='img/dino_blue.png' id='dino_lv3'>" +
+        		"<img src='img/egg_blue.png' id='egg_lv3'>",
 	 /**
 	 * This function initializes the reference variable to whichever id we need to change the content of.
 	 * in our app, this id is called "a"
@@ -400,9 +729,12 @@ var pageOptions = {
     //This function sets the page to the main menu.
 	setPage : function(){
 		track.currentPage = 0;
+		track.track3.pause();
+		
 		this.setLevelUnlock();
 		this.reference.innerHTML = this.mainPage;
 		setAudioImg();
+		
 	},	
 
 	//sets page to level selection page
@@ -426,6 +758,7 @@ var pageOptions = {
 
 	//sets the game to level 1
 	setPage1 : function(){
+		track.track3.pause();
 		levelUnlock.currentLevel = 1;
 		track.currentPage = 0;
 		this.setLevelUnlock();
@@ -436,6 +769,7 @@ var pageOptions = {
 
 	//sets the game to level 2
 	setPage2 : function(){
+		track.track3.pause();
 		levelUnlock.currentLevel = 2;
 		track.currentPage = 0;
 		this.setLevelUnlock();
@@ -446,9 +780,11 @@ var pageOptions = {
 
 	//sets the game to 3x3 grid
 	setPage3 : function(){
+		
+		track.track3.pause();
 		levelUnlock.currentLevel = 3;
 		this.setLevelUnlock();
-		track.currentPage = 1;
+		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
 		initBoard3x3();
@@ -458,9 +794,10 @@ var pageOptions = {
 	},
 
 		setPage4 : function(){
+		track.track3.pause();
 		levelUnlock.currentLevel = 4;
 		this.setLevelUnlock();
-		track.currentPage = 1;
+		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
 		initBoard3x3();
@@ -470,9 +807,10 @@ var pageOptions = {
 	},
 
 		setPage5 : function(){
+		track.track3.pause();
 		levelUnlock.currentLevel = 5;
 		this.setLevelUnlock();
-		track.currentPage = 1;
+		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
 		initBoard3x3();
@@ -482,9 +820,10 @@ var pageOptions = {
 	},
 
 		setPage6 : function(){
+		track.track3.pause();
 		levelUnlock.currentLevel = 6;
 		this.setLevelUnlock();
-		track.currentPage = 1;
+		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
 		arrayData.setIds();
 		initBoard3x3();
@@ -495,9 +834,10 @@ var pageOptions = {
 
 	//sets the game to 4x4 grid
 	setPage7 : function(){
+		track.track3.pause();
 		levelUnlock.currentLevel = 7;
 		this.setLevelUnlock();
-		track.currentPage = 1;
+		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
 		arrayData.setIds();
 		initBoard4x4();
@@ -507,9 +847,10 @@ var pageOptions = {
 	},
 
 		setPage8 : function(){
+		track.track3.pause();
 		levelUnlock.currentLevel = 8;
 		this.setLevelUnlock();
-		track.currentPage = 1;
+		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
 		arrayData.setIds();
 		initBoard4x4();
@@ -519,9 +860,10 @@ var pageOptions = {
 	},
 
 		setPage9 : function(){
+		track.track3.pause();
 		levelUnlock.currentLevel = 9;
 		this.setLevelUnlock();
-		track.currentPage = 1;
+		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
 		arrayData.setIds();
 		initBoard4x4();
@@ -535,9 +877,10 @@ var pageOptions = {
 	  //This function is just a placeholder, later on we will be implementing timed mode only if the user
 	  //clicks the timed mode
 	  testTimeMode : function(){
+	  	track.track3.pause();
 	  	resetTimer();
 	    this.setLevelUnlock();
-	    track.currentPage = 1;
+	    track.currentPage = 0;
 	    this.reference.innerHTML = this.timeModeLevel1;
 	    arrayData.setIds();
 	    timeMode();
@@ -548,300 +891,13 @@ var pageOptions = {
 
 	  difficultySelect : function(){
 	  	this.setLevelUnlock();
-	  	track.currentPage = 1;
-	  	setAudioImg();
+	  	track.currentPage = 0;
 	  	this.reference.innerHTML = this.modeSelectionPage;
 	  	setAudioImg();
 	  }
 
 
 }
-
-
-/**
-*The track variable holds all of the sound files which
-*will be used in our game. 
-*
-*the init function initializes track1 and track2, then starts the song by using
-*playBackground();
-*/
-var track = {
-	state : 0,    //if state is 0, then music is playing. If the state is 1, then music should stop playing.
-    track1 : undefined, //first mp3 file
-    track2 : undefined,  //second mp3 file
-    track3 : undefined, //third mp3 file
-    track4: undefined, //4th mp3 file
-    currentPage : 0,  //current page (such as level selection or menu)
-    buttonSrc : undefined, //source of the button (so we can get the id with document.getElementByid('x'))
-    
-    /**
-	* This function initializes the sound files and loads them into the variables from track1-4
-    */
-    init : function(){
-    	this.track1 = new Audio();
-    	this.track1.src = "sounds/umbala.mp3";
-    	this.track1.volume = 0.3;
-    	this.track1.loop = true;
-    	// this.track2 = new Audio();
-    	// this.track2.src = "sounds/jpark.mp3";
-    	this.track3 = new Audio();
-    	this.track3.src = 'sounds/congrats.mp3';
-    	this.track4 = new Audio();
-    	this.track4.src = 'sounds/cardflip.mp3';
-    	playBackground();
-    	setAudioImg();
-    }
-};
-
-
-/**
- * This functiona plays a card flipping sound when called.
- * 
- */
-function flipSound(){
-	track.track4.play();
-	if(track.state === 0){
-		track.track4.pause();
-	}
-}
-
-/**
-*This function sets the source of the button to the page that is currently displayed
-*/
-function getButtonSrc(){
-	track.buttonSrc = document.getElementById('ayy');
-}
-
-track.init();  //initializes the track variable when everything is ready
-
-/*
-* This function plays background music, by first detecting if track.state is equal to 0
-* since if it's equal to 1, then we stop playing the music. 
-*/
-function playBackground(){
-	if(track.state===0){
-		// getButtonSrc();
-		// switch(track.currentPage){   //the switch statement detects which page the game is on
-		// 							// and plays the correct background music.
-		// 	case 0:
-				track.track1.play();
-		// 		break;
-		// 	case 1:
-		// 		track.track2.play();
-		// 		break;
-		// 	default: console.log("error song");
-		// 	break;
-		// }
-		track.state=1;    //track state represents whether something is playing or not.
-	}else{
-		stopBackground();
-	}
-	setAudioImg();
-}
-
-/**
- * This function changes the audio button to visually represent that sound has stopped playing,
- * and then resets every single track on the page, and also stops them via the pause() method.
- * state is also changed to 0 so that next time a user presses the play button, the 
- * playBackground() method will correctly cycle through the first if condition.
- * 
- */
-function stopBackground(){
-	// getButtonSrc();
-	// track.buttonSrc.src = 'img/button_audio_off.png'; 
-	track.track1.pause();
-	track.track1.currentTime=0;
-	// track.track2.pause();
-	// track.track2.currentTime=0;
-    track.track3.pause();
-    track.track3.currentTime=0;
-    track.track4.pause();
-    track.track4.currentTime=0;
-
-    track.state = 0;
-    setAudioImg();
-}
-
-
-function setAudioImg(){
-	switch(track.state){
-		case 1:
-			document.getElementById('ayy').src = 'img/button_audio_off.png';
-			break;
-		case 0:
-			document.getElementById('ayy').src = 'img/button_audio.png';
-			break;
-		default:
-			document.getElementById('ayy').src = 'img/button_audio.png';
-			break;
-	}
-}
-
-/**
- * This object holds variables for the time mode of our game.
- * 
- */
-var clock = {
-	pause2 : false,    //pause boolean
-	pauseState : 0,   //state of pause
-	lost : false, // lose game boolean
-	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
-								//to animate the timer
-	seconds : 20,				//variable that represents seconds (60 seconds per minute)
-	/**
-	 * This function checks if the user has run out of time.
-	 */
-	 checkTime : function(){
-	 	if(this.seconds<=0){
-	 		this.lost = true;
-	 	}
-	 }
-
-}
-
-/**
- * This functiona refreshes the paragraph with the id "timesquare"
- * by using the window.setTimeout method every 0.1 seconds. In this manner,
- * we have a variable that holds the data for how much time has passed, and can be
- * used for any purpose : such as a countdown, or a count up. We can also easily check
- * if a user has spent too much time on a level with an if statement within a check function.
- * 
- */
-function timeMode(){
-
-	if(!clock.lost){
-		clock.timerReference = document.getElementById('timeSquare');
-		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
-			return;
-		}
-		clock.timerReference.innerHTML = "Time left: " + clock.seconds;
-		clock.checkTime();    //checks if the user has time left.
-		if(!clock.pause2){
-				clock.seconds--;
-				window.setTimeout(timeMode,1000);
-		}
-	}else{
-		displayLoss();
-	}
-}
-
-
-
-function setPause(){
-	if(clock.pauseState==0){
-		document.getElementById('pauseTimer').src = 'img/button_resume.png';
-		clock.pause2 = true;
-		clock.pauseState++;
-	}else{
-		document.getElementById('pauseTimer').src = 'img/button_pause.png';
-		clock.pause2 = false;
-		clock.pauseState = 0;
-	}
-	timeMode();
-}
-
-function resetTimer(){
-	clock.seconds = 20;
-}
-
-/**
- * This function is called when the player runs out of time. Resets the time left and boolean clock.lost, so that
- * the player can try again if they wish or go back to the main menu.
- */
-
-function displayLoss(){
-	pageOptions.reference.innerHTML = 	"<img src='img/layer.png' style='display:block;width:100%;height:100%'>"+
-	"<img src='img/tryagain.png' id='tryAgain'>" +
-	"<img src=''  onclick='playBackground()' id='ayy'>" +
-    "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
-    "<img src='img/button_check.png' onclick='pageOptions.testTimeMode()' id='yes'>" +
-	"<img src='img/button_xmark.png' onclick='enterName()' id='no'>";
-	setAudioImg();
-      clock.lost = false;
-      resetTimer();
-}
-
-function enterName(){
-	pageOptions.reference.innerHTML = "<img src='img/score.png' id='score'>" +
-
-	"<img src=''  onclick='playBackground()' id='ayy'>" +
-    "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
-
-	"<form>" +
-		"<input type='text' name='name' value='Enter name here!' id='submit'>" +
-		"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
-	"</form>";
-	setAudioImg();
-}
-
-
-
-/**
- * This function is called when the player wins. A win image pops up, as well as victory music.
- */
-
-function displayWin(){
-	resetTimer();
-	pageOptions.reference.innerHTML = "";
-	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;width:90%;height:auto;margin:auto;margin-top:15%'>"+
-				"<img src=''  onclick='playBackground()' id='ayy'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>";
-
-                switch(levelUnlock.currentLevel){
-                	case 1: levelUnlock.lvl2 = true;
-                			pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage2()' id='continueButton'>";
-                		break;
-                	case 2:
-                			levelUnlock.lvl3 = true;
-                			pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage3()' id='continueButton'>";
-                		break;
-                	case 3:
-                			levelUnlock.lvl4 = true;
-                			pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage4()' id='continueButton'>";
-                		break;
-                	case 4:
-		                	levelUnlock.lvl5 = true;
-		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage5()' id='continueButton'>";
-                		break;
-                	case 5:
-                			levelUnlock.lvl6 = true;
-		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage6()' id='continueButton'>";
-                		break;
-                	case 6:
-                			levelUnlock.lvl7 = true;
-		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage7()' id='continueButton'>";
-                		break;
-                	case 7:
-                			levelUnlock.lvl8 = true;
-		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage8()' id='continueButton'>";
-                		break;
-                	case 8:
-                			levelUnlock.lvl9 = true;
-		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage9()' id='continueButton'>";
-                		break;
-                	case 9:
-                			levelUnlock.lvl10 = true;
-		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage10()' id='continueButton'>";
-                		break;
-
-                	default:
-                		break;
-                }
-      setAudioImg();
-      stopBackground();
-      track.track3.play();
-      clock.pause2 = false;
-}
-
 
 
 /**

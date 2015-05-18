@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head onload="playBackground()">
+<head>
   <title>Dino Myte</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,8 +23,10 @@
                 .script('script/landingPage.js').wait(function () {
                     console.log("hello world!");
                     pageOptions.init("panel");
+                    
                    // pageOptions.setPage("a");
                 });
+
     </script>
     <script type="text/javascript">
 		function showHighscore() {
@@ -87,7 +89,7 @@
 			</button>
 		-->
 
-			<img src= 'img/button_play.png' onclick='pageOptions.reference.innerHTML=pageOptions.modeSelectionPage' id='playButton'>
+			<img src= 'img/button_play.png' onclick='pageOptions.difficultySelect()' id='playButton'>
 
 			<img src= 'img/button_levels.png' onclick='pageOptions.setLevelPage()' id='levelModeButton'>
 
@@ -95,9 +97,9 @@
 
 			<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>
 
-			<img src='' onclick='playBackground()' id='ayy'>
+			<img src='img/button_audio_off.png' onclick='playBackground()' id='ayy'>
 			
-			<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>     
+			<img src='img/button_menu.png' id='menu'>     
 
 		
 

@@ -222,6 +222,60 @@
 	left:53%; 
 }
 
+#dino_lv1{
+	position:absolute;
+	width:35%;
+	height:auto;
+	bottom: 25%;
+	right: 7%;
+	z-index: 5;
+}
+
+#egg_lv1{
+	position:absolute;
+	width:17%;
+	height:auto;
+	top: 11.5%;
+	left: 26%;
+	z-index: 5;
+}
+
+#dino_lv3{
+	position:absolute;
+	width:25%;
+	height:auto;
+	bottom: 17%;
+	right: 1%;
+	z-index: 5;
+}
+
+#egg_lv3{
+	position:absolute;
+	width:17%;
+	height:auto;
+	top: 12%;
+	left: 4%;
+	z-index: 5;
+}
+
+#dino_lv4{
+	position:absolute;
+	width:27%;
+	height:auto;
+	bottom: 13%;
+	right: 0.5%;
+	z-index: 5;
+}
+
+#egg_lv4{
+	position:absolute;
+	width:12%;
+	height:auto;
+	top: 10%;
+	left: 4%;
+	z-index: 5;
+}
+
 /* divs matrices for 2x2*/
 
 #twoBoard{
@@ -384,8 +438,8 @@
 	height:50vh;
 	display:block;
 	margin:auto;
-	margin-top:25%;
-	margin-left: 1%;
+	margin-top:22%;
+	margin-left: 3%;
 }
 
 #threeBoardCover{
@@ -393,12 +447,25 @@
 	height:50vh;
 	display:block;
 	margin:auto;
-	margin-top:25%;
+	margin-top:22%;
 	position: absolute;
 	top: 0;
 }
 
-#threeCover0, #threeCover1, #threeCover2, #threeCover3, #threeCover4, #threeCover5, #threeCover6, #threeCover7, #threeCover8{
+#threeCover0, #threeCover8{
+	background-size:100% 100%;
+	float:left;
+	position: relative;
+	width:16vh;
+	height:15vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#224424;
+	border-width:2px;
+	z-index: -2;
+}
+
+#threeCover1, #threeCover2, #threeCover3, #threeCover4, #threeCover5, #threeCover6, #threeCover7{
 	background-image: url(../img/grass.jpg);
 	background-size:100% 100%;
 	z-index: 0;
@@ -406,7 +473,7 @@
 	position: relative;
 	width:16vh;
 	height:15vh;
-	margin:1%;
+	margin:0.5%;
 	border-style:solid;
 	border-color:#224424;
 	border-width:2px;
@@ -422,8 +489,8 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	margin:1%;
-	z-index: -1;
+	margin:0.5%;
+	z-index: 2;
 	position: relative;
 }
 
@@ -437,7 +504,7 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	margin:1%;
+	margin:0.5%;
 	z-index: -1;
 	position: relative;
 }
@@ -452,7 +519,7 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	margin:1%;
+	margin:0.5%;
 	z-index: -1;
 	position: relative;
 }
@@ -467,7 +534,7 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	margin:1%;
+	margin:0.5%;
 	z-index: -1;
 	position: relative;
 }
@@ -482,7 +549,7 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	margin:1%;
+	margin:0.5%;
 	z-index: -1;
 	position: relative;
 }
@@ -497,7 +564,7 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	margin:1%;
+	margin:0.5%;
 	z-index: -1;
 	position: relative;
 }
@@ -512,7 +579,7 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	margin:1%;
+	margin:0.5%;
 	z-index: -1;
 	position: relative;
 }
@@ -527,7 +594,7 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	margin:1%;
+	margin:0.5%;
 	z-index: -1;
 	position: relative;
 }
@@ -542,8 +609,8 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	margin:1%;
-	z-index: -1;
+	margin:0.5%;
+	z-index: 2;
 	position: relative;
 }
 
@@ -568,7 +635,20 @@
 	top: 0;
 }
 
-#fourCover0, #fourCover1, #fourCover2, #fourCover3, #fourCover4, #fourCover5, #fourCover6, #fourCover7, #fourCover8, #fourCover9, #fourCover10, #fourCover11, #fourCover12, #fourCover13, #fourCover14, #fourCover15{
+#fourCover0, #fourCover15{
+	background-size:100% 100%;
+	float:left;
+	position: relative;
+	width:11.5vh;
+	height:12vh;
+	margin:0.5%;
+	border-style:solid;
+	border-color:#224424;
+	border-width:2px;
+	z-index: -2;
+}
+
+#fourCover1, #fourCover2, #fourCover3, #fourCover4, #fourCover5, #fourCover6, #fourCover7, #fourCover8, #fourCover9, #fourCover10, #fourCover11, #fourCover12, #fourCover13, #fourCover14{
 	background-image: url(../img/grass.jpg);
 	background-size:100% 100%;
 	z-index: 0;
@@ -593,7 +673,7 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	z-index: -1;
+	z-index: 2;
 	position: relative;
 }
 
@@ -818,7 +898,7 @@
 	border-color:#996633;
 	border-width:2px;
 	float:left;
-	z-index: -1;
+	z-index: 2;
 	position: relative;
 }
 
@@ -826,6 +906,109 @@
 	width:0;
 	height:0;
 }
+
+/**water border for 2x2 */
+
+#waterLeft2{
+	position:absolute;
+	width:7%;
+	height:50%;
+	bottom:30%;
+	left:13.5%;
+}
+
+#waterRight2{
+	position:absolute;
+	width:7%;
+	height:50%;
+	bottom:30%;
+	right:12%;
+}
+
+#waterTop2{
+	position:absolute;
+	width:75%;
+	height:5%;
+	bottom:75.5%;
+	left:13%;
+}
+
+#waterBottom2{
+	position:absolute;
+	width:73%;
+	height:5%;
+	bottom:30%;
+	left:13%;
+}
+
+/** water border for 3x3 */
+
+#waterLeft3{
+	position:absolute;
+	width:2%;
+	height:63%;
+	bottom:23%;
+	left:1.5%;
+}
+
+#waterRight3{
+	position:absolute;
+	width:2%;
+	height:63%;
+	bottom:23%;
+	right:0.5%;
+}
+
+#waterTop3{
+	position:absolute;
+	width:97%;
+	height:3%;
+	bottom:84.5%;
+	left:2.5%;
+}
+
+#waterBottom3{
+	position:absolute;
+	width:96%;
+	height:3%;
+	bottom:21%;
+	left:2%;
+}
+
+/**water border for level 4 */
+
+#waterLeft4{
+	position:absolute;
+	width:3.5%;
+	height:73%;
+	bottom:18.5%;
+	left:0%;
+}
+
+#waterRight4{
+	position:absolute;
+	width:5%;
+	height:73%;
+	bottom:18.5%;
+	right:0%;
+}
+
+#waterTop4{
+	position:absolute;
+	width:98%;
+	height:4%;
+	bottom:88%;
+	left:1%;
+}
+
+#waterBottom4{
+	position:absolute;
+	width:98%;
+	height:4%;
+	bottom:18.5%;
+	left:1%;
+}
+
 /*
 
 #fourByFour_:hover{
