@@ -162,13 +162,27 @@ function detect(object) {
 function flipWin(){
 	enable = false;
 	clock.pause2 = true;
-	setTimeout(displayWin, 2000);
+if(detectLvl == "threeBoardTime"){
+	clock.pause2 = true;
+	setTimeout(displayTimeWin, 2000);
+	for(var i=0; i < 16; i++){
+			document.getElementById("threeByThree_" + i).style.zIndex = 1;
+		}
+	}else if(detectLvl == "fourBoardTime"){
+		clock.pause2 = true;
+		setTimeout(displayTimeWin, 2000);
+		for(var i=0; i < 16; i++){
+			document.getElementById("fourByFour_" + i).style.zIndex = 1;
+		}
+	}
 
 if(detectLvl == "threeBoard"){
+	setTimeout(displayWin, 2000);
 	for(var i=0; i < 16; i++){
 			document.getElementById("threeByThree_" + i).style.zIndex = 1;
 		}
 	}else if(detectLvl == "fourBoard"){
+		setTimeout(displayWin, 2000);
 		for(var i=0; i < 16; i++){
 			document.getElementById("fourByFour_" + i).style.zIndex = 1;
 		}
