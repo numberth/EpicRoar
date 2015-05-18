@@ -417,19 +417,24 @@ var pageOptions = {
 	"<img src='img/button_menu.png' id='menu'>",
 
 	//Half circle style selection gui for either zen or time mode.
-	modeSelectionPage : 
+	/*modeSelectionPage : 
 			"<img src= 'img/button_tutorial.png' onload='setAudioImg()' onclick='pageOptions.setPage1()' id='tutorialButton'>" +
 				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage1()' id='zenButton'>" +
 				"<img src= 'img/button_time.png' onclick='pageOptions.setPage1t()' id='timeButton'>" +
 				"<img src='img/button_audio_off' onclick='playBackground()' id='ayy'>" +
 				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
-
+	*/
 	modeSelectionPage : "<img src='img/button_tutorial.png' onclick='pageOptions.setTutorial()' style='width:45%;height:12%;margin-top:45%;margin-left:28%'/>"+
 						"<img src='img/button_zen.png' onclick='pageOptions.setPage2()' style='width:45%;height:12%;margin-top:3%;margin-left:28%'/>"+
 						"<img src='img/button_time.png' onclick='pageOptions.testTimeMode()' style='width:45%;height:12%;margin-top:3%;margin-left:28%'/>"+
 						"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
+	modeSelectionPageLvl : 
+				"<img src= 'img/button_zen.png' onclick='pageOptions.setLevelPage()' id='zenButton'>" +
+				"<img src= 'img/button_time.png' onclick='pageOptions.setTimeLevelPage()' id='timeButton'>" +
+				"<img src='img/button_audio_off' onclick='playBackground()' id='ayy'>" +
+				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 	
 	/**
 	 * This string represents the tutorial
