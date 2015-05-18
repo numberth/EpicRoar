@@ -168,8 +168,22 @@
 	height:auto;
 	bottom:10px;
 	left:10px;
+}
 
+.rightArrow {
+	position:absolute;
+	width:15%;
+	height:10%;
+	top:44%;
+	right:1.5%;
+}
 
+.leftArrow {
+	position:absolute;
+	width:15%;
+	height:10%;
+	top:44%;
+	left:1.5%;
 }
 
 #menu{
