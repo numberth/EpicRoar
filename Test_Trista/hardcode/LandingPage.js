@@ -38,7 +38,7 @@ track.init();
 function playBackground(){
 	if(track.state===0){
 		getButtonSrc();
-		track.buttonSrc.src ='img/button_audio_off.png';
+		track.buttonSrc.src ='img/button_audio.png';
 		switch(track.currentPage){
 			case 0:
 				track.track1.play();
@@ -59,7 +59,7 @@ function playBackground(){
 
 function stopBackground(){
 	getButtonSrc();
-	track.buttonSrc.src = 'img/button_audio.png'; 
+	track.buttonSrc.src = 'img/button_audio_off.png'; 
 	track.track1.pause();
 	track.track1.currentTime=0;
 	track.track2.pause();

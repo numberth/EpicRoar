@@ -1,0 +1,170 @@
+// MAIN.CSS just add it anywhere
+____________________________________________________
+
+
+/**water border for 2x2 */
+
+#waterLeft2{
+	position:absolute;
+	width:7%;
+	height:50%;
+	bottom:30%;
+	left:13.5%;
+}
+
+#waterRight2{
+	position:absolute;
+	width:7%;
+	height:50%;
+	bottom:30%;
+	right:12%;
+}
+
+#waterTop2{
+	position:absolute;
+	width:75%;
+	height:5%;
+	bottom:75.5%;
+	left:13%;
+}
+
+#waterBottom2{
+	position:absolute;
+	width:73%;
+	height:5%;
+	bottom:30%;
+	left:13%;
+}
+
+/** water border for 3x3 */
+
+#waterLeft3{
+	position:absolute;
+	width:2%;
+	height:65%;
+	bottom:19%;
+	left:-0%;
+}
+
+#waterRight3{
+	position:absolute;
+	width:3%;
+	height:65%;
+	bottom:19%;
+	right:-.2%;
+}
+
+#waterTop3{
+	position:absolute;
+	width:98%;
+	height:3%;
+	bottom:82%;
+	left:1%;
+}
+
+#waterBottom3{
+	position:absolute;
+	width:98%;
+	height:3%;
+	bottom:17.7%;
+	left:1%;
+}
+
+/**water border for level 4 */
+
+#waterLeft4{
+	position:absolute;
+	width:3.5%;
+	height:73%;
+	bottom:18.5%;
+	left:0%;
+}
+
+#waterRight4{
+	position:absolute;
+	width:5%;
+	height:73%;
+	bottom:18.5%;
+	right:0%;
+}
+
+#waterTop4{
+	position:absolute;
+	width:98%;
+	height:4%;
+	bottom:88%;
+	left:1%;
+}
+
+#waterBottom4{
+	position:absolute;
+	width:98%;
+	height:4%;
+	bottom:18.5%;
+	left:1%;
+}
+
+
+
+
+
+
+//LANDINGPAGE.JS 
+
+
+// add this at the very bottom of "Level1 :"
+________________________________________________________________________
+
+
+		//water border for 2x2 grid
+				"<img src='img/water_border_left.png'  id='waterLeft2'>" +
+                "<img src='img/water_border_left.png'  id='waterRight2'>" +
+				"<img src='img/water_border_top.png'  id='waterTop2'>" +
+				"<img src='img/water_border_bottom.png'  id='waterBottom2'>" +
+
+
+
+
+
+
+
+// add this at very bottom of "Level2 :"
+________________________________________________________________________
+
+
+		//water border for 2x2 grid
+				"<img src='img/water_border_left.png'  id='waterLeft2'>" +
+                "<img src='img/water_border_left.png'  id='waterRight2'>" +
+				"<img src='img/water_border_top.png'  id='waterTop2'>" +
+				"<img src='img/water_border_bottom.png'  id='waterBottom2'>" +
+
+
+
+
+
+
+//add this at  very bottom of Level3
+________________________________________________________________________
+
+
+        //water border for 3x3 grid
+				"<img src='img/water_border_left.png'  id='waterLeft3'>" +
+      			"<img src='img/water_border_left.png'  id='waterRight3'>" +
+				"<img src='img/water_border_top3.png'  id='waterTop3'>" +
+				"<img src='img/water_border_bottom3.png'  id='waterBottom3'>" +
+
+
+
+
+
+
+
+//add this at very bottom of Level4
+________________________________________________________________________
+
+
+        //water border for 4x4 grid
+				"<img src='img/water_border_left.png'  id='waterLeft4'>" +
+   		    	"<img src='img/water_border_left.png'  id='waterRight4'>" +
+				"<img src='img/water_border_top3.png'  id='waterTop4'>" +
+				"<img src='img/water_border_bottom3.png'  id='waterBottom4'>" +
