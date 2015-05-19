@@ -483,7 +483,7 @@ var pageOptions = {
 
 
 	tutorial4 :    "<img src='img/bg_tutorial_4.jpg' alt='tutorial4' width='100%' height='100%'>" +
-					"<img src='img/left_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3_2' class='leftArrow'>" +
+					"<img src='img/left_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3_3' class='leftArrow'>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 	
