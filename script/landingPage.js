@@ -135,10 +135,10 @@ function stopBackground(){
 
 function setAudioImg(){
 	switch(trackState){
-		case 0:
+		case 1:
 			document.getElementById('ayy').src = 'img/button_audio.png';
 			break;
-		case 1:
+		case 0:
 			document.getElementById('ayy').src = 'img/button_audio_off.png';
 			break;
 		default:
