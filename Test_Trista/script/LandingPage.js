@@ -135,10 +135,10 @@ function stopBackground(){
 
 function setAudioImg(){
 	switch(trackState){
-		case 0:
+		case 1:
 			document.getElementById('ayy').src = 'img/button_audio.png';
 			break;
-		case 1:
+		case 0:
 			document.getElementById('ayy').src = 'img/button_audio_off.png';
 			break;
 		default:
@@ -669,12 +669,7 @@ var pageOptions = {
                 "<img src='' onclick='flipAll(\"twoByTwo_0\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
                 "<img src='img/dino_green.png' id='dino_lv1'>" +
-                "<img src='img/egg_green.png' id='egg_lv1'>" +
-                //water border for 2x2 grid
-				"<img src='img/water_border_left.png'  id='waterLeft2'>" +
-                "<img src='img/water_border_left.png'  id='waterRight2'>" +
-				"<img src='img/water_border_top.png'  id='waterTop2'>" +
-				"<img src='img/water_border_bottom.png'  id='waterBottom2'>",
+                "<img src='img/egg_green.png' id='egg_lv1' onclick='rotateNubx1(\"twoByTwo_00\")'>",
 
     	/**
 	 * This string represents level 2 in our game
@@ -699,13 +694,8 @@ var pageOptions = {
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
-                "<img src='img/dino_green.png' id='dino_lv1'>" +
-                "<img src='img/egg_green.png' id='egg_lv1'>" +
-                //water border for 2x2 grid
-				"<img src='img/water_border_left.png'  id='waterLeft2'>" +
-                "<img src='img/water_border_left.png'  id='waterRight2'>" +
-				"<img src='img/water_border_top.png'  id='waterTop2'>" +
-				"<img src='img/water_border_bottom.png'  id='waterBottom2'>",
+                "<img src='img/dino_green.png' id='dino_lv1' onclick='rotateNubx(\"twoByTwo_3\")'>" +
+                "<img src='img/egg_green.png' id='egg_lv1'>",
 
      /**
 	 * This string stores level3 of our game
@@ -759,13 +749,8 @@ var pageOptions = {
         "<img src='' onclick='playBackground()' id='ayy'>" +
         "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
         "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
-        "<img src='img/dino_blue.png' id='dino_lv3'>" +
-        "<img src='img/egg_blue.png' id='egg_lv3'>" +
-        //water border for 3x3 grid
-				"<img src='img/water_border_left.png'  id='waterLeft3'>" +
-      			"<img src='img/water_border_left.png'  id='waterRight3'>" +
-				"<img src='img/water_border_top3.png'  id='waterTop3'>" +
-				"<img src='img/water_border_bottom3.png'  id='waterBottom3'>",
+        "<img src='img/dino_blue.png' id='dino_lv3' onclick='rotateAndCheck(8)'>" +
+        "<img src='img/egg_blue.png' id='egg_lv3' onclick='rotateAndCheck(0)'>",
 
 
      /**
@@ -841,13 +826,8 @@ var pageOptions = {
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
-                "<img src='img/dino_red.png' id='dino_lv4'>" +
-        		"<img src='img/egg_red.png' id='egg_lv4'>" +
-        		//water border for 4x4 grid
-				"<img src='img/water_border_left.png'  id='waterLeft4'>" +
-   		    	"<img src='img/water_border_left.png'  id='waterRight4'>" +
-				"<img src='img/water_border_top3.png'  id='waterTop4'>" +
-				"<img src='img/water_border_bottom3.png'  id='waterBottom4'>",
+                "<img src='img/dino_red.png' id='dino_lv4' onclick='rotateAndCheck(15)'>" +
+        		"<img src='img/egg_red.png' id='egg_lv4' onclick='rotateAndCheck(0)'>",
 
 
 
@@ -986,12 +966,7 @@ var pageOptions = {
                 "<img src='img/button_pause.png' onclick='setPause()' id='pauseTimer'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
                 "<img src='img/dino_red.png' id='dino_lv4'>" +
-        		"<img src='img/egg_red.png' id='egg_lv4'>" +
-        		//water border for 4x4 grid
-				"<img src='img/water_border_left.png'  id='waterLeft4'>" +
-   		    	"<img src='img/water_border_left.png'  id='waterRight4'>" +
-				"<img src='img/water_border_top3.png'  id='waterTop4'>" +
-				"<img src='img/water_border_bottom3.png'  id='waterBottom4'>",
+        		"<img src='img/egg_red.png' id='egg_lv4'>",
 
 	 /**
 	 * This function initializes the reference variable to whichever id we need to change the content of.
