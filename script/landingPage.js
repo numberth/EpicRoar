@@ -438,7 +438,7 @@ var pageOptions = {
 				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage1()' id='zenButton'>" +
 				"<img src= 'img/button_time.png' onclick='pageOptions.setPage1t()' id='timeButton'>" +
 				"<img src='img/button_audio_off' onclick='playBackground()' id='ayy'>" +
-				"<img src='img/button_menu.png' onclick='pageOptions.setPage11()' id='menu'>",
+				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	modeSelectionPageLvl : 
 				"<img src= 'img/button_zen.png' onclick='pageOptions.setLevelPage()' id='zenButton1'>" +
