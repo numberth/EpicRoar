@@ -143,11 +143,16 @@ if(allowedFlip > 0){
  * It is called automatically by flipAll() after (1.5) seconds.
  */
 function flipAllBack(id){
-		for(var i=0; i < 16; i++){
+	if(detectLvl == "threeBoardTime" || "threeBoard"){
+		for(var i=1; i < 8; i++){
 			document.getElementById(id + i).style.zIndex = '-1';
 		}
+	}else if(detectLvl == "fourBoardTime" || "fourBoard"){
+		for(var i=1; i < 15; i++){
+			document.getElementById(id + i).style.zIndex = '-1';
+		}
+	}
 }
-
 /**
  * Flips all cards over after routes have been connected. 
  * Temporary place holder until function is created for only flipping over the solution path.
