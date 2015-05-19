@@ -316,7 +316,7 @@ function displayWin(){
                 	case 12:
                 			levelUnlock.lvl13 = true;
 		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='enterName()'' id='continueButton'>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_enterscore.png' onclick='enterName()'' id='enterButton'>";
                 		break;
 
                 	default:
@@ -397,7 +397,7 @@ function displayTimeWin(){
                 	case 12:
                 			timeLevelUnlock.lvl13 = true;
 		                	pageOptions.setTimeLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='enterName()'' id='continueButton'>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_enterscore.png' onclick='enterName()'' id='enterButton'>";
                 		break;
 
                 	default:
