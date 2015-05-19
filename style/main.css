@@ -249,7 +249,7 @@
 	position:absolute;
 	width:17%;
 	height:auto;
-	top: 11.5%;
+	top: 17%;
 	left: 26%;
 	z-index: 5;
 }
@@ -268,7 +268,7 @@
 	width:17%;
 	height:auto;
 	top: 12%;
-	left: 4%;
+	left: 0.5%;
 	z-index: 5;
 }
 
@@ -921,107 +921,6 @@
 	height:0;
 }
 
-/**water border for 2x2 */
-
-#waterLeft2{
-	position:absolute;
-	width:7%;
-	height:50%;
-	bottom:30%;
-	left:13.5%;
-}
-
-#waterRight2{
-	position:absolute;
-	width:7%;
-	height:50%;
-	bottom:30%;
-	right:12%;
-}
-
-#waterTop2{
-	position:absolute;
-	width:75%;
-	height:5%;
-	bottom:75.5%;
-	left:13%;
-}
-
-#waterBottom2{
-	position:absolute;
-	width:73%;
-	height:5%;
-	bottom:30%;
-	left:13%;
-}
-
-/** water border for 3x3 */
-
-#waterLeft3{
-	position:absolute;
-	width:2%;
-	height:63%;
-	bottom:23%;
-	left:1.5%;
-}
-
-#waterRight3{
-	position:absolute;
-	width:2%;
-	height:63%;
-	bottom:23%;
-	right:0.5%;
-}
-
-#waterTop3{
-	position:absolute;
-	width:97%;
-	height:3%;
-	bottom:84.5%;
-	left:2.5%;
-}
-
-#waterBottom3{
-	position:absolute;
-	width:96%;
-	height:3%;
-	bottom:21%;
-	left:2%;
-}
-
-/**water border for level 4 */
-
-#waterLeft4{
-	position:absolute;
-	width:3.5%;
-	height:73%;
-	bottom:18.5%;
-	left:0%;
-}
-
-#waterRight4{
-	position:absolute;
-	width:5%;
-	height:73%;
-	bottom:18.5%;
-	right:0%;
-}
-
-#waterTop4{
-	position:absolute;
-	width:98%;
-	height:4%;
-	bottom:88%;
-	left:1%;
-}
-
-#waterBottom4{
-	position:absolute;
-	width:98%;
-	height:4%;
-	bottom:18.5%;
-	left:1%;
-}
 
 /*
 
