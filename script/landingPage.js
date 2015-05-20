@@ -448,50 +448,50 @@ var pageOptions = {
 	/**
 	 * This string represents the tutorial
 	 */
-	tutorial1 :    "<img src='img/bg_tutorial_1.jpg' alt='tutorial1' width='100%' height='100%'>" +
+	tutorial1 :    "<img src='img/bg_tutorial_3_2.jpg' alt='tutorial1' width='100%' height='100%'>" +
 					"<img src='img/right_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial2' class='rightArrow'>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
-	tutorial2 :    "<img src='img/bg_tutorial_2.jpg' alt='tutorial2' width='100%' height='100%'>" +
+	tutorial2 :    "<img src='img/bg_tutorial_4.jpg' alt='tutorial2' width='100%' height='100%'>" +
 					"<img src='img/right_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial2_1' class='rightArrow'>" +
 					"<img src='img/left_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial1' class='leftArrow'>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
-	tutorial2_1 :    "<img src='img/bg_tutorial_2_1.jpg' alt='tutorial2 extra' width='100%' height='100%'>" +
+	tutorial2_1 :    "<img src='img/bg_tutorial_1.jpg' alt='tutorial2 extra' width='100%' height='100%'>" +
 					"<img src='img/right_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3' class='rightArrow'>" +
 					"<img src='img/left_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial2' class='leftArrow'>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 
-	tutorial3 :     "<img src='img/bg_tutorial_3.jpg' alt='tutorial3' width='100%' height='100%'>" +
+	tutorial3 :     "<img src='img/bg_tutorial_2.jpg' alt='tutorial3' width='100%' height='100%'>" +
 					"<img src='img/right_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3_1' class='rightArrow'>" +
 					"<img src='img/left_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial2_1' class='leftArrow'>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
-    tutorial3_1 :     "<img src='img/bg_tutorial_3_1.jpg' alt='tutorial3 extra' width='100%' height='100%'>" +
+    tutorial3_1 :     "<img src='img/bg_tutorial_2_1.jpg' alt='tutorial3 extra' width='100%' height='100%'>" +
 					"<img src='img/right_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3_2' class='rightArrow'>" +
 					"<img src='img/left_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3' class='leftArrow'>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
-    tutorial3_2 :     "<img src='img/bg_tutorial_3_2.jpg' alt='tutorial3 extra' width='100%' height='100%'>" +
+    tutorial3_2 :     "<img src='img/bg_tutorial_3.jpg' alt='tutorial3 extra' width='100%' height='100%'>" +
 					"<img src='img/right_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3_3' class='rightArrow'>" +
 					"<img src='img/left_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3_1' class='leftArrow'>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
-	tutorial3_3 :     "<img src='img/bg_tutorial_3_3.jpg' alt='tutorial3 extra' width='100%' height='100%'>" +
+	tutorial3_3 :     "<img src='img/bg_tutorial_3_1.jpg' alt='tutorial3 extra' width='100%' height='100%'>" +
 					"<img src='img/right_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial4' class='rightArrow'>" +
 					"<img src='img/left_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3_2' class='leftArrow'>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 
-	tutorial4 :    "<img src='img/bg_tutorial_4.jpg' alt='tutorial4' width='100%' height='100%'>" +
+	tutorial4 :    "<img src='img/bg_tutorial_5.jpg' alt='tutorial4' width='100%' height='100%'>" +
 					"<img src='img/left_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3_3' class='leftArrow'>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
 					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
