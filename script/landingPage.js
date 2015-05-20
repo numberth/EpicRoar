@@ -36,7 +36,7 @@ var track = {
     init : function(){
     	this.track1 = new Audio();
     	this.track1.src = "sounds/umbala.mp3";
-    	this.track1.volume = 0.2;
+    	this.track1.volume = 0.1;
     	this.track1.loop = true;
     	// this.track2 = new Audio();
     	// this.track2.src = "sounds/jpark.mp3";
@@ -55,9 +55,8 @@ var track = {
  * 
  */
 function flipSound(){
-	track.track4.play();
-	if(trackState === 0){
-		track.track4.pause();
+	if(trackState === 1){
+		track.track4.play();
 	}
 }
 
