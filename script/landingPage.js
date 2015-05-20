@@ -311,7 +311,12 @@ function displayWin(){
                 	case 11:
                 			levelUnlock.lvl12 = true;
 		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage12()' id='continueButton'>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage12()'' id='continueButton'>";
+                		break;
+                	case 12:
+                			levelUnlock.lvl13 = true;
+		                	pageOptions.setLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_enterscore.png' onclick='enterName()'' id='enterButton'>";
                 		break;
 
                 	default:
@@ -389,6 +394,11 @@ function displayTimeWin(){
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage12t()' id='continueButton'>";
                 		break;
+                	case 12:
+                			timeLevelUnlock.lvl13 = true;
+		                	pageOptions.setTimeLevelUnlock();
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_enterscore.png' onclick='enterName()'' id='enterButton'>";
+                		break;
 
                 	default:
                 		break;
@@ -431,8 +441,8 @@ var pageOptions = {
 				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 
 	modeSelectionPageLvl : 
-				"<img src= 'img/button_zen.png' onclick='pageOptions.setLevelPage()' id='zenButton'>" +
-				"<img src= 'img/button_time.png' onclick='pageOptions.setTimeLevelPage()' id='timeButton'>" +
+				"<img src= 'img/button_zen.png' onclick='pageOptions.setLevelPage()' id='zenButton1'>" +
+				"<img src= 'img/button_time.png' onclick='pageOptions.setTimeLevelPage()' id='timeButton1'>" +
 				"<img src='img/button_audio_off' onclick='playBackground()' id='ayy'>" +
 				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
 	

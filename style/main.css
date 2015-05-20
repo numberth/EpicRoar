@@ -27,6 +27,18 @@
 	background-size:100% 100%; */
 }
 
+#enterButton{
+
+	margin:0;
+	margin-left: auto;
+	margin-right:auto;
+	display:block;
+	height:auto;
+	width:  50%;
+	text-align:center;
+	margin-top:7%;
+}
+
 #levelModeButton{
 	margin:0;
 	margin-left: 25%;
@@ -60,26 +72,13 @@
 	height:12%;
 	width:51%;
 	text-align:center;
-	margin-top:40%;
+	margin-top:35%;
 	font-size:25px;
 	font-family:cursive,arial;
 	/*background-image:url(../img/buttonBg.png);
 	background-size:100% 100%; */
 }
 
-#zenButton{
-	margin:0;
-	margin-left: 25%;
-	display:block;
-	height:10%;
-	width:50%;
-	text-align:center;
-	margin-top:10%;
-	font-size:25px;
-	font-family:cursive,arial;
-	/*background-image:url(../img/buttonBg.png);
-	background-size:100% 100%; */
-}
 
 #continueButton{
 	margin:0;
@@ -113,6 +112,48 @@
 	width:50%;
 	text-align:center;
 	margin-top:10%;
+	font-size:25px;
+	font-family:cursive,arial;
+	/*background-image:url(../img/buttonBg.png);
+	background-size:100% 100%; */
+}
+
+#zenButton{
+	margin:0;
+	margin-left: 25%;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:10%;
+	font-size:25px;
+	font-family:cursive,arial;
+	/*background-image:url(../img/buttonBg.png);
+	background-size:100% 100%; */
+}
+
+#zenButton1{
+	margin:0;
+	margin-left: 25%;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:45%;
+	font-size:25px;
+	font-family:cursive,arial;
+	/*background-image:url(../img/buttonBg.png);
+	background-size:100% 100%; */
+}
+
+#timeButton1{
+	margin:0;
+	margin-left: 25%;
+	display:block;
+	height:10%;
+	width:50%;
+	text-align:center;
+	margin-top:15%;
 	font-size:25px;
 	font-family:cursive,arial;
 	/*background-image:url(../img/buttonBg.png);
