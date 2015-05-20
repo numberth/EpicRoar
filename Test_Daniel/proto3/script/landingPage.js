@@ -1121,7 +1121,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
-		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
 		setAudioImg();
@@ -1134,7 +1133,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
-		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
 		setAudioImg();
@@ -1147,7 +1145,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
-		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
 		setAudioImg();
@@ -1160,7 +1157,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
-		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
 		setAudioImg();
@@ -1174,7 +1170,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1187,7 +1182,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1200,7 +1194,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1213,7 +1206,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1226,7 +1218,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1239,7 +1230,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1256,7 +1246,6 @@ var pageOptions = {
 	    this.setLevelUnlock();
 	    track.currentPage = 0;
 	    this.reference.innerHTML = this.timeModeLevel1;
-	    arrayData.setIds();
 	    timeMode();
 	    initBoard3x3();
 	    flipImg();
