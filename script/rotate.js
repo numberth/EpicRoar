@@ -21,7 +21,7 @@
  * vertex)]
  */
 function rotate(til){
-if(enable && !clock.pause2){
+if(!clock.pause2){
 var tile = parseInt(til);
 		switch(tile_exit_counter[tile]){
 			case 1:
