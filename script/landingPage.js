@@ -151,21 +151,32 @@ function setAudioImg(){
  * 
  */
 var clock = {
-	pause2 : false,    //pause boolean
-	pauseState : 0,   //state of pause
-	lost : false, // lose game boolean
-	timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
-								//to animate the timer
-	seconds : 20,				//variable that represents seconds (60 seconds per minute)
-	/**
-	 * This function checks if the user has run out of time.
-	 */
-	 checkTime : function(){
-	 	if(this.seconds<=0){
-	 		this.lost = true;
-	 	}
-	 }
+    totalScore : 0,    //total score throughout the game
+    currentScore : 100,  //starting score per level
+    scoreMultiplier: 1.5, //difficulty multiplier
+    pause2 : false,    //pause boolean
+    pauseState : 0,   //state of pause
+    lost : false, // lose game boolean
+    timerReference : undefined, //this variable will be used to point towards the id that we will need to refresh 
+                                //to animate the timer
+    seconds : 20,               //variable that represents seconds (60 seconds per minute)
+    /**
+     * This function checks if the user has run out of time.
+     */
+     checkTime : function(){
+        if(this.seconds<=0){
+            this.lost = true;
+        }
+     },
+     calculateScore : function(){
+        this.currentScore-=5;
+     }
 
+}
+
+//initializes the score with multiplier
+function initScore(){
+    clock.currentScore *= clock.scoreMultiplier;
 }
 
 /**
@@ -178,21 +189,21 @@ var clock = {
  */
 function timeMode(){
 
-	if(!clock.lost){
-        
-		clock.timerReference = document.getElementById('timeSquare');
-		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
-			return;
-		}
-		clock.timerReference.innerHTML = "Time left: " + clock.seconds;
-		clock.checkTime();    //checks if the user has time left.
-		if(!clock.pause2){
-				clock.seconds--;
-				window.setTimeout(timeMode,1000);
-		}
-	}else{
-		displayLoss();
-	}
+    if(!clock.lost){
+        clock.timerReference = document.getElementById('timeSquare');
+        if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
+            return;
+        }
+        clock.timerReference.innerHTML = "Time left: " + clock.seconds+ " Score: " + clock.currentScore;
+        clock.checkTime();    //checks if the user has time left.
+        if(!clock.pause2){
+                clock.calculateScore();
+                clock.seconds--;
+                window.setTimeout(timeMode,1000);
+        }
+    }else{
+        displayLoss();
+    }
 }
 
 
@@ -233,16 +244,18 @@ function displayLoss(){
 }
 
 function enterName(){
-	pageOptions.reference.innerHTML = "<img src='img/score.png' id='score'>" +
-
-	"<img src=''  onclick='playBackground()' id='ayy'>" +
+    pageOptions.reference.innerHTML = "<img src='img/score.png' id='score'>" +
+    "<h2 id='scoreDisplay' style='color:white;margin-top:15%;font-size:65px'> 0 </h2>" +
+    "<img src=''  onclick='playBackground()' id='ayy'>" +
     "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
-
-	"<form>" +
-		"<input type='text' name='name' value='Enter name here!' id='submit'>" +
-		"<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
-	"</form>";
-	setAudioImg();
+    "<form action='php/submit.php' method='post'>" +
+        "<input type='text' name='name' value='Enter name here!' id='submit'>" +
+        "<input type='hidden' id='theScore' name='points'  value='output of function' /> "+
+        "<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
+    "</form>";
+    document.getElementById('theScore').value = returnTotalScore();
+    document.getElementById('scoreDisplay').innerHTML = returnTotalScore();
+    setAudioImg();
 }
 
 
@@ -255,6 +268,8 @@ function displayWin(){
 	track.currentPage = 1; 
 	playBackgroundWin();
 	resetTimer();
+    clock.totalScore += clock.currentScore;
+    clock.currentScore=100;
 	pageOptions.reference.innerHTML = "";
 	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;width:90%;height:auto;margin:auto;margin-top:15%'>"+
 				"<img src=''  onclick='playBackground()' id='ayy'>" +
@@ -333,6 +348,8 @@ function displayWin(){
  */
 
 function displayTimeWin(){
+    clock.totalScore += clock.currentScore;
+    clock.currentScore=100;
 	resetTimer();
 	track.currentPage = 1; 
 	playBackgroundWin();
@@ -424,7 +441,7 @@ var pageOptions = {
 	
 	"<img src= 'img/button_play.png' onclick='pageOptions.difficultySelect()' id='playButton'>" +
 	"<img src= 'img/button_levels.png' onclick='pageOptions.preLevelSelect()' id='levelModeButton'>" +
-	"<img src= 'img/button_scores.png' onclick='pageOptions.setScorePage()' id='scoreButton'>" +
+	"<img src= 'img/button_scores.png' onclick='showHighscore()' id='scoreButton'>" +
 	"<img src='' onclick='playBackground()' id='ayy'>" +
 	"<img src='img/button_menu.png' id='menu'>",
 
@@ -1041,7 +1058,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
-		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
 		setAudioImg();
@@ -1054,7 +1070,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
-		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
 		setAudioImg();
@@ -1067,7 +1082,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
-		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
 		setAudioImg();
@@ -1080,7 +1094,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level3;
-		arrayData.setIds();
 		initBoard3x3();
 		flipImg();
 		setAudioImg();
@@ -1094,7 +1107,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1107,7 +1119,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1120,7 +1131,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1133,7 +1143,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1146,7 +1155,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1159,7 +1167,6 @@ var pageOptions = {
 		this.setLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.level4;
-		arrayData.setIds();
 		initBoard4x4();
 		flipImg();
 		setAudioImg();
@@ -1176,7 +1183,7 @@ var pageOptions = {
 	    this.setLevelUnlock();
 	    track.currentPage = 0;
 	    this.reference.innerHTML = this.timeModeLevel1;
-	    arrayData.setIds();
+
 	    timeMode();
 	    initBoard3x3();
 	    flipImg();
@@ -1221,7 +1228,6 @@ var pageOptions = {
 		this.setTimeLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.timeModeLevel1;
-		arrayData.setIds();
 		timeMode();		
 		initBoard3x3();
 		flipImg();
@@ -1236,7 +1242,6 @@ var pageOptions = {
 		this.setTimeLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.timeModeLevel1;
-		arrayData.setIds();
 		initBoard3x3();
 		timeMode();		
 		flipImg();
@@ -1251,7 +1256,6 @@ var pageOptions = {
 		this.setTimeLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.timeModeLevel1;
-		arrayData.setIds();
 		initBoard3x3();
 		timeMode();		
 		flipImg();
@@ -1266,7 +1270,6 @@ var pageOptions = {
 		this.setTimeLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.timeModeLevel1;
-		arrayData.setIds();
 		initBoard3x3();
 		timeMode();		
 		flipImg();
@@ -1281,7 +1284,6 @@ var pageOptions = {
 		this.setTimeLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.timeModeLevel2;
-		arrayData.setIds();
 		initBoard4x4();
 		timeMode();	
 		resetTimer();	
@@ -1296,7 +1298,6 @@ var pageOptions = {
 		this.setTimeLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.timeModeLevel2;
-		arrayData.setIds();
 		initBoard4x4();
 		timeMode();		
 		resetTimer();
@@ -1311,7 +1312,6 @@ var pageOptions = {
 		this.setTimeLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.timeModeLevel2;
-		arrayData.setIds();
 		initBoard4x4();
 		timeMode();	
 		resetTimer();	
@@ -1326,7 +1326,6 @@ var pageOptions = {
 		this.setTimeLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.timeModeLevel2;
-		arrayData.setIds();
 		initBoard4x4();
 		timeMode();	
 		resetTimer();	
@@ -1341,7 +1340,6 @@ var pageOptions = {
 		this.setTimeLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.timeModeLevel2;
-		arrayData.setIds();
 		initBoard4x4();
 		timeMode();	
 		resetTimer();	
@@ -1356,7 +1354,6 @@ var pageOptions = {
 		this.setTimeLevelUnlock();
 		track.currentPage = 0;
 		this.reference.innerHTML = this.timeModeLevel2;
-		arrayData.setIds();
 		initBoard4x4();
 		timeMode();	
 		resetTimer();	
@@ -1548,3 +1545,6 @@ var timeLevelUnlock = {
 	timeCurrentLevel : 1
 
 }
+
+
+initScore();
