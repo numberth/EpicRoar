@@ -55,6 +55,7 @@
 		DINO MYTE
 		<br>
 	</h1>
+		<a href='achievements.php'><img src='img/achievement.png' alt='achievement button' style='position:absolute;top:0;right:150px;display:block;height:60px;width:95px'></a>
 		<?php
 			if( isset($_SESSION['user_id'])) {
 				echo "<a href='php/logout.php'><img src='img/logout.png' alt='login button' style='position:absolute;top:0;right:0;display:block;height:60px;width:150px'></a>";
