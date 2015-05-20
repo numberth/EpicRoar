@@ -225,7 +225,11 @@ function setPause(){
 
 function resetTimer(){
         clock.seconds = 20;
-    }
+}
+
+function returnTotalScore(){
+    return clock.totalScore;
+}
 
 
 /**
