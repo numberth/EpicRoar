@@ -67,7 +67,7 @@ function assignPath3x3(){
 	tileExitCount();
 	
 	tileAssign3x3();
-	generateGameBoard();
+	
 }
 
 /**
@@ -83,7 +83,7 @@ function assignPath4x4(){
 	tileExitCount();
 	
 	tileAssign4x4();
-	generateGameBoard();
+	
 }
 /**
  * It also assigns a solution grid to be compared against the user's grid.

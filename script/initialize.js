@@ -17,7 +17,9 @@ function initBoard3x3(){
   var MAX_3 = 3;
   MAX = MAX_3;
   initPath(); // from pathGenerator. js
-  assignPath3x3(); // from pathGenerator
+  assignPath3x3(); // from boardGenerator.js
+  generateGameBoard(); // boardGenerator.js
+  generateGameBoard();
 }
  /**
  * Initializes the necessary components of the path , the path assignment, and the solution ID
@@ -31,6 +33,8 @@ function initBoard3x3(){
   MAX = MAX_4;
   initPath();
   assignPath4x4();
+  generateGameBoard();
+  generateGameBoard();
  }
 /**
  * This function is called with every click of an image in order to rotate it and then check it against the solution
