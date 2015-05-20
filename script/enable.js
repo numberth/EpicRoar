@@ -15,6 +15,10 @@
  * @type {Boolean}
  */
 var enable = false;
+
+/**
+ * Detects the matrix that the level is using. Flip all function uses this variable to determine how it is flipped back.
+ */
 var detectLvl;
 
 /**

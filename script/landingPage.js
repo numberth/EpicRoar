@@ -131,7 +131,9 @@ function stopBackground(){
     
 }
 
-
+/**
+ * Sets the audio image according to if audio is set to be on or off.
+ */
 function setAudioImg(){
 	switch(trackState){
 		case 1:
