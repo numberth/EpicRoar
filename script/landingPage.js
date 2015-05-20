@@ -179,6 +179,7 @@ var clock = {
 function timeMode(){
 
 	if(!clock.lost){
+        
 		clock.timerReference = document.getElementById('timeSquare');
 		if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
 			return;
@@ -210,8 +211,10 @@ function setPause(){
 }
 
 function resetTimer(){
-	clock.seconds = 20;
-}
+        clock.seconds = 20;
+    }
+
+
 /**
  * This function is called when the player runs out of time. Resets the time left and boolean clock.lost, so that
  * the player can try again if they wish or go back to the main menu.
@@ -796,21 +799,7 @@ var pageOptions = {
 				"<div id='threeByThree_7' onclick='rotateAndCheck(7)'></div>"+
 				"<div id='threeByThree_8' onclick='rotateAndCheck(8)'></div>"+
 		"</div>"+
-        
-        //the invisible solution grid 
-        "<div id = 'threeByThree_sol'>"+
-          "<div id='threeByThree_sol_0'></div>"+
-          "<div id='threeByThree_sol_1'></div>"+
-          "<div id='threeByThree_sol_2'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='threeByThree_sol_3'></div>"+
-          "<div id='threeByThree_sol_4'></div>"+
-          "<div id='threeByThree_sol_5'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='threeByThree_sol_6'></div>"+
-          "<div id='threeByThree_sol_7'></div>"+
-          "<div id='threeByThree_sol_8'></div>"+
-        "</div>"+
+
         
         "<img src='' onclick='playBackground()' id='ayy'>" +
         "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
@@ -866,28 +855,7 @@ var pageOptions = {
         "<div id='fourByFour_13' onclick='rotateAndCheck(13)'></div>"+
         "<div id='fourByFour_14' onclick='rotateAndCheck(14)'></div>"+
         "<div id='fourByFour_15' onclick='rotateAndCheck(15)'></div>"+
-        
-        "<div id='fourByFour_sol'>"+
-          "<div id='fourByFour_sol_0'></div>"+
-          "<div id='fourByFour_sol_1'></div>"+
-          "<div id='fourByFour_sol_2'></div>"+
-          "<div id='fourByFour_sol_3'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_4'></div>"+
-          "<div id='fourByFour_sol_5'></div>"+
-          "<div id='fourByFour_sol_6'></div>"+
-          "<div id='fourByFour_sol_7'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_8'></div>"+
-          "<div id='fourByFour_sol_9'></div>"+
-          "<div id='fourByFour_sol_10'></div>"+
-          "<div id='fourByFour_sol_11'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_12'></div>"+
-          "<div id='fourByFour_sol_13'></div>"+
-          "<div id='fourByFour_sol_14'></div>"+
-          "<div id='fourByFour_sol_15'></div>"+
-        "</div>"+
+
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
@@ -933,20 +901,6 @@ var pageOptions = {
 				"<div id='threeByThree_8' onclick='rotateAndCheck(8)'></div>"+
 		"</div>"+
         
-        //the invisible solution grid 
-        "<div id = 'threeByThree_sol'>"+
-          "<div id='threeByThree_sol_0'></div>"+
-          "<div id='threeByThree_sol_1'></div>"+
-          "<div id='threeByThree_sol_2'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='threeByThree_sol_3'></div>"+
-          "<div id='threeByThree_sol_4'></div>"+
-          "<div id='threeByThree_sol_5'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='threeByThree_sol_6'></div>"+
-          "<div id='threeByThree_sol_7'></div>"+
-          "<div id='threeByThree_sol_8'></div>"+
-        "</div>"+
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
@@ -1005,27 +959,6 @@ var pageOptions = {
         "<div id='fourByFour_14' onclick='rotateAndCheck(14)'></div>"+
         "<div id='fourByFour_15' onclick='rotateAndCheck(15)'></div>"+
         
-        "<div id='fourByFour_sol'>"+
-          "<div id='fourByFour_sol_0'></div>"+
-          "<div id='fourByFour_sol_1'></div>"+
-          "<div id='fourByFour_sol_2'></div>"+
-          "<div id='fourByFour_sol_3'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_4'></div>"+
-          "<div id='fourByFour_sol_5'></div>"+
-          "<div id='fourByFour_sol_6'></div>"+
-          "<div id='fourByFour_sol_7'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_8'></div>"+
-          "<div id='fourByFour_sol_9'></div>"+
-          "<div id='fourByFour_sol_10'></div>"+
-          "<div id='fourByFour_sol_11'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_12'></div>"+
-          "<div id='fourByFour_sol_13'></div>"+
-          "<div id='fourByFour_sol_14'></div>"+
-          "<div id='fourByFour_sol_15'></div>"+
-        "</div>"+
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
