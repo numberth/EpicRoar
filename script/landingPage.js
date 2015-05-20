@@ -725,8 +725,8 @@ var pageOptions = {
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"twoByTwo_0\")' id='allFlip'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
-                "<img src='img/dino_green.png' id='dino_lv1'>" +
-                "<img src='img/egg_green.png' id='egg_lv1' onclick='rotateNubx1(\"twoByTwo_00\")'>",
+                "<img src='img/dino_green.png' id='dino_lv1' onclick='rotateNubx1(\"twoByTwo_03\")'>" +
+                "<img src='img/egg_green.png' id='egg_lv1'>",
 
     	/**
 	 * This string represents level 2 in our game
