@@ -19,7 +19,9 @@ function initBoard3x3(){
   initPath(); // from pathGenerator. js
   assignPath3x3(); // from boardGenerator.js
   generateGameBoard(); // boardGenerator.js
-  generateGameBoard();
+  generateGameBoard(); // called twice to rotate all tiles twice. 
+                       //This allows the game to genereate the tile 
+                       //images without an initial click.
 }
  /**
  * Initializes the necessary components of the path , the path assignment, and the solution ID
@@ -31,10 +33,12 @@ function initBoard3x3(){
  function initBoard4x4(){
   var MAX_4 = 4;
   MAX = MAX_4;
-  initPath();
-  assignPath4x4();
+  initPath(); // from pathGenerator.js
+  assignPath4x4(); // from boardGenerator.js
   generateGameBoard();
-  generateGameBoard();
+  generateGameBoard();// called twice to rotate all tiles twice. 
+                       //This allows the game to genereate the tile 
+                       //images without an initial click.
  }
 /**
  * This function is called with every click of an image in order to rotate it and then check it against the solution
