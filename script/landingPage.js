@@ -268,6 +268,7 @@ function enterName(){
  * This function is called when the player wins. A win image pops up, as well as victory music.
  */
 
+
 function displayWin(){
 	track.currentPage = 1; 
 	playBackgroundWin();
@@ -287,7 +288,8 @@ function displayWin(){
                 	case 2:
                 			levelUnlock.lvl3 = true;
                 			pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage3()' id='continueButton'>";
+                			pageOptions.reference.innerHTML+= "<img src='img/block_blue.png' style='display:block;width:85%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
+                            "<img src= 'img/button_continue.png' onclick='pageOptions.setPage3()' id='continueButton2'>";
                 		break;
                 	case 3:
                 			levelUnlock.lvl4 = true;
@@ -307,7 +309,8 @@ function displayWin(){
                 	case 6:
                 			levelUnlock.lvl7 = true;
 		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage7()' id='continueButton'>";
+                			pageOptions.reference.innerHTML+= "<img src='img/block_red.png' style='display:block;width:85%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
+                            "<img src= 'img/button_continue.png' onclick='pageOptions.setPage7()' id='continueButton2'>";
                 		break;
                 	case 7:
                 			levelUnlock.lvl8 = true;
@@ -332,12 +335,13 @@ function displayWin(){
                 	case 11:
                 			levelUnlock.lvl12 = true;
 		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage12()'' id='continueButton'>";
+                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage12()' id='continueButton'>";
                 		break;
                 	case 12:
                 			levelUnlock.lvl13 = true;
 		                	pageOptions.setLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_enterscore.png' onclick='enterName()'' id='enterButton'>";
+                			pageOptions.reference.innerHTML+= "<img src='img/block_win1.png' style='display:block;width:97%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
+                            "<img src='img/kingDino.gif' onclick='pageOptions.setPage()' id='kingDino'>";
                 		break;
 
                 	default:
@@ -390,7 +394,8 @@ function displayTimeWin(){
                 	case 6:
                 			timeLevelUnlock.lvl7 = true;
 		                	pageOptions.setTimeLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage7t()' id='continueButton'>";
+                			pageOptions.reference.innerHTML+=  "<img src='img/block_red.png' style='display:block;width:85%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
+                            "<img src= 'img/button_continue.png' onclick='pageOptions.setPage7t()' id='continueButton2'>";
                 		break;
                 	case 7:
                 			timeLevelUnlock.lvl8 = true;
@@ -420,7 +425,8 @@ function displayTimeWin(){
                 	case 12:
                 			timeLevelUnlock.lvl13 = true;
 		                	pageOptions.setTimeLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_enterscore.png' onclick='enterName()'' id='enterButton'>";
+                			pageOptions.reference.innerHTML+= "<img src='img/block_win.png' style='display:block;width:97%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
+                            "<img src='img/kingDino.gif' onclick='enterName()' id='kingDino'>";
                 		break;
 
                 	default:
