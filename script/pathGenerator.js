@@ -9,9 +9,14 @@
 *
 * V 2.0 is the refied version with irrelevant functions taken away and made 
 * robust to accomodate ny matrx size. 
+* V2.1 added an adjacency matrix for the user that will be intilized in this file but used in 
+*userAdjMatrix.js 
 * 
 * @author Eva Yu
-* @version 2.0
+* Acknowledgements: 
+* A. Alimardani     [for helping devise the algorithm and providing psuedo code for v 1.0] 
+* 
+* @version 2.1
 *  
 *  *******************************************************************************************
 */
@@ -51,12 +56,14 @@
     var flag_direction; // sees if the directing can go on
 
     var adj_matrix; // the grid
+    var adj_matrix_user; // the user's adjaceny matrix
     var grid_matrix; // stores the connected cubes ;
     var path_matrix; // stores the coordinates every time
     var solution_matrix; // stores the solution
 
 function initPathArrays(){
     adj_matrix = createArray(MAX*MAX,MAX*MAX); // the grid
+    adj_matrix_user = createArray(MAX*MAX,MAX*MAX);
     grid_matrix = createArray (MAX, MAX); // stores the connected cubes ;
     path_matrix = createArray (MAX*MAX, 2); // stores the coordinates every time
     solution_matrix = createArray (MAX*MAX, 2); // stores the solution
@@ -82,6 +89,7 @@ function initPathArrays(){
         this.path_matrix[0][1] = y;
         initGrid(this.grid_matrix);
         initGrid(this.adj_matrix);
+        initGrid(this.adj_matrix_user);
         this.grid_matrix[x][y] = true;
         this.matrix_complete = false;
         this.solution_saved = false;

@@ -9,29 +9,39 @@
  *
  ******************************************************************************************
 
-
 /**
  * This function is called upon the click of the image, and it will turn the image according 
- * to the number of exits it has and its current picture index in the array assinged. 
+ * to the number of exits it has and its current picture index in the array assinged.
+ *  
+ * this function will also call the funcation that will change the adjaceny matrix of the user 
+ * in accordance with the change of the tile 
  * 
- * @param   {Number}  til [the number of the tile position]
- *
+ * @version [2.0]
+ * @param   {Number}  til [The tile that represents the position of the grid (
+ * vertex)]
  */
 function rotate(til){
-if(enable && clock.pause2 == false){
+if(!clock.pause2){
 var tile = parseInt(til);
-		switch(tile_exit_counter_user[tile]){
-			case 1: 
-				oneSideRotate(tile);
+		switch(tile_exit_counter[tile]){
+			case 1:
+				var tileImg = oneSideRotate(tile);
+				grid_image_positionId[tile].style.backgroundImage = "url('" + tileImg + "')" ;
+				setAdjMatrixUser(tile, tileImg);
 				break;
 			case 2:
-				twoSideRotate(tile);
+				var tileImg = twoSideRotate(tile);
+				grid_image_positionId[tile].style.backgroundImage = "url('" + tileImg + "')" ;
+				setAdjMatrixUser(tile, tileImg);
 				break;
 			case 3:
-				threeSideRotate(tile);
+				var tileImg = threeSideRotate(tile);
+				grid_image_positionId[tile].style.backgroundImage = "url('" + tileImg + "')" ;
+				setAdjMatrixUser(tile, tileImg);
 				break; 
 			case 4:
 				grid_image_positionId[tile].style.backgroundImage = "url('" + tile_cross + "')";
+				setAdjMatrixUser(tile, tile_cross);
 			default:
 				break;
 		}
@@ -41,40 +51,27 @@ var tile = parseInt(til);
 /**
  * If tile is connected to one of its surrounding tiles,
  *  the image will appear to rotate on click according to this function. 
- *
- * 
- *@param   {number}  til [number of the tile]
+ * @param   {number}  til [number of the tile]
+ * @return  {Array String}  [returns the exact image in the Array as the grid counter increments]
+ * @version 3.0
  */
 function oneSideRotate(til){
 	var tile = parseInt(til);
-	if(tile === 0){
-		if( grid_solution_tracer[grid_solution_tracer.length - 2] === 1){
-			grid_image_counter[tile] = 1;
-		}else if(grid_solution_tracer[grid_solution_tracer.length - 2] === MAX){
-			grid_image_counter[tile] = 2;
-		}
-	}else if( tile === (MAX*MAX-1)){
-		if (grid_solution_tracer[1] === (MAX*MAX - 2)){
-			grid_image_counter[tile] = 3;
-		}else if(grid_solution_tracer[1] === (MAX*MAX - MAX-1)){
-			grid_image_counter[tile] = 0;
-		} 
-	}else{
-		grid_image_counter[tile]++;
-		if(grid_image_counter[tile]>3){
-			grid_image_counter[tile] = 0;
-		}
+	grid_image_counter[tile]++;
+	if(grid_image_counter[tile]>3){
+		grid_image_counter[tile] = 0;
 	}
-	grid_image_positionId[tile].style.backgroundImage = "url('" + tile_nub[grid_image_counter[tile]] + "')";
+	return tile_nub[grid_image_counter[tile]];
 
 }
 
 /**
  * If tile is connected to two of its surrounding tiles,
  *  the image will appear to rotate on click according to this function. 
- *
- * 
- *@param   {number}  til [number of the tile]
+ *  
+ * @param   {number}  til [number of the tile]
+ * @return  {Array String}  [returns the exact image in the Array as the grid counter increments]
+ * @version 3.0
  */
 function twoSideRotate(til){
 	var tile = parseInt(til)
@@ -83,59 +80,63 @@ function twoSideRotate(til){
 		if(grid_image_counter[tile]>3){
 			grid_image_counter[tile] = 0;
 		}
-		grid_image_positionId[tile].style.backgroundImage = "url('" + tile_90[grid_image_counter[tile]] + "')";
+		return tile_90[grid_image_counter[tile]];
 	
 	}else if(adj_matrix[tile][tile+MAX] && adj_matrix[tile][tile+1]){
 		grid_image_counter[tile]++;
 		if(grid_image_counter[tile]>3){
 			grid_image_counter[tile] = 0;
 		}
-		grid_image_positionId[tile].style.backgroundImage = "url('" + tile_90[grid_image_counter[tile]] + "')";		
+		return tile_90[grid_image_counter[tile]];		
 	
 	}else if(adj_matrix[tile][tile-MAX] && adj_matrix[tile][tile-1]){
 		grid_image_counter[tile]++;
 		if(grid_image_counter[tile]>3){
 			grid_image_counter[tile] = 0;
 		}
-		grid_image_positionId[tile].style.backgroundImage = "url('" + tile_90[grid_image_counter[tile]] + "')";
+		return tile_90[grid_image_counter[tile]];
 	
 	}else if(adj_matrix[tile][tile+MAX] && adj_matrix[tile][tile-1]){
 		grid_image_counter[tile]++;
 		if(grid_image_counter[tile]>3){
 			grid_image_counter[tile] = 0;
 		}
-		grid_image_positionId[tile].style.backgroundImage = "url('" + tile_90[grid_image_counter[tile]] + "')";
+		return tile_90[grid_image_counter[tile]];
 	
 	}else if(adj_matrix[tile][tile+1] && adj_matrix[tile][tile-1]){
 			grid_image_counter[tile]++;
 			if(grid_image_counter[tile]>1) {
 				grid_image_counter[tile] = 0;					
 		}
-			grid_image_positionId[tile].style.backgroundImage = "url('" + tile_line[grid_image_counter[tile]] + "')";	
+			return tile_line[grid_image_counter[tile]];	
+	
 	
 	}else if(adj_matrix[tile][tile+MAX] && adj_matrix[tile][tile-MAX]){
 			grid_image_counter[tile]++;
 			if(grid_image_counter[tile]>1) {
 				grid_image_counter[tile] = 0;					
 		}
-			grid_image_positionId[tile].style.backgroundImage = "url('" + tile_line[grid_image_counter[tile]] + "')";	
+			return tile_line[grid_image_counter[tile]];	
 	} 
 }
 
+
 /**
  * If tile is connected to three of its surrounding tiles,
- *  the image will appear to rotate on click according to this function. 
- *
- * 
- *@param   {number}  til [number of the tile]
+ *  the image will appear to rotate on click according to this function.
+ *   
+ * @param   {number}  til [number of the tile]
+ * @return  {Array String}  [returns the exact image in the Array as the grid counter increments]
+ * @version 3.0
  */
 function threeSideRotate(til){
 	var tile = parseInt(til);
 	grid_image_counter[tile]++;
+	
 	if(grid_image_counter[tile]>3){
 		grid_image_counter[tile] = 0;
 	}
-	grid_image_positionId[tile].style.backgroundImage = "url('" + tile_t[grid_image_counter[tile]] + "')";	
+	return tile_t[grid_image_counter[tile]];	
 }
 
 

@@ -731,20 +731,6 @@ var pageOptions = {
 				"<div id='threeByThree_8' onclick='rotateAndCheck(8)'></div>"+
 		"</div>"+
         
-        //the invisible solution grid 
-        "<div id = 'threeByThree_sol'>"+
-          "<div id='threeByThree_sol_0'></div>"+
-          "<div id='threeByThree_sol_1'></div>"+
-          "<div id='threeByThree_sol_2'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='threeByThree_sol_3'></div>"+
-          "<div id='threeByThree_sol_4'></div>"+
-          "<div id='threeByThree_sol_5'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='threeByThree_sol_6'></div>"+
-          "<div id='threeByThree_sol_7'></div>"+
-          "<div id='threeByThree_sol_8'></div>"+
-        "</div>"+
         
         "<img src='' onclick='playBackground()' id='ayy'>" +
         "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
@@ -801,27 +787,7 @@ var pageOptions = {
         "<div id='fourByFour_14' onclick='rotateAndCheck(14)'></div>"+
         "<div id='fourByFour_15' onclick='rotateAndCheck(15)'></div>"+
         
-        "<div id='fourByFour_sol'>"+
-          "<div id='fourByFour_sol_0'></div>"+
-          "<div id='fourByFour_sol_1'></div>"+
-          "<div id='fourByFour_sol_2'></div>"+
-          "<div id='fourByFour_sol_3'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_4'></div>"+
-          "<div id='fourByFour_sol_5'></div>"+
-          "<div id='fourByFour_sol_6'></div>"+
-          "<div id='fourByFour_sol_7'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_8'></div>"+
-          "<div id='fourByFour_sol_9'></div>"+
-          "<div id='fourByFour_sol_10'></div>"+
-          "<div id='fourByFour_sol_11'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_12'></div>"+
-          "<div id='fourByFour_sol_13'></div>"+
-          "<div id='fourByFour_sol_14'></div>"+
-          "<div id='fourByFour_sol_15'></div>"+
-        "</div>"+
+
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
@@ -867,20 +833,7 @@ var pageOptions = {
 				"<div id='threeByThree_8' onclick='rotateAndCheck(8)'></div>"+
 		"</div>"+
         
-        //the invisible solution grid 
-        "<div id = 'threeByThree_sol'>"+
-          "<div id='threeByThree_sol_0'></div>"+
-          "<div id='threeByThree_sol_1'></div>"+
-          "<div id='threeByThree_sol_2'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='threeByThree_sol_3'></div>"+
-          "<div id='threeByThree_sol_4'></div>"+
-          "<div id='threeByThree_sol_5'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='threeByThree_sol_6'></div>"+
-          "<div id='threeByThree_sol_7'></div>"+
-          "<div id='threeByThree_sol_8'></div>"+
-        "</div>"+
+
 
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
@@ -939,27 +892,6 @@ var pageOptions = {
         "<div id='fourByFour_14' onclick='rotateAndCheck(14)'></div>"+
         "<div id='fourByFour_15' onclick='rotateAndCheck(15)'></div>"+
         
-        "<div id='fourByFour_sol'>"+
-          "<div id='fourByFour_sol_0'></div>"+
-          "<div id='fourByFour_sol_1'></div>"+
-          "<div id='fourByFour_sol_2'></div>"+
-          "<div id='fourByFour_sol_3'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_4'></div>"+
-          "<div id='fourByFour_sol_5'></div>"+
-          "<div id='fourByFour_sol_6'></div>"+
-          "<div id='fourByFour_sol_7'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_8'></div>"+
-          "<div id='fourByFour_sol_9'></div>"+
-          "<div id='fourByFour_sol_10'></div>"+
-          "<div id='fourByFour_sol_11'></div>"+
-          "<div style='clear:both'></div>"+
-          "<div id='fourByFour_sol_12'></div>"+
-          "<div id='fourByFour_sol_13'></div>"+
-          "<div id='fourByFour_sol_14'></div>"+
-          "<div id='fourByFour_sol_15'></div>"+
-        "</div>"+
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +

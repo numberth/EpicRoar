@@ -18,7 +18,7 @@
  *
  */
 function rotate(til){
-if(enable && clock.pause2 == false){
+if(clock.pause2 == false){
 var tile = parseInt(til);
 		switch(tile_exit_counter_user[tile]){
 			case 1: 

@@ -163,7 +163,6 @@ function detect(object) {
     return detectLvl;
 }
 
-
 function flipWin(){
 	enable = false;
 	clock.pause2 = true;
