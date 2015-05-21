@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dino Myte</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/base.css" type="text/css">
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
+    <script src="LAB.min.js" type="text/javascript"></script>
+    <script src="script/enable.js" type="text/javascript"></script>
+    <script>
+        $LAB
+                .script('input/Keyboard.js').wait()
+                .script('input/Mouse.js').wait()
+                .script('system/Keys.js').wait()
+                .script('LandingPage.js').wait(function () {
+                    console.log("hello world!");
+                    pageOptions.init("a");
+                   // pageOptions.setPage("a");
+                });
+    </script>
+
+    <script type="text/javascript">
+	var tile_90 = ["img/tile_90_0.jpg","img/tile_90_1.jpg","img/tile_90_2.jpg","img/tile_90_3.jpg" ];
+	var tile_nub =["img/tile_nub_0.jpg","img/tile_nub_1.jpg","img/tile_nub_2.jpg","img/tile_nub_3.jpg" ];
+	var tile_line = ["img/tile_line_0.jpg","img/tile_line_1.jpg"];
+	var tile_counter = 0;
+	
+	function counterLoop(){
+		tile_counter++;
+		if(tile_counter>3){
+			tile_counter = 0;
+		}
+	}
+
+	function counterLoop2(){
+		tile_counter++;
+		if(tile_counter>1){
+			tile_counter = 0;
+		}
+	}
+
+	function rotate90(img){
+		var tile_image = document.getElementById(img);
+		tile_image.style.backgroundImage = "url('" + tile_90[tile_counter] + "')";
+		counterLoop();
+		verify();
+	}
+
+	function rotateNub(img){
+		if(enableFunction(img)){
+		var tile_image = document.getElementById(img);
+		tile_image.style.backgroundImage = "url('" + tile_nub[tile_counter] + "')";
+		counterLoop();
+		verify();
+	}
+	}
+
+	function rotateLine(img){
+		var tile_image = document.getElementById(img);
+		tile_image.style.backgroundImage = "url('" + tile_line[tile_counter] + "')";
+		counterLoop2();
+		verify();
+	}
+
+
+	function verify(){
+		var bg0 = $(threeByThree0).css('background-image');
+		var bg1 = $(threeByThree1).css('background-image');
+		var bg2 = $(threeByThree3).css('background-image');
+		var cleanup = /\"|\'|\)/g;
+		var bg00 = bg0.split('/').pop().replace(cleanup, '');
+		var bg01 = bg1.split('/').pop().replace(cleanup, ''); 
+		var bg02 = bg2.split('/').pop().replace(cleanup, '');
+
+		if (bg00 == "tile_nub_1.jpg"){
+			if(bg01 == "tile_90_2.jpg"){
+				if(bg02 == "tile_nub_0.jpg"){
+					alert("Congratulations!")
+				}
+			}
+		}
+	}
+	</script>
+</head>
+
+<body>
+	<h1>
+		<img src="img/EPICROAR_logo.png" width="130px" height="85px" alt="EPIC ROAR">
+		<br>
+		DINO MYTE
+		<br>
+	</h1>
+		
+	<!-- Content goes in div "content" -->
+	<div class="container">
+		<div class="content" id="a">
+			
+			<!--  <div id="a" style="display:block;"> </div>
+			<img src="EpicRoar1/img/kitty.png" width="100%" height="auto" onclick="pageOptions.init('a'), pageOptions.setPage('a');">  --> 
+
+			<img src='img/dinomyte.png' style='display:block;width:80%;height:auto;margin:auto;margin-top:9%'> 
+			<button onclick='pageOptions.setPage3(this.reference)' id='playButton'>Play</button> 
+			<button onclick='' id='timeModeButton'>Time Mode</button>
+			<img src='img/button_audio_off.png' style='position:absolute;width:70px;height:70px;bottom:10px;left:10px' onclick='playBackground()' id='ayy'>
+					
+		</div>
+	</div>
+
+	<div id="footer">
+		<img src="img/dragon.gif" width="81px" height="57px" alt="EPIC ROAR">
+		<br>
+		<h2>
+			Presented by EPIC ROAR.
+		</h2>
+		<br>
+
+		<h3>
+			Team Members: 
+		</h3>
+			<img src="img/fire.gif" width="24" height="24"> Eva &nbsp;
+			<img src="img/wind.gif" width="24" height="24"> Trista &nbsp;
+			<img src="img/light.gif" width="24" height="24"> Leia &nbsp;
+			<img src="img/ice.gif" width="24" height="24"> Daniel &nbsp;
+			<img src="img/water.gif" width="24" height="24"> Simran &nbsp;
+	</div>
+</body>
+</html>

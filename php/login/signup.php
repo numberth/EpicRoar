@@ -5,14 +5,17 @@
 	$password = $_POST['pass'];
 	$mail = $_POST['email'];
 
+	$ip = $_SERVER['REMOTE_ADDR'];
+    $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));          
+    $userDetails = "City: ".$details->city.
+    " Region: ".$details->region." Postal Code: ".$details->postal;
+
 	if(!empty($username)){
 
-		$query = "INSERT INTO users(username, password, email)
-					VALUES ('$username', md5('$password'), '$mail')";
-
-
+		$query = "INSERT INTO users(username, password, email, userLocation)
+					VALUES ('$username', md5('$password'), '$mail', '$userDetails')";
 			if($query_run = mysql_query($query)){
-					echo "insertion success";
+					echo "Successful Registration.";
 			}else{
 				echo "insertion failed";
 			}

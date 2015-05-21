@@ -71,7 +71,7 @@
 				}else{
 					//sets user session, then redirect user to home.
 					$_SESSION['user_id'] = $login;
-					header('location: http://danieltheman.webege.com/proto3/signin.php');
+					header('location: http://danieltheman.webege.com/proto3/index.php');
 					exit();
 				}
 			}

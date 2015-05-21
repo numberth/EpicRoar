@@ -33,6 +33,20 @@
 	background-size:100% 100%; */
 }
 
+#kingDino{
+	margin:0;
+	margin-left:auto;
+	margin-right: auto;
+	display:block;
+	height:auto;
+	width:41%;
+	text-align:center;
+	margin-top:-78%;
+	font-size:25px;
+	font-family:cursive,arial;
+
+}	
+
 #enterButton{
 
 	margin:0;
@@ -99,14 +113,43 @@
 
 }
 
+#continueButton1{
+	margin:0;
+	margin-left: auto;
+	margin-right: auto;
+	display:block;
+	height:auto;
+	width:60%;
+	text-align:center;
+	margin-top:7%;
+	font-size:25px;
+	font-family:cursive,arial;
+
+}
+
+#continueButton2{
+	margin:0;
+	margin-left: auto;
+	margin-right: auto;
+	display:block;
+	height:auto;
+	width:60%;
+	text-align:center;
+	margin-top:4%;
+	font-size:25px;
+	font-family:cursive,arial;
+
+}
+
 #score{
 	margin:0;
-	margin-left: 13%;
+	margin-left: auto;
+	margin-right:auto;
 	display:block;
 	height:auto;
 	width:75%;
 	text-align:center;
-	margin-top:20%;
+	margin-top:10%;
 
 }
 
@@ -252,19 +295,21 @@
 #submit{
 
 	margin:0;
-	margin-left: 19%;
+	margin-left: auto;
+	margin-right: auto;
 	display:block;
 	height:auto;
 	width:60%;
 	text-align:center;
-	margin-top:37%;
+	margin-top:5%;
 	font-size:15px;
 	font-family:cursive,arial;
 }
 
 #submitButton{
 	margin:0;
-	margin-left: 28%;
+	margin-left: auto;
+	margin-right:auto;
 	display:block;
 	height:auto;
 	width:45%;
