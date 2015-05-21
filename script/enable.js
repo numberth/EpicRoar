@@ -134,11 +134,30 @@ if(allowedFlip > 0){
 		enable = false;
 		allowedFlip--;
 		flipImg();
-		setTimeout(function(){ flipAllBack(id);},1500);
+		// setTimeout(function(){ flipAllBack(id);},1500);
 
-		for(var i=0; i < 16; i++){
+	if(detectLvl === "threeBoardTime" || "threeBoard"){
+		for(var i=1; i < 8; i++){
 			document.getElementById(id + i).style.zIndex = 1;
 		}
+
+		setTimeout(function(){ 	if(detectLvl === "threeBoardTime" || "threeBoard"){
+		for(var i=1; i < 8; i++){
+			document.getElementById(id + i).style.zIndex = '-1';
+		}
+	}},1500);
+	}
+
+	if(detectLvl === "fourBoardTime" || "fourBoard"){
+		for(var i=1; i < 15; i++){
+			document.getElementById(id + i).style.zIndex = 1;
+		}
+setTimeout(function(){ 	if(detectLvl === "fourBoardTime" || "fourBoard"){
+		for(var i=1; i < 15; i++){
+			document.getElementById(id + i).style.zIndex = '-1';
+		}
+	}},1500);
+	}	
 	}
 }
 
@@ -148,19 +167,20 @@ if(allowedFlip > 0){
  * 
  * It is called automatically by flipAll() after (1.5) seconds.
  */
-function flipAllBack(id){
-	if(detectLvl === "threeBoardTime" || "threeBoard"){
-		for(var i=1; i < 8; i++){
-			document.getElementById(id + i).style.zIndex = '-1';
-		}
-	}
+// function flipAllBack(id){
+// 	if(detectLvl === "fourBoardTime" || "fourBoard"){
+// 		for(var i=1; i < 15; i++){
+// 			document.getElementById(id + i).style.zIndex = '-1';
+// 		}
+// 	}
 
-	if(detectLvl === "fourBoardTime" || "fourBoard"){
-		for(var i=1; i < 15; i++){
-			document.getElementById(id + i).style.zIndex = '-1';
-		}
-	}
-}
+// 	if(detectLvl === "threeBoardTime" || "threeBoard"){
+// 		for(var i=1; i <= 7; i++){
+// 			document.getElementById(id + i).style.zIndex = '-1';
+// 		}
+// 	}
+
+// }
 /**
  * Flips all cards over after routes have been connected. 
  * Temporary place holder until function is created for only flipping over the solution path.
