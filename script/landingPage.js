@@ -166,7 +166,7 @@ var clock = {
      * This function checks if the user has run out of time.
      */
      checkTime : function(){
-        if(this.seconds<=0){
+        if(this.seconds<0){
             this.lost = true;
         }
      },
