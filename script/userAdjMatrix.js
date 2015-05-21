@@ -162,17 +162,37 @@ function resetMatrixRow(til){
 }
 /**
  * This function makes sure the values that will be assigned true in the
- * adjaacency matrix are ensured to be i nthe boundaries of the min (0) and
- * max (MAX^2 -1 )
+ * adjaacency matrix are ensured to be i nthe boundaries of its row. 
  * 
  */
 function checkBounds(val){
 	var num = parseInt(val);
 	var maxTile = MAX*MAX-1;
+ 	var tilePos = Math.floor(val/MAX);
+ 	switch(tilePos){
+ 		case 0:
+ 			if(num <= MAX-1 && num >= 0){
+ 				return true;
+ 			}
+ 			break;
+ 		case 1:
+ 			if(num <= 2*MAX-1 && num >= MAX){
+ 				return true;
+ 			}
+ 			break;
+ 		case 2:
+ 			if(num <= 3*MAX-1 && num >= 2*MAX){
+ 				return true;
+ 			}
+ 			break;
+ 		case 3:
+ 			if(num <= 4*MAX-1 && num >= 3*MAX-1){
+ 				return true;
+ 			}
+ 			break; 
+ 		default:
+ 			return false; 
+ 			break;
+ 	}
 
-	if(num <= maxTile && num >= 0){
-		return true;
-	}else{
-		return false;
-	}
 }
