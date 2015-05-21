@@ -945,8 +945,8 @@ var pageOptions = {
                 "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
                 "<img src='img/button_pause.png' onclick='setPause()' id='pauseTimer'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()'' id='menu'>" +
-                "<img src='img/dino_blue.png' id='dino_lv3'>" +
-        		"<img src='img/egg_blue.png' id='egg_lv3'>",
+                "<img src='img/dino_blue.png' id='dino_lv3' onclick='rotateAndCheck(8)'>" +
+                "<img src='img/egg_blue.png' id='egg_lv3' onclick='rotateAndCheck(0)'>",
 
     /**
 	 * This string stores level 4 of our game
@@ -1002,8 +1002,8 @@ var pageOptions = {
                 "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
                 "<img src='img/button_pause.png' onclick='setPause()' id='pauseTimer'>" +
                 "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
-                "<img src='img/dino_red.png' id='dino_lv4'>" +
-        		"<img src='img/egg_red.png' id='egg_lv4'>",
+                "<img src='img/dino_red.png' id='dino_lv4' onclick='rotateAndCheck(15)'>" +
+                "<img src='img/egg_red.png' id='egg_lv4' onclick='rotateAndCheck(0)'>",
 
 	 /**
 	 * This function initializes the reference variable to whichever id we need to change the content of.
