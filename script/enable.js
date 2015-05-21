@@ -147,11 +147,13 @@ if(allowedFlip > 0){
  * It is called automatically by flipAll() after (1.5) seconds.
  */
 function flipAllBack(id){
-	if(detectLvl == "threeBoardTime" || "threeBoard"){
+	if(detectLvl === "threeBoardTime" || "threeBoard"){
 		for(var i=1; i < 8; i++){
 			document.getElementById(id + i).style.zIndex = '-1';
 		}
-	}else if(detectLvl == "fourBoardTime" || "fourBoard"){
+	}
+
+	if(detectLvl === "fourBoardTime" || "fourBoard"){
 		for(var i=1; i < 15; i++){
 			document.getElementById(id + i).style.zIndex = '-1';
 		}
