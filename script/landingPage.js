@@ -178,6 +178,7 @@ var clock = {
 
 //initializes the score with multiplier
 function initScore(){
+    clock.currentScore=100;
     clock.currentScore *= clock.scoreMultiplier;
 }
 
@@ -247,6 +248,7 @@ function displayLoss(){
 	setAudioImg();
       clock.lost = false;
       resetTimer();
+      initScore();
 }
 
 function enterName(){
@@ -281,8 +283,6 @@ function displayWin(){
 	track.currentPage = 1; 
 	playBackgroundWin();
 	resetTimer();
-    clock.totalScore += clock.currentScore;
-    clock.currentScore=100;
 	pageOptions.reference.innerHTML = "";
 	pageOptions.reference.innerHTML = "<img src='img/youwin.png' style='display:block;width:90%;height:auto;margin:auto;margin-top:15%'>"+
 				"<img src=''  onclick='playBackground()' id='ayy'>" +
@@ -295,6 +295,7 @@ function displayWin(){
                 		break;
                 	case 2:
                             achievements.achievement1=1;
+                            clock.scoreMultiplier=1.75;
                 			levelUnlock.lvl3 = true;
                 			pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src='img/block_blue.png' style='display:block;width:85%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
@@ -317,6 +318,7 @@ function displayWin(){
                 		break;
                 	case 6:
                             achievements.achievement2 = 1;
+                            clock.scoreMultiplier=2.2;
                 			levelUnlock.lvl7 = true;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src='img/block_red.png' style='display:block;width:85%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
@@ -334,20 +336,24 @@ function displayWin(){
                 		break;
                 	case 9:
                 			levelUnlock.lvl10 = true;
+                            clock.scoreMultiplier=2.5;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage10()' id='continueButton'>";
                 		break;
                 	case 10:
                 			levelUnlock.lvl11 = true;
+                            clock.scoreMultiplier=3;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage11()' id='continueButton'>";
                 		break;
                 	case 11:
                 			levelUnlock.lvl12 = true;
+                            clock.scoreMultiplier=3.5;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage12()' id='continueButton'>";
                 		break;
                 	case 12:
+                            clock.scoreMultiplier=4;
                             achievements.achievement3 = 1;
                 			levelUnlock.lvl13 = true;
 		                	pageOptions.setLevelUnlock();
@@ -368,7 +374,7 @@ function displayWin(){
 
 function displayTimeWin(){
     clock.totalScore += clock.currentScore;
-    clock.currentScore=100;
+    initScore();
 	resetTimer();
 	track.currentPage = 1; 
 	playBackgroundWin();
@@ -385,57 +391,68 @@ function displayTimeWin(){
                 	case 2:
                             achievements.achievement1=1;
                 			timeLevelUnlock.lvl3 = true;
+                            clock.scoreMultiplier=3;
                 			pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage3t()' id='continueButton'>";
                 		break;
                 	case 3:
                 			timeLevelUnlock.lvl4 = true;
+                            clock.scoreMultiplier=3.5;
                 			pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage4t()' id='continueButton'>";
                 		break;
                 	case 4:
 		                	timeLevelUnlock.lvl5 = true;
+                            clock.scoreMultiplier=3.75;
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage5t()' id='continueButton'>";
                 		break;
                 	case 5:
                 			timeLevelUnlock.lvl6 = true;
+                            clock.scoreMultiplier=4;
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage6t()' id='continueButton'>";
                 		break;
                 	case 6:
                             achievements.achievement2=1;
                 			timeLevelUnlock.lvl7 = true;
+                            clock.scoreMultiplier=4.2;
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+=  "<img src='img/block_red.png' style='display:block;width:85%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
                             "<img src= 'img/button_continue.png' onclick='pageOptions.setPage7t()' id='continueButton2'>";
                 		break;
                 	case 7:
                 			timeLevelUnlock.lvl8 = true;
+                            clock.scoreMultiplier=4.5;
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage8t()' id='continueButton'>";
                 		break;
                 	case 8:
                 			timeLevelUnlock.lvl9 = true;
+                            clock.scoreMultiplier=4.8;
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage9t()' id='continueButton'>";
                 		break;
                 	case 9:
                 			timeLevelUnlock.lvl10 = true;
+                            clock.scoreMultiplier=5;
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage10t()' id='continueButton'>";
                 		break;
                 	case 10:
                 			timeLevelUnlock.lvl11 = true;
+                            clock.scoreMultiplier=5;
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage11t()' id='continueButton'>";
                 		break;
                 	case 11:
                 			timeLevelUnlock.lvl12 = true;
+                            clock.scoreMultiplier=6;
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage12t()' id='continueButton'>";
                 		break;
                 	case 12:
+                            clock.scoreMultiplier=7;
                             achievements.achievement3=1;
                 			timeLevelUnlock.lvl13 = true;
 		                	pageOptions.setTimeLevelUnlock();
@@ -481,13 +498,13 @@ var pageOptions = {
 				"<img src= 'img/button_zen.png' onclick='pageOptions.setPage1()' id='zenButton'>" +
 				"<img src= 'img/button_time.png' onclick='pageOptions.setPage1t()' id='timeButton'>" +
 				"<img src='img/button_audio_off' onclick='playBackground()' id='ayy'>" +
-				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+				"<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();' id='menu'>",
 
 	modeSelectionPageLvl : 
 				"<img src= 'img/button_zen.png' onclick='pageOptions.setLevelPage()' id='zenButton1'>" +
 				"<img src= 'img/button_time.png' onclick='pageOptions.setTimeLevelPage()' id='timeButton1'>" +
 				"<img src='img/button_audio_off' onclick='playBackground()' id='ayy'>" +
-				"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+				"<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();' id='menu'>",
 	
 	/**
 	 * This string represents the tutorial
@@ -538,7 +555,7 @@ var pageOptions = {
 	tutorial4 :    "<img src='img/bg_tutorial_5.jpg' alt='tutorial4' width='100%' height='100%'>" +
 					"<img src='img/left_arrow.png' alt='click' onclick='pageOptions.reference.innerHTML=pageOptions.tutorial3_3' class='leftArrow'>" +
 					"<img src='img/button_audio.png' onclick='playBackground()' id='ayy'>" +
-					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+					"<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();' id='menu'>",
 	
 
 	/**
@@ -620,7 +637,7 @@ var pageOptions = {
 
 		this.levelPage +=
 	"<img src='' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>"; //location.reload()
+	"<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();' id='menu'>"; //location.reload()
 	},
 
 
@@ -703,7 +720,7 @@ var pageOptions = {
 
 		this.timeLevelPage +=
 	"<img src='' onclick='playBackground()' id='ayy'>" +
-	"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>"; //location.reload()
+	"<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();' id='menu'>"; //location.reload()
 	},
 
 
@@ -753,7 +770,7 @@ var pageOptions = {
 						"</table>" +
 					"</div>" +
 					"<img src='' onclick='playBackground()' id='ayy'>" +
-					"<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>",
+					"<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();' id='menu'>",
 
 	/**
 	 * This string represents level 1 in our game
@@ -777,7 +794,7 @@ var pageOptions = {
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"twoByTwo_0\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();' id='menu'>" +
                 "<img src='img/dino_green.png' id='dino_lv1' onclick='rotateNubx1(\"twoByTwo_03\")'>" +
                 "<img src='img/egg_green.png' id='egg_lv1'>",
 
@@ -803,7 +820,7 @@ var pageOptions = {
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"twoByTwo_\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();' id='menu'>" +
                 "<img src='img/dino_green.png' id='dino_lv1' onclick='rotateNubx(\"twoByTwo_3\")'>" +
                 "<img src='img/egg_green.png' id='egg_lv1'>",
 
@@ -844,7 +861,7 @@ var pageOptions = {
         
         "<img src='' onclick='playBackground()' id='ayy'>" +
         "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
-        "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+        "<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();,initScore();' id='menu'>" +
         "<img src='img/dino_blue.png' id='dino_lv3' onclick='rotateAndCheck(8)'>" +
         "<img src='img/egg_blue.png' id='egg_lv3' onclick='rotateAndCheck(0)'>",
 
@@ -900,7 +917,7 @@ var pageOptions = {
                 //"<button onclick='pageOptions.setPage()' id='playButton'>Back</button>"+
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();' id='menu'>" +
                 "<img src='img/dino_red.png' id='dino_lv4' onclick='rotateAndCheck(15)'>" +
         		"<img src='img/egg_red.png' id='egg_lv4' onclick='rotateAndCheck(0)'>",
 
@@ -947,7 +964,7 @@ var pageOptions = {
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"threeByThree_\")' id='allFlip'>" +
                 "<img src='img/button_pause.png' onclick='setPause()' id='pauseTimer'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()'' id='menu'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();'' id='menu'>" +
                 "<img src='img/dino_blue.png' id='dino_lv3' onclick='rotateAndCheck(8)'>" +
                 "<img src='img/egg_blue.png' id='egg_lv3' onclick='rotateAndCheck(0)'>",
 
@@ -1004,7 +1021,7 @@ var pageOptions = {
                 "<img src='' onclick='playBackground()' id='ayy'>" +
                 "<img src='' onclick='flipAll(\"fourByFour_\")' id='allFlip'>" +
                 "<img src='img/button_pause.png' onclick='setPause()' id='pauseTimer'>" +
-                "<img src='img/button_menu.png' onclick='pageOptions.setPage()' id='menu'>" +
+                "<img src='img/button_menu.png' onclick='pageOptions.setPage(),initScore();' id='menu'>" +
                 "<img src='img/dino_red.png' id='dino_lv4' onclick='rotateAndCheck(15)'>" +
                 "<img src='img/egg_red.png' id='egg_lv4' onclick='rotateAndCheck(0)'>",
 
@@ -1407,137 +1424,7 @@ var pageOptions = {
 
 }
 
-
-/**
- * This Object holds data for the array of our tiles
- */
- var arrayData = {
-      clicked : false,
-      state : 0,
-      tempTile : 0,
-      curentTile:0,
-      currentImageTile :0,
-      tileIdArray : [],
-
-      setIds : function(){
-        for(var i=0;i<9;i++){
-            this.tileIdArray[i] = document.getElementById("threeByThree_Tile" + (i+1));
-         }
-        console.log("initialized tileIdArray");
-      }
-    };
-
-
-/**
- * This function returns the current id for the tile that the player is clicking on.
- * a switch statement is used to assign an integer value for each id scenario.
- */
-    function computeCurrentId(id){
-        switch(id){
-          case "threeByThree_Tile1":
-            arrayData.currentTile = 0;
-            break;
-          case "threeByThree_Tile2":
-            arrayData.currentTile = 1;
-            break;
-          case "threeByThree_Tile3":
-            arrayData.currentTile = 2;
-            break;
-
-          case "threeByThree_Tile4":
-            arrayData.currentTile = 3;
-            break;
-          
-          case "threeByThree_Tile5":
-            arrayData.currentTile = 4;
-            break;
-          
-          case "threeByThree_Tile6":
-            arrayData.currentTile = 5;
-            break;
-          
-          case "threeByThree_Tile7":
-            arrayData.currentTile = 6;
-            break;
-          
-          case "threeByThree_Tile8":
-            arrayData.currentTile = 7;
-            break;
-          
-          case "threeByThree_Tile9":
-            arrayData.currentTile = 8;
-            break;
-
-        }
-    }
-
-    /**
-	 * This function is a placeholder for the actual reset board, but basically what it does is 
-	 * loop through every matrix and flips them over to the grass.
-	 */
-    function resetBoard(){
-        for(var i=0;i<arrayData.tileIdArray.length;i++){
-            arrayData.tileIdArray[i].style.backgroundImage = "url('img/grass.jpg')"
-        }
-    }
-
-    /**
-	 * master function which gets called everytime a player clicks on a tile
-	 */
-    function clickMaster(id){
-        var k = document.getElementById(id);
-        computeCurrentId(id);
-
-        if(arrayData.state===0){
-            for(var i=0;i<arrayData.tileIdArray.length;i++){
-              if(i!=arrayData.currentTile){
-                arrayData.tileIdArray[i].style.backgroundImage = "url('img/grass.jpg')"
-              }
-             
-            }
-
-            if(arrayData.currentImageTile===0){
-                k.style.backgroundImage = "url('img/tile_90_0.jpg')";
-                arrayData.currentImageTile++;
-            }else if(arrayData.currentImageTile===1){
-                k.style.backgroundImage = "url('img/tile_90_1.jpg')";
-                arrayData.currentImageTile++;
-            }else if(arrayData.currentImageTile===2){
-                k.style.backgroundImage = "url('img/tile_90_2.jpg')";
-                arrayData.currentImageTile++;
-            }else if(arrayData.currentImageTile===3){
-                k.style.backgroundImage = "url('img/tile_90_3.jpg')";
-                arrayData.currentImageTile=0;
-            }
-
-
-
-
-        }
-        
-    }
-
-
-    //test variable, probably not going to be used.
-    var tileType1 = {
-         a : undefined,
-         b : undefined,
-         c : undefined,
-         b : undefined,
-
-         setTiles1 : function(){
-          this.a = new Image();
-          this.b = new Image();
-          this.c = new Image();
-          this.d = new Image();
-
-          this.a.src='img/tile_90_0.jpg';
-          this.b.src='img/tile_90_1.jpg';
-          this.c.src='img/tile_90_2.jpg';
-          this.d.src='img/tile_90_3.jpg';
-        }
-    };
-
+//unlocks zen mode
 var levelUnlock = {
 
 	lvl1: true,
