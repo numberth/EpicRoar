@@ -24,13 +24,12 @@
 				echo "<a href='php/logout.php'><img src='img/logout.png' alt='login button' style='position:absolute;top:0;left:0;display:block;height:60px;width:150px'></a>";
 			}
 		?>
-		<a href='index.php'><img src='img/home.png' alt='home button' style='position:absolute;top:0;right:0;display:block;height:60px;width:90px'></a>
+		<a href='index.php'><img src='img/home.png' alt='home button' style='position:absolute;top:0;right:0;display:block;height:60px;width:82px'></a>
 
 
 	<div class="container">
 	<!-- EVERYTHING IS GENERATED WITHIN THE content with id panel-->
-		 <div class="content" style='background-image:url(img/greenbg.gif);color:black;font-size:30px'> 
-			<br><br><br><br><br>
+		 <div class="content" style='font-size:30px'> 
 	<?php
 
 		 if( isset($_SESSION['user_id']) ) {

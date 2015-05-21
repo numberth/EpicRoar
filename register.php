@@ -19,14 +19,14 @@
 			DINO MYTE
 		<br>
 	</h1>
-	<a href='index.php'><img src='img/home.png' alt='home button' style='position:absolute;top:0;right:0;display:block;height:60px;width:90px'></a>
+	<a href='index.php'><img src='img/home.png' alt='home button' style='position:absolute;top:0;right:0;display:block;height:60px;width:82px'></a>
 		
 
 
 
 	<div class="container">
 	<!-- EVERYTHING IS GENERATED WITHIN THE content with id panel-->
-		 <div class="content" style='background-image:url(img/greenbg.gif);color:black;font-size:30px'> 
+		 <div class="content" style='color:black;font-size:30px'> 
 			
     	   
 
@@ -36,7 +36,7 @@
                 
                 <form class="form" method='post' action='php/login/signup.php'>
                     <input type="text" placeholder="Username" name='username'>
-                    <input type="password" placeholder="Password" name='password'>
+                    <input type="password" placeholder="Password" name='pass'>
                     <input type="text" placeholder="Email" name='email'>
                     <input type="submit"  value="Submit" name="submit" /> <!-- id="login-button" -->
                 </form>

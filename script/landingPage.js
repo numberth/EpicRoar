@@ -257,9 +257,15 @@ function enterName(){
     "<form action='php/submit.php' method='post'>" +
         "<input type='text' name='name' value='Enter name here!' id='submit'>" +
         "<input type='hidden' id='theScore' name='points'  value='output of function' /> "+
+        "<input type='hidden' id='achieve1' name='achieve1'  value='achievement1' /> "+
+        "<input type='hidden' id='achieve2' name='achieve2'  value='achievement2' /> "+
+        "<input type='hidden' id='achieve3' name='achieve3'  value='achievement3' /> "+
         "<input type='image' value='submit' src='img/button_submit.png' alt='Submit' width='120' height='50' id='submitButton'>" +
     "</form>";
     document.getElementById('theScore').value = returnTotalScore();
+    document.getElementById('achieve1').value = achievements.achievement1;
+    document.getElementById('achieve2').value = achievements.achievement2;
+    document.getElementById('achieve3').value = achievements.achievement3;
     document.getElementById('scoreDisplay').innerHTML = returnTotalScore();
     setAudioImg();
 }
@@ -288,6 +294,7 @@ function displayWin(){
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage2()' id='continueButton'>";
                 		break;
                 	case 2:
+                            achievements.achievement1=1;
                 			levelUnlock.lvl3 = true;
                 			pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src='img/block_blue.png' style='display:block;width:85%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
@@ -309,6 +316,7 @@ function displayWin(){
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage6()' id='continueButton'>";
                 		break;
                 	case 6:
+                            achievements.achievement2 = 1;
                 			levelUnlock.lvl7 = true;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src='img/block_red.png' style='display:block;width:85%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
@@ -340,6 +348,7 @@ function displayWin(){
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage12()' id='continueButton'>";
                 		break;
                 	case 12:
+                            achievements.achievement3 = 1;
                 			levelUnlock.lvl13 = true;
 		                	pageOptions.setLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src='img/block_win1.png' style='display:block;width:97%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
@@ -1537,6 +1546,9 @@ var levelUnlock = {
 	lvl7: false,
 	lvl8 : false,
 	lvl9 : false,
+    lvl10 : false,
+    lvl11: false,
+    lvl12: false,
 
 	currentLevel : 1
 
@@ -1553,6 +1565,9 @@ var timeLevelUnlock = {
 	lvl7: false,
 	lvl8 : false,
 	lvl9 : false,
+    lvl10 : false,
+    lvl11: false,
+    lvl12: false,
 
 	timeCurrentLevel : 1
 
@@ -1560,3 +1575,9 @@ var timeLevelUnlock = {
 
 
 initScore();
+
+var achievements = {
+    achievement1 : 0,
+    achievement2 : 0,
+    achievement3: 0
+}
