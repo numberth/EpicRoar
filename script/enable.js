@@ -85,6 +85,7 @@ if(clock.pause2 == false){
 }
 
 function flip4(id){
+if(clock.pause2 == false){
 	var four = "fourByFour_";
 	flipSound();
 	for(var i=1; i < 15; i++){
@@ -92,6 +93,7 @@ function flip4(id){
 			document.getElementById(id).style.zIndex = '1';
 			enable = true;
 		}
+	}
 }
 
 /**
