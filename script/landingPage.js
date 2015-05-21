@@ -383,6 +383,7 @@ function displayTimeWin(){
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage2t()' id='continueButton'>";
                 		break;
                 	case 2:
+                            achievements.achievement1=1;
                 			timeLevelUnlock.lvl3 = true;
                 			pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage3t()' id='continueButton'>";
@@ -403,6 +404,7 @@ function displayTimeWin(){
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage6t()' id='continueButton'>";
                 		break;
                 	case 6:
+                            achievements.achievement2=1;
                 			timeLevelUnlock.lvl7 = true;
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+=  "<img src='img/block_red.png' style='display:block;width:85%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
@@ -434,6 +436,7 @@ function displayTimeWin(){
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage12t()' id='continueButton'>";
                 		break;
                 	case 12:
+                            achievements.achievement3=1;
                 			timeLevelUnlock.lvl13 = true;
 		                	pageOptions.setTimeLevelUnlock();
                 			pageOptions.reference.innerHTML+= "<img src='img/block_win.png' style='display:block;width:97%;height:auto;margin-left:auto;margin-right:auto; margin-top:-66%'>" +
