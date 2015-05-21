@@ -53,7 +53,7 @@
                     $val1 = $query_row['score'];     //their score
                     $val2 = $query_row['fullName'];   //their name
 
-                    if($indexVal>10){   //once we display 8 scores, breaks out of the while statement. 
+                    if($indexVal>5){   //once we display 8 scores, breaks out of the while statement. 
                         return;
                     }
 
