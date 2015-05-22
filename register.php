@@ -19,7 +19,7 @@
 			DINO MYTE
 		<br>
 	</h1>
-	<a href='index.php'><img src='img/home.png' alt='home button' style='position:absolute;top:0;right:0;display:block;height:60px;width:82px'></a>
+	<a href='index.php'><img src='img/home.png' alt='home button' style='position:absolute;top:0;right:0;display:block;height:60px;width:80px'></a>
 		
 
 

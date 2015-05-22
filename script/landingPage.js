@@ -20,6 +20,7 @@
 *
 */
 var trackState = 0;
+var subTrackState = 0;
 
 var track = {
    //if state is 0, then music is playing. If the state is 1, then music should stop playing.
@@ -27,6 +28,8 @@ var track = {
     track2 : undefined,  //second mp3 file
     track3 : undefined, //third mp3 file
     track4: undefined, //4th mp3 file
+    track5: undefined,
+    track6: undefined,
     currentPage : 0,  //current page (such as level selection or menu)
     buttonSrc : undefined, //source of the button (so we can get the id with document.getElementByid('x'))
     
@@ -38,12 +41,17 @@ var track = {
     	this.track1.src = "sounds/umbala.mp3";
     	this.track1.volume = 0.1;
     	this.track1.loop = true;
-    	// this.track2 = new Audio();
-    	// this.track2.src = "sounds/jpark.mp3";
+    	this.track2 = new Audio();
+    	this.track2.src = "sounds/touhou.mp3";
     	this.track3 = new Audio();
     	this.track3.src = 'sounds/congrats.mp3';
     	this.track4 = new Audio();
     	this.track4.src = 'sounds/cardflip.mp3';
+        this.track5 = new Audio();
+        this.track5.src=  'sounds/darude.mp3';
+        this.track5.currentTime=20;
+        this.track6 = new Audio();
+        this.track6.src= 'sounds/flight.mp3';
 
     	setAudioImg();
     }
@@ -88,7 +96,16 @@ function playBackground(){
 		// switch(track.currentPage){   //the switch statement detects which page the game is on
 		// 							//and plays the correct background music.
 		// 	case 0:
-				track.track1.play();
+            if(subTrackState===0){
+                track.track1.play();
+            }else if(subTrackState===1){
+                track.track2.play();
+            }else if(subTrackState===2){
+                track.track5.play();
+            }else if(subTrackState===3){
+                track.track6.play();
+            }
+			
 			// 	break;
 			// case 1:
 			// 	track.track1.pause();
@@ -120,14 +137,19 @@ function stopBackground(){
 	
 	track.track1.pause();
 	track.track1.currentTime=0;
-	// track.track2.pause();
-	// track.track2.currentTime=0;
+    track.track2.pause();
+	track.track2.currentTime=0;
     track.track3.pause();
     track.track3.currentTime=0;
     track.track4.pause();
     track.track4.currentTime=0;
+    track.track5.pause();
+    track.track5.currentTime=20;
+    track.track6.pause();
+    track.track6.currentTime=0;
 	setAudioImg();
     trackState = 0;
+    subTrackState=0;
     
 }
 
@@ -197,7 +219,7 @@ function timeMode(){
         if(clock.timerReference==null){  //if the user is not in the time mode page, then we jump out of this method.
             return;
         }
-        clock.timerReference.innerHTML = "Time left: " + clock.seconds+ " Score: " + clock.currentScore;
+        clock.timerReference.innerHTML = "Time left: " + clock.seconds+ " Score: " + Math.floor(clock.currentScore);
         clock.checkTime();    //checks if the user has time left.
         if(!clock.pause2){
                 clock.calculateScore();
@@ -374,7 +396,6 @@ function displayWin(){
 
 function displayTimeWin(){
     clock.totalScore += clock.currentScore;
-    initScore();
 	resetTimer();
 	track.currentPage = 1; 
 	playBackgroundWin();
@@ -415,6 +436,11 @@ function displayTimeWin(){
                 		break;
                 	case 6:
                             achievements.achievement2=1;
+
+                            subTrackState=3;
+                            track.track1.pause();
+                            playBackground();
+
                 			timeLevelUnlock.lvl7 = true;
                             clock.scoreMultiplier=4.2;
 		                	pageOptions.setTimeLevelUnlock();
@@ -440,6 +466,10 @@ function displayTimeWin(){
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage10t()' id='continueButton'>";
                 		break;
                 	case 10:
+                            subTrackState=1;
+                            track.track6.pause();
+                            playBackground();
+                            
                 			timeLevelUnlock.lvl11 = true;
                             clock.scoreMultiplier=5;
 		                	pageOptions.setTimeLevelUnlock();
@@ -452,6 +482,9 @@ function displayTimeWin(){
                 			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage12t()' id='continueButton'>";
                 		break;
                 	case 12:
+                            subTrackState=2;
+                            track.track2.pause();
+                            playBackground();
                             clock.scoreMultiplier=7;
                             achievements.achievement3=1;
                 			timeLevelUnlock.lvl13 = true;
@@ -463,6 +496,7 @@ function displayTimeWin(){
                 	default:
                 		break;
                 }
+      initScore();
       setAudioImg();
       clock.pause2 = false;    
 }

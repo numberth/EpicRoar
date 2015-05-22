@@ -17,7 +17,7 @@
 		DINO MYTE
 		<br>
 	</h1>
-		<a href='index.php'><img src='img/home.png' alt='home button' style='position:absolute;top:0;left:0;display:block;height:60px;width:90px'></a>
+		<a href='index.php'><img src='img/home.png' alt='home button' style='position:absolute;top:0;left:0;display:block;height:60px;width:80px'></a>
 		<?php
 			if( isset($_SESSION['user_id'])) {
 				echo "<a href='php/logout.php'><img src='img/logout.png' alt='login button' style='position:absolute;top:0;right:0;display:block;height:60px;width:150px'></a>";
@@ -28,21 +28,22 @@
 		
 	<!-- Content goes in div "content" 
 	 -->
-	<div class="container">
+	<div class="container" style='border-bottom-style:dotted;border-color:#474719;border-top-style:dotted'>
 	<!-- EVERYTHING IS GENERATED WITHIN THE content with id panel-->
-		<div class="content" id="panel" style='color:black;background-image:url(http://hdwallpapers360.com/wp-content/uploads/white-hd-background-wallpaper.png);background-size:100% 100%'>
+		<!-- <div class="content" id="panel" style='word-wrap: break-word;font-size:18px;color:black;background-image:url();background-size:100% 100%'> -->
 
 		<?php
 			
 				if( isset($_SESSION['user_id']) ) {
-
 	                $id = $_SESSION['user_id'];  
 	                include 'connect.php';  
-	                echo "Welcome ".mysql_result( mysql_query("SELECT username FROM users WHERE user_id = $id"), 0)."<br>";
+	                echo "<h2 style='text-align:center;color:white'>Welcome ".mysql_result( mysql_query("SELECT username FROM users WHERE user_id = $id"), 0)."</h2>";
 	                $query = mysql_query("SELECT email FROM users WHERE user_id = $id");
-	                echo "Your email is: ".mysql_result($query, 0)."<br/>";
-	                echo "Your Location is: ".mysql_result(mysql_query("SELECT userLocation FROM users WHERE user_id = $id"),0)."<br>";
-
+	                echo "<p style='text-align:center'>Your email is: ".mysql_result($query, 0)."</p>";
+	                $location = mysql_result(mysql_query("SELECT userLocation FROM users WHERE user_id = $id"),0);
+	                if(!empty($location)){
+	                	echo "<p style='text-align:center'>Your Location: ".$location."</p>";
+	                }
 	                $queryAchievement1 = mysql_query("SELECT achievement1 FROM users WHERE user_id = $id");
 	                $queryAchievement2 = mysql_query("SELECT achievement2 FROM users WHERE user_id = $id");
 	                $queryAchievement3 = mysql_query("SELECT achievement3 FROM users WHERE user_id = $id");
@@ -62,22 +63,25 @@
 
 	                $totalAchievements = $result1+$result2+$result3;
 
-	                echo "You have a total of: ".$totalAchievements." achievements earned.<br/>";
+	                echo "<p style='text-align:center'>You have a total of: ".$totalAchievements." achievements earned.</p>";
 
 	                if($result1==1){
-	                    echo "Achievement 1 unlocked at ".$resultTime1."<br>";
+	                    echo "<p style='color:#006600'>Achievement 1[3x3 beaten] unlocked at ".$resultTime1."<p>";
+	                    echo "<img src='img/block_green.png' style='display:block;margin:auto;width:150px;height;150px;'/><br>";
 	                }else{
 	                    echo "Achievement 1 not yet unlocked<br>";
 	                }
 
 	                if($result2==1){
-	                    echo "Achievement 2 unlocked at ".$resultTime2."<br>";
+	                    echo "<p style='color:#CC0000'>Achievement 2[4x4 beaten] unlocked at ".$resultTime2."</p>";
+	                    echo "<img src='img/block_red.png' style='display:block;margin:auto;width:150px;height;150px;'/><br>";
 	                }else{
 	                    echo "Achievement 2 not yet unlocked<br>";
 	                }
 
 	                if($result3==1){
-	                    echo "Achievement 3 unlocked at ".$resultTime3."<br>";
+	                    echo "<p style='color:#D11975'>Achievement 3[beat the game!] unlocked at ".$resultTime3."</p>";
+	                    echo "<img src='img/kingDino.gif' style='display:block;margin:auto;width:150px;height;150px;'/><br>";
 	                }else{
 	                    echo "Achievement 3 not yet unlocked<br>";
 	                }
@@ -85,13 +89,14 @@
 
 	            }else{
 	            	echo "You must sign in first";
+	            	echo "<p style='margin-bottom:40%'></p>";
 	            }
 
             ?>
 
 
 
-		</div>
+		   <!-- </div> -->
 	</div>
 
 	<div id="footer">

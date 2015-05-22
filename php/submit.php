@@ -30,24 +30,37 @@
 
 		if( isset($_SESSION['user_id'])){
 			$id = $_SESSION['user_id'];   
-
+			$date = getdate(date("U"));
 			$timeData =  "Date: $date[weekday], $date[month] $date[mday]";
-			if($achievement1===1){
+			echo $timeData;
+			if($achievement1==1){
 					$timeQuery1 = "UPDATE users SET achievementTime1='$timeData' WHERE user_id = $id";
 					mysql_query($timeQuery1);
 			}
 
-			if($achievement2===1){
+			if($achievement2==1){
 				$timeQuery2 = "UPDATE users SET achievementTime2='$timeData' WHERE user_id = $id";
 				mysql_query($timeQuery2);
 			}
 
-			if($achievement3===1){
+			if($achievement3==1){
 				$timeQuery3 = "UPDATE users SET achievementTime3='$timeData' WHERE user_id = $id";
 				mysql_query($timeQuery3);
 			}
 
 
+			$val1 = mysql_result(mysql_query("SELECT achievement1 FROM users WHERE user_id = $id"),0);
+			$val2 = mysql_result(mysql_query("SELECT achievement2 FROM users WHERE user_id = $id"),0);
+			$val3 = mysql_result(mysql_query("SELECT achievement3 FROM users WHERE user_id = $id"),0);
+			if($val1==1){
+				$achievement1 = 1;
+			}
+			if($val2==1){
+				$achievement2 = 1;
+			}
+			if($val3==1){
+				$achievement3 = 1;
+			}
 	        $query = "UPDATE users
 					 SET achievement1= $achievement1, 
 					 achievement2= $achievement2, 
@@ -59,10 +72,10 @@
 			echo "sorry bro";
 		}
 
-			
+		
 
 		mysql_close();
-		//header("Location: http://danieltheman.webege.com/proto3");
+		header("Location: http://danieltheman.webege.com/proto3");
 		die();
 
 ?>

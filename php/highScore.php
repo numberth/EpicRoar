@@ -31,8 +31,8 @@
 
 
         //highscore logo
-        echo "<div width='70%' height='80%' style='position:relative;margin-top:60px;margin-left:50px;margin-right:50px'>".
-                         "<img src='img/highscore.png' alt='high score' style='font-size:20px;width:90%;height:70%;margin-left:16px;margin-top:-20px'>" ;
+        echo "<div style='font-size:19px;position:relative;margin-top:60px;margin:auto'>".
+                         "<img src='img/highscore.png' alt='high score' style='font-size:20px;width:90%;height:70%;margin-left:16px;margin-top:20px'>" ;
 
        
         $query1 ="INSERT INTO userLocation(geoLocation,dateString)
@@ -47,13 +47,13 @@
         if($query_run = mysql_query($query2)){ //if the query was successful, then generate the html table that visually displays our highscore data
             //echo "query success<br>";
             $indexVal=0;
-            echo "<table border='1' style='font-size:20px;color:white;margin:auto'>";
+            echo "<table border='1' style='color:white;margin:auto;width:1.5vw'>";
                 while($query_row=mysql_fetch_assoc($query_run)){   //while there are more rows, we use the fetch associative array
                     $val0 = $query_row['userId'];   //user id
                     $val1 = $query_row['score'];     //their score
                     $val2 = $query_row['fullName'];   //their name
 
-                    if($indexVal>5){   //once we display 8 scores, breaks out of the while statement. 
+                    if($indexVal>4){   //once we display 8 scores, breaks out of the while statement. 
                         return;
                     }
 
