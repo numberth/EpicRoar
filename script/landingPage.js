@@ -37,6 +37,7 @@ var track = {
 	* This function initializes the sound files and loads them into the variables from track1-4
     */
     init : function(){
+
     	this.track1 = new Audio();
     	this.track1.src = "sounds/umbala.mp3";
     	this.track1.volume = 0.1;
@@ -149,7 +150,6 @@ function stopBackground(){
     track.track6.currentTime=0;
 	setAudioImg();
     trackState = 0;
-    subTrackState=0;
     
 }
 
@@ -205,7 +205,7 @@ function initScore(){
 }
 
 /**
- * This functiona refreshes the paragraph with the id "timesquare"
+ * This function refreshes the paragraph with the id "timesquare"
  * by using the window.setTimeout method every 0.1 seconds. In this manner,
  * we have a variable that holds the data for how much time has passed, and can be
  * used for any purpose : such as a countdown, or a count up. We can also easily check
@@ -426,7 +426,7 @@ function displayTimeWin(){
 		                	timeLevelUnlock.lvl5 = true;
                             clock.scoreMultiplier=3.75;
 		                	pageOptions.setTimeLevelUnlock();
-                			pageOptions.reference.innerHTML+= "<img src= 'img/button_continue.png' onclick='pageOptions.setPage5t()' id='continueButton'>";
+                			pageOptions.reference.innerHTML += "<img src= 'img/button_continue.png' onclick='pageOptions.setPage5t()' id='continueButton'>";
                 		break;
                 	case 5:
                 			timeLevelUnlock.lvl6 = true;
@@ -437,8 +437,8 @@ function displayTimeWin(){
                 	case 6:
                             achievements.achievement2=1;
 
-                            subTrackState=3;
-                            track.track1.pause();
+                            subTrackState = 3;
+                            stopBackground();
                             playBackground();
 
                 			timeLevelUnlock.lvl7 = true;
@@ -467,7 +467,7 @@ function displayTimeWin(){
                 		break;
                 	case 10:
                             subTrackState=1;
-                            track.track6.pause();
+                            stopBackground();
                             playBackground();
                             
                 			timeLevelUnlock.lvl11 = true;
@@ -483,8 +483,9 @@ function displayTimeWin(){
                 		break;
                 	case 12:
                             subTrackState=2;
-                            track.track2.pause();
+                            stopBackground();
                             playBackground();
+                            
                             clock.scoreMultiplier=7;
                             achievements.achievement3=1;
                 			timeLevelUnlock.lvl13 = true;
